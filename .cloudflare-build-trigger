@@ -1,5 +1,6 @@
-Cloudflare Workers staging build trigger.
+Cloudflare Workers production build trigger.
 
-Created: 2026-08-08T00:00:00Z
-Target: ravyt-digital-staging
-Branch: agent/cloudflare-workers-migration
+Created: 2026-08-08T21:00:00Z
+Target: ravyt-digital
+Branch: main
+Purpose: initial production workers.dev deployment; custom domains remain disconnected.
