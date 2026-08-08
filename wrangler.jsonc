@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ravyt-digital",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-08-08",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "assets": {
+    "binding": "ASSETS"
+  },
+  "images": {
+    "binding": "IMAGES"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "env": {
+    "staging": {
+      "name": "ravyt-digital-staging",
+      "workers_dev": true,
+      "images": {
+        "binding": "IMAGES"
+      },
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1
+      }
+    }
+  }
+}
