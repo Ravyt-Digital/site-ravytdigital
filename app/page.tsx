@@ -61,48 +61,56 @@ const projects = [
     category: "Site institucional",
     image: "/projects/capoeira-haute-savoie.webp",
     alt: "Página inicial do site Capoeira Haute-Savoie",
+    href: "https://capoeira-haute-savoie.ravytdigital.chatgpt.site/",
   },
   {
     title: "Lucão Capacetes",
     category: "Catálogo digital",
     image: "/projects/lucao-capacetes.webp",
     alt: "Página inicial do catálogo Lucão Capacetes e Acessórios",
+    href: "https://lucao-capacetes.ravytdigital.chatgpt.site/",
   },
   {
     title: "Ravyt Motos",
     category: "Catálogo digital",
     image: "/projects/ravyt-motos.webp",
     alt: "Página inicial do site Ravyt Motos",
+    href: "https://yuri-motos-capacetes.ravytdigital.chatgpt.site/",
   },
   {
     title: "Tabuada Quest",
     category: "Aplicativo educativo",
     image: "/projects/tabuada-quest.webp",
     alt: "Tela principal do aplicativo educativo Tabuada Quest",
+    href: "https://tabuada-quest.ravytdigital.chatgpt.site/",
   },
   {
     title: "Fluência Digital",
     category: "Blog & conteúdo",
     image: "/projects/fluencia-digital.webp",
     alt: "Página inicial do blog Fluência Digital",
+    href: "https://fluenciadigital.ravytdigital.chatgpt.site/",
   },
   {
     title: "Pressroom Ibiapaba",
     category: "Portal de notícias regional",
     image: "/projects/pressroom-ibiapaba.webp",
     alt: "Página inicial do portal Pressroom Ibiapaba",
+    href: "https://pressroom-tig.ravytdigital.chatgpt.site/",
   },
   {
     title: "Pressroom Brasil",
     category: "Portal de notícias",
     image: "/projects/pressroom-brasil.webp",
     alt: "Página inicial do portal Pressroom Brasil",
+    href: "https://pressroombrasil.ravytdigital.chatgpt.site/",
   },
   {
     title: "Seja Indispensável!",
     category: "Página de vendas",
     image: "/projects/seja-indispensavel.webp",
     alt: "Página de vendas do livro Seja Indispensável",
+    href: "https://seja-indispensavel.ravytdigital.chatgpt.site/",
   },
 ];
 
@@ -266,7 +274,15 @@ export default function Home() {
                 </div>
                 <div className="project-meta">
                   <div><small>{project.category}</small><h3>{project.title}</h3></div>
-                  <span className="project-action" aria-disabled="true">Ver projeto <ArrowUpRight /></span>
+                  <a
+                    className="project-action"
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ver projeto ${project.title} (abre em uma nova aba)`}
+                  >
+                    Ver projeto <ArrowUpRight />
+                  </a>
                 </div>
               </article>
             ))}
