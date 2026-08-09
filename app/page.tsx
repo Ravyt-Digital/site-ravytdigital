@@ -56,11 +56,54 @@ const services = [
 ];
 
 const projects = [
-  { title: "Seja Indispensável!", category: "Página de vendas", style: "book" },
-  { title: "Fluência Digital", category: "Blog & conteúdo", style: "fluencia" },
-  { title: "Capoeira Haute-Savoie", category: "Página de evento", style: "capoeira" },
-  { title: "CEREST Tianguá", category: "Site institucional & blog", style: "cerest" },
-  { title: "Ravyt Motos", category: "Marca & experiência digital", style: "motos" },
+  {
+    title: "Capoeira Haute-Savoie",
+    category: "Site institucional",
+    image: "/projects/capoeira-haute-savoie.webp",
+    alt: "Página inicial do site Capoeira Haute-Savoie",
+  },
+  {
+    title: "Lucão Capacetes",
+    category: "Catálogo digital",
+    image: "/projects/lucao-capacetes.webp",
+    alt: "Página inicial do catálogo Lucão Capacetes e Acessórios",
+  },
+  {
+    title: "Ravyt Motos",
+    category: "Catálogo digital",
+    image: "/projects/ravyt-motos.webp",
+    alt: "Página inicial do site Ravyt Motos",
+  },
+  {
+    title: "Tabuada Quest",
+    category: "Aplicativo educativo",
+    image: "/projects/tabuada-quest.webp",
+    alt: "Tela principal do aplicativo educativo Tabuada Quest",
+  },
+  {
+    title: "Fluência Digital",
+    category: "Blog & conteúdo",
+    image: "/projects/fluencia-digital.webp",
+    alt: "Página inicial do blog Fluência Digital",
+  },
+  {
+    title: "Pressroom Ibiapaba",
+    category: "Portal de notícias regional",
+    image: "/projects/pressroom-ibiapaba.webp",
+    alt: "Página inicial do portal Pressroom Ibiapaba",
+  },
+  {
+    title: "Pressroom Brasil",
+    category: "Portal de notícias",
+    image: "/projects/pressroom-brasil.webp",
+    alt: "Página inicial do portal Pressroom Brasil",
+  },
+  {
+    title: "Seja Indispensável!",
+    category: "Página de vendas",
+    image: "/projects/seja-indispensavel.webp",
+    alt: "Página de vendas do livro Seja Indispensável",
+  },
 ];
 
 const steps = [
@@ -75,19 +118,6 @@ function ServiceGlyph({ type }: { type: string }) {
   if (type === "brand") return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 5 17 11v17L24 43 7 33V16Z" /><circle cx="24" cy="24" r="7" /><path d="M24 5v12m17-1-10 6M7 16l10 6M7 33l10-6m24 6-10-6M24 43V31" /></svg>;
   if (type === "content") return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="6" width="27" height="34" rx="4" /><path d="M15 15h13M15 21h13M15 27h8" /><path d="m31 34 9-9 3 3-9 9-5 1Z" /></svg>;
   return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="10" cy="29" r="4" /><circle cx="25" cy="12" r="4" /><circle cx="39" cy="30" r="4" /><path d="m13 26 9-11m6 0 8 12M14 30h21" /></svg>;
-}
-
-function ProjectVisual({ style }: { style: string }) {
-  return (
-    <div className={`project-visual project-${style}`} aria-hidden="true">
-      <div className="browser-bar"><i /><i /><i /><span /></div>
-      {style === "book" && <div className="pv-book"><small>MARCIO CABRAL</small><strong>SEJA<br /><em>INDISPENSÁVEL!</em></strong><span>Transforme sua carreira.</span><b>CONHEÇA O LIVRO →</b></div>}
-      {style === "fluencia" && <div className="pv-fluencia"><div>01</div><small>APRENDA O IDIOMA<br />DA NOVA ECONOMIA.</small><strong>FLUÊNCIA<br /><em>DIGITAL</em></strong><span>IA • PRODUTIVIDADE • AUTOMAÇÃO</span></div>}
-      {style === "capoeira" && <div className="pv-capoeira"><i>G</i><small>CAPOEIRA • CULTURA • MOVIMENTO</small><strong>Guerreiros<br />dos Campeões</strong><span>HAUTE-SAVOIE</span></div>}
-      {style === "cerest" && <div className="pv-cerest"><small>SAÚDE DE QUEM TRABALHA</small><strong>Cuidar do trabalhador<br />é cuidar de toda a cidade.</strong><div><i /><i /><i /></div><span>CEREST TIANGUÁ</span></div>}
-      {style === "motos" && <div className="pv-motos"><small>ESTRADA, ESTILO E PROTEÇÃO</small><strong>RAVYT<br /><em>MOTOS</em></strong><div className="helmet">R</div><span>PRONTO PARA ACELERAR?</span></div>}
-    </div>
-  );
 }
 
 export default function Home() {
@@ -208,16 +238,33 @@ export default function Home() {
         <section className="work" id="projetos">
           <div className="work-glow" aria-hidden="true" />
           <div className="shell work-heading">
-            <div><p className="section-kicker section-kicker-light">Projetos selecionados</p><p className="work-note">Estratégia e execução conectadas em diferentes mercados.</p></div>
-            <h2>Trabalhos feitos para serem <em>vistos, lembrados e escolhidos.</em></h2>
+            <div><p className="section-kicker section-kicker-light">Projetos selecionados</p><span className="section-index section-index-light">01 — 08</span></div>
+            <div className="work-heading-copy">
+              <h2>Projetos que geram <em>presença, confiança e resultado.</em></h2>
+              <p>Cada projeto nasce de uma visão estratégica e se transforma em uma experiência digital pensada para gerar valor.</p>
+            </div>
           </div>
-          <div className="shell projects-grid">
+          <div className="projects-viewport">
+            <div className="projects-grid" aria-label="Projetos selecionados">
             {projects.map((project, index) => (
               <article className={`project-card project-card-${index + 1}`} key={project.title}>
-                <ProjectVisual style={project.style} />
-                <div className="project-meta"><span>{String(index + 1).padStart(2, "0")}</span><div><small>{project.category}</small><h3>{project.title}</h3></div></div>
+                <div className="project-visual">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    sizes="(max-width: 640px) 84vw, (max-width: 1020px) 58vw, 430px"
+                    unoptimized
+                  />
+                  <span className="project-number">{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="project-meta">
+                  <div><small>{project.category}</small><h3>{project.title}</h3></div>
+                  <span className="project-action" aria-disabled="true">Ver projeto <ArrowUpRight /></span>
+                </div>
               </article>
             ))}
+            </div>
           </div>
           <div className="shell work-footer"><p>Cada projeto começa no negócio — não na ferramenta.</p><a href="#contato">Quero construir o próximo <ArrowUpRight /></a></div>
         </section>
