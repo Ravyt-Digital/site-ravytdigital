@@ -244,19 +244,25 @@ export default function Home() {
               <p>Cada projeto nasce de uma visão estratégica e se transforma em uma experiência digital pensada para gerar valor.</p>
             </div>
           </div>
-          <div className="projects-viewport">
+          <div className="projects-viewport shell">
             <div className="projects-grid" aria-label="Projetos selecionados">
             {projects.map((project, index) => (
-              <article className={`project-card project-card-${index + 1}`} key={project.title}>
+              <article
+                className={`project-card project-card-${index + 1}`}
+                key={project.title}
+                tabIndex={0}
+                aria-label={`${project.title} — ${project.category}. Passe o mouse ou selecione para explorar a página.`}
+              >
                 <div className="project-visual">
                   <Image
                     src={project.image}
                     alt={project.alt}
                     fill
-                    sizes="(max-width: 640px) 84vw, (max-width: 1020px) 58vw, 430px"
+                    sizes="(max-width: 640px) calc(100vw - 30px), (max-width: 1020px) calc(50vw - 35px), 577px"
                     unoptimized
                   />
                   <span className="project-number">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="project-scroll-hint">Passe para explorar</span>
                 </div>
                 <div className="project-meta">
                   <div><small>{project.category}</small><h3>{project.title}</h3></div>
