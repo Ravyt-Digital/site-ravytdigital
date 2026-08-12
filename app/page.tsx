@@ -19,7 +19,7 @@ const ArrowDown = () => (
 function BrandLockup({ dark = false }: { dark?: boolean }) {
   return (
     <span className={`brand-lockup${dark ? " brand-lockup-dark" : ""}`} aria-label="Ravyt Digital">
-      <Image src="/brand/ravyt-wordmark.png" alt="" width={662} height={241} priority unoptimized />
+      <Image src="/brand/ravyt-logo-new-dark.png" alt="" width={327} height={148} priority unoptimized />
     </span>
   );
 }
@@ -60,8 +60,8 @@ const projects = [
     title: "Odonto Premium",
     category: "Site institucional",
     image: "/projects/odonto-premium.webp",
-    width: 703,
-    height: 2048,
+    width: 1400,
+    height: 4079,
     alt: "Página inicial do site Odonto Premium",
     href: "https://site-odonto-premium.ravytdigital.workers.dev/",
   },
@@ -69,8 +69,8 @@ const projects = [
     title: "Capoeira Haute-Savoie",
     category: "Site institucional",
     image: "/projects/capoeira-haute-savoie.webp",
-    width: 398,
-    height: 2048,
+    width: 1400,
+    height: 7204,
     alt: "Página inicial do site Capoeira Haute-Savoie",
     href: "https://site-capoeira-haute-savoie.ravytdigital.workers.dev/",
   },
@@ -78,8 +78,8 @@ const projects = [
     title: "Excel no Agro",
     category: "Página de vendas",
     image: "/projects/excel-no-agro.webp",
-    width: 299,
-    height: 2048,
+    width: 1400,
+    height: 9589,
     alt: "Página de vendas do curso Excel no Agro",
     href: "https://site-excel-no-agro.ravytdigital.workers.dev/",
   },
@@ -87,8 +87,8 @@ const projects = [
     title: "Seja Indispensável!",
     category: "Página de vendas",
     image: "/projects/seja-indispensavel.webp",
-    width: 266,
-    height: 2048,
+    width: 1400,
+    height: 10779,
     alt: "Página de vendas do livro Seja Indispensável",
     href: "https://site-seja-indispensavel.ravytdigital.workers.dev/",
   },
@@ -150,23 +150,22 @@ export default function Home() {
             <div className="hero-copy">
               <div className="eyebrow">
                 <span className="eyebrow-dot" />
-                Excelência traduzida para o digital
+                Estratégia • Tecnologia • Experiências
               </div>
               <h1>
-                Seu negócio já entrega <span>excelência.</span>
-                <br />O digital precisa deixar isso claro.
+                Estratégia que conecta <span>tecnologia, pessoas e propósito.</span>
               </h1>
               <p className="hero-lead">
-                A Ravyt transforma a qualidade que seus clientes já vivem no dia a dia
-                em uma presença digital que gera confiança antes mesmo do primeiro contato.
+                Soluções digitais inteligentes que transformam negócios, constroem
+                experiências e impulsionam crescimento sustentável.
               </p>
               <div className="hero-actions">
                 <a className="button button-light" href="#contato">
-                  Quero elevar minha presença
+                  Fale com um especialista
                   <ArrowUpRight />
                 </a>
                 <a className="button button-ghost" href="#projetos">
-                  Conheça nosso trabalho
+                  Conheça nossas soluções
                   <ArrowDown />
                 </a>
               </div>
@@ -184,11 +183,10 @@ export default function Home() {
               <div className="orbit-chip chip-tech">Tecnologia</div>
               <div className="brand-core">
                 <div className="brand-core-glow" aria-hidden="true" />
-                <div className="brand-mark" aria-hidden="true"><span>R</span><svg viewBox="0 0 58 62"><path d="M7 47 29 8l8 14 14-9-20 41-9-17Z" fill="currentColor" /></svg></div>
-                <p>RAVYT</p><small>DIGITAL</small>
+                <Image className="brand-monogram" src="/brand/ravyt-monogram.png" alt="" width={512} height={512} priority unoptimized />
               </div>
-              <div className="signal-card signal-card-top"><span className="signal-label">Percepção de valor</span><strong>A sua qualidade,<br />visível no digital.</strong><div className="signal-line"><i /><i /><i /><i /></div></div>
-              <div className="signal-card signal-card-bottom"><div className="signal-icon"><ArrowUpRight /></div><div><span className="signal-label">Objetivo</span><strong>Presença que inspira confiança.</strong></div></div>
+              <div className="signal-card signal-card-top"><span className="signal-label">Inteligência</span><strong>Decisões melhores.<br />Direção mais clara.</strong><div className="signal-line"><i /><i /><i /><i /></div></div>
+              <div className="signal-card signal-card-bottom"><div className="signal-icon"><ArrowUpRight /></div><div><span className="signal-label">Resultado</span><strong>Crescimento com consistência.</strong></div></div>
             </div>
           </div>
 
@@ -242,12 +240,16 @@ export default function Home() {
                 aria-label={`${project.title} — ${project.category}. Passe o mouse ou selecione para explorar a página.`}
               >
                 <div className="project-visual">
+                  <div className="project-browser-bar" aria-hidden="true">
+                    <i /><i /><i /><span>{project.href.replace("https://", "").replace(/\/$/, "")}</span>
+                  </div>
                   <Image
                     src={project.image}
                     alt={project.alt}
                     width={project.width}
                     height={project.height}
                     sizes="(max-width: 640px) calc(100vw - 30px), (max-width: 1020px) calc(50vw - 35px), 577px"
+                    quality={92}
                     unoptimized
                   />
                   <span className="project-number">{String(index + 1).padStart(2, "0")}</span>

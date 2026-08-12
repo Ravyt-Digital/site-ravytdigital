@@ -1,17 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,25 +19,26 @@ export const metadata: Metadata = {
     siteName: "Ravyt Digital",
     title: "Ravyt Digital | Sua excelência, visível no digital",
     description: "Estratégia, design, conteúdo e tecnologia para negócios que querem ser percebidos à altura do que entregam.",
-    images: [{ url: "/brand/ravyt-logo.png", width: 1920, height: 1080, alt: "Ravyt Digital" }],
+    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Nova identidade visual da Ravyt Digital" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ravyt Digital | Sua excelência, visível no digital",
     description: "Estratégia, design, conteúdo e tecnologia para sua excelência ser percebida.",
-    images: ["/brand/ravyt-logo.png"],
+    images: ["/brand/ravyt-social-card.jpg"],
   },
   robots: {
     index: true,
     follow: true,
   },
   other: {
-    "theme-color": "#2A0669",
+    "theme-color": "#1A1C1E",
     "codex-preview": "development",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -59,9 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         {children}
       </body>
     </html>

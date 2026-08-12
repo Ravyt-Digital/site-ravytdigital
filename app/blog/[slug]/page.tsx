@@ -34,7 +34,7 @@ export async function generateMetadata({
       authors: ["Ravyt Digital"],
       images: [
         {
-          url: "/brand/ravyt-logo.png",
+          url: "/brand/ravyt-social-card.jpg",
           width: 1920,
           height: 1080,
           alt: "Ravyt Digital",
@@ -69,7 +69,7 @@ export default async function ArticlePage({
       "@type": "Organization",
       name: "Ravyt Digital",
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-logo.png` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-monogram.png` },
     },
     mainEntityOfPage: articleUrl,
     url: articleUrl,
