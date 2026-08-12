@@ -195,11 +195,11 @@ button { font: inherit; }
 .projects-viewport { margin-top: 90px; }
 .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px 28px; }
 .project-card { min-width: 0; border-radius: 23px; outline: none; }
-.project-visual { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: 23px; box-shadow: 0 35px 80px rgba(0,0,0,.32); transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+.project-visual { container-type: inline-size; position: relative; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: 23px; box-shadow: 0 35px 80px rgba(0,0,0,.32); transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
 .project-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,3,12,.52), transparent 42%); pointer-events: none; }
-.project-visual img { object-fit: cover; object-position: top center; transform: scale(1.18) translateY(0); transform-origin: top center; transition: transform 2.4s cubic-bezier(.22,.76,.2,1), filter .4s ease; }
+.project-visual img { position: absolute; inset: 0 auto auto 0; display: block; width: 100%; height: auto; transform: translateY(0); transform-origin: top center; transition: transform 6s cubic-bezier(.22,.76,.2,1), filter .4s ease; }
 .project-card:hover .project-visual, .project-card:focus-visible .project-visual { transform: translateY(-8px); border-color: rgba(190,157,255,.42); box-shadow: 0 45px 95px rgba(0,0,0,.45); }
-.project-card:hover .project-visual img, .project-card:focus-visible .project-visual img { transform: scale(1.18) translateY(-15%); filter: saturate(1.06); }
+.project-card:hover .project-visual img, .project-card:focus-visible .project-visual img { transform: translateY(calc(-100% + 62.5cqw)); filter: saturate(1.06); }
 .project-card:focus-visible { outline: 2px solid #b991ff; outline-offset: 7px; }
 .project-number { position: absolute; z-index: 2; left: 18px; bottom: 18px; display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.36); border-radius: 50%; color: #fff; background: rgba(9,4,15,.4); backdrop-filter: blur(12px); font-family: var(--font-geist-mono), monospace; font-size: 9px; }
 .project-scroll-hint { position: absolute; z-index: 2; right: 17px; top: 17px; padding: 9px 12px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; color: rgba(255,255,255,.82); background: rgba(9,4,15,.46); backdrop-filter: blur(12px); font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; transition: opacity .3s ease, transform .3s ease; }

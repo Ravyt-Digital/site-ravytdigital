@@ -57,60 +57,40 @@ const services = [
 
 const projects = [
   {
+    title: "Odonto Premium",
+    category: "Site institucional",
+    image: "/projects/odonto-premium.webp",
+    width: 703,
+    height: 2048,
+    alt: "Página inicial do site Odonto Premium",
+    href: "https://site-odonto-premium.ravytdigital.workers.dev/",
+  },
+  {
     title: "Capoeira Haute-Savoie",
     category: "Site institucional",
     image: "/projects/capoeira-haute-savoie.webp",
+    width: 398,
+    height: 2048,
     alt: "Página inicial do site Capoeira Haute-Savoie",
-    href: "https://capoeira-haute-savoie.ravytdigital.chatgpt.site/",
+    href: "https://site-capoeira-haute-savoie.ravytdigital.workers.dev/",
   },
   {
-    title: "Lucão Capacetes",
-    category: "Catálogo digital",
-    image: "/projects/lucao-capacetes.webp",
-    alt: "Página inicial do catálogo Lucão Capacetes e Acessórios",
-    href: "https://lucao-capacetes.ravytdigital.chatgpt.site/",
-  },
-  {
-    title: "Ravyt Motos",
-    category: "Catálogo digital",
-    image: "/projects/ravyt-motos.webp",
-    alt: "Página inicial do site Ravyt Motos",
-    href: "https://yuri-motos-capacetes.ravytdigital.chatgpt.site/",
-  },
-  {
-    title: "Tabuada Quest",
-    category: "Aplicativo educativo",
-    image: "/projects/tabuada-quest.webp",
-    alt: "Tela principal do aplicativo educativo Tabuada Quest",
-    href: "https://tabuada-quest.ravytdigital.chatgpt.site/",
-  },
-  {
-    title: "Fluência Digital",
-    category: "Blog & conteúdo",
-    image: "/projects/fluencia-digital.webp",
-    alt: "Página inicial do blog Fluência Digital",
-    href: "https://fluenciadigital.ravytdigital.chatgpt.site/",
-  },
-  {
-    title: "Pressroom Ibiapaba",
-    category: "Portal de notícias regional",
-    image: "/projects/pressroom-ibiapaba.webp",
-    alt: "Página inicial do portal Pressroom Ibiapaba",
-    href: "https://pressroom-tig.ravytdigital.chatgpt.site/",
-  },
-  {
-    title: "Pressroom Brasil",
-    category: "Portal de notícias",
-    image: "/projects/pressroom-brasil.webp",
-    alt: "Página inicial do portal Pressroom Brasil",
-    href: "https://pressroombrasil.ravytdigital.chatgpt.site/",
+    title: "Excel no Agro",
+    category: "Página de vendas",
+    image: "/projects/excel-no-agro.webp",
+    width: 299,
+    height: 2048,
+    alt: "Página de vendas do curso Excel no Agro",
+    href: "https://site-excel-no-agro.ravytdigital.workers.dev/",
   },
   {
     title: "Seja Indispensável!",
     category: "Página de vendas",
     image: "/projects/seja-indispensavel.webp",
+    width: 266,
+    height: 2048,
     alt: "Página de vendas do livro Seja Indispensável",
-    href: "https://seja-indispensavel.ravytdigital.chatgpt.site/",
+    href: "https://site-seja-indispensavel.ravytdigital.workers.dev/",
   },
 ];
 
@@ -246,7 +226,7 @@ export default function Home() {
         <section className="work" id="projetos">
           <div className="work-glow" aria-hidden="true" />
           <div className="shell work-heading">
-            <div><p className="section-kicker section-kicker-light">Projetos selecionados</p><span className="section-index section-index-light">01 — 08</span></div>
+            <div><p className="section-kicker section-kicker-light">Projetos selecionados</p><span className="section-index section-index-light">01 — 04</span></div>
             <div className="work-heading-copy">
               <h2>Projetos que geram <em>presença, confiança e resultado.</em></h2>
               <p>Cada projeto nasce de uma visão estratégica e se transforma em uma experiência digital pensada para gerar valor.</p>
@@ -265,7 +245,8 @@ export default function Home() {
                   <Image
                     src={project.image}
                     alt={project.alt}
-                    fill
+                    width={project.width}
+                    height={project.height}
                     sizes="(max-width: 640px) calc(100vw - 30px), (max-width: 1020px) calc(50vw - 35px), 577px"
                     unoptimized
                   />
