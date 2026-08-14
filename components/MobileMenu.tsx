@@ -24,13 +24,12 @@ export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: bool
       <div className={`menu-panel${open ? " is-open" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <nav aria-label="Navegação para celular">
           <a href={section("#servicos")} onClick={() => setOpen(false)}>Serviços <span>01</span></a>
-          <a href={section("#projetos")} onClick={() => setOpen(false)}>Projetos <span>02</span></a>
-          <a href={section("#metodo")} onClick={() => setOpen(false)}>Como fazemos <span>03</span></a>
-          <a href={section("#sobre")} onClick={() => setOpen(false)}>A Ravyt <span>04</span></a>
+          <a href={section("#sobre")} onClick={() => setOpen(false)}>A Ravyt <span>02</span></a>
+          <a href={section("#projetos")} onClick={() => setOpen(false)}>Cases <span>03</span></a>
           {/* A plain anchor avoids a Vinext client-proxy issue in the interactive menu. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/blog" onClick={() => setOpen(false)}>Blog <span>05</span></a>
-          <a className="menu-contact" href={section("#contato")} onClick={() => setOpen(false)}>Iniciar um projeto ↗</a>
+          <a href="/blog" onClick={() => setOpen(false)}>Insights <span>04</span></a>
+          <a className="menu-contact" href={section("#contato")} onClick={() => setOpen(false)}>Vamos conversar ↗</a>
         </nav>
       </div>
     </div>

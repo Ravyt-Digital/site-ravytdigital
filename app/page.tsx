@@ -19,7 +19,7 @@ const ArrowDown = () => (
 function BrandLockup({ dark = false }: { dark?: boolean }) {
   return (
     <span className={`brand-lockup${dark ? " brand-lockup-dark" : ""}`} aria-label="Ravyt Digital">
-      <Image src="/brand/ravyt-logo-new-dark.png" alt="" width={327} height={148} priority unoptimized />
+      <Image src="/brand/ravyt-logo-2026.png" alt="" width={875} height={235} priority unoptimized />
     </span>
   );
 }
@@ -134,13 +134,13 @@ export default function Home() {
             </a>
             <nav className="desktop-nav" aria-label="Navegação principal">
               <a href="#servicos">Serviços</a>
-              <a href="#projetos">Projetos</a>
-              <a href="#metodo">Como fazemos</a>
               <a href="#sobre">A Ravyt</a>
-              <a href="/blog">Blog</a>
+              <a href="#projetos">Cases</a>
+              <a href="/blog">Insights</a>
+              <a href="#contato">Contato</a>
             </nav>
             <a className="header-cta" href="#contato">
-              Iniciar um projeto
+              Vamos conversar
               <ArrowUpRight />
             </a>
             <MobileMenu />
@@ -150,22 +150,22 @@ export default function Home() {
             <div className="hero-copy">
               <div className="eyebrow">
                 <span className="eyebrow-dot" />
-                Estratégia • Tecnologia • Experiências
+                Estratégia • Design • Tecnologia
               </div>
               <h1>
-                Estratégia que conecta <span>tecnologia, pessoas e propósito.</span>
+                Excelência refletida <span>no digital.</span>
               </h1>
               <p className="hero-lead">
-                Soluções digitais inteligentes que transformam negócios, constroem
-                experiências e impulsionam crescimento sustentável.
+                Transformamos a qualidade real do seu negócio em uma presença digital
+                à mesma altura.
               </p>
               <div className="hero-actions">
                 <a className="button button-light" href="#contato">
-                  Fale com um especialista
+                  Vamos conversar
                   <ArrowUpRight />
                 </a>
                 <a className="button button-ghost" href="#projetos">
-                  Conheça nossas soluções
+                  Conheça nossos cases
                   <ArrowDown />
                 </a>
               </div>
@@ -174,19 +174,19 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hero-art" aria-label="Estratégia, design, conteúdo e tecnologia orbitando a marca Ravyt Digital">
-              <div className="orbit orbit-outer" aria-hidden="true" />
-              <div className="orbit orbit-inner" aria-hidden="true" />
-              <div className="orbit-chip chip-strategy">Estratégia</div>
-              <div className="orbit-chip chip-design">Design</div>
-              <div className="orbit-chip chip-content">Conteúdo</div>
-              <div className="orbit-chip chip-tech">Tecnologia</div>
-              <div className="brand-core">
-                <div className="brand-core-glow" aria-hidden="true" />
-                <Image className="brand-monogram" src="/brand/ravyt-monogram.png" alt="" width={512} height={512} priority unoptimized />
+            <div className="hero-art brand-evolution" aria-label="Da excelência real à presença digital de alto nível">
+              <div className="brand-symbol-stage">
+                <span className="brand-ring brand-ring-one" aria-hidden="true" />
+                <span className="brand-ring brand-ring-two" aria-hidden="true" />
+                <Image className="brand-symbol-main" src="/brand/ravyt-symbol-2026.png" alt="Símbolo Ravyt Digital" width={245} height={235} priority unoptimized />
               </div>
-              <div className="signal-card signal-card-top"><span className="signal-label">Inteligência</span><strong>Decisões melhores.<br />Direção mais clara.</strong><div className="signal-line"><i /><i /><i /><i /></div></div>
-              <div className="signal-card signal-card-bottom"><div className="signal-icon"><ArrowUpRight /></div><div><span className="signal-label">Resultado</span><strong>Crescimento com consistência.</strong></div></div>
+              <div className="brand-path" aria-label="Processo de transformação da Ravyt Digital">
+                <div><i className="path-mark path-real" /><span>Excelência real</span></div>
+                <b aria-hidden="true">→</b>
+                <div><i className="path-mark path-transform" /><span>Transformação estratégica</span></div>
+                <b aria-hidden="true">→</b>
+                <div><i className="path-mark path-digital" /><span>Presença digital de alto nível</span></div>
+              </div>
             </div>
           </div>
 
@@ -319,7 +319,7 @@ export default function Home() {
       </main>
 
       <footer className="footer">
-        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p><nav aria-label="Links do rodapé"><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#metodo">Como fazemos</a><a href="#sobre">A Ravyt</a><a href="/blog">Blog</a></nav></div>
+        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p><nav aria-label="Links do rodapé"><a href="#servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="#contato">Contato</a></nav></div>
         <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Criado com muito carinho por Ravyt Digital.</p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></div></div>
       </footer>
 

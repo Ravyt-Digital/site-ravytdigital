@@ -69,7 +69,7 @@ export default async function ArticlePage({
       "@type": "Organization",
       name: "Ravyt Digital",
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-monogram.png` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-symbol-2026.png` },
     },
     mainEntityOfPage: articleUrl,
     url: articleUrl,
