@@ -146,11 +146,9 @@ export default async function ArticlePage({
               <h2>Quer transformar essa ideia em uma estrutura para o seu negócio?</h2>
               <a
                 className="button button-light"
-                href="https://www.instagram.com/ravytdigital/"
-                target="_blank"
-                rel="noreferrer"
+                href="/#contato"
               >
-                Conversar com a Ravyt <i aria-hidden="true">↗</i>
+                Preencher diagnóstico <i aria-hidden="true">↗</i>
               </a>
             </div>
           </div>

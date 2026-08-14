@@ -145,11 +145,9 @@ export default function BlogPage() {
           </div>
           <a
             className="button button-light"
-            href="https://www.instagram.com/ravytdigital/"
-            target="_blank"
-            rel="noreferrer"
+            href="/#contato"
           >
-            Conversar com a Ravyt <i aria-hidden="true">↗</i>
+            Preencher diagnóstico <i aria-hidden="true">↗</i>
           </a>
         </div>
       </section>
