@@ -1,21 +1,13 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
 import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
 import { getPost, posts } from "../posts";
+import { getPostSeo } from "../postSeo";
 
 export function generateStaticParams() {
   return posts.map(({ slug }) => ({ slug }));
-}
-
-function getArticleAuthor(slug: string) {
-  if (slug === "edits-instagram-stories-fluxo-producao") {
-    return { name: "Marcio Cabral", type: "Person" as const };
-  }
-
-  return { name: "Ravyt Digital", type: "Organization" as const };
 }
 
 export async function generateMetadata({
@@ -25,31 +17,29 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
+  const seo = getPostSeo(slug);
 
   if (!post) return {};
 
-  const articleImage = post.sections.find((section) => section.image)?.image;
-  const author = getArticleAuthor(post.slug);
-
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: seo?.seoTitle ?? post.title,
+    description: seo?.metaDescription ?? post.excerpt,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.excerpt,
+      title: seo?.seoTitle ?? post.title,
+      description: seo?.metaDescription ?? post.excerpt,
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
       modifiedTime: post.date,
-      authors: [author.name],
-      images: articleImage
+      authors: [seo?.author.name ?? "Ravyt Digital"],
+      images: seo
         ? [
             {
-              url: articleImage.src,
-              width: 1600,
-              height: 900,
-              alt: articleImage.alt,
+              url: seo.featuredImage.src,
+              width: seo.featuredImage.width,
+              height: seo.featuredImage.height,
+              alt: seo.featuredImage.alt,
             },
           ]
         : [
@@ -71,33 +61,52 @@ export default async function ArticlePage({
 }) {
   const { slug } = await params;
   const post = getPost(slug);
+  const seo = getPostSeo(slug);
 
   if (!post) notFound();
 
-  const related = posts.filter((item) => item.slug !== post.slug).slice(0, 2);
+  const related = seo?.relatedSlugs
+    .map((relatedSlug) => getPost(relatedSlug))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item)) ??
+    posts.filter((item) => item.slug !== post.slug).slice(0, 2);
+
   const articleUrl = `${SITE_URL}/blog/${post.slug}`;
-  const articleImage = post.sections.find((section) => section.image)?.image;
-  const author = getArticleAuthor(post.slug);
+  const authorUrl = seo?.author.url.startsWith("http")
+    ? seo.author.url
+    : `${SITE_URL}${seo?.author.url ?? "/"}`;
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.excerpt,
+    description: seo?.metaDescription ?? post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
     inLanguage: "pt-BR",
     author: {
-      "@type": author.type,
-      name: author.name,
-      ...(author.type === "Organization" ? { url: SITE_URL } : {}),
+      "@type": seo?.author.type ?? "Organization",
+      name: seo?.author.name ?? "Ravyt Digital",
+      url: authorUrl,
     },
     publisher: {
       "@type": "Organization",
       name: "Ravyt Digital",
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-symbol-2026.png` },
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/brand/ravyt-symbol-2026.png`,
+      },
     },
-    ...(articleImage ? { image: [`${SITE_URL}${articleImage.src}`] } : {}),
+    ...(seo
+      ? {
+          image: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}${seo.featuredImage.src}`,
+            width: seo.featuredImage.width,
+            height: seo.featuredImage.height,
+          },
+        }
+      : {}),
     mainEntityOfPage: articleUrl,
     url: articleUrl,
   };
@@ -114,20 +123,38 @@ export default async function ArticlePage({
               <h1>{post.title}</h1>
               <p className="article-excerpt">{post.excerpt}</p>
               <div className="article-meta">
-                <span>Por {author.name}</span>
+                <span>
+                  Por{" "}
+                  <a href={seo?.author.url ?? "/"}>
+                    {seo?.author.name ?? "Ravyt Digital"}
+                  </a>
+                </span>
                 <time dateTime={post.date}>{post.dateLabel}</time>
                 <span>{post.readingTime}</span>
               </div>
             </div>
-            <div
-              className="article-art"
-              style={{ "--post-accent": post.accent } as CSSProperties}
-              aria-hidden="true"
-            >
-              <span>R</span>
-              <div />
-              <small>{post.category}</small>
-            </div>
+            {seo ? (
+              <div
+                className="article-art"
+                style={{ overflow: "hidden", background: "#121416", padding: 0 }}
+              >
+                <img
+                  src={seo.featuredImage.src}
+                  alt={seo.featuredImage.alt}
+                  width={seo.featuredImage.width}
+                  height={seo.featuredImage.height}
+                  loading="eager"
+                  decoding="async"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    objectPosition: "center",
+                  }}
+                />
+              </div>
+            ) : null}
           </div>
         </header>
 
@@ -222,10 +249,7 @@ export default async function ArticlePage({
             <div className="article-conclusion">
               <p>Próximo passo</p>
               <h2>Quer transformar essa ideia em uma estrutura para o seu negócio?</h2>
-              <a
-                className="button button-light"
-                href="/#contato"
-              >
+              <a className="button button-light" href="/#contato">
                 Preencher diagnóstico <i aria-hidden="true">↗</i>
               </a>
             </div>
@@ -233,10 +257,10 @@ export default async function ArticlePage({
         </div>
       </article>
 
-      <section className="related-posts">
+      <section className="related-posts" aria-labelledby="artigos-relacionados">
         <div className="shell">
           <p className="related-kicker">Continue explorando</p>
-          <h2>Mais clareza para sua próxima decisão.</h2>
+          <h2 id="artigos-relacionados">Artigos relacionados ao tema.</h2>
           <div className="related-grid">
             {related.map((item) => (
               <a href={`/blog/${item.slug}`} key={item.slug}>
