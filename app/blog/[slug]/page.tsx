@@ -20,6 +20,8 @@ export async function generateMetadata({
 
   if (!post) return {};
 
+  const articleImage = post.sections.find((section) => section.image)?.image;
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -32,14 +34,23 @@ export async function generateMetadata({
       publishedTime: post.date,
       modifiedTime: post.date,
       authors: ["Ravyt Digital"],
-      images: [
-        {
-          url: "/brand/ravyt-social-card.jpg",
-          width: 1920,
-          height: 1080,
-          alt: "Ravyt Digital",
-        },
-      ],
+      images: articleImage
+        ? [
+            {
+              url: articleImage.src,
+              width: 1600,
+              height: 900,
+              alt: articleImage.alt,
+            },
+          ]
+        : [
+            {
+              url: "/brand/ravyt-social-card.jpg",
+              width: 1920,
+              height: 1080,
+              alt: "Ravyt Digital",
+            },
+          ],
     },
   };
 }
@@ -56,6 +67,7 @@ export default async function ArticlePage({
 
   const related = posts.filter((item) => item.slug !== post.slug).slice(0, 2);
   const articleUrl = `${SITE_URL}/blog/${post.slug}`;
+  const articleImage = post.sections.find((section) => section.image)?.image;
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -71,6 +83,7 @@ export default async function ArticlePage({
       url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-symbol-2026.png` },
     },
+    ...(articleImage ? { image: [`${SITE_URL}${articleImage.src}`] } : {}),
     mainEntityOfPage: articleUrl,
     url: articleUrl,
   };
@@ -138,8 +151,59 @@ export default async function ArticlePage({
                     {section.list.map((item) => <li key={item}>{item}</li>)}
                   </ul>
                 )}
+                {section.image && (
+                  <figure style={{ margin: "38px 0 8px" }}>
+                    <img
+                      src={section.image.src}
+                      alt={section.image.alt}
+                      width={1600}
+                      height={900}
+                      loading="lazy"
+                      decoding="async"
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "auto",
+                        borderRadius: 4,
+                        border: "1px solid rgba(26,28,30,.14)",
+                      }}
+                    />
+                    {section.image.caption && (
+                      <figcaption
+                        style={{
+                          marginTop: 12,
+                          color: "#78716a",
+                          fontSize: 13,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {section.image.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
               </section>
             ))}
+
+            {post.sources && post.sources.length > 0 && (
+              <section aria-labelledby="fontes-do-artigo">
+                <span className="article-section-number">FONTES</span>
+                <h2 id="fontes-do-artigo">Fontes e documentação consultadas</h2>
+                <p>
+                  Para diferenciar recomendações oficiais de interpretações do mercado,
+                  este artigo prioriza documentação primária do Google Search Central.
+                </p>
+                <ul>
+                  {post.sources.map((source) => (
+                    <li key={source.url}>
+                      <a href={source.url} target="_blank" rel="noreferrer">
+                        {source.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             <div className="article-conclusion">
               <p>Próximo passo</p>
