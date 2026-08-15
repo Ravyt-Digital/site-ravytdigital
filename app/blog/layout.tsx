@@ -6,7 +6,7 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <a className="skip-link" href="#conteudo">Ir para o conteúdo</a>
-      <BlogHeader />
+      <BlogHeader current="insights" />
       {children}
       <BlogFooter />
       <CookieConsent />

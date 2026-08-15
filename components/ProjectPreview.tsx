@@ -2,14 +2,16 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 type ProjectPreviewProps = {
   src: string;
+  image: string;
   title: string;
   category: string;
 };
 
-export default function ProjectPreview({ src, title, category }: ProjectPreviewProps) {
+export default function ProjectPreview({ src, image, title, category }: ProjectPreviewProps) {
   const [isOpen, setIsOpen] = useState(false);
   const openerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -25,6 +27,23 @@ export default function ProjectPreview({ src, title, category }: ProjectPreviewP
 
     const closeWithEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsOpen(false);
+      if (event.key === "Tab" && closeRef.current) {
+        const dialog = closeRef.current.closest<HTMLElement>("[role='dialog']");
+        const focusable = dialog?.querySelectorAll<HTMLElement>(
+          "a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex='-1'])",
+        );
+        if (!focusable?.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
 
     window.addEventListener("keydown", closeWithEscape);
@@ -67,8 +86,16 @@ export default function ProjectPreview({ src, title, category }: ProjectPreviewP
 
   return (
     <>
-      <div className="project-live-preview" aria-hidden="true">
-        <iframe src={src} title="" loading="lazy" tabIndex={-1} />
+      <div className="project-static-preview" aria-hidden="true">
+        <Image
+          src={image}
+          alt=""
+          width={1600}
+          height={1000}
+          loading="lazy"
+          decoding="async"
+          unoptimized
+        />
       </div>
       <button
         ref={openerRef}

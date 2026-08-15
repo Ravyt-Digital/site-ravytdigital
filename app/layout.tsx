@@ -10,6 +10,14 @@ export const metadata: Metadata = {
     template: "%s | Ravyt Digital",
   },
   description: "Estratégia, design, conteúdo e tecnologia para transformar a qualidade do seu negócio em uma presença digital à mesma altura.",
+  applicationName: "Ravyt Digital",
+  authors: [
+    { name: "Ytala Cabral", url: `${SITE_URL}/autores/ytala-cabral` },
+    { name: "Marcio Cabral", url: `${SITE_URL}/autores/marcio-cabral` },
+  ],
+  creator: "Ravyt Digital",
+  publisher: "Ravyt Digital",
+  category: "Marketing digital",
   alternates: {
     canonical: SITE_URL,
   },

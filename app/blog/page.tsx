@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { SITE_URL } from "@/lib/site";
 import { posts, type BlogPost } from "./posts";
 import { getPostSeo } from "./postSeo";
+
+const topicClusters = [
+  {
+    title: "Conteúdo, SEO e busca generativa",
+    description: "Como produzir informação útil, rastreável e preparada para pessoas, Google e sistemas de IA.",
+    slugs: ["seo-information-gain-busca-generativa", "edits-instagram-stories-fluxo-producao"],
+  },
+  {
+    title: "Presença digital, confiança e conversão",
+    description: "Decisões práticas sobre sites, redes sociais, percepção de valor e estruturas que conduzem o cliente.",
+    slugs: ["instagram-nao-substitui-site-proprio", "site-bonito-nao-basta", "pagina-de-vendas-ou-site-institucional"],
+  },
+];
 
 export const metadata: Metadata = {
   title: "Blog Ravyt Digital | SEO, Social Media, Sites e Presença Digital",
@@ -33,13 +48,14 @@ function PostArt({
       className={`blog-post-art${featured ? " blog-post-art-featured" : ""}`}
       style={{ overflow: "hidden", background: "#121416" }}
     >
-      <img
+      <Image
         src={seo.featuredImage.src}
         alt={seo.featuredImage.alt}
         width={seo.featuredImage.width}
         height={seo.featuredImage.height}
         loading={featured ? "eager" : "lazy"}
         decoding="async"
+        unoptimized
         style={{
           display: "block",
           width: "100%",
@@ -57,12 +73,14 @@ export default function BlogPage() {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
+    "@id": `${SITE_URL}/blog#blog`,
     name: "Blog Ravyt Digital",
     description:
       "Conteúdos sobre SEO, Social Media, sites, conversão, marca e presença digital.",
     url: `${SITE_URL}/blog`,
     publisher: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "Ravyt Digital",
       url: SITE_URL,
     },
@@ -84,6 +102,9 @@ export default function BlogPage() {
                 url: seo.author.url.startsWith("http")
                   ? seo.author.url
                   : `${SITE_URL}${seo.author.url}`,
+                ...(seo.author.jobTitle ? { jobTitle: seo.author.jobTitle } : {}),
+                image: `${SITE_URL}${seo.author.image}`,
+                knowsAbout: seo.author.knowsAbout,
               },
             }
           : {}),
@@ -135,9 +156,40 @@ export default function BlogPage() {
             </div>
           </a>
 
+          <section className="topic-clusters" aria-labelledby="trilhas-tematicas">
+            <div className="blog-list-head topic-clusters-head">
+              <div>
+                <p>02 / Trilhas temáticas</p>
+                <h2 id="trilhas-tematicas">Comece pelo tema que ajuda sua decisão agora.</h2>
+              </div>
+              <span>
+                Cada trilha conecta conteúdos relacionados para você avançar do fundamento à aplicação, sem leituras soltas.
+              </span>
+            </div>
+            <div className="topic-cluster-grid">
+              {topicClusters.map((cluster, clusterIndex) => (
+                <article className="topic-cluster-card" key={cluster.title}>
+                  <span>{String(clusterIndex + 1).padStart(2, "0")}</span>
+                  <h3>{cluster.title}</h3>
+                  <p>{cluster.description}</p>
+                  <ul>
+                    {cluster.slugs.map((slug) => {
+                      const item = posts.find((post) => post.slug === slug);
+                      return item ? (
+                        <li key={slug}>
+                          <a href={`/blog/${slug}`}>{item.title}</a>
+                        </li>
+                      ) : null;
+                    })}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <div className="blog-list-head">
             <div>
-              <p>02 / Conteúdos recentes</p>
+              <p>03 / Conteúdos recentes</p>
               <h2>Para transformar intenção em direção.</h2>
             </div>
             <span>
@@ -178,9 +230,9 @@ export default function BlogPage() {
               ajudamos a identificar a estrutura mais coerente para o seu momento.
             </span>
           </div>
-          <a className="button button-light" href="/#contato">
+          <Link className="button button-light" href="/#contato">
             Preencher diagnóstico <i aria-hidden="true">↗</i>
-          </a>
+          </Link>
         </div>
       </section>
 

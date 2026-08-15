@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
 import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
@@ -74,10 +75,22 @@ export default async function ArticlePage({
   const authorUrl = seo?.author.url.startsWith("http")
     ? seo.author.url
     : `${SITE_URL}${seo?.author.url ?? "/"}`;
+  const articleText = [
+    post.title,
+    post.excerpt,
+    post.intro,
+    ...post.sections.flatMap((section) => [
+      section.title,
+      ...section.paragraphs,
+      ...(section.list ?? []),
+    ]),
+  ].join(" ");
+  const wordCount = articleText.trim().split(/\s+/).length;
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${articleUrl}#article`,
     headline: post.title,
     description: seo?.metaDescription ?? post.excerpt,
     datePublished: post.date,
@@ -87,9 +100,16 @@ export default async function ArticlePage({
       "@type": seo?.author.type ?? "Organization",
       name: seo?.author.name ?? "Ravyt Digital",
       url: authorUrl,
+      ...(seo?.author.jobTitle ? { jobTitle: seo.author.jobTitle } : {}),
+      ...(seo ? {
+        description: seo.author.description,
+        image: `${SITE_URL}${seo.author.image}`,
+        knowsAbout: seo.author.knowsAbout,
+      } : {}),
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "Ravyt Digital",
       url: SITE_URL,
       logo: {
@@ -109,6 +129,22 @@ export default async function ArticlePage({
       : {}),
     mainEntityOfPage: articleUrl,
     url: articleUrl,
+    isPartOf: { "@id": `${SITE_URL}/blog#blog` },
+    wordCount,
+    keywords: seo?.keywords,
+    articleSection: seo?.cluster === "conteudo-e-busca"
+      ? "Conteúdo, SEO e busca generativa"
+      : "Presença digital, confiança e conversão",
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Insights", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: articleUrl },
+    ],
   };
 
   return (
@@ -118,7 +154,11 @@ export default async function ArticlePage({
           <div className="article-hero-lines" aria-hidden="true" />
           <div className="shell article-hero-grid">
             <div>
-              <a className="back-blog" href="/blog">← Voltar ao blog</a>
+              <nav className="article-breadcrumb" aria-label="Navegação estrutural">
+                <a href="/">Início</a><span aria-hidden="true">/</span>
+                <a href="/blog">Insights</a><span aria-hidden="true">/</span>
+                <span aria-current="page">{post.category}</span>
+              </nav>
               <p className="article-category">{post.category}</p>
               <h1>{post.title}</h1>
               <p className="article-excerpt">{post.excerpt}</p>
@@ -138,13 +178,14 @@ export default async function ArticlePage({
                 className="article-art"
                 style={{ overflow: "hidden", background: "#121416", padding: 0 }}
               >
-                <img
+                <Image
                   src={seo.featuredImage.src}
                   alt={seo.featuredImage.alt}
                   width={seo.featuredImage.width}
                   height={seo.featuredImage.height}
                   loading="eager"
                   decoding="async"
+                  unoptimized
                   style={{
                     display: "block",
                     width: "100%",
@@ -178,6 +219,14 @@ export default async function ArticlePage({
 
           <div className="article-body">
             <p className="article-intro">{post.intro}</p>
+            <aside className="article-editorial-note" aria-labelledby="como-produzimos">
+              <span>Transparência editorial</span>
+              <h2 id="como-produzimos">Como este conteúdo foi produzido</h2>
+              <p>
+                Este artigo foi estruturado para responder a uma dúvida real, revisado com base em fontes identificadas e organizado para separar fatos, análise e orientação prática.
+              </p>
+              <a href="/politica-editorial">Conheça os critérios editoriais da Ravyt Digital</a>
+            </aside>
             {post.sections.map((section, index) => (
               <section id={`secao-${index + 1}`} key={section.title}>
                 <span className="article-section-number">
@@ -194,13 +243,14 @@ export default async function ArticlePage({
                 )}
                 {section.image && (
                   <figure style={{ margin: "38px 0 8px" }}>
-                    <img
+                    <Image
                       src={section.image.src}
                       alt={section.image.alt}
                       width={1600}
                       height={900}
                       loading="lazy"
                       decoding="async"
+                      unoptimized
                       style={{
                         display: "block",
                         width: "100%",
@@ -246,6 +296,26 @@ export default async function ArticlePage({
               </section>
             )}
 
+            {seo && (
+              <aside className="article-author" aria-labelledby="autor-do-artigo">
+                <Image
+                  src={seo.author.image}
+                  alt={`Foto de ${seo.author.name}`}
+                  width={112}
+                  height={112}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div>
+                  <span>Autor deste conteúdo</span>
+                  <h2 id="autor-do-artigo">{seo.author.name}</h2>
+                  {seo.author.jobTitle && <strong>{seo.author.jobTitle}</strong>}
+                  <p>{seo.author.description}</p>
+                  <a href={seo.author.url}>Conheça a experiência e os artigos de {seo.author.name}</a>
+                </div>
+              </aside>
+            )}
+
             <div className="article-conclusion">
               <p>Próximo passo</p>
               <h2>Quer transformar essa ideia em uma estrutura para o seu negócio?</h2>
@@ -276,6 +346,10 @@ export default async function ArticlePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </main>
   );

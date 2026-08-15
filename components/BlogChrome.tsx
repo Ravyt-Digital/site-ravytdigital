@@ -10,16 +10,16 @@ function BlogBrand({ dark = false }: { dark?: boolean }) {
   );
 }
 
-export function BlogHeader() {
+export function BlogHeader({ current }: { current?: "services" | "insights" }) {
   return (
     <header className="blog-site-header">
       <div className="shell blog-nav">
         <a className="brand-link" href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand /></a>
         <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="/#servicos">Serviços</a>
+          <a href="/servicos" aria-current={current === "services" ? "page" : undefined}>Serviços</a>
           <a href="/#sobre">A Ravyt</a>
           <a href="/#projetos">Cases</a>
-          <a className="is-current" href="/blog">Insights</a>
+          <a className={current === "insights" ? "is-current" : undefined} href="/blog" aria-current={current === "insights" ? "page" : undefined}>Insights</a>
           <a href="/#contato">Contato</a>
         </nav>
         <a className="header-cta" href="/#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
@@ -36,7 +36,7 @@ export function BlogFooter() {
         <a href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand dark /></a>
         <p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p>
         <nav aria-label="Links do rodapé">
-          <a href="/#servicos">Serviços</a>
+          <a href="/servicos">Serviços</a>
           <a href="/#sobre">A Ravyt</a>
           <a href="/#projetos">Cases</a>
           <a href="/blog">Insights</a>
@@ -46,7 +46,7 @@ export function BlogFooter() {
       <div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
         <p>Criado com muito carinho por Ravyt Digital.</p>
-        <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></div>
+        <div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div>
       </div>
     </footer>
   );

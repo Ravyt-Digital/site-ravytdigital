@@ -28,6 +28,7 @@ function BrandLockup({ dark = false }: { dark?: boolean }) {
 const services = [
   {
     number: "01",
+    slug: "sites",
     type: "site",
     title: "Sites que valorizam o seu negócio",
     text: "Sites institucionais, páginas de vendas, blogs e experiências digitais pensadas para transformar visita em confiança — e confiança em ação.",
@@ -35,6 +36,7 @@ const services = [
   },
   {
     number: "02",
+    slug: "identidade-visual",
     type: "brand",
     title: "Identidade com presença e coerência",
     text: "Direção visual e sistemas de marca que organizam a percepção do público e fazem sua empresa ser reconhecida em cada ponto de contato.",
@@ -42,6 +44,7 @@ const services = [
   },
   {
     number: "03",
+    slug: "social-media",
     type: "content",
     title: "Conteúdo que comunica valor",
     text: "Estratégia e produção de conteúdo para redes sociais com linguagem humana, direção clara e consistência para construir autoridade de verdade.",
@@ -49,6 +52,7 @@ const services = [
   },
   {
     number: "04",
+    slug: "estrategia-digital",
     type: "strategy",
     title: "Estratégia para conectar tudo",
     text: "Posicionamento, jornada, automações e decisões digitais conectadas para que marca, conteúdo e tecnologia trabalhem na mesma direção.",
@@ -61,26 +65,31 @@ const projects = [
     title: "Odonto Premium",
     category: "Site institucional",
     href: "https://site-odonto-premium.ravytdigital.workers.dev/",
+    image: "/projects/odonto-premium.webp",
   },
   {
     title: "Capoeira Haute-Savoie",
     category: "Site institucional",
     href: "https://site-capoeira-haute-savoie.ravytdigital.workers.dev/",
+    image: "/projects/capoeira-haute-savoie.webp",
   },
   {
     title: "Excel no Agro",
     category: "Página de vendas",
     href: "https://site-excel-no-agro.ravytdigital.workers.dev/",
+    image: "/projects/excel-no-agro.webp",
   },
   {
     title: "Seja Indispensável!",
     category: "Página de vendas",
     href: "https://site-seja-indispensavel.ravytdigital.workers.dev/",
+    image: "/projects/seja-indispensavel.webp",
   },
   {
     title: "Ravyt Motos",
     category: "Catálogo digital",
     href: "https://site-ravyt-capacetes.ravytdigital.workers.dev/",
+    image: "/projects/ravyt-motos.webp",
   },
 ];
 
@@ -101,12 +110,56 @@ function ServiceGlyph({ type }: { type: string }) {
 export default function Home() {
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Ravyt Digital",
-    url: SITE_URL,
-    sameAs: [WWW_SITE_URL, "https://www.instagram.com/ravytdigital/"],
-    description: "Estratégia, design, conteúdo e tecnologia para negócios que desejam refletir sua excelência no digital.",
-    areaServed: "BR",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Ravyt Digital",
+        legalName: "Ravyt Digital",
+        url: SITE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/brand/ravyt-logo-2026.png`,
+          width: 875,
+          height: 235,
+        },
+        image: `${SITE_URL}/brand/ravyt-social-card.jpg`,
+        sameAs: [
+          WWW_SITE_URL,
+          "https://www.instagram.com/ravytdigital/",
+          "https://github.com/Ravyt-Digital",
+        ],
+        description: "Agência de estratégia, design, Social Media e tecnologia que transforma a qualidade real de negócios em uma presença digital à mesma altura.",
+        slogan: "Excelência refletida no digital.",
+        areaServed: { "@type": "Country", name: "Brasil" },
+        founder: [
+          { "@type": "Person", name: "Ytala Cabral", jobTitle: "Direção estratégica e Social Media" },
+          { "@type": "Person", name: "Marcio Cabral", jobTitle: "Especialista em criação de sites e aplicativos" },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Soluções de presença digital",
+          itemListElement: services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.title,
+              description: service.text,
+              url: `${SITE_URL}/servicos#${service.slug}`,
+              provider: { "@id": `${SITE_URL}/#organization` },
+            },
+          })),
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "Ravyt Digital",
+        inLanguage: "pt-BR",
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+    ],
   };
 
   return (
@@ -123,7 +176,7 @@ export default function Home() {
               <BrandLockup />
             </a>
             <nav className="desktop-nav" aria-label="Navegação principal">
-              <a href="#servicos">Serviços</a>
+              <a href="/servicos">Serviços</a>
               <a href="#sobre">A Ravyt</a>
               <a href="#projetos">Cases</a>
               <a href="/blog">Insights</a>
@@ -204,7 +257,13 @@ export default function Home() {
               <article className="service-card" key={service.number}>
                 <div className="service-number">{service.number}</div>
                 <div className="service-glyph"><ServiceGlyph type={service.type} /></div>
-                <div className="service-copy"><h3>{service.title}</h3><p>{service.text}</p></div>
+                <div className="service-copy">
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                  <a className="service-link" href={`/servicos#${service.slug}`}>
+                    Entenda como esta solução funciona <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
                 <div className="service-tags">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
               </article>
             ))}
@@ -234,6 +293,7 @@ export default function Home() {
                   </div>
                   <ProjectPreview
                     src={project.href}
+                    image={project.image}
                     title={project.title}
                     category={project.category}
                   />
@@ -307,8 +367,8 @@ export default function Home() {
       </main>
 
       <footer className="footer">
-        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p><nav aria-label="Links do rodapé"><a href="#servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="#contato">Contato</a></nav></div>
-        <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Criado com muito carinho por Ravyt Digital.</p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></div></div>
+        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p><nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="#contato">Contato</a></nav></div>
+        <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Criado com muito carinho por Ravyt Digital.</p><div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></div>
       </footer>
 
       <CookieConsent />

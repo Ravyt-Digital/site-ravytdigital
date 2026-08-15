@@ -6,6 +6,10 @@ export type PostSeo = {
     name: string;
     type: "Person" | "Organization";
     url: string;
+    jobTitle?: string;
+    description: string;
+    image: string;
+    knowsAbout: string[];
   };
   featuredImage: {
     src: string;
@@ -13,6 +17,8 @@ export type PostSeo = {
     width: number;
     height: number;
   };
+  cluster: "conteudo-e-busca" | "presenca-e-conversao";
+  keywords: string[];
   relatedSlugs: string[];
 };
 
@@ -26,7 +32,13 @@ export const postSeo: PostSeo[] = [
       name: "Marcio Cabral",
       type: "Person",
       url: "/autores/marcio-cabral",
+      jobTitle: "Especialista em criação de sites e aplicativos",
+      description: "Especialista em tecnologia, criação de sites, aplicativos e estruturas digitais na Ravyt Digital.",
+      image: "/team/marcio-cabral.webp",
+      knowsAbout: ["Criação de sites", "Aplicativos", "SEO técnico", "Tecnologia", "Automação"],
     },
+    cluster: "conteudo-e-busca",
+    keywords: ["Edits", "Instagram Stories", "Social Media", "fluxo de produção", "edição de vídeo"],
     featuredImage: {
       src: "/blog/capas/edits-instagram-stories.svg",
       alt: "Ilustração de uma timeline de edição sendo enviada diretamente para uma tela de Instagram Stories",
@@ -44,10 +56,16 @@ export const postSeo: PostSeo[] = [
     metaDescription:
       "Entenda Information Gain, E-E-A-T e busca generativa sem atalhos: como criar conteúdo original, rastreável e útil para pessoas, Google e sistemas de IA.",
     author: {
-      name: "Ravyt Digital",
-      type: "Organization",
-      url: "/",
+      name: "Marcio Cabral",
+      type: "Person",
+      url: "/autores/marcio-cabral",
+      jobTitle: "Especialista em criação de sites e aplicativos",
+      description: "Especialista em tecnologia, criação de sites, aplicativos e estruturas digitais na Ravyt Digital.",
+      image: "/team/marcio-cabral.webp",
+      knowsAbout: ["Criação de sites", "SEO técnico", "Information Gain", "Dados estruturados", "Tecnologia"],
     },
+    cluster: "conteudo-e-busca",
+    keywords: ["Information Gain", "SEO", "E-E-A-T", "busca generativa", "AI Overviews"],
     featuredImage: {
       src: "/blog/capas/seo-information-gain.svg",
       alt: "Ilustração de busca, documentos e uma rede de IA destacando informação original em SEO",
@@ -65,10 +83,16 @@ export const postSeo: PostSeo[] = [
     metaDescription:
       "Instagram e site cumprem papéis diferentes. Veja por que depender só das redes sociais limita controle, busca, confiança e crescimento da presença digital.",
     author: {
-      name: "Ravyt Digital",
-      type: "Organization",
-      url: "/",
+      name: "Ytala Cabral",
+      type: "Person",
+      url: "/autores/ytala-cabral",
+      jobTitle: "Direção estratégica e Social Media",
+      description: "Responsável por estratégia, posicionamento e Social Media na Ravyt Digital.",
+      image: "/team/ytala-cabral.webp",
+      knowsAbout: ["Social Media", "Posicionamento", "Estratégia digital", "Conteúdo", "Presença digital"],
     },
+    cluster: "presenca-e-conversao",
+    keywords: ["Instagram", "site próprio", "presença digital", "redes sociais", "autoridade digital"],
     featuredImage: {
       src: "/blog/capas/instagram-vs-site.svg",
       alt: "Ilustração comparando uma grade de rede social em um celular com um site próprio em um navegador",
@@ -86,10 +110,16 @@ export const postSeo: PostSeo[] = [
     metaDescription:
       "Seu site pode ser bonito e ainda afastar clientes. Veja 7 sinais de baixa confiança envolvendo clareza, prova, navegação, velocidade e posicionamento.",
     author: {
-      name: "Ravyt Digital",
-      type: "Organization",
-      url: "/",
+      name: "Ytala Cabral",
+      type: "Person",
+      url: "/autores/ytala-cabral",
+      jobTitle: "Direção estratégica e Social Media",
+      description: "Responsável por estratégia, posicionamento e Social Media na Ravyt Digital.",
+      image: "/team/ytala-cabral.webp",
+      knowsAbout: ["Posicionamento", "Confiança digital", "Experiência de marca", "Conteúdo", "Social Media"],
     },
+    cluster: "presenca-e-conversao",
+    keywords: ["site profissional", "confiança digital", "UX", "conversão", "posicionamento"],
     featuredImage: {
       src: "/blog/capas/site-confianca.svg",
       alt: "Ilustração de um site moderno acompanhado por símbolos de confiança, clareza e segurança",
@@ -107,10 +137,16 @@ export const postSeo: PostSeo[] = [
     metaDescription:
       "Página de vendas e site institucional resolvem problemas diferentes. Compare objetivos, estrutura e contexto para escolher a opção certa para seu negócio.",
     author: {
-      name: "Ravyt Digital",
-      type: "Organization",
-      url: "/",
+      name: "Marcio Cabral",
+      type: "Person",
+      url: "/autores/marcio-cabral",
+      jobTitle: "Especialista em criação de sites e aplicativos",
+      description: "Especialista em tecnologia, criação de sites, aplicativos e estruturas digitais na Ravyt Digital.",
+      image: "/team/marcio-cabral.webp",
+      knowsAbout: ["Criação de sites", "Landing pages", "Arquitetura da informação", "Conversão", "SEO"],
     },
+    cluster: "presenca-e-conversao",
+    keywords: ["página de vendas", "site institucional", "criação de sites", "landing page", "conversão"],
     featuredImage: {
       src: "/blog/capas/pagina-vendas-vs-site.svg",
       alt: "Ilustração comparando uma página de vendas linear com uma arquitetura de site institucional de várias páginas",

@@ -23,7 +23,7 @@ export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: bool
       </button>
       <div className={`menu-panel${open ? " is-open" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <nav aria-label="Navegação para celular">
-          <a href={section("#servicos")} onClick={() => setOpen(false)}>Serviços <span>01</span></a>
+          <a href="/servicos" onClick={() => setOpen(false)}>Serviços <span>01</span></a>
           <a href={section("#sobre")} onClick={() => setOpen(false)}>A Ravyt <span>02</span></a>
           <a href={section("#projetos")} onClick={() => setOpen(false)}>Cases <span>03</span></a>
           {/* A plain anchor avoids a Vinext client-proxy issue in the interactive menu. */}
