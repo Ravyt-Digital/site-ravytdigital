@@ -1,84 +1,53 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 import { posts, type BlogPost } from "./posts";
+import { getPostSeo } from "./postSeo";
 
 export const metadata: Metadata = {
-  title: "Blog sobre Sites, Marca e Presença Digital",
+  title: "Blog Ravyt Digital | SEO, Social Media, Sites e Presença Digital",
   description:
-    "Conteúdos da Ravyt Digital para empresas que querem construir confiança, melhorar sua presença digital e crescer com estrutura.",
+    "Conteúdos da Ravyt Digital sobre SEO, Social Media, sites, conversão e presença digital para empresas que querem crescer com estratégia e estrutura.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Blog Ravyt Digital",
+    title: "Blog Ravyt Digital | Estratégia e Presença Digital",
     description:
-      "Estratégia, sites, marca e tecnologia para empresas que querem ser percebidas à altura do que entregam.",
+      "Conteúdo prático sobre SEO, Social Media, sites, conversão e tecnologia para negócios.",
     url: "/blog",
+    type: "website",
   },
 };
 
-function getPostFeaturedImage(post: BlogPost) {
-  if (post.slug === "edits-instagram-stories-fluxo-producao") {
-    return {
-      src: "/blog/edits-stories-fluxo.svg",
-      alt: "Fluxo mostrando criação, edição no Edits e publicação direta nos Instagram Stories",
-    };
-  }
-
-  return null;
-}
-
-function getPostAuthor(post: BlogPost) {
-  return post.slug === "edits-instagram-stories-fluxo-producao"
-    ? "Marcio Cabral"
-    : "Ravyt Digital";
-}
-
 function PostArt({
   post,
-  number,
   featured = false,
 }: {
   post: BlogPost;
-  number: string;
   featured?: boolean;
 }) {
-  const featuredImage = getPostFeaturedImage(post);
+  const seo = getPostSeo(post.slug);
 
-  if (featuredImage) {
-    return (
-      <div
-        className={`blog-post-art${featured ? " blog-post-art-featured" : ""}`}
-        style={{ overflow: "hidden", background: "#121416" }}
-      >
-        <img
-          src={featuredImage.src}
-          alt={featuredImage.alt}
-          width={1200}
-          height={1200}
-          loading={featured ? "eager" : "lazy"}
-          decoding="async"
-          style={{
-            display: "block",
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-            objectPosition: "center",
-          }}
-        />
-      </div>
-    );
-  }
+  if (!seo) return null;
 
   return (
     <div
       className={`blog-post-art${featured ? " blog-post-art-featured" : ""}`}
-      style={{ "--post-accent": post.accent } as CSSProperties}
-      aria-hidden="true"
+      style={{ overflow: "hidden", background: "#121416" }}
     >
-      <span>{number}</span>
-      <div className="blog-art-orbit" />
-      <div className="blog-art-r">R</div>
-      <small>{post.category}</small>
+      <img
+        src={seo.featuredImage.src}
+        alt={seo.featuredImage.alt}
+        width={seo.featuredImage.width}
+        height={seo.featuredImage.height}
+        loading={featured ? "eager" : "lazy"}
+        decoding="async"
+        style={{
+          display: "block",
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          objectPosition: "center",
+        }}
+      />
     </div>
   );
 }
@@ -90,27 +59,39 @@ export default function BlogPage() {
     "@type": "Blog",
     name: "Blog Ravyt Digital",
     description:
-      "Conteúdos sobre sites, marca, posicionamento e tecnologia para negócios.",
+      "Conteúdos sobre SEO, Social Media, sites, conversão, marca e presença digital.",
     url: `${SITE_URL}/blog`,
     publisher: {
       "@type": "Organization",
       name: "Ravyt Digital",
       url: SITE_URL,
     },
-    blogPost: posts.map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.title,
-      datePublished: post.date,
-      url: `${SITE_URL}/blog/${post.slug}`,
-      author: {
-        "@type": getPostAuthor(post) === "Ravyt Digital" ? "Organization" : "Person",
-        name: getPostAuthor(post),
-      },
-      ...(getPostFeaturedImage(post)
-        ? { image: `${SITE_URL}${getPostFeaturedImage(post)!.src}` }
-        : {}),
-    })),
+    blogPost: posts.map((post) => {
+      const seo = getPostSeo(post.slug);
+      return {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: seo?.metaDescription ?? post.excerpt,
+        datePublished: post.date,
+        dateModified: post.date,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        ...(seo
+          ? {
+              image: `${SITE_URL}${seo.featuredImage.src}`,
+              author: {
+                "@type": seo.author.type,
+                name: seo.author.name,
+                url: seo.author.url.startsWith("http")
+                  ? seo.author.url
+                  : `${SITE_URL}${seo.author.url}`,
+              },
+            }
+          : {}),
+      };
+    }),
   };
+
+  const featuredSeo = getPostSeo(featured.slug);
 
   return (
     <main id="conteudo" className="blog-page">
@@ -124,7 +105,7 @@ export default function BlogPage() {
           </h1>
           <div className="blog-hero-bottom">
             <p>
-              Conteúdos sobre sites, marca, posicionamento e tecnologia — para
+              Conteúdos sobre SEO, Social Media, sites, marca e tecnologia — para
               empresas que querem crescer com estrutura e transmitir confiança.
             </p>
             <span>Ravyt / Editorial 2026</span>
@@ -140,14 +121,14 @@ export default function BlogPage() {
           </div>
 
           <a className="featured-post" href={`/blog/${featured.slug}`}>
-            <PostArt post={featured} number="01" featured />
+            <PostArt post={featured} featured />
             <div className="featured-copy">
               <p>{featured.category}</p>
               <h2>{featured.title}</h2>
               <span>{featured.excerpt}</span>
               <div>
                 <small>
-                  Por {getPostAuthor(featured)} · {featured.dateLabel} · {featured.readingTime}
+                  Por {featuredSeo?.author.name ?? "Ravyt Digital"} · {featured.dateLabel} · {featured.readingTime}
                 </small>
                 <b>Ler artigo <i aria-hidden="true">↗</i></b>
               </div>
@@ -166,19 +147,22 @@ export default function BlogPage() {
           </div>
 
           <div className="post-grid">
-            {others.map((post, index) => (
-              <a className="post-card" href={`/blog/${post.slug}`} key={post.slug}>
-                <PostArt post={post} number={`0${index + 2}`} />
-                <div className="post-card-copy">
-                  <p>{post.category}</p>
-                  <h3>{post.title}</h3>
-                  <span>{post.excerpt}</span>
-                  <small>
-                    {post.readingTime} <b aria-hidden="true">↗</b>
-                  </small>
-                </div>
-              </a>
-            ))}
+            {others.map((post) => {
+              const seo = getPostSeo(post.slug);
+              return (
+                <a className="post-card" href={`/blog/${post.slug}`} key={post.slug}>
+                  <PostArt post={post} />
+                  <div className="post-card-copy">
+                    <p>{post.category}</p>
+                    <h3>{post.title}</h3>
+                    <span>{post.excerpt}</span>
+                    <small>
+                      Por {seo?.author.name ?? "Ravyt Digital"} · {post.readingTime} <b aria-hidden="true">↗</b>
+                    </small>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -194,10 +178,7 @@ export default function BlogPage() {
               ajudamos a identificar a estrutura mais coerente para o seu momento.
             </span>
           </div>
-          <a
-            className="button button-light"
-            href="/#contato"
-          >
+          <a className="button button-light" href="/#contato">
             Preencher diagnóstico <i aria-hidden="true">↗</i>
           </a>
         </div>
