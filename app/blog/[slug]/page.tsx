@@ -190,8 +190,8 @@ export default async function ArticlePage({
                 <span className="article-section-number">FONTES</span>
                 <h2 id="fontes-do-artigo">Fontes e documentação consultadas</h2>
                 <p>
-                  Para diferenciar recomendações oficiais de interpretações do mercado,
-                  este artigo prioriza documentação primária do Google Search Central.
+                  Para diferenciar fatos documentados de análise editorial, este artigo
+                  prioriza fontes primárias e documentação oficial sempre que disponíveis.
                 </p>
                 <ul>
                   {post.sources.map((source) => (
