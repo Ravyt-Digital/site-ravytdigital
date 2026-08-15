@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import CookieConsent from "@/components/CookieConsent";
 import MobileMenu from "@/components/MobileMenu";
+import ProjectPreview from "@/components/ProjectPreview";
 import { SITE_URL, WWW_SITE_URL } from "@/lib/site";
 import Image from "next/image";
 
@@ -59,37 +60,21 @@ const projects = [
   {
     title: "Odonto Premium",
     category: "Site institucional",
-    image: "/projects/odonto-premium.webp",
-    width: 1400,
-    height: 4079,
-    alt: "Página inicial do site Odonto Premium",
     href: "https://site-odonto-premium.ravytdigital.workers.dev/",
   },
   {
     title: "Capoeira Haute-Savoie",
     category: "Site institucional",
-    image: "/projects/capoeira-haute-savoie.webp",
-    width: 1400,
-    height: 7204,
-    alt: "Página inicial do site Capoeira Haute-Savoie",
     href: "https://site-capoeira-haute-savoie.ravytdigital.workers.dev/",
   },
   {
     title: "Excel no Agro",
     category: "Página de vendas",
-    image: "/projects/excel-no-agro.webp",
-    width: 1400,
-    height: 9589,
-    alt: "Página de vendas do curso Excel no Agro",
     href: "https://site-excel-no-agro.ravytdigital.workers.dev/",
   },
   {
     title: "Seja Indispensável!",
     category: "Página de vendas",
-    image: "/projects/seja-indispensavel.webp",
-    width: 1400,
-    height: 10779,
-    alt: "Página de vendas do livro Seja Indispensável",
     href: "https://site-seja-indispensavel.ravytdigital.workers.dev/",
   },
 ];
@@ -236,24 +221,18 @@ export default function Home() {
               <article
                 className={`project-card project-card-${index + 1}`}
                 key={project.title}
-                tabIndex={0}
-                aria-label={`${project.title} — ${project.category}. Passe o mouse ou selecione para explorar a página.`}
+                aria-label={`${project.title} — ${project.category}. Clique na imagem para visualizar o site completo.`}
               >
                 <div className="project-visual">
                   <div className="project-browser-bar" aria-hidden="true">
                     <i /><i /><i /><span>{project.href.replace("https://", "").replace(/\/$/, "")}</span>
                   </div>
-                  <Image
-                    src={project.image}
-                    alt={project.alt}
-                    width={project.width}
-                    height={project.height}
-                    sizes="(max-width: 640px) calc(100vw - 30px), (max-width: 1020px) calc(50vw - 35px), 577px"
-                    quality={92}
-                    unoptimized
+                  <ProjectPreview
+                    src={project.href}
+                    title={project.title}
+                    category={project.category}
                   />
                   <span className="project-number">{String(index + 1).padStart(2, "0")}</span>
-                  <span className="project-scroll-hint">Passe para explorar</span>
                 </div>
                 <div className="project-meta">
                   <div><small>{project.category}</small><h3>{project.title}</h3></div>
@@ -264,7 +243,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     aria-label={`Ver projeto ${project.title} (abre em uma nova aba)`}
                   >
-                    Ver projeto <ArrowUpRight />
+                    Abrir em nova aba <ArrowUpRight />
                   </a>
                 </div>
               </article>
