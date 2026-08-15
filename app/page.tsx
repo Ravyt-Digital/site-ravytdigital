@@ -77,6 +77,11 @@ const projects = [
     category: "Página de vendas",
     href: "https://site-seja-indispensavel.ravytdigital.workers.dev/",
   },
+  {
+    title: "Ravyt Motos",
+    category: "Catálogo digital",
+    href: "https://site-ravyt-capacetes.ravytdigital.workers.dev/",
+  },
 ];
 
 const steps = [
@@ -209,7 +214,7 @@ export default function Home() {
         <section className="work" id="projetos">
           <div className="work-glow" aria-hidden="true" />
           <div className="shell work-heading">
-            <div><p className="section-kicker section-kicker-light">Projetos selecionados</p><span className="section-index section-index-light">01 — 04</span></div>
+            <div><p className="section-kicker section-kicker-light">Projetos selecionados</p><span className="section-index section-index-light">01 — 05</span></div>
             <div className="work-heading-copy">
               <h2>Projetos que geram <em>presença, confiança e resultado.</em></h2>
               <p>Cada projeto nasce de uma visão estratégica e se transforma em uma experiência digital pensada para gerar valor.</p>
