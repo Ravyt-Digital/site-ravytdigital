@@ -26,6 +26,131 @@ export type BlogPost = {
 
 export const posts: BlogPost[] = [
   {
+    slug: "edits-instagram-stories-fluxo-producao",
+    category: "Social Media",
+    title: "Edits passa a exportar para os Instagram Stories: o que realmente muda no fluxo de produção",
+    excerpt:
+      "A integração reduz etapas entre edição e publicação. Entenda o impacto para criadores, equipes de Social Media e a disputa entre Edits e editores externos.",
+    date: "2026-08-14",
+    dateLabel: "14 de agosto de 2026",
+    readingTime: "9 min de leitura",
+    accent: "#0f3d4a",
+    intro:
+      "Uma atualização aparentemente pequena pode revelar uma estratégia maior. Ao adicionar o compartilhamento direto de projetos do Edits para os Instagram Stories, a Meta reduz uma das fricções mais comuns do trabalho mobile: terminar a edição, salvar o arquivo no aparelho, abrir o Instagram, localizar o vídeo e só então iniciar a publicação. Para quem produz conteúdo todos os dias, remover etapas repetidas importa. Mas o principal impacto não está em um suposto ganho automático de alcance ou qualidade. Está na construção de um fluxo de criação cada vez mais integrado ao próprio ecossistema do Instagram.",
+    sections: [
+      {
+        title: "O que mudou no Edits",
+        paragraphs: [
+          "Segundo o anúncio divulgado por Adam Mosseri no ecossistema do Instagram, o Edits passou a oferecer a opção de enviar um projeto finalizado diretamente para os Instagram Stories, ampliando um fluxo de compartilhamento que já privilegiava a publicação dentro das superfícies do Instagram.",
+          "Na prática, a novidade encurta o caminho entre o fim da edição e o começo da publicação. Antes, um fluxo comum exigia exportar o vídeo para a galeria do celular e reabrir o arquivo dentro do Instagram. Com o novo atalho, o Story passa a aparecer como destino de compartilhamento a partir do próprio Edits.",
+          "Há uma diferença importante entre dizer que o processo ficou mais curto e afirmar que o vídeo terá mais alcance ou melhor qualidade por causa disso. Até aqui, não existe documentação pública suficiente para sustentar que a opção altere os critérios de distribuição dos Stories ou elimine a compressão aplicada pelo Instagram. O benefício comprovável é operacional: menos etapas e menos troca de contexto entre aplicativos.",
+        ],
+        image: {
+          src: "/blog/edits-stories-fluxo.svg",
+          alt: "Fluxo mostrando criação, edição no Edits e distribuição direta para Instagram Stories",
+          caption: "O ganho mais claro da atualização é a redução de etapas entre a edição e a publicação.",
+        },
+      },
+      {
+        title: "O Edits está deixando de ser apenas um editor de vídeo",
+        paragraphs: [
+          "Quando a Meta lançou o Edits em 2025, a proposta já ia além de cortar clipes. A empresa descreveu o produto como um ambiente para apoiar todo o processo de criação no celular. Um ano depois, a própria Meta reforçou essa direção: ideias, referências, gravação, edição, templates e análise de desempenho estão sendo aproximados dentro do mesmo workspace.",
+          "As lojas oficiais confirmam algumas das capacidades que ajudam a explicar esse posicionamento. O Edits permite exportar em 4K sem marca d'água, editar com precisão de quadro, gerar legendas automáticas, melhorar voz e ruído de fundo, trabalhar com sobreposições e tela verde e acompanhar métricas de Reels em um painel de insights.",
+          "Isso muda a lógica competitiva. O Edits não precisa superar todos os editores em quantidade de efeitos para ser relevante. Seu diferencial pode estar na proximidade com o Instagram: referências salvas, áudio, publicação e dados de desempenho pertencem ao mesmo ecossistema.",
+        ],
+        image: {
+          src: "/blog/edits-ecossistema-criacao.svg",
+          alt: "Mapa do Edits conectando ideias, gravação, edição, insights e distribuição",
+          caption: "A estratégia do Edits é aproximar etapas que antes estavam espalhadas entre diferentes ferramentas.",
+        },
+      },
+      {
+        title: "Para uma equipe de Social Media, menos cliques podem significar mais consistência",
+        paragraphs: [
+          "Em uma publicação isolada, salvar um vídeo e abrir outro aplicativo parece irrelevante. Em uma operação que produz dezenas de peças por semana, pequenas fricções se acumulam. Cada exportação exige atenção: versão correta, pasta correta, proporção correta, arquivo correto e destino correto.",
+          "Reduzir essas passagens diminui oportunidades de erro e acelera conteúdos de resposta rápida, bastidores, cobertura de eventos, lançamentos e sequências de Stories que precisam sair enquanto o assunto ainda está quente.",
+          "Isso não elimina a necessidade de organização. Uma operação profissional continua precisando de nomenclatura de arquivos, aprovação, backup e controle de versões. A integração melhora o trecho final do processo; ela não substitui a governança da produção.",
+        ],
+        image: {
+          src: "/blog/edits-stories-antes-depois.svg",
+          alt: "Comparação entre o fluxo antigo com exportação para galeria e o novo fluxo direto para Stories",
+          caption: "Menos etapas reduzem troca de contexto, mas não substituem revisão, aprovação e controle de versão.",
+        },
+      },
+      {
+        title: "Stories e Reels não cumprem exatamente a mesma função",
+        paragraphs: [
+          "Tratar todo vídeo vertical como se tivesse o mesmo objetivo é um erro de planejamento. Reels costumam participar mais fortemente da descoberta e da distribuição para pessoas que ainda não seguem o perfil. Stories funcionam dentro de uma dinâmica mais próxima da audiência já conectada à conta, com frequência, bastidores, prova, interação e chamadas para ação.",
+          "Por isso, facilitar a edição de Stories é estrategicamente relevante. O formato deixa de depender apenas de recursos rápidos feitos dentro do compositor do Instagram e pode receber o mesmo cuidado de corte, legenda, ritmo, sobreposição e tratamento de áudio usado em outras peças.",
+          "Isso não significa transformar todo Story em uma superprodução. O valor está em poder escolher. Conteúdo espontâneo continua tendo espaço; peças que exigem acabamento ganham um caminho mais curto até a publicação.",
+        ],
+        list: [
+          "Reels: alcance, descoberta, repertório e distribuição de conteúdo curto.",
+          "Stories: frequência, relacionamento, bastidores, prova e conversas com a audiência.",
+          "Edits: uma camada de produção que pode atender os dois contextos sem obrigar o criador a trocar de editor.",
+        ],
+      },
+      {
+        title: "Edits versus CapCut: a comparação mais útil não é 'qual é melhor?'",
+        paragraphs: [
+          "O CapCut continua sendo uma referência importante porque oferece um ecossistema amplo, incluindo versões mobile, desktop e web. O Edits, por outro lado, nasceu profundamente conectado ao Instagram e aposta em integração com o fluxo criativo e os insights da plataforma.",
+          "Também é preciso corrigir uma comparação comum: o CapCut não coloca obrigatoriamente uma marca d'água em toda exportação gratuita. A própria documentação do CapCut explica que projetos editados manualmente podem ser exportados sem marca; marcas podem aparecer em determinados templates, elementos ou configurações premium.",
+          "A escolha, portanto, depende do processo. Quem trabalha em desktop, utiliza recursos avançados específicos ou distribui o mesmo projeto em vários ecossistemas pode preferir uma ferramenta mais ampla. Quem produz principalmente para Instagram e valoriza um caminho curto entre ideia, edição, publicação e análise pode encontrar no Edits uma vantagem operacional.",
+        ],
+        list: [
+          "Edits: integração com Instagram, exportação 4K sem marca d'água, ferramentas de criação mobile e insights de Reels.",
+          "CapCut: presença em mobile, desktop e web, 4K condicionado a plataforma/dispositivo e grande ecossistema de edição.",
+          "Nenhuma dessas características torna uma ferramenta universalmente superior; o melhor editor é o que reduz atrito sem comprometer o resultado que a equipe precisa entregar.",
+        ],
+      },
+      {
+        title: "O que a Meta ganha ao fechar o ciclo de criação",
+        paragraphs: [
+          "A atualização também precisa ser lida como movimento de plataforma. Quanto mais etapas o Edits absorve, menor a necessidade de o criador sair do ecossistema Meta para concluir uma tarefa. Ideia, gravação, edição, análise e distribuição começam a formar um ciclo cada vez mais fechado.",
+          "Isso gera conveniência para o usuário e, ao mesmo tempo, aumenta a relevância estratégica do Edits para a Meta. A disputa deixa de ser apenas por quem oferece o melhor efeito de vídeo e passa a ser por quem controla o fluxo completo de criação.",
+          "Em junho de 2026, a Meta já havia apresentado novas iniciativas para o Edits, incluindo expansão dos insights e testes de recursos assistidos por IA. O movimento para Stories é coerente com essa direção: transformar o editor em infraestrutura de produção, não apenas em um aplicativo auxiliar.",
+        ],
+      },
+      {
+        title: "Como incorporar a novidade ao processo sem criar dependência da ferramenta",
+        paragraphs: [
+          "A melhor maneira de usar a atualização é tratá-la como uma melhoria de processo, não como estratégia de conteúdo. O botão novo não resolve pauta ruim, narrativa fraca, excesso de edição ou ausência de objetivo.",
+          "Para uma equipe de Social Media, o ganho aparece quando a ferramenta entra em um sistema claro: definir o papel da peça, gravar com intenção, editar apenas o necessário, revisar e distribuir no canal adequado. Se o envio direto economiza uma etapa nesse sistema, ele já cumpre uma função valiosa.",
+          "Ferramentas mudam rapidamente. Processos sólidos sobrevivem a elas. O trabalho estratégico é saber quais etapas precisam de tecnologia e quais continuam dependendo de repertório, decisão e leitura de comportamento.",
+        ],
+        list: [
+          "Defina antes da edição se a peça é para descoberta, relacionamento, prova ou conversão.",
+          "Crie modelos de projeto para Stories recorrentes, sem engessar o conteúdo.",
+          "Mantenha uma cópia final quando o ativo também precisar ser reutilizado fora do Instagram.",
+          "Use os insights para revisar decisões criativas, não apenas para colecionar números.",
+          "Avalie a ferramenta pelo tempo poupado e pela qualidade do processo, não pela quantidade de recursos novos.",
+        ],
+      },
+    ],
+    sources: [
+      {
+        label: "Meta — One Year of Edits: Built For and With Creators",
+        url: "https://about.fb.com/news/2026/04/one-year-of-edits-built-for-and-with-creators/",
+      },
+      {
+        label: "Google Play — Edits: Editor de Vídeo",
+        url: "https://play.google.com/store/apps/details?id=com.instagram.basel&hl=pt-BR",
+      },
+      {
+        label: "App Store — Edits: Editor de Vídeo",
+        url: "https://apps.apple.com/br/app/edits-editor-de-v%C3%ADdeo/id6738967378",
+      },
+      {
+        label: "CapCut — Como exportar vídeo sem marca d'água",
+        url: "https://www.capcut.com/pt-br/help/how-to-export-video-without-watermark",
+      },
+      {
+        label: "CapCut — Como exportar vídeos em 2K e 4K",
+        url: "https://www.capcut.com/pt-br/help/export-videos-in-capcut",
+      },
+    ],
+  },
+  {
     slug: "seo-information-gain-busca-generativa",
     category: "SEO e busca",
     title: "O novo paradigma da busca: do SEO clássico ao Information Gain e à IA generativa",
