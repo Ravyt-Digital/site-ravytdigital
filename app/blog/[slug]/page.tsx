@@ -10,6 +10,14 @@ export function generateStaticParams() {
   return posts.map(({ slug }) => ({ slug }));
 }
 
+function getArticleAuthor(slug: string) {
+  if (slug === "edits-instagram-stories-fluxo-producao") {
+    return { name: "Marcio Cabral", type: "Person" as const };
+  }
+
+  return { name: "Ravyt Digital", type: "Organization" as const };
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -21,6 +29,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   const articleImage = post.sections.find((section) => section.image)?.image;
+  const author = getArticleAuthor(post.slug);
 
   return {
     title: post.title,
@@ -33,7 +42,7 @@ export async function generateMetadata({
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
       modifiedTime: post.date,
-      authors: ["Ravyt Digital"],
+      authors: [author.name],
       images: articleImage
         ? [
             {
@@ -68,6 +77,7 @@ export default async function ArticlePage({
   const related = posts.filter((item) => item.slug !== post.slug).slice(0, 2);
   const articleUrl = `${SITE_URL}/blog/${post.slug}`;
   const articleImage = post.sections.find((section) => section.image)?.image;
+  const author = getArticleAuthor(post.slug);
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -76,7 +86,11 @@ export default async function ArticlePage({
     datePublished: post.date,
     dateModified: post.date,
     inLanguage: "pt-BR",
-    author: { "@type": "Organization", name: "Ravyt Digital", url: SITE_URL },
+    author: {
+      "@type": author.type,
+      name: author.name,
+      ...(author.type === "Organization" ? { url: SITE_URL } : {}),
+    },
     publisher: {
       "@type": "Organization",
       name: "Ravyt Digital",
@@ -100,7 +114,7 @@ export default async function ArticlePage({
               <h1>{post.title}</h1>
               <p className="article-excerpt">{post.excerpt}</p>
               <div className="article-meta">
-                <span>Por Ravyt Digital</span>
+                <span>Por {author.name}</span>
                 <time dateTime={post.date}>{post.dateLabel}</time>
                 <span>{post.readingTime}</span>
               </div>
