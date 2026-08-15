@@ -1091,6 +1091,53 @@ h1, h2, h3, blockquote,
 .blog-hero h1 em { color: var(--copper); }
 .article-audio-progress-track i { background: linear-gradient(90deg,var(--petroleum),var(--copper)); box-shadow: 0 0 14px rgba(184,110,74,.28); }
 .article-conclusion { color: var(--stone); background: linear-gradient(145deg,var(--charcoal),var(--petroleum)); border-radius: 4px; }
+.article-body .article-conclusion {
+  padding: clamp(42px,6vw,68px) clamp(30px,6vw,64px);
+  border: 1px solid rgba(184,110,74,.72);
+  background:
+    radial-gradient(circle at 88% 18%,rgba(184,110,74,.18),transparent 30%),
+    linear-gradient(135deg,var(--charcoal) 0%,#123946 100%);
+  box-shadow: 0 28px 72px rgba(15,61,74,.24);
+}
+.article-body .article-conclusion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 112px;
+  height: 6px;
+  background: var(--copper);
+}
+.article-body .article-conclusion > p {
+  display: inline-flex;
+  margin-bottom: 22px;
+  padding: 8px 11px;
+  color: #f4d0bc;
+  background: rgba(184,110,74,.18);
+  border: 1px solid rgba(184,110,74,.44);
+  font-size: 10px;
+}
+.article-body .article-conclusion h2 {
+  max-width: 610px;
+  color: var(--stone);
+  text-wrap: balance;
+  text-shadow: 0 2px 20px rgba(0,0,0,.2);
+}
+.article-body .article-conclusion .button {
+  min-height: 58px;
+  padding-inline: 25px;
+  color: #fff;
+  background: var(--copper);
+  border-color: #d89470;
+  box-shadow: 0 14px 34px rgba(0,0,0,.22);
+}
+.article-body .article-conclusion .button:hover,
+.article-body .article-conclusion .button:focus-visible {
+  color: var(--charcoal);
+  background: var(--stone);
+  border-color: var(--stone);
+  transform: translateY(-2px);
+}
 
 /* Ravyt Digital — sistema visual oficial */
 :root {
