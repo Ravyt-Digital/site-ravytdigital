@@ -16,6 +16,23 @@ export const metadata: Metadata = {
   },
 };
 
+function getPostFeaturedImage(post: BlogPost) {
+  if (post.slug === "edits-instagram-stories-fluxo-producao") {
+    return {
+      src: "/blog/edits-stories-fluxo.svg",
+      alt: "Fluxo mostrando criação, edição no Edits e publicação direta nos Instagram Stories",
+    };
+  }
+
+  return null;
+}
+
+function getPostAuthor(post: BlogPost) {
+  return post.slug === "edits-instagram-stories-fluxo-producao"
+    ? "Marcio Cabral"
+    : "Ravyt Digital";
+}
+
 function PostArt({
   post,
   number,
@@ -25,6 +42,32 @@ function PostArt({
   number: string;
   featured?: boolean;
 }) {
+  const featuredImage = getPostFeaturedImage(post);
+
+  if (featuredImage) {
+    return (
+      <div
+        className={`blog-post-art${featured ? " blog-post-art-featured" : ""}`}
+        style={{ overflow: "hidden", background: "#1a1c1e" }}
+      >
+        <img
+          src={featuredImage.src}
+          alt={featuredImage.alt}
+          width={1600}
+          height={900}
+          loading={featured ? "eager" : "lazy"}
+          decoding="async"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`blog-post-art${featured ? " blog-post-art-featured" : ""}`}
@@ -58,6 +101,13 @@ export default function BlogPage() {
       headline: post.title,
       datePublished: post.date,
       url: `${SITE_URL}/blog/${post.slug}`,
+      author: {
+        "@type": getPostAuthor(post) === "Ravyt Digital" ? "Organization" : "Person",
+        name: getPostAuthor(post),
+      },
+      ...(getPostFeaturedImage(post)
+        ? { image: `${SITE_URL}${getPostFeaturedImage(post)!.src}` }
+        : {}),
     })),
   };
 
@@ -96,7 +146,7 @@ export default function BlogPage() {
               <span>{featured.excerpt}</span>
               <div>
                 <small>
-                  {featured.dateLabel} · {featured.readingTime}
+                  Por {getPostAuthor(featured)} · {featured.dateLabel} · {featured.readingTime}
                 </small>
                 <b>Ler artigo <i aria-hidden="true">↗</i></b>
               </div>
