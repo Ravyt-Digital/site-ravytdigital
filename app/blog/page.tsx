@@ -48,20 +48,21 @@ function PostArt({
     return (
       <div
         className={`blog-post-art${featured ? " blog-post-art-featured" : ""}`}
-        style={{ overflow: "hidden", background: "#1a1c1e" }}
+        style={{ overflow: "hidden", background: "#121416" }}
       >
         <img
           src={featuredImage.src}
           alt={featuredImage.alt}
-          width={1600}
-          height={900}
+          width={1200}
+          height={1200}
           loading={featured ? "eager" : "lazy"}
           decoding="async"
           style={{
             display: "block",
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
+            objectPosition: "center",
           }}
         />
       </div>
