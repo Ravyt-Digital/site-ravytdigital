@@ -2,6 +2,7 @@
 import CookieConsent from "@/components/CookieConsent";
 import MobileMenu from "@/components/MobileMenu";
 import ProjectPreview from "@/components/ProjectPreview";
+import ContactFormSection from "@/components/ContactFormSection";
 import { SITE_URL, WWW_SITE_URL } from "@/lib/site";
 import Image from "next/image";
 
@@ -351,19 +352,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="contact" id="contato">
-          <div className="contact-orbit contact-orbit-one" aria-hidden="true" /><div className="contact-orbit contact-orbit-two" aria-hidden="true" />
-          <div className="shell contact-inner">
-            <p className="section-kicker section-kicker-light">Seu próximo passo</p>
-            <h2>Conte sobre o <span>seu negócio.</span></h2>
-            <p>Leva de 3 a 5 minutos. Suas respostas nos ajudam a entender o momento da sua empresa e preparar um atendimento mais estratégico.</p>
-            <div className="contact-actions">
-              <a className="button button-light button-large" href="https://form.jotform.com/262255058097058" target="_blank" rel="noopener noreferrer">
-                Preencher diagnóstico digital <i aria-hidden="true">↗</i>
-              </a>
-            </div>
-          </div>
-        </section>
+        <ContactFormSection />
       </main>
 
       <footer className="footer">

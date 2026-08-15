@@ -1,0 +1,37 @@
+import Script from "next/script";
+
+const TYPEFORM_ID = "01M03S41GZ5HBNT9ZNS7GTAPGR";
+const TYPEFORM_URL = `https://form.typeform.com/to/${TYPEFORM_ID}`;
+
+type ContactFormSectionProps = {
+  title?: string;
+  description?: string;
+};
+
+export default function ContactFormSection({
+  title = "Vamos conhecer seus desafios.",
+  description = "Preencha o formulário para que possamos entender seu momento e conversar sobre a estrutura mais adequada para o seu projeto.",
+}: ContactFormSectionProps) {
+  return (
+    <section className="contact-form-section" id="contato" aria-labelledby="titulo-contato">
+      <div className="shell contact-form-grid">
+        <div className="contact-form-copy">
+          <p className="section-kicker">Seu próximo passo</p>
+          <h2 id="titulo-contato">{title}</h2>
+          <p>{description}</p>
+          <p className="contact-form-privacy">
+            Suas informações são usadas somente para responder à sua solicitação e são tratadas conforme nossa <a href="/politica-de-privacidade">Política de Privacidade</a>.
+          </p>
+        </div>
+
+        <div className="contact-form-embed" aria-label="Formulário de contato da Ravyt Digital">
+          <div data-tf-live={TYPEFORM_ID} />
+          <noscript>
+            <a href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Abrir formulário de contato</a>
+          </noscript>
+        </div>
+      </div>
+      <Script src="https://embed.typeform.com/next/embed.js" strategy="lazyOnload" />
+    </section>
+  );
+}

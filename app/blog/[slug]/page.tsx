@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
 import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
+import ContactFormSection from "@/components/ContactFormSection";
 import { getPost, posts } from "../posts";
 import { getPostSeo } from "../postSeo";
 
@@ -319,7 +320,7 @@ export default async function ArticlePage({
             <div className="article-conclusion">
               <p>Próximo passo</p>
               <h2>Quer transformar essa ideia em uma estrutura para o seu negócio?</h2>
-              <a className="button button-light" href="/#contato">
+              <a className="button button-light" href="#contato">
                 Preencher diagnóstico <i aria-hidden="true">↗</i>
               </a>
             </div>
@@ -342,6 +343,11 @@ export default async function ArticlePage({
           </div>
         </div>
       </section>
+
+      <ContactFormSection
+        title="Quer transformar essa ideia em uma estrutura para o seu negócio?"
+        description="Conte sobre o seu momento e o que você deseja construir ou melhorar. A Ravyt responde com uma direção inicial para a conversa."
+      />
 
       <script
         type="application/ld+json"

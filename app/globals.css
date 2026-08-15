@@ -292,6 +292,73 @@ button { font: inherit; }
 
 .contact { position: relative; overflow: hidden; padding: 155px 0; color: #fff; background: #121416; }.contact::before { content: ""; position: absolute; inset: 0; opacity: .24; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size: 74px 74px; }.contact-orbit { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); border: 1px solid rgba(184,110,74,.16); border-radius: 50%; }.contact-orbit-one { width: 750px; height: 750px; }.contact-orbit-two { width: 1050px; height: 1050px; }.contact-inner { position: relative; z-index: 2; text-align: center; }.contact-inner .section-kicker { display: inline-block; }.contact-inner h2 { max-width: 910px; margin: 30px auto 26px; font-size: clamp(54px,7vw,100px); line-height: .94; letter-spacing: -.06em; font-weight: 580; }.contact-inner h2 span { color: #d28b68; }.contact-inner > p { max-width: 650px; margin: 0 auto; color: rgba(255,255,255,.58); font-size: 17px; line-height: 1.7; }.contact-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 42px; }.button-large { min-height: 60px; padding-inline: 27px; }
 
+/* Formulário de contato incorporado */
+.contact-form-section {
+  padding: clamp(76px, 9vw, 132px) 0;
+  color: var(--charcoal);
+  background: #fff;
+}
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .78fr) minmax(520px, 1.22fr);
+  gap: clamp(52px, 8vw, 118px);
+  align-items: center;
+}
+.contact-form-copy h2 {
+  max-width: 470px;
+  margin: 22px 0 26px;
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: .98;
+  letter-spacing: -.055em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+.contact-form-copy > p:not(.section-kicker) {
+  max-width: 500px;
+  margin: 0;
+  color: #55524f;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.contact-form-copy .contact-form-privacy {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(26,28,30,.14);
+  color: #77736f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.contact-form-privacy a {
+  color: var(--petroleum);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-form-embed {
+  position: relative;
+  min-height: 510px;
+  overflow: hidden;
+  padding: 18px;
+  border: 1px solid rgba(26,28,30,.08);
+  border-radius: 8px;
+  background: #e1e5e7;
+}
+.contact-form-embed > div,
+.contact-form-embed iframe {
+  width: 100% !important;
+  min-height: 474px !important;
+  border: 0;
+}
+.contact-form-embed noscript {
+  display: grid;
+  min-height: 474px;
+  place-items: center;
+}
+.contact-form-embed noscript a {
+  padding: 14px 20px;
+  color: #fff;
+  background: var(--charcoal);
+}
+
 .footer { padding: 80px 0 26px; background: #f2eee8; }.footer-top { display: grid; grid-template-columns: 1fr 1.1fr .7fr; gap: 70px; align-items: start; padding-bottom: 72px; }.footer-top p { margin: 7px 0 0; color: #6d6573; font-size: 14px; line-height: 1.7; }.footer-top nav { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 25px; font-size: 12px; }.footer-top nav a:hover { color: var(--violet); }.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 23px; border-top: 1px solid #d9d3de; color: #89818e; font-size: 10px; }.footer-bottom p { margin: 0; }.footer-bottom > div { display: flex; gap: 22px; }.footer-bottom a:hover { color: var(--purple); }
 
 .mobile-menu { display: none; }.menu-trigger { position: relative; z-index: 32; width: 45px; height: 45px; padding: 0; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; background: transparent; color: #fff; cursor: pointer; }.menu-trigger > span:not(.sr-only) { position: absolute; left: 13px; width: 17px; height: 1px; background: currentColor; transition: transform .25s ease, top .25s ease; }.menu-trigger > span:first-child { top: 18px; }.menu-trigger > span:nth-child(2) { top: 25px; width: 12px; }.menu-trigger[aria-expanded="true"] > span:first-child { top: 22px; transform: rotate(45deg); }.menu-trigger[aria-expanded="true"] > span:nth-child(2) { top: 22px; width: 17px; transform: rotate(-45deg); }.menu-panel { position: fixed; z-index: 30; inset: 0; display: flex; align-items: center; padding: 100px 32px 40px; background: linear-gradient(145deg,#121416,#0f3d4a); opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity .25s ease, visibility .25s ease, transform .25s ease; }.menu-panel.is-open { opacity: 1; visibility: visible; transform: translateY(0); }.menu-panel nav { width: 100%; }.menu-panel nav > a { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.15); font-size: clamp(26px,7vw,42px); letter-spacing: -.04em; }.menu-panel nav > a span { color: rgba(255,255,255,.35); font-family: var(--font-geist-mono),monospace; font-size: 10px; }.menu-panel .menu-contact { justify-content: center; margin-top: 38px; padding: 17px 24px; border: 0; border-radius: 999px; color: var(--purple); background: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0; }.menu-open { overflow: hidden; }
@@ -1559,9 +1626,21 @@ body {
 .whatsapp-person svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .whatsapp-panel > p { margin: 0; padding: 12px 20px 15px; border-top: 1px solid rgba(26,28,30,.1); color: #77716a; font-size: 8px; text-align: center; text-transform: uppercase; letter-spacing: .09em; }
 
+@media (max-width: 900px) {
+  .contact-form-grid { grid-template-columns: 1fr; gap: 42px; }
+  .contact-form-copy h2 { max-width: 650px; }
+  .contact-form-copy > p:not(.section-kicker) { max-width: 650px; }
+}
+
 @media (max-width: 760px) {
   .contact { padding: 92px 0 82px; }
   .contact-inner h2 { font-size: clamp(47px,14vw,68px); }
+  .contact-form-section { padding: 68px 0; }
+  .contact-form-grid { width: min(100% - 30px, 1180px); }
+  .contact-form-copy h2 { font-size: clamp(40px, 12vw, 54px); }
+  .contact-form-embed { min-height: 560px; padding: 8px; border-radius: 6px; }
+  .contact-form-embed > div,
+  .contact-form-embed iframe { min-height: 544px !important; }
   .whatsapp-contact { right: 14px; bottom: 14px; }
   .whatsapp-trigger { width: 60px; height: 60px; padding: 9px; }
   .whatsapp-trigger img { width: 42px; height: 40px; }
