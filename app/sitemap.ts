@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { posts } from "@/app/blog/posts";
-import { getPostSeo } from "@/app/blog/postSeo";
+import { posts } from "@/app/blog/allPosts";
+import { getPostSeo } from "@/app/blog/allPostSeo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
