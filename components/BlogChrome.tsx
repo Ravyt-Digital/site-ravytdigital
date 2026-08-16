@@ -10,7 +10,7 @@ function BlogBrand({ dark = false }: { dark?: boolean }) {
   );
 }
 
-export function BlogHeader({ current }: { current?: "services" | "insights" }) {
+export function BlogHeader({ current }: { current?: "services" | "insights" | "contact" }) {
   return (
     <header className="blog-site-header">
       <div className="shell blog-nav">
@@ -20,9 +20,9 @@ export function BlogHeader({ current }: { current?: "services" | "insights" }) {
           <a href="/#sobre">A Ravyt</a>
           <a href="/#projetos">Cases</a>
           <a className={current === "insights" ? "is-current" : undefined} href="/blog" aria-current={current === "insights" ? "page" : undefined}>Insights</a>
-          <a href="/#contato">Contato</a>
+          <a className={current === "contact" ? "is-current" : undefined} href="/contato" aria-current={current === "contact" ? "page" : undefined}>Contato</a>
         </nav>
-        <a className="header-cta" href="/#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+        <a className="header-cta" href="/contato">Vamos conversar <span aria-hidden="true">↗</span></a>
         <MobileMenu fromSubpage />
       </div>
     </header>
@@ -40,7 +40,7 @@ export function BlogFooter() {
           <a href="/#sobre">A Ravyt</a>
           <a href="/#projetos">Cases</a>
           <a href="/blog">Insights</a>
-          <a href="/#contato">Contato</a>
+          <a href="/contato">Contato</a>
         </nav>
       </div>
       <div className="shell footer-bottom">

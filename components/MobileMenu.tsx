@@ -29,7 +29,7 @@ export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: bool
           {/* A plain anchor avoids a Vinext client-proxy issue in the interactive menu. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/blog" onClick={() => setOpen(false)}>Insights <span>04</span></a>
-          <a className="menu-contact" href={section("#contato")} onClick={() => setOpen(false)}>Vamos conversar ↗</a>
+          <a className="menu-contact" href="/contato" onClick={() => setOpen(false)}>Vamos conversar ↗</a>
         </nav>
       </div>
     </div>

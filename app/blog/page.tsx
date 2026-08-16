@@ -3,7 +3,6 @@ import Image from "next/image";
 import { SITE_URL } from "@/lib/site";
 import { posts, type BlogPost } from "./posts";
 import { getPostSeo } from "./postSeo";
-import ContactFormSection from "@/components/ContactFormSection";
 
 const topicClusters = [
   {
@@ -219,10 +218,17 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <ContactFormSection
-        title="Seu próximo passo não precisa ser um palpite."
-        description="Conte para a Ravyt onde sua presença digital está hoje. Nós ajudamos a identificar a estrutura mais coerente para o seu momento."
-      />
+      <section className="blog-cta">
+        <div className="blog-cta-orbit" aria-hidden="true" />
+        <div className="shell blog-cta-inner">
+          <div>
+            <p>Quer aplicar ao seu negócio?</p>
+            <h2>Seu próximo passo não precisa ser um palpite.</h2>
+            <span>Conte para a Ravyt onde sua presença digital está hoje. Nós ajudamos a identificar a estrutura mais coerente para o seu momento.</span>
+          </div>
+          <a className="button button-light" href="/contato">Ir para contato <i aria-hidden="true">↗</i></a>
+        </div>
+      </section>
 
       <script
         type="application/ld+json"

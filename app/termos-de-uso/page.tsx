@@ -29,7 +29,7 @@ export default function TermsPage() {
       <h2>8. Alterações e legislação</h2>
       <p>Estes termos podem ser atualizados para acompanhar mudanças no site ou nos serviços. A versão vigente será identificada pela data exibida no topo e interpretada conforme a legislação brasileira, observadas as regras legais de competência.</p>
       <h2>9. Contato</h2>
-      <p>Dúvidas sobre estes termos podem ser enviadas para <a href="mailto:contato@ravytdigital.com">contato@ravytdigital.com</a>.</p>
+      <p>Dúvidas sobre estes termos podem ser enviadas para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
     </LegalPage>
   );
 }

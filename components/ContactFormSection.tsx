@@ -9,8 +9,8 @@ type ContactFormSectionProps = {
 };
 
 export default function ContactFormSection({
-  title = "Vamos conhecer seus desafios.",
-  description = "Preencha o formulário para que possamos entender seu momento e conversar sobre a estrutura mais adequada para o seu projeto.",
+  title = "Quer conversar sobre nossos serviços?",
+  description = "Este formulário é exclusivo para pessoas e empresas interessadas em contratar ou conhecer melhor os serviços da Ravyt Digital.",
 }: ContactFormSectionProps) {
   return (
     <section className="contact-form-section" id="contato" aria-labelledby="titulo-contato">
@@ -19,6 +19,9 @@ export default function ContactFormSection({
           <p className="section-kicker">Seu próximo passo</p>
           <h2 id="titulo-contato">{title}</h2>
           <p>{description}</p>
+          <p className="contact-form-guidance">
+            Para parcerias, imprensa, suporte, questões administrativas ou qualquer outro assunto, escreva para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.
+          </p>
           <p className="contact-form-privacy">
             Suas informações são usadas somente para responder à sua solicitação e são tratadas conforme nossa <a href="/politica-de-privacidade">Política de Privacidade</a>.
           </p>

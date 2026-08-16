@@ -3,7 +3,6 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
 import CookieConsent from "@/components/CookieConsent";
-import ContactFormSection from "@/components/ContactFormSection";
 
 const SERVICE_DESCRIPTION = "Conheça as soluções da Ravyt Digital em estratégia, identidade visual, Social Media, criação de sites, SEO e tecnologia para empresas e especialistas.";
 
@@ -115,7 +114,7 @@ export default function ServicesPage() {
             <p className="section-kicker">Soluções integradas</p>
             <h1>Marketing digital com <em>estrutura, clareza e direção.</em></h1>
             <p>Para uma presença digital gerar confiança, estratégia, design, conteúdo e tecnologia precisam trabalhar na mesma direção. A Ravyt organiza essas frentes de acordo com o momento e a prioridade do seu negócio.</p>
-            <a className="button button-light" href="#contato">Solicitar diagnóstico digital <span aria-hidden="true">↓</span></a>
+            <a className="button button-light" href="/contato">Solicitar diagnóstico digital <span aria-hidden="true">↗</span></a>
           </div>
         </header>
 
@@ -146,10 +145,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <ContactFormSection
-          title="Descubra qual estrutura faz sentido para o seu momento."
-          description="Conte brevemente sobre o negócio e o que você deseja construir ou melhorar. A Ravyt analisa o contexto antes de recomendar uma solução."
-        />
+        <section className="services-cta"><div className="shell"><p>Seu próximo passo</p><h2>Descubra qual estrutura faz sentido para o seu momento.</h2><a className="button button-light" href="/contato">Ir para contato <span aria-hidden="true">↗</span></a></div></section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <BlogFooter />

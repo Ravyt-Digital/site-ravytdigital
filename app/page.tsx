@@ -2,7 +2,6 @@
 import CookieConsent from "@/components/CookieConsent";
 import MobileMenu from "@/components/MobileMenu";
 import ProjectPreview from "@/components/ProjectPreview";
-import ContactFormSection from "@/components/ContactFormSection";
 import { SITE_URL, WWW_SITE_URL } from "@/lib/site";
 import Image from "next/image";
 
@@ -128,6 +127,8 @@ export default function Home() {
         sameAs: [
           WWW_SITE_URL,
           "https://www.instagram.com/ravytdigital/",
+          "https://www.facebook.com/ravytdigital",
+          "https://www.linkedin.com/company/ravytdigital/",
           "https://github.com/Ravyt-Digital",
         ],
         description: "Agência de estratégia, design, Social Media e tecnologia que transforma a qualidade real de negócios em uma presença digital à mesma altura.",
@@ -181,9 +182,9 @@ export default function Home() {
               <a href="#sobre">A Ravyt</a>
               <a href="#projetos">Cases</a>
               <a href="/blog">Insights</a>
-              <a href="#contato">Contato</a>
+              <a href="/contato">Contato</a>
             </nav>
-            <a className="header-cta" href="#contato">
+            <a className="header-cta" href="/contato">
               Vamos conversar
               <ArrowUpRight />
             </a>
@@ -204,7 +205,7 @@ export default function Home() {
                 à mesma altura.
               </p>
               <div className="hero-actions">
-                <a className="button button-light" href="#contato">
+                <a className="button button-light" href="/contato">
                   Vamos conversar
                   <ArrowUpRight />
                 </a>
@@ -316,7 +317,7 @@ export default function Home() {
             ))}
             </div>
           </div>
-          <div className="shell work-footer"><p>Cada projeto começa no negócio — não na ferramenta.</p><a href="#contato">Quero construir o próximo <ArrowUpRight /></a></div>
+          <div className="shell work-footer"><p>Cada projeto começa no negócio — não na ferramenta.</p><a href="/contato">Quero construir o próximo <ArrowUpRight /></a></div>
         </section>
 
         <section className="method" id="metodo">
@@ -352,11 +353,19 @@ export default function Home() {
           </div>
         </section>
 
-        <ContactFormSection />
+        <section className="contact" aria-labelledby="titulo-proximo-passo">
+          <div className="contact-orbit contact-orbit-one" aria-hidden="true" /><div className="contact-orbit contact-orbit-two" aria-hidden="true" />
+          <div className="shell contact-inner">
+            <p className="section-kicker section-kicker-light">Seu próximo passo</p>
+            <h2 id="titulo-proximo-passo">Vamos conversar sobre o <span>seu projeto.</span></h2>
+            <p>Reunimos o formulário para novos projetos e todos os canais oficiais da Ravyt Digital em uma única página.</p>
+            <div className="contact-actions"><a className="button button-light button-large" href="/contato">Ir para contato <i aria-hidden="true">↗</i></a></div>
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
-        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p><nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="#contato">Contato</a></nav></div>
+        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p><nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="/contato">Contato</a></nav></div>
         <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Criado com muito carinho por Ravyt Digital.</p><div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></div>
       </footer>
 

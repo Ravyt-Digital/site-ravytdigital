@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <LegalPage eyebrow="Privacidade e transparência" title="Política de Privacidade">
       <p className="legal-lead">A Ravyt Digital respeita sua privacidade. Esta política explica, de forma clara, quais dados podem ser tratados durante sua interação com nosso site e canais de contato.</p>
       <h2>1. Quem é responsável pelos dados</h2>
-      <p>A Ravyt Digital atua como controladora dos dados pessoais relacionados a este site e aos contatos comerciais recebidos por seus canais. Dúvidas ou solicitações podem ser enviadas para <a href="mailto:contato@ravytdigital.com">contato@ravytdigital.com</a>.</p>
+      <p>A Ravyt Digital atua como controladora dos dados pessoais relacionados a este site e aos contatos comerciais recebidos por seus canais. Dúvidas ou solicitações podem ser enviadas para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
       <h2>2. Quais informações podem ser coletadas</h2>
       <ul>
         <li>Nome, e-mail, telefone, empresa e informações que você decidir enviar ao entrar em contato conosco;</li>
