@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE_URL } from "@/lib/site";
-import { posts, type BlogPost } from "./posts";
-import { getPostSeo } from "./postSeo";
+import { posts, type BlogPost } from "./allPosts";
+import { getPostSeo } from "./allPostSeo";
 
 const topicClusters = [
   {
-    title: "Conteúdo, SEO e busca generativa",
-    description: "Como produzir informação útil, rastreável e preparada para pessoas, Google e sistemas de IA.",
-    slugs: ["seo-information-gain-busca-generativa", "edits-instagram-stories-fluxo-producao"],
+    title: "Conteúdo, SEO, IA e plataformas",
+    description: "Como produzir informação útil e entender as mudanças de tecnologia e distribuição que afetam o marketing digital.",
+    slugs: ["meta-agosto-2026-ia-regulacao-infraestrutura", "seo-information-gain-busca-generativa", "edits-instagram-stories-fluxo-producao"],
   },
   {
     title: "Presença digital, confiança e conversão",
@@ -20,12 +20,12 @@ const topicClusters = [
 export const metadata: Metadata = {
   title: "Blog Ravyt Digital | SEO, Social Media, Sites e Presença Digital",
   description:
-    "Conteúdos da Ravyt Digital sobre SEO, Social Media, sites, conversão e presença digital para empresas que querem crescer com estratégia e estrutura.",
+    "Conteúdos da Ravyt Digital sobre SEO, Social Media, IA, sites, conversão e presença digital para empresas que querem crescer com estratégia e estrutura.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "Blog Ravyt Digital | Estratégia e Presença Digital",
     description:
-      "Conteúdo prático sobre SEO, Social Media, sites, conversão e tecnologia para negócios.",
+      "Conteúdo prático sobre SEO, Social Media, IA, sites, conversão e tecnologia para negócios.",
     url: "/blog",
     type: "website",
   },
@@ -75,7 +75,7 @@ export default function BlogPage() {
     "@id": `${SITE_URL}/blog#blog`,
     name: "Blog Ravyt Digital",
     description:
-      "Conteúdos sobre SEO, Social Media, sites, conversão, marca e presença digital.",
+      "Conteúdos sobre SEO, Social Media, inteligência artificial, sites, conversão, marca e presença digital.",
     url: `${SITE_URL}/blog`,
     publisher: {
       "@type": "Organization",
@@ -125,7 +125,7 @@ export default function BlogPage() {
           </h1>
           <div className="blog-hero-bottom">
             <p>
-              Conteúdos sobre SEO, Social Media, sites, marca e tecnologia — para
+              Conteúdos sobre SEO, Social Media, IA, sites, marca e tecnologia — para
               empresas que querem crescer com estrutura e transmitir confiança.
             </p>
             <span>Ravyt / Editorial 2026</span>
