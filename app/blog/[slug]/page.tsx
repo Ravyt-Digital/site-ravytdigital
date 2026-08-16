@@ -4,8 +4,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
 import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
-import { getPost, posts } from "../posts";
-import { getPostSeo } from "../postSeo";
+import { getPost, posts } from "../allPosts";
+import { getPostSeo } from "../allPostSeo";
 
 export function generateStaticParams() {
   return posts.map(({ slug }) => ({ slug }));
@@ -133,7 +133,7 @@ export default async function ArticlePage({
     wordCount,
     keywords: seo?.keywords,
     articleSection: seo?.cluster === "conteudo-e-busca"
-      ? "Conteúdo, SEO e busca generativa"
+      ? "Conteúdo, SEO, IA e plataformas"
       : "Presença digital, confiança e conversão",
   };
 
