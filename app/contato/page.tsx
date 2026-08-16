@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site";
 import { BlogHeader } from "@/components/BlogChrome";
 import CookieConsent from "@/components/CookieConsent";
 
-const TYPEFORM_ID = "01M03S41GZ5HBNT9ZNS7GTAPGR";
+const TYPEFORM_ID = "wr1pvhAx";
 const TYPEFORM_URL = `https://form.typeform.com/to/${TYPEFORM_ID}`;
 
 const socialLinks = [

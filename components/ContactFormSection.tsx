@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const TYPEFORM_ID = "01M03S41GZ5HBNT9ZNS7GTAPGR";
+const TYPEFORM_ID = "wr1pvhAx";
 const TYPEFORM_URL = `https://form.typeform.com/to/${TYPEFORM_ID}`;
 
 type ContactFormSectionProps = {
@@ -28,7 +28,7 @@ export default function ContactFormSection({
         </div>
 
         <div className="contact-form-embed" aria-label="Formulário de contato da Ravyt Digital">
-          <div data-tf-live={TYPEFORM_ID} />
+          <div data-tf-widget={TYPEFORM_ID} data-tf-hide-headers data-tf-hide-footer />
           <noscript>
             <a href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Abrir formulário de contato</a>
           </noscript>
