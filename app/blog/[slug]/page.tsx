@@ -4,8 +4,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
 import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
-import { getPost, posts } from "../allPosts";
-import { getPostSeo } from "../allPostSeo";
+import { getPost, posts } from "../posts";
+import { getPostSeo } from "../postSeo";
 
 export function generateStaticParams() {
   return posts.map(({ slug }) => ({ slug }));
@@ -32,7 +32,7 @@ export async function generateMetadata({
       description: seo?.metaDescription ?? post.excerpt,
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
-      modifiedTime: post.date,
+      modifiedTime: post.modifiedDate ?? post.date,
       authors: [seo?.author.name ?? "Ravyt Digital"],
       images: seo
         ? [
@@ -94,7 +94,7 @@ export default async function ArticlePage({
     headline: post.title,
     description: seo?.metaDescription ?? post.excerpt,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.modifiedDate ?? post.date,
     inLanguage: "pt-BR",
     author: {
       "@type": seo?.author.type ?? "Organization",
@@ -132,9 +132,13 @@ export default async function ArticlePage({
     isPartOf: { "@id": `${SITE_URL}/blog#blog` },
     wordCount,
     keywords: seo?.keywords,
+    about: seo?.keywords.map((keyword) => ({ "@type": "Thing", name: keyword })),
+    citation: post.sources?.map((source) => source.url),
     articleSection: seo?.cluster === "conteudo-e-busca"
-      ? "Conteúdo, SEO, IA e plataformas"
-      : "Presença digital, confiança e conversão",
+      ? "Conteúdo, SEO e busca generativa"
+      : seo?.cluster === "seo-local-e-mercado"
+        ? "SEO local e mercado no Ceará"
+        : "Presença digital, confiança e conversão",
   };
 
   const breadcrumbSchema = {
@@ -169,7 +173,9 @@ export default async function ArticlePage({
                     {seo?.author.name ?? "Ravyt Digital"}
                   </a>
                 </span>
-                <time dateTime={post.date}>{post.dateLabel}</time>
+                <time dateTime={post.modifiedDate ?? post.date}>
+                  {post.modifiedDateLabel ? `Atualizado em ${post.modifiedDateLabel}` : post.dateLabel}
+                </time>
                 <span>{post.readingTime}</span>
               </div>
             </div>
@@ -219,11 +225,20 @@ export default async function ArticlePage({
 
           <div className="article-body">
             <p className="article-intro">{post.intro}</p>
+            {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+              <aside className="article-takeaways" aria-labelledby="resumo-do-artigo">
+                <span>Resposta direta</span>
+                <h2 id="resumo-do-artigo">O que você precisa saber</h2>
+                <ul>
+                  {post.keyTakeaways.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </aside>
+            )}
             <aside className="article-editorial-note" aria-labelledby="como-produzimos">
               <span>Transparência editorial</span>
               <h2 id="como-produzimos">Como este conteúdo foi produzido</h2>
               <p>
-                Este artigo foi estruturado para responder a uma dúvida real, revisado com base em fontes identificadas e organizado para separar fatos, análise e orientação prática.
+                {post.methodology ?? "Este artigo foi estruturado para responder a uma dúvida real, revisado com base em fontes identificadas e organizado para separar fatos, análise e orientação prática."}
               </p>
               <a href="/politica-editorial">Conheça os critérios editoriais da Ravyt Digital</a>
             </aside>
@@ -240,6 +255,25 @@ export default async function ArticlePage({
                   <ul>
                     {section.list.map((item) => <li key={item}>{item}</li>)}
                   </ul>
+                )}
+                {section.table && (
+                  <div className="article-table-wrap" role="region" aria-label={section.table.caption} tabIndex={0}>
+                    <table>
+                      <caption>{section.table.caption}</caption>
+                      <thead>
+                        <tr>{section.table.headers.map((header) => <th scope="col" key={header}>{header}</th>)}</tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row) => (
+                          <tr key={row.join("-")}>
+                            {row.map((cell, cellIndex) => cellIndex === 0
+                              ? <th scope="row" key={cell}>{cell}</th>
+                              : <td key={`${cellIndex}-${cell}`}>{cell}</td>)}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 )}
                 {section.image && (
                   <figure style={{ margin: "38px 0 8px" }}>

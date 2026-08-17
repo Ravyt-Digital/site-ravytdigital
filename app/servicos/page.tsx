@@ -4,10 +4,10 @@ import { SITE_URL } from "@/lib/site";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
 import CookieConsent from "@/components/CookieConsent";
 
-const SERVICE_DESCRIPTION = "Conheça as soluções da Ravyt Digital em estratégia, identidade visual, Social Media, criação de sites, SEO e tecnologia para empresas e especialistas.";
+const SERVICE_DESCRIPTION = "Criação de sites, SEO, estratégia, identidade visual e Social Media para empresas e especialistas no Ceará e em todo o Brasil.";
 
 export const metadata: Metadata = {
-  title: "Serviços de Marketing Digital, Social Media e Criação de Sites",
+  title: "Criação de Sites, SEO e Marketing Digital no Ceará",
   description: SERVICE_DESCRIPTION,
   alternates: { canonical: "/servicos" },
   openGraph: {
@@ -26,7 +26,7 @@ const services = [
     summary: "Criamos sites institucionais, páginas de vendas, blogs e experiências digitais alinhadas ao posicionamento, à jornada do cliente e à descoberta no Google.",
     fit: "Faz sentido quando a empresa precisa apresentar melhor suas soluções, reduzir dependência das redes sociais, apoiar campanhas ou transformar pesquisa em oportunidade comercial.",
     deliveries: ["Arquitetura de informação e jornada", "UX, UI e desenvolvimento responsivo", "SEO técnico e estrutura semântica", "Métricas, privacidade e otimização contínua"],
-    related: { href: "/blog/pagina-de-vendas-ou-site-institucional", label: "Compare página de vendas e site institucional antes de escolher a estrutura" },
+    related: { href: "/blog/mercado-sites-seo-local-ceara", label: "Veja a análise do mercado de sites e SEO local no Ceará" },
   },
   {
     id: "identidade-visual",
@@ -83,7 +83,10 @@ export default function ServicesPage() {
         name: service.label,
         description: service.summary,
         provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: { "@type": "Country", name: "Brasil" },
+        areaServed: [
+          { "@type": "AdministrativeArea", name: "Ceará" },
+          { "@type": "Country", name: "Brasil" },
+        ],
       })),
       {
         "@type": "FAQPage",
@@ -134,6 +137,24 @@ export default function ServicesPage() {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="services-local" aria-labelledby="presenca-regional">
+          <div className="shell services-local-grid">
+            <div>
+              <p className="section-kicker">Pesquisa regional</p>
+              <h2 id="presenca-regional">Presença digital local não se constrói trocando apenas o nome da cidade.</h2>
+            </div>
+            <div>
+              <p>A Ravyt analisou os principais polos urbanos do Ceará e transformou os achados em uma orientação prática: sites regionais precisam combinar dados corretos, proposta clara, experiência real, prova e conteúdo que ajude o cliente a decidir.</p>
+              <dl>
+                <div><dt>8</dt><dd>municípios cearenses acima de 100 mil habitantes no Censo 2022</dd></div>
+                <div><dt>3,87 mi</dt><dd>pessoas nesses polos — aproximadamente 44,1% da população do estado</dd></div>
+                <div><dt>1 critério</dt><dd>uma nova página só existe quando entrega valor próprio e verificável</dd></div>
+              </dl>
+              <Link href="/blog/mercado-sites-seo-local-ceara">Ler a análise completa sobre sites e SEO local no Ceará <span aria-hidden="true">↗</span></Link>
+            </div>
           </div>
         </section>
 

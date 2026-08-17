@@ -112,7 +112,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ProfessionalService",
+        "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         name: "Ravyt Digital",
         legalName: "Ravyt Digital",
@@ -133,7 +133,17 @@ export default function Home() {
         ],
         description: "Agência de estratégia, design, Social Media e tecnologia que transforma a qualidade real de negócios em uma presença digital à mesma altura.",
         slogan: "Excelência refletida no digital.",
-        areaServed: { "@type": "Country", name: "Brasil" },
+        email: "ola@ravytdigital.com",
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "atendimento comercial",
+          email: "ola@ravytdigital.com",
+          availableLanguage: "Portuguese",
+        },
+        areaServed: [
+          { "@type": "AdministrativeArea", name: "Ceará" },
+          { "@type": "Country", name: "Brasil" },
+        ],
         founder: [
           { "@type": "Person", name: "Ytala Cabral", jobTitle: "Direção estratégica e Social Media" },
           { "@type": "Person", name: "Marcio Cabral", jobTitle: "Especialista em criação de sites e aplicativos" },

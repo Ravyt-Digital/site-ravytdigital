@@ -17,12 +17,39 @@ export type PostSeo = {
     width: number;
     height: number;
   };
-  cluster: "conteudo-e-busca" | "presenca-e-conversao";
+  cluster: "conteudo-e-busca" | "presenca-e-conversao" | "seo-local-e-mercado";
   keywords: string[];
   relatedSlugs: string[];
 };
 
 export const postSeo: PostSeo[] = [
+  {
+    slug: "mercado-sites-seo-local-ceara",
+    seoTitle: "Mercado de Sites e SEO Local no Ceará: análise 2026",
+    metaDescription:
+      "Dados, limites e oportunidades do mercado de sites e SEO local no Ceará. Veja como construir presença regional sem páginas genéricas ou promessas de ranking.",
+    author: {
+      name: "Marcio Cabral",
+      type: "Person",
+      url: "/autores/marcio-cabral",
+      jobTitle: "Especialista em criação de sites e aplicativos",
+      description: "Especialista em tecnologia, criação de sites, aplicativos e estruturas digitais na Ravyt Digital.",
+      image: "/team/marcio-cabral.webp",
+      knowsAbout: ["Criação de sites", "SEO técnico", "SEO local", "Arquitetura da informação", "Tecnologia"],
+    },
+    cluster: "seo-local-e-mercado",
+    keywords: ["SEO local no Ceará", "criação de sites no Ceará", "mercado digital no Ceará", "presença digital", "sites profissionais"],
+    featuredImage: {
+      src: "/brand/ravyt-social-card.jpg",
+      alt: "Identidade visual da Ravyt Digital em uma análise sobre mercado de sites e SEO local no Ceará",
+      width: 1920,
+      height: 1080,
+    },
+    relatedSlugs: [
+      "seo-information-gain-busca-generativa",
+      "instagram-nao-substitui-site-proprio",
+    ],
+  },
   {
     slug: "edits-instagram-stories-fluxo-producao",
     seoTitle: "Edits para Instagram Stories: o que muda no fluxo de produção",

@@ -5,13 +5,22 @@ export type BlogPost = {
   excerpt: string;
   date: string;
   dateLabel: string;
+  modifiedDate?: string;
+  modifiedDateLabel?: string;
   readingTime: string;
   accent: string;
   intro: string;
+  keyTakeaways?: string[];
+  methodology?: string;
   sections: {
     title: string;
     paragraphs: string[];
     list?: string[];
+    table?: {
+      caption: string;
+      headers: string[];
+      rows: string[][];
+    };
     image?: {
       src: string;
       alt: string;
@@ -25,6 +34,119 @@ export type BlogPost = {
 };
 
 export const posts: BlogPost[] = [
+  {
+    slug: "mercado-sites-seo-local-ceara",
+    category: "Pesquisa e SEO local",
+    title: "Mercado de sites e SEO local no Ceará: onde a presença digital ainda perde valor",
+    excerpt:
+      "Uma leitura crítica dos principais polos cearenses mostra por que site próprio, clareza de oferta e presença local verificável importam mais do que criar páginas genéricas para cada cidade.",
+    date: "2026-08-17",
+    dateLabel: "17 de agosto de 2026",
+    readingTime: "11 min de leitura",
+    accent: "#b86e4a",
+    intro:
+      "O Ceará reúne mercados urbanos relevantes, profissionais especializados e negócios que já vendem qualidade, mas ainda comunicam essa qualidade de forma fragmentada. A análise de dois levantamentos internos sobre presença digital e oferta de criação de sites no estado aponta uma oportunidade consistente: empresas locais podem reduzir a dependência de redes sociais e intermediários quando constroem um ativo próprio, tecnicamente sólido e conectado à realidade de cada mercado. O ponto decisivo, porém, não é publicar dezenas de páginas trocando apenas o nome da cidade. É demonstrar conhecimento regional, utilidade e prova.",
+    keyTakeaways: [
+      "Os oito municípios cearenses acima de 100 mil habitantes no Censo 2022 somam 3.875.188 pessoas — cerca de 44,1% da população do estado.",
+      "As lacunas de busca observadas nos relatórios são sinais exploratórios, não uma garantia de posição, prazo ou retorno.",
+      "Uma página regional forte precisa reunir oferta clara, experiência real, prova, dados locais verificáveis e um caminho simples de contato.",
+      "Escalar páginas quase idênticas por cidade ou profissão cria pouco valor e pode se aproximar de práticas de conteúdo em escala que o Google desaconselha.",
+    ],
+    methodology:
+      "A Ravyt comparou os dois relatórios enviados para este estudo, recalculou os totais demográficos com os resultados oficiais do Censo 2022 e confrontou as recomendações com a documentação atual do Google Search. As observações de resultados de busca presentes nos relatórios foram tratadas como uma fotografia exploratória: SERPs mudam por localização, dispositivo, histórico e momento da consulta. Por isso, este artigo não publica percentuais de domínio orgânico sem uma amostra reproduzível nem promete prazo para chegar ao topo.",
+    sections: [
+      {
+        title: "O tamanho da oportunidade precisa começar por dados corretos",
+        paragraphs: [
+          "Os dois levantamentos convergem ao destacar oito polos com mais de 100 mil habitantes: Fortaleza, Caucaia, Juazeiro do Norte, Maracanaú, Sobral, Itapipoca, Crato e Maranguape. Ao recalcular os dados do Censo 2022, o conjunto soma 3.875.188 pessoas, aproximadamente 44,1% dos 8.794.957 habitantes do Ceará naquele censo.",
+          "Essa concentração não prova, sozinha, demanda por um serviço digital. Ela mostra onde existe densidade de negócios, pessoas e decisões. O passo seguinte é cruzar população com características econômicas, especialidades predominantes, comportamento de busca e maturidade da oferta local — sem transformar correlação em promessa comercial.",
+          "A revisão também encontrou uma diferença de 30 habitantes no número de Fortaleza usado em um dos relatórios. O valor oficial do Censo 2022 é 2.428.708. Corrigir pequenas divergências é parte do trabalho de produzir conteúdo confiável: uma narrativa forte não compensa uma base numérica frágil.",
+        ],
+        table: {
+          caption: "População dos oito municípios cearenses acima de 100 mil habitantes no Censo 2022",
+          headers: ["Município", "População", "Leitura de mercado"],
+          rows: [
+            ["Fortaleza", "2.428.708", "Capital e maior concentração de serviços"],
+            ["Caucaia", "355.679", "RMF, comércio, logística e turismo"],
+            ["Juazeiro do Norte", "286.120", "Polo comercial, educacional e de saúde do Cariri"],
+            ["Maracanaú", "234.392", "Polo industrial e demanda B2B"],
+            ["Sobral", "203.023", "Polo universitário, industrial e hospitalar"],
+            ["Itapipoca", "131.123", "Centro comercial do Litoral Norte"],
+            ["Crato", "131.050", "Polo cultural, educacional e de serviços"],
+            ["Maranguape", "105.093", "Mercado residencial e industrial da RMF"],
+          ],
+        },
+      },
+      {
+        title: "O problema não é ter Instagram; é depender de um canal alugado",
+        paragraphs: [
+          "Redes sociais são valiosas para descoberta, relacionamento, bastidores e frequência. O site cumpre outra função: organiza a oferta, preserva conteúdos importantes, apresenta prova, responde dúvidas e cria uma rota própria entre a pesquisa e o contato.",
+          "Nos mercados analisados, essa diferença é especialmente relevante para serviços de maior consideração, como saúde, advocacia, arquitetura, engenharia e consultoria. Antes de iniciar uma conversa, o potencial cliente costuma precisar entender especialidade, método, limites, localização atendida e sinais de confiança. Um perfil social pode apoiar essa percepção, mas raramente organiza todos esses elementos com a mesma estabilidade.",
+          "A oportunidade, portanto, não deve ser vendida como uma disputa entre Instagram e Google. A estrutura mais madura define o papel de cada canal: a rede social mantém presença e proximidade; o site concentra autoridade, descoberta e decisão; o atendimento conclui a conversa.",
+        ],
+      },
+      {
+        title: "O que os relatórios revelam — e o que eles não conseguem provar",
+        paragraphs: [
+          "Os relatórios registram presença frequente de diretórios, agregadores e páginas de empresas de outras regiões em consultas locais. Esse padrão é um bom ponto de partida para uma auditoria comercial, porque sugere que parte da demanda pode não encontrar uma resposta regional forte e claramente identificada.",
+          "Mas uma captura de resultados não mede participação de mercado, volume de busca ou retorno. Resultados variam por contexto, e ferramentas de palavra-chave também trabalham com estimativas. Antes de escolher uma prioridade, a Ravyt recomenda repetir consultas em ambiente controlado, registrar data e localização, mapear a intenção, analisar o conjunto de concorrentes e confrontar a hipótese com conversas reais de clientes.",
+          "Também não existe base responsável para prometer TOP 3 em poucas semanas. Rastreamento, indexação e posição dependem de concorrência, qualidade, histórico, links, entidade, experiência e muitos outros sinais. SEO é construção de ativo e aprendizado contínuo, não garantia de colocação.",
+        ],
+        list: [
+          "Trate a SERP como evidência observável, não como verdade permanente.",
+          "Separe volume estimado de demanda comercial comprovada.",
+          "Registre a metodologia para que outra pessoa consiga repetir a análise.",
+          "Evite prometer posição, prazo ou faturamento que não estão sob controle da agência.",
+        ],
+      },
+      {
+        title: "Por que páginas que apenas trocam cidade e profissão são uma estratégia frágil",
+        paragraphs: [
+          "Um dos relatórios sugere criar páginas parametrizadas por nicho e cidade. A ideia só produz valor quando cada página responde a uma necessidade realmente distinta. Trocar Fortaleza por Sobral e médico por advogado mantendo o mesmo texto, as mesmas provas e a mesma proposta não demonstra presença regional; apenas multiplica URLs.",
+          "A documentação atual do Google é explícita ao desaconselhar a criação de muitas páginas para variações de consultas quando o objetivo principal é manipular rankings ou respostas generativas. Quantidade não substitui qualidade, e correspondência exata de palavras não compensa uma experiência rasa.",
+          "Para a Ravyt, o caminho mais sólido é uma página regional abrangente ou um conjunto pequeno de páginas realmente diferentes. Uma nova URL só deve existir quando houver oferta, exemplos, dúvidas, linguagem, prova ou contexto local suficientes para justificar sua independência.",
+        ],
+      },
+      {
+        title: "A arquitetura recomendada para uma presença regional de verdade",
+        paragraphs: [
+          "Uma estrutura regional eficaz começa por uma página de serviço central que explica o problema, a solução, o processo e os critérios de contratação. Conteúdos de apoio aprofundam decisões específicas: site institucional versus landing page, dependência das redes sociais, SEO local, confiança e mensuração.",
+          "Os links internos conectam essas respostas sem obrigar cada página a repetir tudo. Títulos e subtítulos descrevem o conteúdo com clareza; URLs permanecem curtas; o sitemap informa páginas novas ou alteradas; dados estruturados representam apenas o que o usuário realmente vê.",
+          "Para empresas com endereço ou área de atendimento elegível, o Perfil da Empresa no Google deve refletir dados reais e consistentes. O site reforça essa entidade com nome, contatos, serviços, autores e sinais públicos de legitimidade. Não se deve inventar endereço, unidade ou presença física para parecer local.",
+        ],
+        list: [
+          "Página principal do serviço, com proposta e processo claros.",
+          "Conteúdo regional original, com dados, método e data de atualização.",
+          "Cases ou aprendizados reais que mostrem experiência, sem criar resultados fictícios.",
+          "Páginas de autor e política editorial para explicar quem produz e como revisa.",
+          "Contato simples e consistente, sem intersticiais que escondam o conteúdo.",
+        ],
+      },
+      {
+        title: "Como priorizar cidades e nichos sem cair em achismo",
+        paragraphs: [
+          "População é apenas uma variável. Maracanaú pode ser relevante para serviços B2B por sua atividade industrial; Sobral e Juazeiro do Norte concentram serviços de saúde e educação; Caucaia combina comércio, turismo e logística. A prioridade precisa considerar aderência da oferta, experiência da equipe, valor do contrato, capacidade de atendimento e evidência de demanda.",
+          "Uma matriz simples pode cruzar quatro dimensões: potencial do mercado, intensidade da necessidade, prova disponível e capacidade operacional. Uma cidade grande com pouca aderência pode ser pior prioridade do que um polo menor onde a empresa possui repertório, relacionamento e casos verificáveis.",
+          "Esse filtro também evita que o SEO dite o posicionamento. A busca deve amplificar uma proposta coerente; não escolher sozinha quais serviços a empresa passará a vender.",
+        ],
+      },
+      {
+        title: "O que a Ravyt aplicou a partir deste estudo",
+        paragraphs: [
+          "Este conteúdo inaugura uma trilha específica sobre mercado regional, criação de sites e SEO local no Ceará. A página de serviços passou a conectar a solução de sites a esta análise, e a arquitetura editorial relaciona o estudo aos conteúdos sobre presença própria, confiança e busca.",
+          "No nível técnico, a publicação usa título e descrição próprios, URL canônica, autoria identificada, data de publicação e modificação, imagem compartilhável, dados estruturados de artigo e breadcrumb, fontes rastreáveis e inclusão automática no sitemap. O objetivo não é marcar o máximo possível de propriedades, mas fornecer poucas informações completas e coerentes com o que aparece na página.",
+          "A consequência estratégica é mais importante do que a lista técnica: a Ravyt passa a responder uma pergunta regional relevante com uma análise que corrige dados, explicita limites e ajuda empresários a decidir. É assim que SEO deixa de ser repetição de palavras e se torna demonstração de competência.",
+        ],
+      },
+    ],
+    sources: [
+      { label: "IBGE — Ceará: população no último censo", url: "https://www.ibge.gov.br/cidades-e-estados/ce.html" },
+      { label: "IBGE — Censo Demográfico 2022", url: "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html" },
+      { label: "Google Search Central — Search Essentials", url: "https://developers.google.com/search/docs/essentials" },
+      { label: "Google Search Central — Conteúdo útil, confiável e feito para pessoas", url: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content" },
+      { label: "Google Search Central — Otimização para recursos de IA na Busca", url: "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" },
+    ],
+  },
   {
     slug: "edits-instagram-stories-fluxo-producao",
     category: "Social Media",
