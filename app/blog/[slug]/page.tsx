@@ -352,9 +352,12 @@ export default async function ArticlePage({
 
             <div className="article-conclusion">
               <p>Próximo passo</p>
-              <h2>Quer transformar essa ideia em uma estrutura para o seu negócio?</h2>
+              <h2>{seo?.recommendedService.title ?? "Quer transformar essa ideia em uma estrutura para o seu negócio?"}</h2>
+              <a className="article-service-link" href={seo?.recommendedService.href ?? "/servicos"}>
+                {seo?.recommendedService.label ?? "Conhecer os serviços"} <i aria-hidden="true">↗</i>
+              </a>
               <a className="button button-light" href="/contato">
-                Preencher diagnóstico <i aria-hidden="true">↗</i>
+                Solicitar diagnóstico <i aria-hidden="true">↗</i>
               </a>
             </div>
           </div>

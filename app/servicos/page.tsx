@@ -26,7 +26,7 @@ const services = [
     summary: "Criamos sites institucionais, páginas de vendas, blogs e experiências digitais alinhadas ao posicionamento, à jornada do cliente e à descoberta no Google.",
     fit: "Faz sentido quando a empresa precisa apresentar melhor suas soluções, reduzir dependência das redes sociais, apoiar campanhas ou transformar pesquisa em oportunidade comercial.",
     deliveries: ["Arquitetura de informação e jornada", "UX, UI e desenvolvimento responsivo", "SEO técnico e estrutura semântica", "Métricas, privacidade e otimização contínua"],
-    related: { href: "/blog/mercado-sites-seo-local-ceara", label: "Veja a análise do mercado de sites e SEO local no Ceará" },
+    related: { href: "/servicos/criacao-de-sites", label: "Conheça a solução completa de criação de sites" },
   },
   {
     id: "identidade-visual",
@@ -44,7 +44,7 @@ const services = [
     summary: "Planejamos posicionamento, pautas, roteiros e direção editorial para transformar redes sociais em relacionamento, autoridade e continuidade de marca.",
     fit: "Faz sentido quando publicar virou uma tarefa sem direção, o perfil não deixa claro o valor da empresa ou o conteúdo não ajuda o público a avançar na decisão.",
     deliveries: ["Posicionamento e linha editorial", "Planejamento de conteúdo", "Roteiros, carrosséis e direção visual", "Análise e aprendizado contínuo"],
-    related: { href: "/blog/instagram-nao-substitui-site-proprio", label: "Entenda como Instagram e site cumprem funções complementares" },
+    related: { href: "/servicos/gestao-de-redes-sociais", label: "Conheça a solução de gestão de redes sociais" },
   },
   {
     id: "estrategia-digital",
@@ -153,7 +153,10 @@ export default function ServicesPage() {
                 <div><dt>3,87 mi</dt><dd>pessoas nesses polos — aproximadamente 44,1% da população do estado</dd></div>
                 <div><dt>1 critério</dt><dd>uma nova página só existe quando entrega valor próprio e verificável</dd></div>
               </dl>
-              <Link href="/blog/mercado-sites-seo-local-ceara">Ler a análise completa sobre sites e SEO local no Ceará <span aria-hidden="true">↗</span></Link>
+              <div className="service-evidence-links">
+                <Link href="/servicos/criacao-de-sites-no-ceara">Conhecer a criação de sites no Ceará <span aria-hidden="true">↗</span></Link>
+                <Link href="/blog/mercado-sites-seo-local-ceara">Ler a análise completa do mercado regional <span aria-hidden="true">↗</span></Link>
+              </div>
             </div>
           </div>
         </section>

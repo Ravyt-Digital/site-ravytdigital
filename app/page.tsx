@@ -29,6 +29,7 @@ const services = [
   {
     number: "01",
     slug: "sites",
+    href: "/servicos/criacao-de-sites",
     type: "site",
     title: "Sites que valorizam o seu negócio",
     text: "Sites institucionais, páginas de vendas, blogs e experiências digitais pensadas para transformar visita em confiança — e confiança em ação.",
@@ -37,6 +38,7 @@ const services = [
   {
     number: "02",
     slug: "identidade-visual",
+    href: "/servicos#identidade-visual",
     type: "brand",
     title: "Identidade com presença e coerência",
     text: "Direção visual e sistemas de marca que organizam a percepção do público e fazem sua empresa ser reconhecida em cada ponto de contato.",
@@ -45,6 +47,7 @@ const services = [
   {
     number: "03",
     slug: "social-media",
+    href: "/servicos/gestao-de-redes-sociais",
     type: "content",
     title: "Conteúdo que comunica valor",
     text: "Estratégia e produção de conteúdo para redes sociais com linguagem humana, direção clara e consistência para construir autoridade de verdade.",
@@ -53,6 +56,7 @@ const services = [
   {
     number: "04",
     slug: "estrategia-digital",
+    href: "/servicos#estrategia-digital",
     type: "strategy",
     title: "Estratégia para conectar tudo",
     text: "Posicionamento, jornada, automações e decisões digitais conectadas para que marca, conteúdo e tecnologia trabalhem na mesma direção.",
@@ -157,7 +161,7 @@ export default function Home() {
               "@type": "Service",
               name: service.title,
               description: service.text,
-              url: `${SITE_URL}/servicos#${service.slug}`,
+              url: `${SITE_URL}${service.href}`,
               provider: { "@id": `${SITE_URL}/#organization` },
             },
           })),
@@ -272,7 +276,7 @@ export default function Home() {
                 <div className="service-copy">
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
-                  <a className="service-link" href={`/servicos#${service.slug}`}>
+                  <a className="service-link" href={service.href}>
                     Entenda como esta solução funciona <span aria-hidden="true">↗</span>
                   </a>
                 </div>

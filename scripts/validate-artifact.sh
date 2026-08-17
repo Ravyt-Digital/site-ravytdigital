@@ -65,9 +65,29 @@ if (!services.includes("Presença digital local não se constrói")) {
   throw new Error("Services page is missing the regional SEO section");
 }
 
+for (const [path, expected] of [
+  ["/servicos/criacao-de-sites", "Criação de sites profissionais"],
+  ["/servicos/gestao-de-redes-sociais", "Gestão de redes sociais para empresas"],
+  ["/servicos/criacao-de-sites-no-ceara", "Criação de sites no Ceará"],
+  ["/servicos/criacao-de-sites-para-clinicas", "Criação de sites para clínicas e consultórios"],
+]) {
+  const page = await render(path);
+  for (const token of [expected, `https://ravytdigital.com${path}`, "BreadcrumbList", "FAQPage"]) {
+    if (!page.includes(token)) throw new Error(`${path} is missing: ${token}`);
+  }
+}
+
 const sitemap = await render("/sitemap.xml");
 if (!sitemap.includes("/blog/mercado-sites-seo-local-ceara")) {
   throw new Error("Sitemap is missing the regional SEO article");
+}
+for (const path of [
+  "/servicos/criacao-de-sites",
+  "/servicos/gestao-de-redes-sociais",
+  "/servicos/criacao-de-sites-no-ceara",
+  "/servicos/criacao-de-sites-para-clinicas",
+]) {
+  if (!sitemap.includes(path)) throw new Error(`Sitemap is missing ${path}`);
 }
 NODE
 

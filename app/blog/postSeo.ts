@@ -20,6 +20,7 @@ export type PostSeo = {
   cluster: "conteudo-e-busca" | "presenca-e-conversao" | "seo-local-e-mercado";
   keywords: string[];
   relatedSlugs: string[];
+  recommendedService: { href: string; label: string; title: string };
 };
 
 export const postSeo: PostSeo[] = [
@@ -49,6 +50,7 @@ export const postSeo: PostSeo[] = [
       "seo-information-gain-busca-generativa",
       "instagram-nao-substitui-site-proprio",
     ],
+    recommendedService: { href: "/servicos/criacao-de-sites-no-ceara", label: "Criação de sites no Ceará", title: "Quer aplicar uma estratégia regional com conteúdo e prova próprios?" },
   },
   {
     slug: "edits-instagram-stories-fluxo-producao",
@@ -76,6 +78,7 @@ export const postSeo: PostSeo[] = [
       "instagram-nao-substitui-site-proprio",
       "seo-information-gain-busca-generativa",
     ],
+    recommendedService: { href: "/servicos/gestao-de-redes-sociais", label: "Gestão de redes sociais", title: "Quer transformar ferramentas em um processo de conteúdo com direção?" },
   },
   {
     slug: "seo-information-gain-busca-generativa",
@@ -103,6 +106,7 @@ export const postSeo: PostSeo[] = [
       "instagram-nao-substitui-site-proprio",
       "site-bonito-nao-basta",
     ],
+    recommendedService: { href: "/servicos/criacao-de-sites", label: "Criação de sites profissionais", title: "Quer transformar conteúdo confiável em uma estrutura que também converte?" },
   },
   {
     slug: "instagram-nao-substitui-site-proprio",
@@ -130,6 +134,7 @@ export const postSeo: PostSeo[] = [
       "site-bonito-nao-basta",
       "pagina-de-vendas-ou-site-institucional",
     ],
+    recommendedService: { href: "/servicos/criacao-de-sites", label: "Criação de sites profissionais", title: "Quer combinar alcance social com uma presença digital própria?" },
   },
   {
     slug: "site-bonito-nao-basta",
@@ -157,6 +162,7 @@ export const postSeo: PostSeo[] = [
       "instagram-nao-substitui-site-proprio",
       "pagina-de-vendas-ou-site-institucional",
     ],
+    recommendedService: { href: "/servicos/criacao-de-sites", label: "Criação de sites profissionais", title: "Quer transformar confiança em uma experiência digital completa?" },
   },
   {
     slug: "pagina-de-vendas-ou-site-institucional",
@@ -184,6 +190,7 @@ export const postSeo: PostSeo[] = [
       "site-bonito-nao-basta",
       "instagram-nao-substitui-site-proprio",
     ],
+    recommendedService: { href: "/servicos/criacao-de-sites", label: "Criação de sites profissionais", title: "Quer escolher e construir a estrutura certa para o seu objetivo?" },
   },
 ];
 
