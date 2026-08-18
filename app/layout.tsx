@@ -6,10 +6,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Ravyt Digital | Excelência refletida no digital",
+    default: "Criação de Sites e Gestão de Redes Sociais no Ceará",
     template: "%s | Ravyt Digital",
   },
-  description: "Estratégia, design, conteúdo e tecnologia para transformar a qualidade do seu negócio em uma presença digital à mesma altura.",
+  description: "Criação de sites profissionais e gestão estratégica de redes sociais para empresas do Ceará que querem fortalecer sua presença digital e atender em todo o Brasil.",
   applicationName: "Ravyt Digital",
   authors: [
     { name: "Ytala Cabral", url: `${SITE_URL}/autores/ytala-cabral` },
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: SITE_URL,
     siteName: "Ravyt Digital",
-    title: "Ravyt Digital | Excelência refletida no digital",
-    description: "Estratégia, design, conteúdo e tecnologia para negócios que querem ser percebidos à altura do que entregam.",
+    title: "Criação de Sites e Gestão de Redes Sociais no Ceará",
+    description: "A Ravyt Digital cria sites profissionais e gerencia redes sociais para empresas do Ceará que querem transmitir mais confiança e gerar oportunidades.",
     images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Nova identidade visual da Ravyt Digital" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ravyt Digital | Excelência refletida no digital",
-    description: "Estratégia, design, conteúdo e tecnologia para sua excelência ser percebida.",
+    title: "Criação de Sites e Gestão de Redes Sociais no Ceará",
+    description: "Sites profissionais e redes sociais com estratégia para empresas do Ceará.",
     images: ["/brand/ravyt-social-card.jpg"],
   },
   robots: {
@@ -69,6 +69,23 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
+        <a
+          rel="me"
+          href="https://mastodon.social/@ravytdigital"
+          style={{
+            position: "absolute",
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: "hidden",
+            clip: "rect(0, 0, 0, 0)",
+            whiteSpace: "nowrap",
+            border: 0,
+          }}
+        >
+          Mastodon
+        </a>
         {children}
         <FloatingWhatsApp />
       </body>

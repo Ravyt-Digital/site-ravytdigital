@@ -60,6 +60,17 @@ for (const expected of [
   if (!article.includes(expected)) throw new Error(`Regional SEO article is missing: ${expected}`);
 }
 
+const home = await render("/");
+for (const expected of [
+  "<title>Criação de Sites e Gestão de Redes Sociais no Ceará</title>",
+  "Criação de sites e gestão de redes sociais",
+  "Tianguá, Ceará",
+  "/servicos/criacao-de-sites",
+  "/servicos/gestao-de-redes-sociais",
+]) {
+  if (!home.includes(expected)) throw new Error(`Homepage is missing: ${expected}`);
+}
+
 const services = await render("/servicos");
 if (!services.includes("Presença digital local não se constrói")) {
   throw new Error("Services page is missing the regional SEO section");

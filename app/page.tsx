@@ -31,36 +31,18 @@ const services = [
     slug: "sites",
     href: "/servicos/criacao-de-sites",
     type: "site",
-    title: "Sites que valorizam o seu negócio",
-    text: "Sites institucionais, páginas de vendas, blogs e experiências digitais pensadas para transformar visita em confiança — e confiança em ação.",
-    tags: ["UX e UI", "Desenvolvimento", "SEO", "Performance"],
+    title: "Criação de sites profissionais",
+    text: "Criamos sites institucionais, landing pages e blogs que apresentam sua empresa com clareza, fortalecem a confiança e ajudam o cliente a avançar até o contato.",
+    tags: ["Estratégia", "Design responsivo", "SEO técnico", "Conversão"],
   },
   {
     number: "02",
-    slug: "identidade-visual",
-    href: "/servicos#identidade-visual",
-    type: "brand",
-    title: "Identidade com presença e coerência",
-    text: "Direção visual e sistemas de marca que organizam a percepção do público e fazem sua empresa ser reconhecida em cada ponto de contato.",
-    tags: ["Identidade visual", "Direção de arte", "Design system", "Aplicações"],
-  },
-  {
-    number: "03",
     slug: "social-media",
     href: "/servicos/gestao-de-redes-sociais",
     type: "content",
-    title: "Conteúdo que comunica valor",
-    text: "Estratégia e produção de conteúdo para redes sociais com linguagem humana, direção clara e consistência para construir autoridade de verdade.",
-    tags: ["Social media", "Roteiros", "Design editorial", "Calendário"],
-  },
-  {
-    number: "04",
-    slug: "estrategia-digital",
-    href: "/servicos#estrategia-digital",
-    type: "strategy",
-    title: "Estratégia para conectar tudo",
-    text: "Posicionamento, jornada, automações e decisões digitais conectadas para que marca, conteúdo e tecnologia trabalhem na mesma direção.",
-    tags: ["Posicionamento", "Jornada", "Automação", "Crescimento"],
+    title: "Gestão estratégica de redes sociais",
+    text: "Planejamos e produzimos conteúdos que traduzem o valor da sua empresa, mantêm uma presença consistente e aproximam a marca das pessoas certas.",
+    tags: ["Posicionamento", "Planejamento", "Conteúdo", "Análise"],
   },
 ];
 
@@ -98,10 +80,10 @@ const projects = [
 ];
 
 const steps = [
-  { number: "01", title: "Mergulho", text: "Entendemos o negócio, o público e o valor que já existe — antes de pensar na aparência." },
-  { number: "02", title: "Direção", text: "Definimos o que precisa ser percebido, qual história contar e como cada canal participa dela." },
-  { number: "03", title: "Criação", text: "Transformamos estratégia em design, conteúdo e tecnologia com atenção real aos detalhes." },
-  { number: "04", title: "Evolução", text: "Publicamos, acompanhamos e refinamos a experiência para que ela continue à altura do negócio." },
+  { number: "01", title: "Diagnóstico", text: "Entendemos seu negócio, seus clientes, seus serviços e o que hoje impede sua presença digital de transmitir confiança." },
+  { number: "02", title: "Estratégia", text: "Definimos o papel do site, das redes sociais e de cada mensagem na jornada até o contato comercial." },
+  { number: "03", title: "Criação", text: "Transformamos a direção em páginas, conteúdos e experiências com identidade, clareza e intenção." },
+  { number: "04", title: "Publicação e evolução", text: "Colocamos a estrutura no ar, acompanhamos os sinais e refinamos o que pode gerar mais valor para o negócio." },
 ];
 
 function ServiceGlyph({ type }: { type: string }) {
@@ -135,7 +117,7 @@ export default function Home() {
           "https://www.linkedin.com/company/ravytdigital/",
           "https://github.com/Ravyt-Digital",
         ],
-        description: "Agência de estratégia, design, Social Media e tecnologia que transforma a qualidade real de negócios em uma presença digital à mesma altura.",
+        description: "Agência de criação de sites e gestão de redes sociais localizada em Tianguá, Ceará, com atendimento a empresas em todo o Brasil.",
         slogan: "Excelência refletida no digital.",
         email: "ola@ravytdigital.com",
         contactPoint: {
@@ -154,7 +136,7 @@ export default function Home() {
         ],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Soluções de presença digital",
+          name: "Criação de sites e gestão de redes sociais",
           itemListElement: services.map((service) => ({
             "@type": "Offer",
             itemOffered: {
@@ -209,64 +191,64 @@ export default function Home() {
             <div className="hero-copy">
               <div className="eyebrow">
                 <span className="eyebrow-dot" />
-                Estratégia • Design • Tecnologia
+                Tianguá, Ceará • Atendimento em todo o Brasil
               </div>
               <h1>
-                Excelência refletida <span>no digital.</span>
+                Criação de sites e gestão de redes sociais <span>no Ceará.</span>
               </h1>
               <p className="hero-lead">
-                Transformamos a qualidade real do seu negócio em uma presença digital
-                à mesma altura.
+                Ajudamos empresas a apresentar melhor seus serviços, transmitir confiança
+                e construir uma presença digital capaz de gerar novas oportunidades.
               </p>
               <div className="hero-actions">
                 <a className="button button-light" href="/contato">
-                  Vamos conversar
+                  Solicitar diagnóstico
                   <ArrowUpRight />
                 </a>
                 <a className="button button-ghost" href="#projetos">
-                  Conheça nossos cases
+                  Ver projetos realizados
                   <ArrowDown />
                 </a>
               </div>
               <div className="hero-disciplines" aria-label="Áreas de atuação">
-                <span>Estratégia</span><i /><span>Design</span><i /><span>Conteúdo</span><i /><span>Tecnologia</span>
+                <span>Sites</span><i /><span>Social Media</span><i /><span>SEO</span><i /><span>Conteúdo</span>
               </div>
             </div>
 
-            <div className="hero-art brand-evolution" aria-label="Da excelência real à presença digital de alto nível">
+            <div className="hero-art brand-evolution" aria-label="Site profissional e conteúdo estratégico formando uma presença digital completa">
               <div className="brand-symbol-stage">
                 <span className="brand-ring brand-ring-one" aria-hidden="true" />
                 <span className="brand-ring brand-ring-two" aria-hidden="true" />
                 <Image className="brand-symbol-main" src="/brand/ravyt-symbol-2026.png" alt="Símbolo Ravyt Digital" width={245} height={235} priority unoptimized />
               </div>
-              <div className="brand-path" aria-label="Processo de transformação da Ravyt Digital">
-                <div><i className="path-mark path-real" /><span>Excelência real</span></div>
+              <div className="brand-path" aria-label="Estrutura de presença digital da Ravyt Digital">
+                <div><i className="path-mark path-real" /><span>Site profissional</span></div>
                 <b aria-hidden="true">→</b>
-                <div><i className="path-mark path-transform" /><span>Transformação estratégica</span></div>
+                <div><i className="path-mark path-transform" /><span>Conteúdo estratégico</span></div>
                 <b aria-hidden="true">→</b>
-                <div><i className="path-mark path-digital" /><span>Presença digital de alto nível</span></div>
+                <div><i className="path-mark path-digital" /><span>Marca mais forte</span></div>
               </div>
             </div>
           </div>
 
           <div className="hero-foot shell">
-            <p>Não criamos apenas uma aparência bonita.</p>
-            <p>Construímos a percepção certa para o seu negócio.</p>
+            <p>Para empresas que já entregam qualidade.</p>
+            <p>Do Ceará para todo o Brasil.</p>
           </div>
         </section>
 
         <section className="promise">
           <div className="shell promise-grid">
-            <p className="section-kicker">O que a Ravyt entrega</p>
-            <h2>A distância entre ser excelente e <em>parecer excelente</em> não deveria existir.</h2>
-            <p className="promise-copy">Alinhamos posicionamento, identidade, conteúdo e experiência digital para que cada ponto de contato revele o verdadeiro nível do seu trabalho.</p>
+            <p className="section-kicker">O problema que resolvemos</p>
+            <h2>Seu negócio pode ser excelente. Mas se o digital não mostra isso, <em>o cliente não percebe.</em></h2>
+            <p className="promise-copy">A Ravyt organiza o site e as redes sociais para que as pessoas entendam o que sua empresa faz, reconheçam seu valor e encontrem um caminho claro para entrar em contato.</p>
           </div>
         </section>
 
         <section className="services" id="servicos">
           <div className="shell section-heading">
-            <div><p className="section-kicker">Soluções integradas</p><span className="section-index">01 — 04</span></div>
-            <h2>O digital funciona melhor quando <span>tudo conta a mesma história.</span></h2>
+            <div><p className="section-kicker">Nossos serviços principais</p><span className="section-index">01 — 02</span></div>
+            <h2>O site constrói a base. As redes sociais mantêm <span>sua marca presente.</span></h2>
           </div>
           <div className="shell services-list">
             {services.map((service) => (
@@ -277,7 +259,7 @@ export default function Home() {
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
                   <a className="service-link" href={service.href}>
-                    Entenda como esta solução funciona <span aria-hidden="true">↗</span>
+                    Conhecer este serviço <span aria-hidden="true">↗</span>
                   </a>
                 </div>
                 <div className="service-tags">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
@@ -289,10 +271,10 @@ export default function Home() {
         <section className="work" id="projetos">
           <div className="work-glow" aria-hidden="true" />
           <div className="shell work-heading">
-            <div><p className="section-kicker section-kicker-light">Projetos selecionados</p><span className="section-index section-index-light">01 — 05</span></div>
+            <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 05</span></div>
             <div className="work-heading-copy">
-              <h2>Projetos que geram <em>presença, confiança e resultado.</em></h2>
-              <p>Cada projeto nasce de uma visão estratégica e se transforma em uma experiência digital pensada para gerar valor.</p>
+              <h2>Projetos que transformam bons negócios em <em>experiências digitais confiáveis.</em></h2>
+              <p>Cada site é construído a partir do serviço, do público e do objetivo do cliente — sem copiar uma fórmula e apenas trocar o nome da empresa.</p>
             </div>
           </div>
           <div className="projects-viewport shell">
@@ -331,12 +313,12 @@ export default function Home() {
             ))}
             </div>
           </div>
-          <div className="shell work-footer"><p>Cada projeto começa no negócio — não na ferramenta.</p><a href="/contato">Quero construir o próximo <ArrowUpRight /></a></div>
+          <div className="shell work-footer"><p>Seu site precisa representar a qualidade que o cliente encontrará depois.</p><a href="/contato">Quero criar meu site <ArrowUpRight /></a></div>
         </section>
 
         <section className="method" id="metodo">
           <div className="shell method-layout">
-            <div className="method-intro"><p className="section-kicker">Nosso jeito de fazer</p><h2>Bonito é consequência. <span>Clareza vem primeiro.</span></h2><p>Nosso processo reduz achismos, aproxima decisões e preserva o que torna cada negócio único.</p></div>
+            <div className="method-intro"><p className="section-kicker">Como trabalhamos</p><h2>Antes de criar páginas ou posts, <span>entendemos o negócio.</span></h2><p>O site e as redes sociais precisam nascer da mesma estratégia para não transmitir mensagens diferentes sobre a mesma empresa.</p></div>
             <div className="method-steps">
               {steps.map((step) => <article className="method-step" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
             </div>
@@ -345,8 +327,8 @@ export default function Home() {
 
         <section className="about" id="sobre">
           <div className="shell about-grid">
-            <div className="about-statement"><p className="section-kicker section-kicker-light">A Ravyt Digital</p><blockquote>“Antes de criar qualquer coisa, entendemos <em>o que precisa ser percebido.</em>”</blockquote></div>
-            <div className="about-copy"><p>Somos uma agência que reúne estratégia, conteúdo, design e tecnologia para cuidar da presença digital como um todo.</p><p>O nosso trabalho é fazer com que a primeira impressão do público esteja à altura da experiência que o cliente encontra depois.</p><div className="about-principles"><span>Clareza antes do excesso</span><span>Intenção em cada detalhe</span><span>Parceria sem complicação</span></div></div>
+            <div className="about-statement"><p className="section-kicker section-kicker-light">A Ravyt Digital</p><blockquote>Uma agência do Ceará para empresas que não querem <em>parecer comuns.</em></blockquote></div>
+            <div className="about-copy"><p>Somos uma agência de criação de sites e gestão de redes sociais localizada em Tianguá, no Ceará, com atendimento a empresas de todo o Brasil.</p><p>Unimos estratégia, conteúdo, design e tecnologia para refletir no digital a excelência que cada cliente já entrega no dia a dia.</p><div className="about-principles"><span>Mensagem clara</span><span>Design com intenção</span><span>Parceria próxima</span></div></div>
           </div>
           <div className="shell team-grid">
             <article className="team-card">
@@ -363,23 +345,23 @@ export default function Home() {
               </div>
               <div className="team-info"><p>Especialista na Criação de Sites e Aplicativos</p><h3>Márcio Cabral</h3></div>
             </article>
-            <div className="team-belief"><span>Uma equipe enxuta.</span><strong>Uma visão completa do seu digital.</strong></div>
+            <div className="team-belief"><span>Estratégia e execução próximas.</span><strong>Site e conteúdo trabalhando para a mesma marca.</strong></div>
           </div>
         </section>
 
         <section className="contact" aria-labelledby="titulo-proximo-passo">
           <div className="contact-orbit contact-orbit-one" aria-hidden="true" /><div className="contact-orbit contact-orbit-two" aria-hidden="true" />
           <div className="shell contact-inner">
-            <p className="section-kicker section-kicker-light">Seu próximo passo</p>
-            <h2 id="titulo-proximo-passo">Vamos conversar sobre o <span>seu projeto.</span></h2>
-            <p>Reunimos o formulário para novos projetos e todos os canais oficiais da Ravyt Digital em uma única página.</p>
-            <div className="contact-actions"><a className="button button-light button-large" href="/contato">Ir para contato <i aria-hidden="true">↗</i></a></div>
+            <p className="section-kicker section-kicker-light">Comece por um diagnóstico</p>
+            <h2 id="titulo-proximo-passo">Sua empresa precisa de um site novo ou de <span>redes sociais com direção?</span></h2>
+            <p>Conte o momento do seu negócio. A Ravyt identifica a estrutura mais coerente para transformar sua presença digital em confiança e novas oportunidades.</p>
+            <div className="contact-actions"><a className="button button-light button-large" href="/contato">Solicitar diagnóstico <i aria-hidden="true">↗</i></a></div>
           </div>
         </section>
       </main>
 
       <footer className="footer">
-        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p><nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="/contato">Contato</a></nav></div>
+        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Criação de sites e gestão de redes sociais<br />no Ceará, com atendimento em todo o Brasil.</p><nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="/contato">Contato</a></nav></div>
         <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Criado com muito carinho por Ravyt Digital.</p><div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></div>
       </footer>
 

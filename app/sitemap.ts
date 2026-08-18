@@ -5,7 +5,7 @@ import { getPostSeo } from "@/app/blog/postSeo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: new Date("2026-08-17"), changeFrequency: "monthly", priority: 1 },
+    { url: SITE_URL, lastModified: new Date("2026-08-18"), changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/servicos`, lastModified: new Date("2026-08-17"), changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/servicos/criacao-de-sites`, lastModified: new Date("2026-08-17"), changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/servicos/gestao-de-redes-sociais`, lastModified: new Date("2026-08-17"), changeFrequency: "monthly", priority: 0.9 },
