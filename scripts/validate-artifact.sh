@@ -65,6 +65,9 @@ for (const expected of [
   "<title>Criação de Sites e Gestão de Redes Sociais no Ceará</title>",
   "Criação de sites e gestão de redes sociais",
   "Tianguá, Ceará",
+  "Dois serviços principais",
+  "Rua Mocinha Batista, S/N, Centro, Tianguá - CE",
+  "26.114.696/0001-70",
   "/servicos/criacao-de-sites",
   "/servicos/gestao-de-redes-sociais",
 ]) {
