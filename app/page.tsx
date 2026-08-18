@@ -32,7 +32,7 @@ const services = [
     href: "/servicos/criacao-de-sites",
     type: "site",
     title: "Criação de sites profissionais",
-    text: "Criamos sites institucionais, landing pages e blogs que apresentam sua empresa com clareza, fortalecem a confiança e ajudam o cliente a avançar até o contato.",
+    text: "Criamos sites institucionais, landing pages e blogs com conteúdo, design responsivo, SEO técnico e caminhos claros para orçamento ou contato.",
     tags: ["Estratégia", "Design responsivo", "SEO técnico", "Conversão"],
   },
   {
@@ -41,7 +41,7 @@ const services = [
     href: "/servicos/gestao-de-redes-sociais",
     type: "content",
     title: "Gestão estratégica de redes sociais",
-    text: "Planejamos e produzimos conteúdos que traduzem o valor da sua empresa, mantêm uma presença consistente e aproximam a marca das pessoas certas.",
+    text: "Planejamos pautas, produzimos textos e peças visuais e acompanhamos o conteúdo publicado nos canais definidos para cada empresa.",
     tags: ["Posicionamento", "Planejamento", "Conteúdo", "Análise"],
   },
 ];
@@ -80,10 +80,10 @@ const projects = [
 ];
 
 const steps = [
-  { number: "01", title: "Diagnóstico", text: "Entendemos seu negócio, seus clientes, seus serviços e o que hoje impede sua presença digital de transmitir confiança." },
-  { number: "02", title: "Estratégia", text: "Definimos o papel do site, das redes sociais e de cada mensagem na jornada até o contato comercial." },
-  { number: "03", title: "Criação", text: "Transformamos a direção em páginas, conteúdos e experiências com identidade, clareza e intenção." },
-  { number: "04", title: "Publicação e evolução", text: "Colocamos a estrutura no ar, acompanhamos os sinais e refinamos o que pode gerar mais valor para o negócio." },
+  { number: "01", title: "Diagnóstico", text: "Levantamos os serviços, o público, a área de atendimento, os diferenciais e os objetivos comerciais da empresa." },
+  { number: "02", title: "Planejamento", text: "Definimos a estrutura do site ou o plano de conteúdo, os responsáveis, os prazos e os critérios de aprovação." },
+  { number: "03", title: "Produção", text: "Produzimos as páginas, os textos, os elementos visuais e os demais materiais previstos no escopo aprovado." },
+  { number: "04", title: "Publicação e acompanhamento", text: "Publicamos o projeto, verificamos o funcionamento e acompanhamos os indicadores definidos para o serviço." },
 ];
 
 function ServiceGlyph({ type }: { type: string }) {
@@ -101,7 +101,8 @@ export default function Home() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         name: "Ravyt Digital",
-        legalName: "Ravyt Digital",
+        legalName: "YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME",
+        taxID: "26.114.696/0001-70",
         url: SITE_URL,
         logo: {
           "@type": "ImageObject",
@@ -118,8 +119,15 @@ export default function Home() {
           "https://github.com/Ravyt-Digital",
         ],
         description: "Agência de criação de sites e gestão de redes sociais localizada em Tianguá, Ceará, com atendimento a empresas em todo o Brasil.",
-        slogan: "Excelência refletida no digital.",
         email: "ola@ravytdigital.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Rua Mocinha Batista, S/N",
+          addressLocality: "Tianguá",
+          addressRegion: "CE",
+          postalCode: "62320-320",
+          addressCountry: "BR",
+        },
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "atendimento comercial",
@@ -197,8 +205,8 @@ export default function Home() {
                 Criação de sites e gestão de redes sociais <span>no Ceará.</span>
               </h1>
               <p className="hero-lead">
-                Ajudamos empresas a apresentar melhor seus serviços, transmitir confiança
-                e construir uma presença digital capaz de gerar novas oportunidades.
+                A Ravyt Digital é uma agência localizada em Tianguá. Criamos sites profissionais
+                e fazemos a gestão de redes sociais para empresas do Ceará e de outras regiões do Brasil.
               </p>
               <div className="hero-actions">
                 <a className="button button-light" href="/contato">
@@ -226,29 +234,29 @@ export default function Home() {
                 <b aria-hidden="true">→</b>
                 <div><i className="path-mark path-transform" /><span>Conteúdo estratégico</span></div>
                 <b aria-hidden="true">→</b>
-                <div><i className="path-mark path-digital" /><span>Marca mais forte</span></div>
+                <div><i className="path-mark path-digital" /><span>Contato comercial</span></div>
               </div>
             </div>
           </div>
 
           <div className="hero-foot shell">
-            <p>Para empresas que já entregam qualidade.</p>
-            <p>Do Ceará para todo o Brasil.</p>
+            <p>Sites institucionais, landing pages, blogs e catálogos.</p>
+            <p>Planejamento e produção de conteúdo para redes sociais.</p>
           </div>
         </section>
 
         <section className="promise">
           <div className="shell promise-grid">
-            <p className="section-kicker">O problema que resolvemos</p>
-            <h2>Seu negócio pode ser excelente. Mas se o digital não mostra isso, <em>o cliente não percebe.</em></h2>
-            <p className="promise-copy">A Ravyt organiza o site e as redes sociais para que as pessoas entendam o que sua empresa faz, reconheçam seu valor e encontrem um caminho claro para entrar em contato.</p>
+            <p className="section-kicker">Agência digital em Tianguá, Ceará</p>
+            <h2>Atendemos empresas com criação de sites e <em>gestão de redes sociais.</em></h2>
+            <p className="promise-copy">Os projetos podem ser conduzidos presencialmente no Ceará ou de forma remota para outras regiões. Cada serviço possui escopo, página, processo e objetivo comercial próprios.</p>
           </div>
         </section>
 
         <section className="services" id="servicos">
           <div className="shell section-heading">
             <div><p className="section-kicker">Nossos serviços principais</p><span className="section-index">01 — 02</span></div>
-            <h2>O site constrói a base. As redes sociais mantêm <span>sua marca presente.</span></h2>
+            <h2>Dois serviços principais, com <span>escopos e processos separados.</span></h2>
           </div>
           <div className="shell services-list">
             {services.map((service) => (
@@ -273,8 +281,8 @@ export default function Home() {
           <div className="shell work-heading">
             <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 05</span></div>
             <div className="work-heading-copy">
-              <h2>Projetos que transformam bons negócios em <em>experiências digitais confiáveis.</em></h2>
-              <p>Cada site é construído a partir do serviço, do público e do objetivo do cliente — sem copiar uma fórmula e apenas trocar o nome da empresa.</p>
+              <h2>Sites institucionais, páginas de vendas e <em>catálogos digitais.</em></h2>
+              <p>Os exemplos abaixo mostram projetos desenvolvidos para diferentes serviços, públicos e objetivos comerciais.</p>
             </div>
           </div>
           <div className="projects-viewport shell">
@@ -313,12 +321,12 @@ export default function Home() {
             ))}
             </div>
           </div>
-          <div className="shell work-footer"><p>Seu site precisa representar a qualidade que o cliente encontrará depois.</p><a href="/contato">Quero criar meu site <ArrowUpRight /></a></div>
+          <div className="shell work-footer"><p>Precisa de um site institucional, landing page, blog ou catálogo?</p><a href="/contato">Solicitar orçamento de site <ArrowUpRight /></a></div>
         </section>
 
         <section className="method" id="metodo">
           <div className="shell method-layout">
-            <div className="method-intro"><p className="section-kicker">Como trabalhamos</p><h2>Antes de criar páginas ou posts, <span>entendemos o negócio.</span></h2><p>O site e as redes sociais precisam nascer da mesma estratégia para não transmitir mensagens diferentes sobre a mesma empresa.</p></div>
+            <div className="method-intro"><p className="section-kicker">Como trabalhamos</p><h2>Diagnóstico, planejamento, produção e <span>publicação.</span></h2><p>O processo é adaptado ao serviço contratado. Sites e redes sociais possuem entregas e indicadores diferentes, mesmo quando fazem parte da mesma estratégia.</p></div>
             <div className="method-steps">
               {steps.map((step) => <article className="method-step" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
             </div>
@@ -327,8 +335,8 @@ export default function Home() {
 
         <section className="about" id="sobre">
           <div className="shell about-grid">
-            <div className="about-statement"><p className="section-kicker section-kicker-light">A Ravyt Digital</p><blockquote>Uma agência do Ceará para empresas que não querem <em>parecer comuns.</em></blockquote></div>
-            <div className="about-copy"><p>Somos uma agência de criação de sites e gestão de redes sociais localizada em Tianguá, no Ceará, com atendimento a empresas de todo o Brasil.</p><p>Unimos estratégia, conteúdo, design e tecnologia para refletir no digital a excelência que cada cliente já entrega no dia a dia.</p><div className="about-principles"><span>Mensagem clara</span><span>Design com intenção</span><span>Parceria próxima</span></div></div>
+            <div className="about-statement"><p className="section-kicker section-kicker-light">A Ravyt Digital</p><blockquote>Agência de criação de sites e gestão de redes sociais em <em>Tianguá, Ceará.</em></blockquote></div>
+            <div className="about-copy"><p>Atendemos empresas do Ceará e de outras regiões do Brasil. As reuniões, aprovações e entregas podem ser realizadas online.</p><p>Ytala Cabral responde pela direção estratégica e pelo Social Media. Márcio Cabral responde pela criação de sites e aplicativos.</p><div className="about-principles"><span>Escopo definido</span><span>Processo documentado</span><span>Atendimento direto</span></div></div>
           </div>
           <div className="shell team-grid">
             <article className="team-card">
@@ -345,24 +353,32 @@ export default function Home() {
               </div>
               <div className="team-info"><p>Especialista na Criação de Sites e Aplicativos</p><h3>Márcio Cabral</h3></div>
             </article>
-            <div className="team-belief"><span>Estratégia e execução próximas.</span><strong>Site e conteúdo trabalhando para a mesma marca.</strong></div>
+            <div className="team-belief"><span>Duas áreas de atuação.</span><strong>Criação de sites e gestão de redes sociais.</strong></div>
           </div>
         </section>
 
         <section className="contact" aria-labelledby="titulo-proximo-passo">
           <div className="contact-orbit contact-orbit-one" aria-hidden="true" /><div className="contact-orbit contact-orbit-two" aria-hidden="true" />
           <div className="shell contact-inner">
-            <p className="section-kicker section-kicker-light">Comece por um diagnóstico</p>
-            <h2 id="titulo-proximo-passo">Sua empresa precisa de um site novo ou de <span>redes sociais com direção?</span></h2>
-            <p>Conte o momento do seu negócio. A Ravyt identifica a estrutura mais coerente para transformar sua presença digital em confiança e novas oportunidades.</p>
+            <p className="section-kicker section-kicker-light">Solicite uma avaliação inicial</p>
+            <h2 id="titulo-proximo-passo">Precisa criar um site ou contratar a <span>gestão de redes sociais?</span></h2>
+            <p>Informe o serviço desejado, a cidade da empresa e o objetivo do projeto. A Ravyt entrará em contato para entender o escopo e apresentar os próximos passos.</p>
             <div className="contact-actions"><a className="button button-light button-large" href="/contato">Solicitar diagnóstico <i aria-hidden="true">↗</i></a></div>
           </div>
         </section>
       </main>
 
       <footer className="footer">
-        <div className="shell footer-top"><a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a><p>Criação de sites e gestão de redes sociais<br />no Ceará, com atendimento em todo o Brasil.</p><nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="/contato">Contato</a></nav></div>
-        <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Criado com muito carinho por Ravyt Digital.</p><div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></div>
+        <div className="shell footer-top">
+          <a href="#inicio" aria-label="Voltar ao início"><BrandLockup dark /></a>
+          <div className="footer-company-data">
+            <p>Criação de sites e gestão de redes sociais no Ceará, com atendimento em todo o Brasil.</p>
+            <address>Rua Mocinha Batista, S/N, Centro, Tianguá - CE<br />CEP 62320-320</address>
+            <p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME<br />CNPJ 26.114.696/0001-70</p>
+          </div>
+          <nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="/contato">Contato</a></nav>
+        </div>
+        <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Site desenvolvido pela Ravyt Digital.</p><div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></div>
       </footer>
 
       <CookieConsent />

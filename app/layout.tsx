@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "Criação de Sites e Gestão de Redes Sociais no Ceará",
     template: "%s | Ravyt Digital",
   },
-  description: "Criação de sites profissionais e gestão estratégica de redes sociais para empresas do Ceará que querem fortalecer sua presença digital e atender em todo o Brasil.",
+  description: "Agência em Tianguá especializada em criação de sites profissionais e gestão de redes sociais para empresas do Ceará e de outras regiões do Brasil.",
   applicationName: "Ravyt Digital",
   authors: [
     { name: "Ytala Cabral", url: `${SITE_URL}/autores/ytala-cabral` },
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Ravyt Digital",
     title: "Criação de Sites e Gestão de Redes Sociais no Ceará",
-    description: "A Ravyt Digital cria sites profissionais e gerencia redes sociais para empresas do Ceará que querem transmitir mais confiança e gerar oportunidades.",
-    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Nova identidade visual da Ravyt Digital" }],
+    description: "Agência em Tianguá que cria sites profissionais e gerencia redes sociais para empresas do Ceará e de outras regiões do Brasil.",
+    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Criação de Sites e Gestão de Redes Sociais no Ceará",
-    description: "Sites profissionais e redes sociais com estratégia para empresas do Ceará.",
+    description: "Criação de sites profissionais e gestão de redes sociais para empresas do Ceará.",
     images: ["/brand/ravyt-social-card.jpg"],
   },
   robots: {
