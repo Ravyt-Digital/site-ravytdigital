@@ -53,6 +53,12 @@ const projects = [
     href: "https://site-capoeira-haute-savoie.ravytdigital.workers.dev/",
     image: "/projects/capoeira-haute-savoie.webp",
   },
+  {
+    title: "Ravyt Digital",
+    category: "Site institucional",
+    href: "https://ravytdigital.com/",
+    image: "/projects/ravyt-digital.webp",
+  },
 ];
 
 const steps = [
@@ -255,10 +261,10 @@ export default function Home() {
         <section className="work" id="projetos">
           <div className="work-glow" aria-hidden="true" />
           <div className="shell work-heading">
-            <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 01</span></div>
+            <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 02</span></div>
             <div className="work-heading-copy">
-              <h2>Site institucional com identidade, conteúdo e <em>experiência responsiva.</em></h2>
-              <p>O projeto abaixo apresenta o trabalho desenvolvido para a Capoeira Haute-Savoie, da estrutura visual à navegação completa.</p>
+              <h2>Sites institucionais com identidade, conteúdo e <em>experiência responsiva.</em></h2>
+              <p>Os projetos abaixo apresentam diferentes aplicações do trabalho da Ravyt Digital, da estrutura visual à navegação completa.</p>
             </div>
           </div>
           <div className="projects-viewport shell">
