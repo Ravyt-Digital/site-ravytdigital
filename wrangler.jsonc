@@ -17,7 +17,7 @@
   },
   "env": {
     "staging": {
-      "name": "ravyt-digital-staging",
+      "name": "site-ravyt-digital",
       "workers_dev": true,
       "images": {
         "binding": "IMAGES"
