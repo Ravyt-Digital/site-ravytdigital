@@ -1,8 +1,8 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "ravyt-digital",
+  "name": "site-ravyt-digital",
   "main": "./worker/index.ts",
-  "compatibility_date": "2026-05-22",
+  "compatibility_date": "2026-08-22",
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
   "assets": {
@@ -17,7 +17,7 @@
   },
   "env": {
     "staging": {
-      "name": "site-ravyt-digital",
+      "name": "ravyt-digital-staging",
       "workers_dev": true,
       "images": {
         "binding": "IMAGES"

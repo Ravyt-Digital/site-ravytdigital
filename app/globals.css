@@ -292,7 +292,7 @@ button { font: inherit; }
 
 .contact { position: relative; overflow: hidden; padding: 155px 0; color: #fff; background: #121416; }.contact::before { content: ""; position: absolute; inset: 0; opacity: .24; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size: 74px 74px; }.contact-orbit { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); border: 1px solid rgba(184,110,74,.16); border-radius: 50%; }.contact-orbit-one { width: 750px; height: 750px; }.contact-orbit-two { width: 1050px; height: 1050px; }.contact-inner { position: relative; z-index: 2; text-align: center; }.contact-inner .section-kicker { display: inline-block; }.contact-inner h2 { max-width: 910px; margin: 30px auto 26px; font-size: clamp(54px,7vw,100px); line-height: .94; letter-spacing: -.06em; font-weight: 580; }.contact-inner h2 span { color: #d28b68; }.contact-inner > p { max-width: 650px; margin: 0 auto; color: rgba(255,255,255,.58); font-size: 17px; line-height: 1.7; }.contact-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 42px; }.button-large { min-height: 60px; padding-inline: 27px; }
 
-/* Formulário de contato incorporado */
+/* Formulário de contato incorporado — arquivo normalizado em UTF-8 */
 .contact-form-section {
   padding: clamp(76px, 9vw, 132px) 0;
   color: var(--charcoal);

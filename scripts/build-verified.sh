@@ -12,6 +12,17 @@ command -v timeout >/dev/null || {
   exit 69
 }
 
+echo "Validating UTF-8 source files..."
+while IFS= read -r -d '' source_file; do
+  if ! iconv -f UTF-8 -t UTF-8 "${source_file}" >/dev/null; then
+    echo "Invalid UTF-8 source file: ${source_file#${SITES_PROJECT_ROOT}/}" >&2
+    exit 65
+  fi
+done < <(
+  find "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components" "${SITES_PROJECT_ROOT}/lib" \
+    -type f \( -name '*.css' -o -name '*.ts' -o -name '*.tsx' \) -print0
+)
+
 vinext="${SITES_PROJECT_ROOT}/node_modules/.bin/vinext"
 if [[ ! -x "${vinext}" ]]; then
   echo "vinext is unavailable. Run npm run install:ci and wait for it to finish before building." >&2
