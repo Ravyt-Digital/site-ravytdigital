@@ -48,34 +48,10 @@ const services = [
 
 const projects = [
   {
-    title: "Odonto Premium",
-    category: "Site institucional",
-    href: "https://site-odonto-premium.ravytdigital.workers.dev/",
-    image: "/projects/odonto-premium.webp",
-  },
-  {
     title: "Capoeira Haute-Savoie",
     category: "Site institucional",
     href: "https://site-capoeira-haute-savoie.ravytdigital.workers.dev/",
     image: "/projects/capoeira-haute-savoie.webp",
-  },
-  {
-    title: "Excel no Agro",
-    category: "Página de vendas",
-    href: "https://site-excel-no-agro.ravytdigital.workers.dev/",
-    image: "/projects/excel-no-agro.webp",
-  },
-  {
-    title: "Seja Indispensável!",
-    category: "Página de vendas",
-    href: "https://site-seja-indispensavel.ravytdigital.workers.dev/",
-    image: "/projects/seja-indispensavel.webp",
-  },
-  {
-    title: "Ravyt Motos",
-    category: "Catálogo digital",
-    href: "https://site-ravyt-capacetes.ravytdigital.workers.dev/",
-    image: "/projects/ravyt-motos.webp",
   },
 ];
 
@@ -279,10 +255,10 @@ export default function Home() {
         <section className="work" id="projetos">
           <div className="work-glow" aria-hidden="true" />
           <div className="shell work-heading">
-            <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 05</span></div>
+            <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 01</span></div>
             <div className="work-heading-copy">
-              <h2>Sites institucionais, páginas de vendas e <em>catálogos digitais.</em></h2>
-              <p>Os exemplos abaixo mostram projetos desenvolvidos para diferentes serviços, públicos e objetivos comerciais.</p>
+              <h2>Site institucional com identidade, conteúdo e <em>experiência responsiva.</em></h2>
+              <p>O projeto abaixo apresenta o trabalho desenvolvido para a Capoeira Haute-Savoie, da estrutura visual à navegação completa.</p>
             </div>
           </div>
           <div className="projects-viewport shell">
