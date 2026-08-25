@@ -1,6 +1,6 @@
 Cloudflare Workers production build trigger.
 
-Created: 2026-08-08T21:00:00Z
-Target: ravyt-digital
+Created: 2026-08-25T13:45:00Z
+Target: site-ravyt-digital
 Branch: main
-Purpose: initial production workers.dev deployment; custom domains remain disconnected.
+Purpose: publish DA Dental Clinic portfolio update on ravytdigital.com.
