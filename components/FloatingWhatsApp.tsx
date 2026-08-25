@@ -12,7 +12,7 @@ export default function FloatingWhatsApp() {
         href="/contato"
         aria-label="Ver todos os canais de contato da Ravyt Digital"
       >
-        <Image src="/brand/ravyt-symbol-2026.png" alt="" width={245} height={235} unoptimized />
+        <Image src="/brand/ravyt-symbol-2026.webp" alt="" width={245} height={235} unoptimized />
         <span aria-hidden="true" />
       </a>
     </div>

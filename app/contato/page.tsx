@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { SITE_URL } from "@/lib/site";
 import { BlogHeader } from "@/components/BlogChrome";
-import CookieConsent from "@/components/CookieConsent";
-
-const TYPEFORM_ID = "wr1pvhAx";
-const TYPEFORM_URL = `https://form.typeform.com/to/${TYPEFORM_ID}`;
+import TypeformEmbed from "@/components/TypeformEmbed";
 
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/ravytdigital/", icon: "instagram" },
@@ -29,7 +25,7 @@ export const metadata: Metadata = {
   title: "Contato",
   description: "Converse com a Ravyt Digital sobre nossos serviços ou fale conosco pelo e-mail ola@ravytdigital.com.",
   alternates: { canonical: "/contato" },
-  openGraph: { title: "Contato | Ravyt Digital", description: "Formulário comercial e canais oficiais da Ravyt Digital.", url: "/contato", type: "website" },
+  openGraph: { title: "Contato | Ravyt Digital", description: "Formulário comercial e canais oficiais da Ravyt Digital.", url: "/contato", type: "website", images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }] },
 };
 
 export default function ContactPage() {
@@ -37,7 +33,7 @@ export default function ContactPage() {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "ContactPage", "@id": `${SITE_URL}/contato#page`, url: `${SITE_URL}/contato`, name: "Contato — Ravyt Digital", description: "Formulário comercial e canais oficiais da Ravyt Digital.", isPartOf: { "@id": `${SITE_URL}/#website` }, about: { "@id": `${SITE_URL}/#organization` } },
-      { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Ravyt Digital", url: SITE_URL, email: "ola@ravytdigital.com", sameAs: socialLinks.slice(0, 3).map((contact) => contact.href) },
+      { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Ravyt Digital", legalName: "YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME", taxID: "26.114.696/0001-70", url: SITE_URL, email: "ola@ravytdigital.com", address: { "@type": "PostalAddress", streetAddress: "Rua Mocinha Batista, S/N", addressLocality: "Tianguá", addressRegion: "CE", postalCode: "62320-320", addressCountry: "BR" }, sameAs: socialLinks.slice(0, 3).map((contact) => contact.href) },
       { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Início", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Contato", item: `${SITE_URL}/contato` }] },
     ],
   };
@@ -55,21 +51,19 @@ export default function ContactPage() {
               <p>Este formulário é exclusivo para pessoas e empresas interessadas em contratar ou conhecer melhor os serviços da Ravyt Digital.</p>
               <p className="contact-page-guidance">Para parcerias, imprensa, suporte, questões administrativas ou qualquer outro assunto, escreva para:</p>
               <a className="contact-page-email" href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>
+              <address className="contact-page-address">Rua Mocinha Batista, S/N, Centro<br />Tianguá - CE · CEP 62320-320</address>
               <nav className="contact-socials" aria-label="Redes sociais e WhatsApp">
                 {socialLinks.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}><SocialIcon name={social.icon} /></a>)}
               </nav>
               <p className="contact-page-privacy">Seus dados são tratados conforme nossa <a href="/politica-de-privacidade">Política de Privacidade</a>.</p>
             </div>
             <div className="contact-page-form" aria-label="Formulário de contato da Ravyt Digital">
-              <div data-tf-widget={TYPEFORM_ID} data-tf-hide-headers data-tf-hide-footer />
-              <noscript><a href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Abrir formulário de contato</a></noscript>
+              <TypeformEmbed />
             </div>
           </div>
         </section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
-      <CookieConsent />
-      <Script src="https://embed.typeform.com/next/embed.js" strategy="lazyOnload" />
     </>
   );
 }

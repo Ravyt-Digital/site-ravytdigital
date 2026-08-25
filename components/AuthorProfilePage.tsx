@@ -4,7 +4,6 @@ import { SITE_URL } from "@/lib/site";
 import { posts } from "@/app/blog/posts";
 import { getPostSeo } from "@/app/blog/postSeo";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
-import CookieConsent from "@/components/CookieConsent";
 
 type AuthorProfileProps = {
   name: string;
@@ -59,7 +58,6 @@ export default function AuthorProfilePage({ name, slug, role, image, description
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <BlogFooter />
-      <CookieConsent />
     </>
   );
 }

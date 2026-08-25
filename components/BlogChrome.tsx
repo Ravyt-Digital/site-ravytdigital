@@ -5,7 +5,7 @@ import MobileMenu from "@/components/MobileMenu";
 function BlogBrand({ dark = false }: { dark?: boolean }) {
   return (
     <span className={`brand-lockup${dark ? " brand-lockup-dark" : ""}`}>
-      <Image src="/brand/ravyt-logo-2026.png" alt="Ravyt Digital" width={875} height={235} priority unoptimized />
+      <Image src="/brand/ravyt-logo-2026.webp" alt="Ravyt Digital" width={875} height={235} priority unoptimized />
     </span>
   );
 }

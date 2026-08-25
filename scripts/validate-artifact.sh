@@ -19,6 +19,31 @@ hosting="${SITES_PROJECT_ROOT}/dist/.openai/hosting.json"
   exit 66
 }
 
+for required in \
+  "${SITES_PROJECT_ROOT}/app/loading.tsx" \
+  "${SITES_PROJECT_ROOT}/app/not-found.tsx" \
+  "${SITES_PROJECT_ROOT}/app/obrigado/page.tsx" \
+  "${SITES_PROJECT_ROOT}/app/politica-de-privacidade/page.tsx" \
+  "${SITES_PROJECT_ROOT}/app/termos-de-uso/page.tsx" \
+  "${SITES_PROJECT_ROOT}/public/favicon.png" \
+  "${SITES_PROJECT_ROOT}/public/brand/ravyt-social-card.jpg"; do
+  [[ -f "${required}" ]] || { echo "Missing compliance artifact: ${required}" >&2; exit 66; }
+done
+
+if rg -n "ravyt-(logo|symbol)-2026\\.png" "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components"; then
+  echo "Page content still references unconverted brand PNG assets." >&2
+  exit 66
+fi
+
+if rg -n -U --pcre2 '<Image(?:(?!alt=)[\\s\\S])*?/>' "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components"; then
+  echo "A Next Image component is missing an alt attribute." >&2
+  exit 66
+fi
+
+rg -q '@media \(max-width:' "${SITES_PROJECT_ROOT}/app/globals.css" || { echo "Missing responsive breakpoints." >&2; exit 66; }
+rg -q 'position: fixed' "${SITES_PROJECT_ROOT}/app/globals.css" || { echo "Missing fixed mobile CTA." >&2; exit 66; }
+rg -q 'Não foi possível carregar o formulário' "${SITES_PROJECT_ROOT}/components/TypeformEmbed.tsx" || { echo "Missing form error state." >&2; exit 66; }
+
 node --input-type=module - "${worker}" "${hosting}" <<'NODE'
 import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
@@ -39,15 +64,61 @@ const env = {
   },
 };
 const ctx = { waitUntil() {}, passThroughOnException() {} };
-const render = async (path) => {
+const request = async (path, init = {}) => {
   const response = await worker.default.fetch(
-    new Request(`https://ravytdigital.com${path}`, { headers: { accept: "text/html" } }),
+    new Request(`https://ravytdigital.com${path}`, { headers: { accept: "text/html" }, ...init }),
     env,
     ctx,
   );
+  return response;
+};
+const render = async (path) => {
+  const response = await request(path);
   if (response.status !== 200) throw new Error(`${path} returned HTTP ${response.status}`);
   return response.text();
 };
+
+const pagePaths = [
+  "/",
+  "/servicos",
+  "/servicos/criacao-de-sites",
+  "/servicos/gestao-de-redes-sociais",
+  "/servicos/criacao-de-sites-no-ceara",
+  "/servicos/criacao-de-sites-para-clinicas",
+  "/contato",
+  "/obrigado",
+  "/blog",
+  "/autores/marcio-cabral",
+  "/autores/ytala-cabral",
+  "/politica-editorial",
+  "/politica-de-privacidade",
+  "/termos-de-uso",
+];
+
+for (const path of pagePaths) {
+  const page = await render(path);
+  for (const metadataToken of ["<title>", 'name="description"', 'property="og:image"']) {
+    if (!page.includes(metadataToken)) throw new Error(`${path} is missing metadata: ${metadataToken}`);
+  }
+  if ((page.match(/<h1[ >]/g) ?? []).length !== 1) throw new Error(`${path} must render one primary H1`);
+}
+
+const missing = await request("/esta-pagina-nao-existe");
+if (missing.status !== 404 || !(await missing.text()).includes("Esta página não foi encontrada")) {
+  throw new Error("Custom 404 page is missing or does not return HTTP 404");
+}
+
+const robots = await render("/robots.txt");
+for (const token of ["User-Agent: *", "Allow: /", "https://ravytdigital.com/sitemap.xml"]) {
+  if (!robots.includes(token)) throw new Error(`robots.txt is missing: ${token}`);
+}
+
+const analytics = await request("/api/analytics", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({ path: "/auditoria", occurredAt: new Date().toISOString() }),
+});
+if (analytics.status !== 204) throw new Error(`Analytics endpoint returned HTTP ${analytics.status}`);
 
 const article = await render("/blog/mercado-sites-seo-local-ceara");
 for (const expected of [
@@ -70,6 +141,7 @@ for (const expected of [
   "26.114.696/0001-70",
   "/servicos/criacao-de-sites",
   "/servicos/gestao-de-redes-sociais",
+  "Ver todos os canais de contato da Ravyt Digital",
 ]) {
   if (!home.includes(expected)) throw new Error(`Homepage is missing: ${expected}`);
 }
@@ -102,6 +174,21 @@ for (const path of [
   "/servicos/criacao-de-sites-para-clinicas",
 ]) {
   if (!sitemap.includes(path)) throw new Error(`Sitemap is missing ${path}`);
+}
+
+const contact = await render("/contato");
+for (const token of [
+  "Carregando formulário",
+  "Rua Mocinha Batista, S/N, Centro",
+  "62320-320",
+  "https://ravytdigital.com/obrigado",
+]) {
+  if (!contact.includes(token)) throw new Error(`Contact page is missing: ${token}`);
+}
+
+const thankYou = await render("/obrigado");
+for (const token of ["Recebemos sua solicitação", 'name="robots" content="noindex, nofollow"']) {
+  if (!thankYou.includes(token)) throw new Error(`Thank-you page is missing: ${token}`);
 }
 NODE
 

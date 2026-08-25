@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Criação de Sites no Ceará para Empresas",
   description: "Criação de sites no Ceará com estratégia, design, SEO técnico e conteúdo regional útil — sem páginas genéricas que apenas trocam o nome da cidade.",
   alternates: { canonical: "/servicos/criacao-de-sites-no-ceara" },
-  openGraph: { title: "Criação de sites no Ceará | Ravyt Digital", description: "Presença regional com conteúdo próprio, prova e estrutura para busca e conversão.", url: "/servicos/criacao-de-sites-no-ceara", type: "website" },
+  openGraph: { title: "Criação de sites no Ceará | Ravyt Digital", description: "Presença regional com conteúdo próprio, prova e estrutura para busca e conversão.", url: "/servicos/criacao-de-sites-no-ceara", type: "website", images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }] },
 };
 
 const data: ServiceLandingData = {

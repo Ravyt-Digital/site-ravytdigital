@@ -17,6 +17,7 @@ export default function CookieConsent() {
 
   const choose = (value: "accepted" | "rejected") => {
     try { window.localStorage.setItem(STORAGE_KEY, value); } catch {}
+    window.dispatchEvent(new CustomEvent("ravyt:consent", { detail: value }));
     setVisible(false);
   };
 

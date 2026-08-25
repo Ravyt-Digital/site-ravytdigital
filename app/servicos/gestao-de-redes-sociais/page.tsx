@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Gestão de Redes Sociais para Empresas",
   description: "Estratégia e gestão de redes sociais com posicionamento, planejamento, roteiros, design editorial e análise para empresas que querem comunicar valor.",
   alternates: { canonical: "/servicos/gestao-de-redes-sociais" },
-  openGraph: { title: "Gestão de redes sociais para empresas | Ravyt Digital", description: "Conteúdo com direção, consistência e conexão real com o negócio.", url: "/servicos/gestao-de-redes-sociais", type: "website" },
+  openGraph: { title: "Gestão de redes sociais para empresas | Ravyt Digital", description: "Conteúdo com direção, consistência e conexão real com o negócio.", url: "/servicos/gestao-de-redes-sociais", type: "website", images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }] },
 };
 
 const data: ServiceLandingData = {

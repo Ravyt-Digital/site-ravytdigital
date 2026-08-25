@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
-import CookieConsent from "@/components/CookieConsent";
 
 export type ServiceLandingData = {
   slug: string;
@@ -152,7 +151,6 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingData 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <BlogFooter />
-      <CookieConsent />
     </>
   );
 }

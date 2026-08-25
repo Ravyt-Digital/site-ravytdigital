@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       <h2>4. Fundamentos para o tratamento</h2>
       <p>O tratamento ocorre conforme as hipóteses aplicáveis da Lei Geral de Proteção de Dados, incluindo consentimento, procedimentos relacionados a contratos, cumprimento de obrigação legal e legítimo interesse avaliado com respeito aos direitos do titular. Consulte o <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" rel="noreferrer">texto oficial compilado da LGPD</a>.</p>
       <h2>5. Cookies e armazenamento local</h2>
-      <p>O site utiliza armazenamento essencial para lembrar sua escolha de privacidade. Recursos não essenciais de medição ou marketing somente poderão ser ativados após o seu aceite. Você pode limpar essa preferência nas configurações do navegador a qualquer momento.</p>
+      <p>O site utiliza armazenamento essencial para lembrar sua escolha de privacidade. Após o seu aceite, nosso monitoramento próprio registra a página visitada, a página de referência, as dimensões da tela e o horário da visita nos registros protegidos da infraestrutura da Ravyt. Não usamos esse recurso para publicidade nem instalamos cookies de terceiros. Você pode limpar sua preferência nas configurações do navegador a qualquer momento.</p>
       <h2>6. Compartilhamento</h2>
       <p>Não vendemos dados pessoais. Informações podem ser compartilhadas apenas com fornecedores necessários para hospedagem, comunicação, segurança e execução dos serviços, dentro do limite adequado a cada finalidade, ou quando houver obrigação legal.</p>
       <h2>7. Conservação e segurança</h2>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
-import CookieConsent from "@/components/CookieConsent";
 
 const SERVICE_DESCRIPTION = "Criação de sites, SEO, estratégia, identidade visual e Social Media para empresas e especialistas no Ceará e em todo o Brasil.";
 
@@ -15,6 +14,7 @@ export const metadata: Metadata = {
     description: "Estratégia, design, conteúdo e tecnologia trabalhando juntos para sua empresa ser percebida à altura do que entrega.",
     url: "/servicos",
     type: "website",
+    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }],
   },
 };
 
@@ -173,7 +173,6 @@ export default function ServicesPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <BlogFooter />
-      <CookieConsent />
     </>
   );
 }

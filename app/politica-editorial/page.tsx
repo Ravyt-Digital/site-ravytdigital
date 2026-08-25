@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
-import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
   title: "Política Editorial do Blog Ravyt Digital",
@@ -42,7 +41,6 @@ export default function EditorialPolicyPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <BlogFooter />
-      <CookieConsent />
     </>
   );
 }

@@ -23,7 +23,7 @@ const topicClusters = [
 ];
 
 export const metadata: Metadata = {
-  title: "Blog Ravyt Digital | SEO, Social Media, Sites e Presença Digital",
+  title: "Blog: SEO, Social Media, Sites e Presença Digital",
   description:
     "Conteúdos da Ravyt Digital sobre SEO, Social Media, sites, conversão e presença digital para empresas que querem crescer com estratégia e estrutura.",
   alternates: { canonical: "/blog" },
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
       "Conteúdo prático sobre SEO, Social Media, sites, conversão e tecnologia para negócios.",
     url: "/blog",
     type: "website",
+    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }],
   },
 };
 

@@ -114,7 +114,7 @@ export default async function ArticlePage({
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/brand/ravyt-symbol-2026.png`,
+        url: `${SITE_URL}/brand/ravyt-symbol-2026.webp`,
       },
     },
     ...(seo

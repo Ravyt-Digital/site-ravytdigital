@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Criação de Sites para Clínicas e Consultórios",
   description: "Sites profissionais para clínicas e consultórios com serviços claros, equipe, prova, acessibilidade, SEO técnico e caminhos simples para agendamento.",
   alternates: { canonical: "/servicos/criacao-de-sites-para-clinicas" },
-  openGraph: { title: "Criação de sites para clínicas | Ravyt Digital", description: "Experiências claras e confiáveis para apresentar especialidades e facilitar o próximo passo do paciente.", url: "/servicos/criacao-de-sites-para-clinicas", type: "website" },
+  openGraph: { title: "Criação de sites para clínicas | Ravyt Digital", description: "Experiências claras e confiáveis para apresentar especialidades e facilitar o próximo passo do paciente.", url: "/servicos/criacao-de-sites-para-clinicas", type: "website", images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }] },
 };
 
 const data: ServiceLandingData = {

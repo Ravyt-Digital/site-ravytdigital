@@ -6,7 +6,7 @@ export default function LegalPage({ eyebrow, title, children }: { eyebrow: strin
   return (
     <main className="legal-page">
       <header className="legal-header shell">
-        <a className="legal-brand" href="/" aria-label="Ravyt Digital — página inicial"><Image src="/brand/ravyt-logo-2026.png" alt="Ravyt Digital" width={875} height={235} priority unoptimized /></a>
+        <a className="legal-brand" href="/" aria-label="Ravyt Digital — página inicial"><Image src="/brand/ravyt-logo-2026.webp" alt="Ravyt Digital" width={875} height={235} priority unoptimized /></a>
         <a className="legal-back" href="/">← Voltar ao site</a>
       </header>
       <section className="legal-hero">

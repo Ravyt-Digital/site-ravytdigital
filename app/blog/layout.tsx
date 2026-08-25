@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import CookieConsent from "@/components/CookieConsent";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
 
 export default function BlogLayout({ children }: { children: ReactNode }) {
@@ -9,7 +8,6 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
       <BlogHeader current="insights" />
       {children}
       <BlogFooter />
-      <CookieConsent />
     </>
   );
 }

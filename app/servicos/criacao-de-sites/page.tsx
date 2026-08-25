@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Criação de Sites Profissionais para Empresas",
   description: "Criação de sites institucionais, landing pages e blogs com estratégia, UX, SEO técnico e estrutura para gerar confiança e oportunidades comerciais.",
   alternates: { canonical: "/servicos/criacao-de-sites" },
-  openGraph: { title: "Criação de sites profissionais | Ravyt Digital", description: "Sites alinhados ao negócio, à busca e à decisão do cliente.", url: "/servicos/criacao-de-sites", type: "website" },
+  openGraph: { title: "Criação de sites profissionais | Ravyt Digital", description: "Sites alinhados ao negócio, à busca e à decisão do cliente.", url: "/servicos/criacao-de-sites", type: "website", images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }] },
 };
 
 const data: ServiceLandingData = {

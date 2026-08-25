@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import CookieConsent from "@/components/CookieConsent";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -52,7 +54,6 @@ export const metadata: Metadata = {
   },
   other: {
     "theme-color": "#1A1C1E",
-    "codex-preview": "development",
   },
   icons: {
     icon: "/favicon.png",
@@ -87,7 +88,9 @@ export default function RootLayout({
           Mastodon
         </a>
         {children}
+        <Analytics />
         <FloatingWhatsApp />
+        <CookieConsent />
       </body>
     </html>
   );

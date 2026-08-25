@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import CookieConsent from "@/components/CookieConsent";
 import MobileMenu from "@/components/MobileMenu";
 import ProjectPreview from "@/components/ProjectPreview";
 import { SITE_URL, WWW_SITE_URL } from "@/lib/site";
@@ -20,7 +19,7 @@ const ArrowDown = () => (
 function BrandLockup({ dark = false }: { dark?: boolean }) {
   return (
     <span className={`brand-lockup${dark ? " brand-lockup-dark" : ""}`} aria-label="Ravyt Digital">
-      <Image src="/brand/ravyt-logo-2026.png" alt="" width={875} height={235} priority unoptimized />
+      <Image src="/brand/ravyt-logo-2026.webp" alt="" width={875} height={235} priority unoptimized />
     </span>
   );
 }
@@ -88,7 +87,7 @@ export default function Home() {
         url: SITE_URL,
         logo: {
           "@type": "ImageObject",
-          url: `${SITE_URL}/brand/ravyt-logo-2026.png`,
+          url: `${SITE_URL}/brand/ravyt-logo-2026.webp`,
           width: 875,
           height: 235,
         },
@@ -209,7 +208,7 @@ export default function Home() {
               <div className="brand-symbol-stage">
                 <span className="brand-ring brand-ring-one" aria-hidden="true" />
                 <span className="brand-ring brand-ring-two" aria-hidden="true" />
-                <Image className="brand-symbol-main" src="/brand/ravyt-symbol-2026.png" alt="Símbolo Ravyt Digital" width={245} height={235} priority unoptimized />
+                <Image className="brand-symbol-main" src="/brand/ravyt-symbol-2026.webp" alt="Símbolo Ravyt Digital" width={245} height={235} priority unoptimized />
               </div>
               <div className="brand-path" aria-label="Estrutura de presença digital da Ravyt Digital">
                 <div><i className="path-mark path-real" /><span>Site profissional</span></div>
@@ -363,7 +362,6 @@ export default function Home() {
         <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Site desenvolvido pela Ravyt Digital.</p><div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></div>
       </footer>
 
-      <CookieConsent />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
     </>
   );
