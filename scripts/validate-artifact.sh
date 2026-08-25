@@ -142,6 +142,9 @@ for (const expected of [
   "/servicos/criacao-de-sites",
   "/servicos/gestao-de-redes-sociais",
   "Ver todos os canais de contato da Ravyt Digital",
+  "DA Dental Clinic",
+  "https://clinic-reveal-web.lovable.app/",
+  "/projects/da-dental-clinic.webp",
 ]) {
   if (!home.includes(expected)) throw new Error(`Homepage is missing: ${expected}`);
 }

@@ -58,6 +58,12 @@ const projects = [
     href: "https://ravytdigital.com/",
     image: "/projects/ravyt-digital.webp",
   },
+  {
+    title: "DA Dental Clinic",
+    category: "Site institucional para clínica",
+    href: "https://clinic-reveal-web.lovable.app/",
+    image: "/projects/da-dental-clinic.webp",
+  },
 ];
 
 const steps = [
@@ -260,7 +266,7 @@ export default function Home() {
         <section className="work" id="projetos">
           <div className="work-glow" aria-hidden="true" />
           <div className="shell work-heading">
-            <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 02</span></div>
+            <div><p className="section-kicker section-kicker-light">Sites criados pela Ravyt</p><span className="section-index section-index-light">01 — 03</span></div>
             <div className="work-heading-copy">
               <h2>Sites institucionais com identidade, conteúdo e <em>experiência responsiva.</em></h2>
               <p>Os projetos abaixo apresentam diferentes aplicações do trabalho da Ravyt Digital, da estrutura visual à navegação completa.</p>
