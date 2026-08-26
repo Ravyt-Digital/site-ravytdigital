@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { whatsappUrl } from "@/lib/contact";
 
 export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: boolean }) {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: bool
           {/* A plain anchor avoids a Vinext client-proxy issue in the interactive menu. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/blog" onClick={() => setOpen(false)}>Insights <span>04</span></a>
-          <a className="menu-contact" href="/contato" onClick={() => setOpen(false)}>Vamos conversar ↗</a>
+          <a className="menu-contact" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)" onClick={() => setOpen(false)}>Conversar pelo WhatsApp ↗</a>
         </nav>
       </div>
     </div>

@@ -39,7 +39,7 @@ const data: ServiceLandingData = {
     { title: "Diagnóstico", text: "Entendemos o negócio, a oferta, a percepção atual e o que o visitante precisa decidir." },
     { title: "Estrutura", text: "Definimos páginas, mensagens, provas e relações entre serviço, portfólio, conteúdo e contato." },
     { title: "Criação", text: "Desenhamos e desenvolvemos a experiência responsiva com acessibilidade e desempenho desde a base." },
-    { title: "Validação", text: "Revisamos conteúdo, links, metadados, dados estruturados, formulários e comportamento em diferentes telas." },
+    { title: "Validação", text: "Revisamos conteúdo, links, metadados, dados estruturados, CTAs e comportamento em diferentes telas." },
   ],
   evidenceTitle: "O portfólio mostra diferentes objetivos, não um modelo repetido.",
   evidenceText: "A Ravyt já desenvolveu sites institucionais, páginas de vendas, catálogos e experiências para saúde, educação, cultura, varejo e negócios digitais. Cada projeto parte da oferta e do público — não de uma página pronta com textos trocados.",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE_URL } from "@/lib/site";
+import { whatsappUrl } from "@/lib/contact";
 import { posts, type BlogPost } from "./posts";
 import { getPostSeo } from "./postSeo";
 
@@ -232,7 +233,7 @@ export default function BlogPage() {
             <h2>Seu próximo passo não precisa ser um palpite.</h2>
             <span>Conte para a Ravyt onde sua presença digital está hoje. Nós ajudamos a identificar a estrutura mais coerente para o seu momento.</span>
           </div>
-          <a className="button button-light" href="/contato">Ir para contato <i aria-hidden="true">↗</i></a>
+          <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">Conversar pelo WhatsApp <i aria-hidden="true">↗</i></a>
         </div>
       </section>
 

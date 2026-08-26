@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
+import { whatsappUrl } from "@/lib/contact";
 import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
 import { getPost, posts } from "../posts";
 import { getPostSeo } from "../postSeo";
@@ -356,8 +357,8 @@ export default async function ArticlePage({
               <a className="article-service-link" href={seo?.recommendedService.href ?? "/servicos"}>
                 {seo?.recommendedService.label ?? "Conhecer os serviços"} <i aria-hidden="true">↗</i>
               </a>
-              <a className="button button-light" href="/contato">
-                Solicitar diagnóstico <i aria-hidden="true">↗</i>
+              <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">
+                Conversar pelo WhatsApp <i aria-hidden="true">↗</i>
               </a>
             </div>
           </div>

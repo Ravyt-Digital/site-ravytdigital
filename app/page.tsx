@@ -3,6 +3,7 @@ import MobileMenu from "@/components/MobileMenu";
 import ProjectPreview from "@/components/ProjectPreview";
 import { SITE_URL, WWW_SITE_URL } from "@/lib/site";
 import Image from "next/image";
+import { whatsappUrl } from "@/lib/contact";
 
 const ArrowUpRight = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
@@ -175,8 +176,8 @@ export default function Home() {
               <a href="/blog">Insights</a>
               <a href="/contato">Contato</a>
             </nav>
-            <a className="header-cta" href="/contato">
-              Vamos conversar
+            <a className="header-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">
+              Conversar pelo WhatsApp
               <ArrowUpRight />
             </a>
             <MobileMenu />
@@ -196,8 +197,8 @@ export default function Home() {
                 e fazemos a gestão de redes sociais para empresas do Ceará e de outras regiões do Brasil.
               </p>
               <div className="hero-actions">
-                <a className="button button-light" href="/contato">
-                  Solicitar diagnóstico
+                <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero uma landing page estratégica pelo WhatsApp (abre em nova aba)">
+                  Quero uma landing page estratégica
                   <ArrowUpRight />
                 </a>
                 <a className="button button-ghost" href="#projetos">
@@ -308,7 +309,7 @@ export default function Home() {
             ))}
             </div>
           </div>
-          <div className="shell work-footer"><p>Precisa de um site institucional, landing page, blog ou catálogo?</p><a href="/contato">Solicitar orçamento de site <ArrowUpRight /></a></div>
+          <div className="shell work-footer"><p>Precisa de uma landing page estratégica?</p><a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Solicitar orçamento pelo WhatsApp (abre em nova aba)">Solicitar orçamento pelo WhatsApp <ArrowUpRight /></a></div>
         </section>
 
         <section className="method" id="metodo">
@@ -350,7 +351,7 @@ export default function Home() {
             <p className="section-kicker section-kicker-light">Solicite uma avaliação inicial</p>
             <h2 id="titulo-proximo-passo">Precisa criar um site ou contratar a <span>gestão de redes sociais?</span></h2>
             <p>Informe o serviço desejado, a cidade da empresa e o objetivo do projeto. A Ravyt entrará em contato para entender o escopo e apresentar os próximos passos.</p>
-            <div className="contact-actions"><a className="button button-light button-large" href="/contato">Solicitar diagnóstico <i aria-hidden="true">↗</i></a></div>
+            <div className="contact-actions"><a className="button button-light button-large" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero conversar sobre meu projeto pelo WhatsApp (abre em nova aba)">Quero conversar sobre meu projeto <i aria-hidden="true">↗</i></a></div>
           </div>
         </section>
       </main>
@@ -363,9 +364,9 @@ export default function Home() {
             <address>Rua Mocinha Batista, S/N, Centro, Tianguá - CE<br />CEP 62320-320</address>
             <p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME<br />CNPJ 26.114.696/0001-70</p>
           </div>
-          <nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href="/contato">Contato</a></nav>
+          <nav aria-label="Links do rodapé"><a href="/servicos">Serviços</a><a href="#sobre">A Ravyt</a><a href="#projetos">Cases</a><a href="/blog">Insights</a><a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" aria-label="WhatsApp (abre em nova aba)">WhatsApp</a><a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a></nav>
         </div>
-        <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Site desenvolvido pela Ravyt Digital.</p><div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></div>
+        <div className="shell footer-bottom"><span>© 2026 Ravyt Digital</span><p>Site desenvolvido pela Ravyt Digital.</p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div></div>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />

@@ -25,7 +25,7 @@ export default function CookieConsent() {
 
   return (
     <aside className="cookie-banner" aria-label="Preferências de cookies" aria-live="polite">
-      <div><strong>Você escolhe como navegar.</strong><p>Usamos armazenamento essencial para lembrar sua preferência. Recursos de medição só podem ser ativados com o seu aceite. <a href="/politica-de-privacidade">Saiba mais</a>.</p></div>
+      <div><strong>Você escolhe como navegar.</strong><p>Usamos armazenamento essencial para lembrar sua preferência. Recursos de medição só podem ser ativados com o seu aceite. <a href="/politica-de-cookies">Política de Cookies</a> · <a href="/politica-de-privacidade">Privacidade</a> · <a href="/termos-de-uso">Termos</a>.</p></div>
       <div className="cookie-actions"><button type="button" onClick={() => choose("rejected")}>Recusar</button><button className="cookie-accept" type="button" onClick={() => choose("accepted")}>Aceitar</button></div>
     </aside>
   );

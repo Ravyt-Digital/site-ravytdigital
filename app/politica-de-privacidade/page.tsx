@@ -16,10 +16,11 @@ export default function PrivacyPage() {
       <p>A Ravyt Digital atua como controladora dos dados pessoais relacionados a este site e aos contatos comerciais recebidos por seus canais. Dúvidas ou solicitações podem ser enviadas para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
       <h2>2. Quais informações podem ser coletadas</h2>
       <ul>
-        <li>Nome, e-mail, telefone, empresa e informações que você decidir enviar ao entrar em contato conosco;</li>
+        <li>Informações que você decidir enviar diretamente pelo WhatsApp ou e-mail, sob as regras do canal escolhido;</li>
         <li>Dados técnicos essenciais, como endereço IP, tipo de dispositivo, navegador e registros de segurança disponibilizados pela infraestrutura de hospedagem;</li>
         <li>Sua escolha sobre cookies e recursos de medição, armazenada localmente no dispositivo.</li>
       </ul>
+      <p>Este site não possui formulários nem campos de captura. Os eventos de medição não incluem nome, e-mail, telefone, conteúdo de mensagens, dados de saúde ou outras informações pessoais ou sensíveis.</p>
       <h2>3. Para que usamos essas informações</h2>
       <p>Os dados podem ser usados para responder solicitações, preparar propostas, prestar serviços contratados, manter a segurança e o funcionamento do site, melhorar a experiência e cumprir obrigações legais ou regulatórias.</p>
       <h2>4. Fundamentos para o tratamento</h2>

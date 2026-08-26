@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 import MobileMenu from "@/components/MobileMenu";
+import { whatsappUrl } from "@/lib/contact";
 
 function BlogBrand({ dark = false }: { dark?: boolean }) {
   return (
@@ -22,7 +23,7 @@ export function BlogHeader({ current }: { current?: "services" | "insights" | "c
           <a className={current === "insights" ? "is-current" : undefined} href="/blog" aria-current={current === "insights" ? "page" : undefined}>Insights</a>
           <a className={current === "contact" ? "is-current" : undefined} href="/contato" aria-current={current === "contact" ? "page" : undefined}>Contato</a>
         </nav>
-        <a className="header-cta" href="/contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+        <a className="header-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a>
         <MobileMenu fromSubpage />
       </div>
     </header>
@@ -34,19 +35,21 @@ export function BlogFooter() {
     <footer className="footer blog-footer">
       <div className="shell footer-top">
         <a href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand dark /></a>
-        <p>Estratégia, design, conteúdo e tecnologia<br />para sua excelência ser percebida.</p>
+        <p>Tianguá, Ceará<br />Atendimento a produtores digitais em todo o Brasil.</p>
         <nav aria-label="Links do rodapé">
           <a href="/servicos">Serviços</a>
           <a href="/#sobre">A Ravyt</a>
           <a href="/#projetos">Cases</a>
           <a href="/blog">Insights</a>
           <a href="/contato">Contato</a>
+          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">WhatsApp</a>
+          <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>
       </div>
       <div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
         <p>Criado com muito carinho por Ravyt Digital.</p>
-        <div><a href="/politica-editorial">Política Editorial</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div>
+        <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div>
       </div>
     </footer>
   );

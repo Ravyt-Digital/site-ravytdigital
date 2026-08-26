@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 import { BlogHeader } from "@/components/BlogChrome";
-import TypeformEmbed from "@/components/TypeformEmbed";
+import { whatsappUrl } from "@/lib/contact";
 
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/ravytdigital/", icon: "instagram" },
   { label: "Facebook", href: "https://www.facebook.com/ravytdigital", icon: "facebook" },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/ravytdigital/", icon: "linkedin" },
-  { label: "WhatsApp", href: "https://wa.me/5588996956479", icon: "whatsapp" },
+  { label: "WhatsApp", href: whatsappUrl(), icon: "whatsapp" },
 ] as const;
 
 const socialIconPaths = {
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   title: "Contato",
   description: "Converse com a Ravyt Digital sobre nossos serviços ou fale conosco pelo e-mail ola@ravytdigital.com.",
   alternates: { canonical: "/contato" },
-  openGraph: { title: "Contato | Ravyt Digital", description: "Formulário comercial e canais oficiais da Ravyt Digital.", url: "/contato", type: "website", images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }] },
+  openGraph: { title: "Contato | Ravyt Digital", description: "WhatsApp e e-mail oficiais da Ravyt Digital.", url: "/contato", type: "website", images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }] },
 };
 
 export default function ContactPage() {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "ContactPage", "@id": `${SITE_URL}/contato#page`, url: `${SITE_URL}/contato`, name: "Contato — Ravyt Digital", description: "Formulário comercial e canais oficiais da Ravyt Digital.", isPartOf: { "@id": `${SITE_URL}/#website` }, about: { "@id": `${SITE_URL}/#organization` } },
+      { "@type": "ContactPage", "@id": `${SITE_URL}/contato#page`, url: `${SITE_URL}/contato`, name: "Contato — Ravyt Digital", description: "WhatsApp e e-mail oficiais da Ravyt Digital.", isPartOf: { "@id": `${SITE_URL}/#website` }, about: { "@id": `${SITE_URL}/#organization` } },
       { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Ravyt Digital", legalName: "YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME", taxID: "26.114.696/0001-70", url: SITE_URL, email: "ola@ravytdigital.com", address: { "@type": "PostalAddress", streetAddress: "Rua Mocinha Batista, S/N", addressLocality: "Tianguá", addressRegion: "CE", postalCode: "62320-320", addressCountry: "BR" }, sameAs: socialLinks.slice(0, 3).map((contact) => contact.href) },
       { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Início", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Contato", item: `${SITE_URL}/contato` }] },
     ],
@@ -47,18 +47,23 @@ export default function ContactPage() {
           <div className="shell contact-page-grid">
             <div className="contact-page-copy">
               <p className="section-kicker">Seu próximo passo</p>
-              <h1 id="titulo-contato">Quer conversar sobre nossos serviços?</h1>
-              <p>Este formulário é exclusivo para pessoas e empresas interessadas em contratar ou conhecer melhor os serviços da Ravyt Digital.</p>
-              <p className="contact-page-guidance">Para parcerias, imprensa, suporte, questões administrativas ou qualquer outro assunto, escreva para:</p>
-              <a className="contact-page-email" href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>
-              <address className="contact-page-address">Rua Mocinha Batista, S/N, Centro<br />Tianguá - CE · CEP 62320-320</address>
+              <h1 id="titulo-contato">Conte um pouco sobre o seu projeto.</h1>
+              <p>Se você é produtor(a) digital na área de Psicologia Parental, converse diretamente com a Ravyt sobre sua landing page, cookies, pixels ou copywriting.</p>
+              <a className="button button-light button-large" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" aria-label="Conversar pelo WhatsApp com a Ravyt Digital (abre em nova aba)">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a>
+              <p className="contact-page-guidance">Prefere e-mail? Fale com:</p>
+              <a className="contact-page-email" href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
+              <address className="contact-page-address">Tianguá, Ceará<br />Atendimento a produtores digitais em todo o Brasil.</address>
               <nav className="contact-socials" aria-label="Redes sociais e WhatsApp">
-                {socialLinks.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}><SocialIcon name={social.icon} /></a>)}
+                {socialLinks.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" data-track={social.label === "WhatsApp" ? "whatsapp_click" : undefined} aria-label={`${social.label}${social.label === "WhatsApp" ? " (abre em nova aba)" : ""}`} title={social.label}><SocialIcon name={social.icon} /></a>)}
               </nav>
               <p className="contact-page-privacy">Seus dados são tratados conforme nossa <a href="/politica-de-privacidade">Política de Privacidade</a>.</p>
             </div>
-            <div className="contact-page-form" aria-label="Formulário de contato da Ravyt Digital">
-              <TypeformEmbed />
+            <div className="contact-page-direct" aria-label="Canais diretos de contato">
+              <p className="section-kicker">Contato sem formulário</p>
+              <h2>Uma conversa direta, sem campos para preencher.</h2>
+              <p>Escolha WhatsApp ou e-mail. Não solicitamos dados pessoais ou informações de saúde nesta página.</p>
+              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero uma landing page estratégica pelo WhatsApp (abre em nova aba)">Quero uma landing page estratégica</a>
+              <a href="mailto:ola@ravytdigital.com" data-track="email_click">Enviar um e-mail</a>
             </div>
           </div>
         </section>

@@ -49,5 +49,19 @@ export default function Analytics() {
     return () => window.removeEventListener("ravyt:consent", onConsent);
   }, [pathname]);
 
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest<HTMLAnchorElement>("a[data-track]");
+      if (!link || !hasConsent()) return;
+      const eventName = link.dataset.track;
+      if (!eventName || !["whatsapp_click", "email_click", "primary_cta_click"].includes(eventName)) return;
+      const payload = JSON.stringify({ event: eventName, path: pathname, occurredAt: new Date().toISOString() });
+      if (navigator.sendBeacon) navigator.sendBeacon("/api/analytics", new Blob([payload], { type: "application/json" }));
+      else void fetch("/api/analytics", { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [pathname]);
+
   return null;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
+import { whatsappUrl } from "@/lib/contact";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
 
 const SERVICE_DESCRIPTION = "Criação de sites, SEO, estratégia, identidade visual e Social Media para empresas e especialistas no Ceará e em todo o Brasil.";
@@ -117,7 +118,7 @@ export default function ServicesPage() {
             <p className="section-kicker">Soluções integradas</p>
             <h1>Marketing digital com <em>estrutura, clareza e direção.</em></h1>
             <p>Para uma presença digital gerar confiança, estratégia, design, conteúdo e tecnologia precisam trabalhar na mesma direção. A Ravyt organiza essas frentes de acordo com o momento e a prioridade do seu negócio.</p>
-            <a className="button button-light" href="/contato">Solicitar diagnóstico digital <span aria-hidden="true">↗</span></a>
+            <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Solicitar orçamento pelo WhatsApp (abre em nova aba)">Solicitar orçamento pelo WhatsApp <span aria-hidden="true">↗</span></a>
           </div>
         </header>
 
@@ -169,7 +170,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="services-cta"><div className="shell"><p>Seu próximo passo</p><h2>Descubra qual estrutura faz sentido para o seu momento.</h2><a className="button button-light" href="/contato">Ir para contato <span aria-hidden="true">↗</span></a></div></section>
+        <section className="services-cta"><div className="shell"><p>Seu próximo passo</p><h2>Descubra qual estrutura faz sentido para o seu momento.</h2><a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero conversar sobre meu projeto pelo WhatsApp (abre em nova aba)">Quero conversar sobre meu projeto <span aria-hidden="true">↗</span></a></div></section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <BlogFooter />

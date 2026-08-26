@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 type PageView = {
+  event?: unknown;
   path?: unknown;
   referrer?: unknown;
   viewport?: unknown;
@@ -20,10 +21,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Caminho inválido." }, { status: 400 });
   }
 
+  const allowedEvents = ["page_view", "whatsapp_click", "email_click", "primary_cta_click"];
+  const event = typeof body.event === "string" && allowedEvents.includes(body.event) ? body.event : "page_view";
   console.log(JSON.stringify({
-    event: "page_view",
+    event,
     path: body.path,
-    referrer: typeof body.referrer === "string" ? body.referrer.slice(0, 500) : null,
+    referrer: event === "page_view" && typeof body.referrer === "string" ? body.referrer.slice(0, 500) : null,
     viewport: typeof body.viewport === "string" ? body.viewport.slice(0, 30) : null,
     occurredAt: typeof body.occurredAt === "string" ? body.occurredAt : new Date().toISOString(),
   }));

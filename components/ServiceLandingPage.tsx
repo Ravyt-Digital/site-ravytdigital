@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
+import { whatsappUrl } from "@/lib/contact";
 
 export type ServiceLandingData = {
   slug: string;
@@ -82,7 +83,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingData 
             <p className="section-kicker">{data.eyebrow}</p>
             <h1>{data.title} <em>{data.titleAccent}</em></h1>
             <p>{data.lead}</p>
-            <a className="button button-light" href="/contato">Solicitar diagnóstico <span aria-hidden="true">↗</span></a>
+            <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Solicitar orçamento pelo WhatsApp (abre em nova aba)">Solicitar orçamento pelo WhatsApp <span aria-hidden="true">↗</span></a>
           </div>
         </header>
 
@@ -147,7 +148,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingData 
           <div className="shell"><p className="section-kicker">Dúvidas frequentes</p><h2 id="duvidas-servico">Informação suficiente para decidir com segurança.</h2><div>{data.faqs.map((faq) => <article key={faq.question}><h3>{faq.question}</h3><p>{faq.answer}</p></article>)}</div></div>
         </section>
 
-        <section className="services-cta"><div className="shell"><p>Seu próximo passo</p><h2>{data.ctaTitle}</h2><a className="button button-light" href="/contato">Falar sobre o projeto <span aria-hidden="true">↗</span></a></div></section>
+        <section className="services-cta"><div className="shell"><p>Seu próximo passo</p><h2>{data.ctaTitle}</h2><a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero conversar sobre meu projeto pelo WhatsApp (abre em nova aba)">Quero conversar sobre meu projeto <span aria-hidden="true">↗</span></a></div></section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
       <BlogFooter />
