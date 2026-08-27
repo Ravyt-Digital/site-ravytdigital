@@ -8,10 +8,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Criação de Sites e Gestão de Redes Sociais no Ceará",
+    default: "Landing Pages para Psicologia Parental | Ravyt Digital",
     template: "%s | Ravyt Digital",
   },
-  description: "Agência em Tianguá especializada em criação de sites profissionais e gestão de redes sociais para empresas do Ceará e de outras regiões do Brasil.",
+  description: "Landing pages, copywriting, cookies e instalação de pixels para produtores digitais de Psicologia Parental. Atendemos especialistas em todo o Brasil.",
   applicationName: "Ravyt Digital",
   authors: [
     { name: "Ytala Cabral", url: `${SITE_URL}/autores/ytala-cabral` },
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: SITE_URL,
     siteName: "Ravyt Digital",
-    title: "Criação de Sites e Gestão de Redes Sociais no Ceará",
-    description: "Agência em Tianguá que cria sites profissionais e gerencia redes sociais para empresas do Ceará e de outras regiões do Brasil.",
-    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }],
+    title: "Landing Pages para Psicologia Parental | Ravyt Digital",
+    description: "Landing pages e copywriting para produtores digitais de Psicologia Parental.",
+    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — landing pages e copywriting para Psicologia Parental" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Criação de Sites e Gestão de Redes Sociais no Ceará",
-    description: "Criação de sites profissionais e gestão de redes sociais para empresas do Ceará.",
+    title: "Landing Pages para Psicologia Parental | Ravyt Digital",
+    description: "Landing pages e copywriting para produtores digitais de Psicologia Parental.",
     images: ["/brand/ravyt-social-card.jpg"],
   },
   robots: {
@@ -69,6 +69,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        {/* eslint-disable-next-line @next/next/no-css-tags -- stable fallback for CDN asset resolution */}
+        <link rel="stylesheet" href="/styles/site.css?v=20260827d" />
+      </head>
       <body>
         <a
           rel="me"
