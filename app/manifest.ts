@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Ravyt Digital",
     short_name: "Ravyt",
-    description: "Criação de sites e gestão de redes sociais para empresas no Ceará.",
+    description: "Landing pages e copywriting para produtores digitais de Psicologia Parental.",
     start_url: "/",
     display: "standalone",
     background_color: "#E7E2DA",
