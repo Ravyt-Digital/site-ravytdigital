@@ -24,13 +24,12 @@ export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: bool
       </button>
       <div className={`menu-panel${open ? " is-open" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <nav aria-label="Navegação para celular">
-          <a href="/servicos" onClick={() => setOpen(false)}>Serviços <span>01</span></a>
+          <a href={section("#servicos")} onClick={() => setOpen(false)}>Serviços <span>01</span></a>
           <a href={section("#sobre")} onClick={() => setOpen(false)}>A Ravyt <span>02</span></a>
-          <a href={section("#projetos")} onClick={() => setOpen(false)}>Cases <span>03</span></a>
           {/* A plain anchor avoids a Vinext client-proxy issue in the interactive menu. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/blog" onClick={() => setOpen(false)}>Insights <span>04</span></a>
-          <a className="menu-contact" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)" onClick={() => setOpen(false)}>Conversar pelo WhatsApp ↗</a>
+          <a href="/blog" onClick={() => setOpen(false)}>Insights <span>03</span></a>
+          <a className="menu-contact" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero conversar sobre meu projeto pelo WhatsApp (abre em nova aba)" onClick={() => setOpen(false)}>QUERO CONVERSAR SOBRE MEU PROJETO ↗</a>
         </nav>
       </div>
     </div>
