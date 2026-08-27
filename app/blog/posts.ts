@@ -33,7 +33,7 @@ export type BlogPost = {
   }[];
 };
 
-export const posts: BlogPost[] = [
+const allPosts: BlogPost[] = [
   {
     slug: "mercado-sites-seo-local-ceara",
     category: "Pesquisa e SEO local",
@@ -552,6 +552,10 @@ export const posts: BlogPost[] = [
     ],
   },
 ];
+
+export const posts = allPosts.filter(
+  (post) => post.slug !== "mercado-sites-seo-local-ceara",
+);
 
 export function getPost(slug: string) {
   return posts.find((post) => post.slug === slug);
