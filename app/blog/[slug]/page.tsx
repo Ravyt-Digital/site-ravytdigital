@@ -137,9 +137,7 @@ export default async function ArticlePage({
     citation: post.sources?.map((source) => source.url),
     articleSection: seo?.cluster === "conteudo-e-busca"
       ? "Conteúdo, SEO e busca generativa"
-      : seo?.cluster === "seo-local-e-mercado"
-        ? "SEO local e mercado no Ceará"
-        : "Presença digital, confiança e conversão",
+      : "Presença digital, confiança e conversão",
   };
 
   const breadcrumbSchema = {
@@ -357,8 +355,8 @@ export default async function ArticlePage({
               <a className="article-service-link" href={seo?.recommendedService.href ?? "/servicos"}>
                 {seo?.recommendedService.label ?? "Conhecer os serviços"} <i aria-hidden="true">↗</i>
               </a>
-              <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">
-                Conversar pelo WhatsApp <i aria-hidden="true">↗</i>
+              <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero conversar sobre meu projeto pelo WhatsApp (abre em nova aba)">
+                QUERO CONVERSAR SOBRE MEU PROJETO <i aria-hidden="true">↗</i>
               </a>
             </div>
           </div>
