@@ -19,6 +19,15 @@ hosting="${SITES_PROJECT_ROOT}/dist/.openai/hosting.json"
   exit 66
 }
 
+cmp -s "${SITES_PROJECT_ROOT}/app/globals.css" "${SITES_PROJECT_ROOT}/public/styles/site.css" || {
+  echo "Stable CSS fallback is missing or out of sync." >&2
+  exit 66
+}
+[[ -f "${SITES_PROJECT_ROOT}/dist/client/styles/site.css" ]] || {
+  echo "Stable CSS fallback was not packaged in dist/client." >&2
+  exit 66
+}
+
 for required in \
   "${SITES_PROJECT_ROOT}/app/loading.tsx" \
   "${SITES_PROJECT_ROOT}/app/not-found.tsx" \
@@ -44,10 +53,27 @@ fi
 
 grep -q -F '@media (max-width:' "${SITES_PROJECT_ROOT}/app/globals.css" || { echo "Missing responsive breakpoints." >&2; exit 66; }
 grep -q -F 'position: fixed' "${SITES_PROJECT_ROOT}/app/globals.css" || { echo "Missing fixed mobile CTA." >&2; exit 66; }
-if grep -R -n -E 'Typeform|Jotform|<form|<input|<textarea|/obrigado' "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components"; then
-  echo "A removed form, capture field, embed, or thank-you route is still referenced." >&2
+if grep -R -n -E 'Typeform|Jotform' "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components"; then
+  echo "An unapproved external form embed is still referenced." >&2
   exit 66
 fi
+
+grep -q -F 'export const MARCIO_WHATSAPP_NUMBER = "5588996777332"' "${SITES_PROJECT_ROOT}/lib/contact.ts" || {
+  echo "Márcio Cabral WhatsApp number is missing." >&2
+  exit 66
+}
+grep -q -F 'export const YTALA_WHATSAPP_NUMBER = "5588996956479"' "${SITES_PROJECT_ROOT}/lib/contact.ts" || {
+  echo "Ytala Cabral WhatsApp number is missing." >&2
+  exit 66
+}
+grep -q -F 'https://wa.me/${destinationNumber}?text=' "${SITES_PROJECT_ROOT}/components/LeadQualificationForm.tsx" || {
+  echo "Contact form destination routing is missing." >&2
+  exit 66
+}
+grep -q -F 'window.location.assign("/obrigado")' "${SITES_PROJECT_ROOT}/components/LeadQualificationForm.tsx" || {
+  echo "Contact form confirmation destination is missing." >&2
+  exit 66
+}
 
 node --input-type=module - "${worker}" "${hosting}" <<'NODE'
 import { readFile } from "node:fs/promises";
@@ -85,12 +111,10 @@ const render = async (path) => {
 
 const pagePaths = [
   "/",
-  "/servicos",
-  "/servicos/criacao-de-sites",
-  "/servicos/gestao-de-redes-sociais",
-  "/servicos/criacao-de-sites-no-ceara",
-  "/servicos/criacao-de-sites-para-clinicas",
+  "/landing-pages-para-psicologia-parental",
+  "/copywriting-para-psicologia-parental",
   "/contato",
+  "/obrigado",
   "/blog",
   "/autores/marcio-cabral",
   "/autores/ytala-cabral",
@@ -125,45 +149,30 @@ const analytics = await request("/api/analytics", {
 });
 if (analytics.status !== 204) throw new Error(`Analytics endpoint returned HTTP ${analytics.status}`);
 
-const article = await render("/blog/mercado-sites-seo-local-ceara");
-for (const expected of [
-  "Mercado de Sites e SEO Local no Ceará: análise 2026",
-  "https://ravytdigital.com/blog/mercado-sites-seo-local-ceara",
-  "BreadcrumbList",
-  "3.875.188",
-  "Como este conteúdo foi produzido",
-]) {
-  if (!article.includes(expected)) throw new Error(`Regional SEO article is missing: ${expected}`);
+const removedRegionalArticle = await request("/blog/mercado-sites-seo-local-ceara");
+if (removedRegionalArticle.status !== 404) {
+  throw new Error("Removed Ceará article must return HTTP 404");
 }
 
 const home = await render("/");
+if (!home.includes('/styles/site.css?v=20260827d')) {
+  throw new Error("Homepage is missing the stable CSS fallback link");
+}
 for (const expected of [
-  "<title>Criação de Sites e Gestão de Redes Sociais no Ceará</title>",
-  "Criação de sites e gestão de redes sociais",
-  "Tianguá, Ceará",
-  "Dois serviços principais",
-  "Rua Mocinha Batista, S/N, Centro, Tianguá - CE",
-  "26.114.696/0001-70",
-  "/servicos/criacao-de-sites",
-  "/servicos/gestao-de-redes-sociais",
-  "Conversar pelo WhatsApp com a Ravyt Digital",
-  "DA Dental Clinic",
-  "https://clinic-reveal-web.lovable.app/",
-  "/projects/da-dental-clinic.webp",
+  "Landing Pages para Psicologia Parental",
+  "Landing pages e copywriting",
+  "Atendimento a produtores digitais em todo o Brasil",
+  "Somente dois serviços",
+  "/landing-pages-para-psicologia-parental",
+  "/copywriting-para-psicologia-parental",
+  "Quero conversar sobre meu projeto pelo WhatsApp",
 ]) {
   if (!home.includes(expected)) throw new Error(`Homepage is missing: ${expected}`);
 }
 
-const services = await render("/servicos");
-if (!services.includes("Presença digital local não se constrói")) {
-  throw new Error("Services page is missing the regional SEO section");
-}
-
 for (const [path, expected] of [
-  ["/servicos/criacao-de-sites", "Criação de sites profissionais"],
-  ["/servicos/gestao-de-redes-sociais", "Gestão de redes sociais para empresas"],
-  ["/servicos/criacao-de-sites-no-ceara", "Criação de sites no Ceará"],
-  ["/servicos/criacao-de-sites-para-clinicas", "Criação de sites para clínicas e consultórios"],
+  ["/landing-pages-para-psicologia-parental", "Criação de landing pages para produtores digitais de Psicologia Parental"],
+  ["/copywriting-para-psicologia-parental", "Copywriting para produtos digitais de Psicologia Parental"],
 ]) {
   const page = await render(path);
   for (const token of [expected, `https://ravytdigital.com${path}`, "BreadcrumbList", "FAQPage"]) {
@@ -172,29 +181,29 @@ for (const [path, expected] of [
 }
 
 const sitemap = await render("/sitemap.xml");
-if (!sitemap.includes("/blog/mercado-sites-seo-local-ceara")) {
-  throw new Error("Sitemap is missing the regional SEO article");
+if (sitemap.includes("/blog/mercado-sites-seo-local-ceara")) {
+  throw new Error("Sitemap still includes the removed Ceará article");
 }
 for (const path of [
-  "/servicos/criacao-de-sites",
-  "/servicos/gestao-de-redes-sociais",
-  "/servicos/criacao-de-sites-no-ceara",
-  "/servicos/criacao-de-sites-para-clinicas",
+  "/landing-pages-para-psicologia-parental",
+  "/copywriting-para-psicologia-parental",
 ]) {
   if (!sitemap.includes(path)) throw new Error(`Sitemap is missing ${path}`);
 }
 
 const contact = await render("/contato");
 for (const token of [
-  "Conversar pelo WhatsApp",
+  "Vamos estruturar sua landing page",
   "ola@ravytdigital.com",
-  "Tianguá, Ceará",
-  "Atendimento a produtores digitais em todo o Brasil",
+  "Landing pages e copywriting para produtores digitais de Psicologia Parental",
 ]) {
   if (!contact.includes(token)) throw new Error(`Contact page is missing: ${token}`);
 }
-for (const forbidden of ["<form", "Typeform", "Jotform", "/obrigado"]) {
-  if (contact.includes(forbidden)) throw new Error(`Contact page still contains forbidden form content: ${forbidden}`);
+for (const [path, page] of [["/", home], ["/contato", contact]]) {
+  if (/Tianguá|Tiangua/.test(page)) throw new Error(`${path} still exposes the removed location`);
+}
+for (const required of ["<form", "Serviço desejado", "Explique brevemente o projeto"]) {
+  if (!contact.includes(required)) throw new Error(`Contact page is missing qualified-form content: ${required}`);
 }
 NODE
 
