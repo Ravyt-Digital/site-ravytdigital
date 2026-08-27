@@ -7,11 +7,6 @@ import { getPostSeo } from "./postSeo";
 
 const topicClusters = [
   {
-    title: "SEO local e mercado no Ceará",
-    description: "Dados regionais, limites de pesquisa e decisões para construir presença local sem atalhos ou páginas genéricas.",
-    slugs: ["mercado-sites-seo-local-ceara", "seo-information-gain-busca-generativa"],
-  },
-  {
     title: "Conteúdo, SEO e busca generativa",
     description: "Como produzir informação útil, rastreável e preparada para pessoas, Google e sistemas de IA.",
     slugs: ["seo-information-gain-busca-generativa", "edits-instagram-stories-fluxo-producao"],
@@ -34,7 +29,7 @@ export const metadata: Metadata = {
       "Conteúdo prático sobre SEO, Social Media, sites, conversão e tecnologia para negócios.",
     url: "/blog",
     type: "website",
-    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — criação de sites e gestão de redes sociais no Ceará" }],
+    images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital — landing pages e copywriting para produtores digitais" }],
   },
 };
 
@@ -233,7 +228,7 @@ export default function BlogPage() {
             <h2>Seu próximo passo não precisa ser um palpite.</h2>
             <span>Conte para a Ravyt onde sua presença digital está hoje. Nós ajudamos a identificar a estrutura mais coerente para o seu momento.</span>
           </div>
-          <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">Conversar pelo WhatsApp <i aria-hidden="true">↗</i></a>
+          <a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero conversar sobre meu projeto pelo WhatsApp (abre em nova aba)">QUERO CONVERSAR SOBRE MEU PROJETO <i aria-hidden="true">↗</i></a>
         </div>
       </section>
 
