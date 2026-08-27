@@ -17,13 +17,12 @@ export function BlogHeader({ current }: { current?: "services" | "insights" | "c
       <div className="shell blog-nav">
         <a className="brand-link" href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand /></a>
         <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="/servicos" aria-current={current === "services" ? "page" : undefined}>Serviços</a>
+          <a href="/#servicos" aria-current={current === "services" ? "page" : undefined}>Serviços</a>
           <a href="/#sobre">A Ravyt</a>
-          <a href="/#projetos">Cases</a>
           <a className={current === "insights" ? "is-current" : undefined} href="/blog" aria-current={current === "insights" ? "page" : undefined}>Insights</a>
           <a className={current === "contact" ? "is-current" : undefined} href="/contato" aria-current={current === "contact" ? "page" : undefined}>Contato</a>
         </nav>
-        <a className="header-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a>
+        <a className="header-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Quero conversar sobre meu projeto pelo WhatsApp (abre em nova aba)">QUERO CONVERSAR SOBRE MEU PROJETO <span aria-hidden="true">↗</span></a>
         <MobileMenu fromSubpage />
       </div>
     </header>
@@ -35,11 +34,10 @@ export function BlogFooter() {
     <footer className="footer blog-footer">
       <div className="shell footer-top">
         <a href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand dark /></a>
-        <p>Tianguá, Ceará<br />Atendimento a produtores digitais em todo o Brasil.</p>
+        <p>Landing pages e copywriting para produtores digitais de Psicologia Parental.</p>
         <nav aria-label="Links do rodapé">
-          <a href="/servicos">Serviços</a>
+          <a href="/#servicos">Serviços</a>
           <a href="/#sobre">A Ravyt</a>
-          <a href="/#projetos">Cases</a>
           <a href="/blog">Insights</a>
           <a href="/contato">Contato</a>
           <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">WhatsApp</a>
