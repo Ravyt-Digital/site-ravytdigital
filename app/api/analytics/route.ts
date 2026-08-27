@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Caminho inválido." }, { status: 400 });
   }
 
-  const allowedEvents = ["page_view", "whatsapp_click", "email_click", "primary_cta_click"];
+  const allowedEvents = ["page_view", "whatsapp_click", "email_click", "primary_cta_click", "form_start", "form_submit", "thank_you_view"];
   const event = typeof body.event === "string" && allowedEvents.includes(body.event) ? body.event : "page_view";
   console.log(JSON.stringify({
     event,
