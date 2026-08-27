@@ -50,6 +50,18 @@ export default function Analytics() {
   }, [pathname]);
 
   useEffect(() => {
+    const onConversion = (event: Event) => {
+      if (!hasConsent()) return;
+      const name = (event as CustomEvent<string>).detail;
+      if (!["form_start", "form_submit", "thank_you_view"].includes(name)) return;
+      const payload = JSON.stringify({ event:name, path:pathname, occurredAt:new Date().toISOString() });
+      if (navigator.sendBeacon) navigator.sendBeacon("/api/analytics", new Blob([payload], {type:"application/json"}));
+    };
+    window.addEventListener("ravyt:conversion", onConversion);
+    return () => window.removeEventListener("ravyt:conversion", onConversion);
+  }, [pathname]);
+
+  useEffect(() => {
     const onClick = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest<HTMLAnchorElement>("a[data-track]");
       if (!link || !hasConsent()) return;
