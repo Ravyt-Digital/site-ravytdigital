@@ -23,7 +23,7 @@ export type PostSeo = {
   recommendedService: { href: string; label: string; title: string };
 };
 
-export const postSeo: PostSeo[] = [
+const allPostSeo: PostSeo[] = [
   {
     slug: "mercado-sites-seo-local-ceara",
     seoTitle: "Mercado de Sites e SEO Local no Ceará: análise 2026",
@@ -193,6 +193,10 @@ export const postSeo: PostSeo[] = [
     recommendedService: { href: "/servicos/criacao-de-sites", label: "Criação de sites profissionais", title: "Quer escolher e construir a estrutura certa para o seu objetivo?" },
   },
 ];
+
+export const postSeo = allPostSeo.filter(
+  (item) => item.slug !== "mercado-sites-seo-local-ceara",
+);
 
 export function getPostSeo(slug: string) {
   return postSeo.find((item) => item.slug === slug);
