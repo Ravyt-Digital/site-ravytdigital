@@ -9,6 +9,11 @@ cmp -s "${SITES_PROJECT_ROOT}/app/globals.css" "${SITES_PROJECT_ROOT}/public/sty
 for required in app/loading.tsx app/not-found.tsx app/politica-de-cookies/page.tsx app/politica-de-privacidade/page.tsx app/termos-de-uso/page.tsx public/favicon.png public/brand/ravyt-social-card.jpg; do
   [[ -f "${SITES_PROJECT_ROOT}/${required}" ]] || { echo "Missing: ${required}" >&2; exit 66; }
 done
+[[ -f "${SITES_PROJECT_ROOT}/public/llms.txt" ]] || { echo "Missing public/llms.txt" >&2; exit 66; }
+[[ -f "${SITES_PROJECT_ROOT}/dist/client/llms.txt" ]] || { echo "llms.txt was not included in the production build." >&2; exit 66; }
+for token in "# Ravyt Digital" "Social Media para Psicólogos Parentais" "Ytala Cabral" "Nanda Perim" "PSIMAMA" "https://ravytdigital.com/social-media-para-psicologos-parentais"; do
+  grep -q -F "${token}" "${SITES_PROJECT_ROOT}/dist/client/llms.txt" || { echo "llms.txt is missing: ${token}" >&2; exit 66; }
+done
 if rg -n -i "Márcio|Marcio|landing page|copywriting|produtores digitais" "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components" "${SITES_PROJECT_ROOT}/lib"; then
   echo "Old positioning remains in published source." >&2; exit 66
 fi
