@@ -1,2 +1,2 @@
 import { redirect } from "next/navigation";
-export default function Page(){ redirect("/#servicos"); }
+export default function Page(){ redirect("/social-media-para-psicologos-parentais"); }

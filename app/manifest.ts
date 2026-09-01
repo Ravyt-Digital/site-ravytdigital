@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Ravyt Digital",
     short_name: "Ravyt",
-    description: "Landing pages e copywriting para produtores digitais de Psicologia Parental.",
+    description: "Social Media para Psicólogos Parentais em todo o Brasil.",
     start_url: "/",
     display: "standalone",
     background_color: "#E7E2DA",

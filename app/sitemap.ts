@@ -1,34 +1,14 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { posts } from "@/app/blog/posts";
-import { getPostSeo } from "@/app/blog/postSeo";
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: new Date("2026-08-18"), changeFrequency: "monthly", priority: 1 },
-    { url: `${SITE_URL}/landing-pages-para-psicologia-parental`, lastModified: new Date("2026-08-26"), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/copywriting-para-psicologia-parental`, lastModified: new Date("2026-08-26"), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/contato`, lastModified: new Date("2026-08-26"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/politica-de-cookies`, lastModified: new Date("2026-08-26"), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${SITE_URL}/contato`, lastModified: new Date("2026-08-15"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/blog`, lastModified: new Date(posts[0].date), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE_URL}/autores/marcio-cabral`, lastModified: new Date("2026-08-14"), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${SITE_URL}/autores/ytala-cabral`, lastModified: new Date("2026-08-15"), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${SITE_URL}/politica-editorial`, lastModified: new Date("2026-08-17"), changeFrequency: "monthly", priority: 0.4 },
-    { url: `${SITE_URL}/politica-de-privacidade`, lastModified: new Date("2026-08-05"), changeFrequency: "yearly", priority: 0.2 },
-    { url: `${SITE_URL}/termos-de-uso`, lastModified: new Date("2026-08-05"), changeFrequency: "yearly", priority: 0.2 },
+  const lastModified = new Date("2026-09-01");
+  return [
+    {url:SITE_URL,lastModified,changeFrequency:"monthly",priority:1},
+    {url:`${SITE_URL}/social-media-para-psicologos-parentais`,lastModified,changeFrequency:"monthly",priority:.9},
+    {url:`${SITE_URL}/autores/ytala-cabral`,lastModified,changeFrequency:"monthly",priority:.7},
+    {url:`${SITE_URL}/contato`,lastModified,changeFrequency:"monthly",priority:.8},
+    {url:`${SITE_URL}/politica-de-privacidade`,lastModified,changeFrequency:"yearly",priority:.2},
+    {url:`${SITE_URL}/politica-de-cookies`,lastModified,changeFrequency:"yearly",priority:.2},
+    {url:`${SITE_URL}/termos-de-uso`,lastModified,changeFrequency:"yearly",priority:.2},
   ];
-
-  const articles: MetadataRoute.Sitemap = posts.map((post) => {
-    const seo = getPostSeo(post.slug);
-    return {
-      url: `${SITE_URL}/blog/${post.slug}`,
-      lastModified: new Date(post.modifiedDate ?? post.date),
-      changeFrequency: "monthly",
-      priority: 0.7,
-      ...(seo ? { images: [`${SITE_URL}${seo.featuredImage.src}`] } : {}),
-    };
-  });
-
-  return [...staticPages, ...articles];
 }

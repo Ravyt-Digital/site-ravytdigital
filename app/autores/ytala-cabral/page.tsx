@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import AuthorProfilePage from "@/components/AuthorProfilePage";
-
-export const metadata: Metadata = {
-  title: "Ytala Cabral | Estratégia, Posicionamento e Social Media",
-  description: "Conheça Ytala Cabral, responsável por estratégia, posicionamento e Social Media na Ravyt Digital, e acesse seus artigos.",
-  alternates: { canonical: "/autores/ytala-cabral" },
-};
-
-export default function YtalaCabralPage() {
-  return <AuthorProfilePage name="Ytala Cabral" slug="ytala-cabral" role="Direção estratégica e Social Media" image="/team/ytala-cabral.webp" description="Responsável por estratégia, posicionamento e Social Media na Ravyt Digital. Escreve sobre conteúdo, percepção de valor e decisões que aproximam a presença digital da qualidade real do negócio." knowsAbout={["Social Media", "Posicionamento", "Estratégia digital", "Conteúdo", "Presença digital"]} />;
-}
+import Image from "next/image";
+import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
+import { whatsappUrl } from "@/lib/contact";
+import { SITE_URL } from "@/lib/site";
+export const metadata: Metadata = { title:"Ytala Cabral | Social Media para Psicólogos Parentais", description:"Conheça Ytala Cabral, especialista à frente da Ravyt Digital e Social Media da psicóloga parental Nanda Perim, da PSIMAMA.", alternates:{canonical:"/autores/ytala-cabral"} };
+export default function Page(){ const schema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/autores/ytala-cabral#person`,name:"Ytala Cabral",jobTitle:"Social Media para Psicólogos Parentais",worksFor:{"@id":`${SITE_URL}/#organization`},knowsAbout:["Social Media","Psicologia Parental","Estratégia de conteúdo","Posicionamento digital"]}; return <><BlogHeader/><main className="specialist-page"><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/><section className="about-specialist"><div className="shell two-columns"><div className="team-photo-ytala"><Image src="/team/ytala-cabral.webp" alt="Ytala Cabral" width={720} height={900} unoptimized/></div><div><p className="section-kicker">Especialista da Ravyt Digital</p><h1>Ytala Cabral</h1><p>Ytala Cabral é Social Media especializada em Psicologia Parental e a única profissional apresentada pela Ravyt Digital.</p><p>Atua como Social Media da psicóloga parental Nanda Perim, fundadora da PSIMAMA. Essa experiência sustenta um trabalho de conteúdo atento à linguagem, à ética e às particularidades da comunicação com famílias.</p><p>Na Ravyt, desenvolve posicionamento, planejamento editorial, copy e direção de conteúdo para psicólogos parentais de todo o Brasil.</p><a className="button button-dark" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">CONVERSAR COM YTALA</a></div></div></section></main><BlogFooter/></>; }
