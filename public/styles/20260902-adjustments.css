@@ -1,0 +1,58 @@
+/* Ajustes de interface — 02/09/2026 */
+@media (min-width: 901px) {
+  .specialist-home-hero {
+    min-height: calc(100vh - 94px);
+    display: flex;
+    align-items: center;
+    padding: clamp(42px, 6vh, 72px) 0;
+  }
+  .hero-specialist-grid {
+    width: 100%;
+    min-height: 0;
+    display: grid;
+    align-items: center;
+  }
+  .hero-specialist-copy { max-width: 940px; }
+  .hero-specialist-copy h1 {
+    max-width: 900px;
+    margin: 20px 0 18px;
+    font-size: clamp(46px, 5.15vw, 76px);
+    line-height: .98;
+    letter-spacing: -.052em;
+  }
+  .hero-specialist-copy .hero-lead {
+    max-width: 760px;
+    font-size: clamp(15px, 1.25vw, 18px);
+    line-height: 1.55;
+  }
+  .hero-specialist-copy .hero-actions { margin-top: 26px; }
+}
+
+/* O botão de e-mail precisa manter contraste no fundo escuro da página de contato. */
+.contact-repositioned .button-ghost {
+  color: var(--stone) !important;
+  border-color: rgba(231,226,218,.62) !important;
+  background: rgba(231,226,218,.06);
+}
+.contact-repositioned .button-ghost:hover,
+.contact-repositioned .button-ghost:focus-visible {
+  color: var(--charcoal) !important;
+  background: var(--stone) !important;
+  border-color: var(--stone) !important;
+}
+
+/* Exibe a foto real de Ytala no contato flutuante, sem o filtro usado no antigo ícone. */
+.whatsapp-contact.is-single .whatsapp-trigger { padding: 4px; overflow: visible; }
+.whatsapp-contact.is-single .whatsapp-trigger img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: none !important;
+  opacity: 1;
+}
+@media (max-width: 720px) {
+  .whatsapp-contact.is-single .whatsapp-trigger { padding: 3px 15px 3px 3px; }
+  .whatsapp-contact.is-single .whatsapp-trigger img { width: 44px; height: 44px; }
+}
