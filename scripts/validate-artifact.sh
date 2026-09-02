@@ -27,7 +27,7 @@ if (!worker.default || typeof worker.default.fetch !== "function") throw new Err
 const env={ASSETS:{fetch:async()=>new Response("Not found",{status:404})}};
 const ctx={waitUntil(){},passThroughOnException(){}};
 const request=(path)=>worker.default.fetch(new Request(`https://ravytdigital.com${path}`,{headers:{accept:"text/html"}}),env,ctx);
-for (const path of ["/","/social-media-para-psicologos-parentais","/autores/ytala-cabral","/contato","/politica-de-privacidade","/politica-de-cookies","/termos-de-uso"]) {
+for (const path of ["/","/social-media-para-psicologos-parentais","/autores/ytala-cabral","/contato","/blog","/blog/conteudo-para-psicologos-parentais","/politica-de-privacidade","/politica-de-cookies","/termos-de-uso"]) {
   const response=await request(path); const html=await response.text();
   if(response.status!==200) throw new Error(`${path} returned ${response.status}`);
   for(const token of ["<title>",'name="description"','property="og:image"']) if(!html.includes(token)) throw new Error(`${path} missing ${token}`);
@@ -35,10 +35,10 @@ for (const path of ["/","/social-media-para-psicologos-parentais","/autores/ytal
 }
 const home=await (await request("/")).text();
 for(const token of ["Social Media para Psicólogos Parentais","Ytala Cabral","Nanda Perim","PSIMAMA","todo o Brasil"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
-for(const removed of ["/landing-pages-para-psicologia-parental","/copywriting-para-psicologia-parental","/autores/marcio-cabral","/blog"]) {
+for(const removed of ["/landing-pages-para-psicologia-parental","/copywriting-para-psicologia-parental","/autores/marcio-cabral"]) {
   if((await request(removed)).status!==404) throw new Error(`${removed} must return 404`);
 }
 const sitemap=await (await request("/sitemap.xml")).text();
-if(!sitemap.includes("/social-media-para-psicologos-parentais")||/landing-pages|copywriting|marcio|\/blog/.test(sitemap)) throw new Error("Sitemap contains old positioning");
+if(!sitemap.includes("/social-media-para-psicologos-parentais")||!sitemap.includes("/blog")||/landing-pages|copywriting|marcio/.test(sitemap)) throw new Error("Sitemap is inconsistent with the current positioning");
 NODE
 echo "Validated Ravyt Digital specialist site."

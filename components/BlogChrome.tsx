@@ -19,6 +19,7 @@ export function BlogHeader({ current }: { current?: "services" | "insights" | "c
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="/#servico" aria-current={current === "services" ? "page" : undefined}>Serviço</a>
           <a href="/#sobre">A Ravyt</a>
+          <a className={current === "insights" ? "is-current" : undefined} href="/blog" aria-current={current === "insights" ? "page" : undefined}>Blog</a>
           <a className={current === "contact" ? "is-current" : undefined} href="/contato" aria-current={current === "contact" ? "page" : undefined}>Contato</a>
         </nav>
         <a className="header-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar com Ytala pelo WhatsApp (abre em nova aba)">CONVERSAR COM YTALA <span aria-hidden="true">↗</span></a>
@@ -37,6 +38,7 @@ export function BlogFooter() {
         <nav aria-label="Links do rodapé">
           <a href="/#servico">Serviço</a>
           <a href="/#sobre">A Ravyt</a>
+          <a href="/blog">Blog</a>
           <a href="/contato">Contato</a>
           <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">WhatsApp</a>
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>

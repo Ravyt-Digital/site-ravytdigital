@@ -804,6 +804,12 @@ h1,h2,h3,blockquote,em { font-family: "Inter Variable", Inter, Arial, sans-serif
 
 /* Ritmo vertical mais compacto */
 .specialist-home-hero { padding-block: clamp(62px, 7vw, 96px); }
+@media (min-width: 1021px) {
+  .specialist-home-hero { min-height: calc(100svh - 94px); display:flex; align-items:center; padding-block:clamp(30px,4vh,52px); }
+  .specialist-home-hero h1 { max-width:960px; margin-block:clamp(14px,2vh,20px); font-size:clamp(48px,5vw,70px); line-height:1.01; }
+  .specialist-home-hero .hero-lead { max-width:760px; font-size:16px; line-height:1.55; }
+  .specialist-home-hero .hero-actions { margin-top:24px; }
+}
 .problem-section,
 .home-services,
 .process-section,
@@ -1717,7 +1723,7 @@ body {
 }
 .whatsapp-trigger:hover, .whatsapp-trigger:focus-visible { transform: translateY(-4px); background: var(--petroleum); border-color: rgba(184,110,74,.65); }
 .whatsapp-trigger:focus-visible { outline: 2px solid var(--copper); outline-offset: 4px; }
-.whatsapp-trigger img { width: 48px; height: 46px; object-fit: contain; filter: brightness(0) invert(1); opacity: .94; }
+.whatsapp-trigger img { width: 52px; height: 52px; object-fit: cover; border-radius:50%; filter:none; opacity:1; }
 .whatsapp-trigger > span {
   position: absolute;
   right: 2px;
@@ -1780,7 +1786,7 @@ body {
   .whatsapp-contact { left: auto; right: 14px; bottom: 12px; }
   .whatsapp-invite { display: none; }
   .whatsapp-trigger { width: auto; max-width: calc(100vw - 28px); height: 52px; padding: 0 18px; border-radius: 999px; grid-template-columns: 25px auto; gap: 10px; }
-  .whatsapp-trigger img { width: 25px; height: 25px; }
+  .whatsapp-trigger img { width: 32px; height: 32px; }
   .whatsapp-trigger > span { display: none; }
   .whatsapp-mobile-label { display: inline; color: #fff; font-size: 12px; white-space: nowrap; }
   body:has(.cookie-banner) .whatsapp-contact { bottom: 190px; }
@@ -1833,7 +1839,7 @@ body {
   .contact-page-copy h1 { font-size: clamp(43px,13vw,61px); }
   .whatsapp-contact { left: auto; right: 14px; bottom: 14px; }
   .whatsapp-trigger { width: auto; height: 52px; padding: 0 18px; }
-  .whatsapp-trigger img { width: 25px; height: 25px; }
+  .whatsapp-trigger img { width: 32px; height: 32px; }
   .whatsapp-invite { min-width: 164px; padding: 11px 13px; }
   .whatsapp-invite::after { right: 65px; bottom: 21px; }
   .whatsapp-panel { right: 0; bottom: 72px; }
