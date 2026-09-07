@@ -1856,3 +1856,20 @@ body {
   .whatsapp-trigger, .whatsapp-invite, .whatsapp-panel, .whatsapp-person { transition: none; }
   .loading-spinner { animation: none; }
 }
+
+
+/* Página de contato: mantém as ações centralizadas e o e-mail legível sem hover. */
+.contact-repositioned .hero-actions {
+  justify-content: center;
+}
+.contact-repositioned .button-ghost {
+  color: var(--stone) !important;
+  border-color: rgba(231,226,218,.62) !important;
+  background: rgba(231,226,218,.06);
+}
+.contact-repositioned .button-ghost:hover,
+.contact-repositioned .button-ghost:focus-visible {
+  color: var(--charcoal) !important;
+  background: var(--stone) !important;
+  border-color: var(--stone) !important;
+}
