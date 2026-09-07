@@ -27,7 +27,7 @@ test("renders production SEO metadata", async () => {
     /^text\/html\b/i,
   );
   const html = await response.text();
-  assert.match(html, /<title>Criação de Sites e Gestão de Redes Sociais no Ceará<\/title>/i);
+  assert.match(html, /<title>Social Media para Psicólogos Parentais \| Ravyt Digital<\/title>/i);
   assert.match(html, /<meta[^>]+name="description"[^>]+content=/i);
   assert.match(html, /<meta[^>]+property="og:image"[^>]+content=/i);
   assert.doesNotMatch(html, /codex-preview/i);
