@@ -753,6 +753,20 @@ h1,h2,h3,blockquote,em { font-family: "Inter Variable", Inter, Arial, sans-serif
 .check-list p::before { content:"✓"; position:absolute; left:0; color:#b86e4a; }
 .ethics-section p,.about-specialist p { font-size:17px; line-height:1.75; }
 .about-specialist blockquote { margin:35px 0 0; padding-left:25px; border-left:4px solid #b86e4a; font-size:23px; line-height:1.45; font-weight:650; }
+.client-testimonial { padding:clamp(80px,10vw,140px) 0; color:#fff; background:var(--petroleum); }
+.testimonial-layout { display:grid; grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr); gap:clamp(50px,8vw,120px); align-items:start; }
+.testimonial-heading .section-kicker { margin-top:0; color:#dca07f; }
+.testimonial-heading h2 { max-width:520px; margin:22px 0 42px; font-size:clamp(38px,4.7vw,64px); line-height:1.08; letter-spacing:-.045em; }
+.testimonial-person { display:flex; gap:16px; align-items:center; }
+.testimonial-monogram { display:grid; flex:0 0 58px; width:58px; height:58px; place-items:center; border:1px solid rgba(255,255,255,.25); border-radius:50%; color:#fff; font-size:15px; font-weight:800; letter-spacing:.06em; }
+.testimonial-person div { display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
+.testimonial-person strong { font-size:17px; }
+.testimonial-person span { color:rgba(255,255,255,.66); font-size:14px; line-height:1.45; }
+.testimonial-person a { margin-top:7px; color:#fff; font-size:14px; text-decoration:underline; text-underline-offset:4px; }
+.client-testimonial blockquote { position:relative; margin:0; padding:38px 0 0; border-top:1px solid rgba(255,255,255,.22); }
+.client-testimonial blockquote::before { content:"“"; position:absolute; top:-23px; left:0; color:#dca07f; background:var(--petroleum); padding-right:20px; font-size:72px; line-height:1; font-family:Georgia,serif; }
+.client-testimonial blockquote p { margin:0 0 20px; color:rgba(255,255,255,.82); font-size:clamp(18px,2vw,23px); line-height:1.65; }
+.client-testimonial blockquote p:last-child { margin-bottom:0; color:#fff; font-weight:750; }
 .final-specialist-cta,.contact-intro { padding:clamp(90px,12vw,170px) 0; color:#fff; background:#121416; text-align:center; }
 .final-specialist-cta h2,.contact-intro h1 { max-width:950px; margin:0 auto 25px; font-size:clamp(48px,6.5vw,90px); line-height:.98; letter-spacing:-.06em; }
 .final-specialist-cta p,.contact-intro p { max-width:720px; margin:0 auto 35px; color:rgba(255,255,255,.65); font-size:17px; line-height:1.7; }
@@ -777,7 +791,7 @@ h1,h2,h3,blockquote,em { font-family: "Inter Variable", Inter, Arial, sans-serif
 .cookie-categories { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:11px; }
 .cookie-categories label { display:flex; gap:6px; align-items:center; }
 
-@media (max-width:900px){.hero-specialist-grid,.two-columns{grid-template-columns:1fr}.landing-mockup{min-height:450px}.problem-grid{grid-template-columns:1fr 1fr}.tag-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.hero-specialist-grid,.two-columns,.testimonial-layout{grid-template-columns:1fr}.landing-mockup{min-height:450px}.problem-grid{grid-template-columns:1fr 1fr}.tag-grid{grid-template-columns:1fr 1fr}.testimonial-heading h2{max-width:700px}.testimonial-person{margin-bottom:5px}}
 @media (max-width:640px){.shell{width:min(100% - 30px,1180px)}.specialist-home-hero h1,.specialist-hero h1{font-size:clamp(43px,13vw,64px)}.landing-mockup{min-height:390px}.mock-browser{right:30px}.mock-phone{width:150px;height:300px}.mock-phone b{font-size:16px}.problem-grid,.service-duo,.form-grid{grid-template-columns:1fr}.tag-grid{grid-template-columns:1fr 1fr}.problem-grid article{min-height:130px}.cookie-banner{bottom:80px;grid-template-columns:1fr}.cookie-actions{flex-wrap:wrap}}
 
 /* Hero alinhada à identidade Ravyt */
