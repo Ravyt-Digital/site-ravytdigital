@@ -14,7 +14,7 @@ const steps=[
 ];
 const faqs=[
   ["A Ravyt atende psicólogos de outras áreas?", "Não. O serviço é especializado exclusivamente em Psicologia Parental."],
-  ["O atendimento é apenas no Ceará?", "Não. Todo o processo pode ser realizado de forma remota para psicólogos parentais de qualquer região do Brasil."],
+  ["O atendimento é apenas em São Paulo?", "Não. Todo o processo pode ser realizado de forma remota para psicólogos parentais de qualquer região do Brasil."],
   ["A Ravyt cria o conteúdo clínico sem revisão?", "Não. A Ravyt estrutura estratégia, linguagem e produção editorial, mas conteúdos com orientação técnica passam pela validação do profissional de Psicologia."],
   ["O serviço inclui apenas artes para Instagram?", "Não. O trabalho começa no posicionamento e no planejamento. Copy, direção criativa e formatos são definidos a partir da estratégia, não como peças isoladas."],
 ];

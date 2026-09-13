@@ -44,7 +44,7 @@ export function BlogFooter() {
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>
       </div>
-      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Rua Mocinha Batista, S/N, Centro, Tianguá - CE · CEP 62320-320</address><p>Atendimento remoto em todo o Brasil · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell footer-bottom">
+      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p>Atendimento remoto em todo o Brasil · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
         <p>Estratégia e gestão de conteúdo.</p>
         <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div>
