@@ -17,7 +17,7 @@ export default function NotFound() {
         <nav aria-label="Caminhos para continuar">
           <Link className="button button-light" href="/">Voltar para a página inicial</Link>
           <Link className="button button-ghost" href="/blog">Explorar os conteúdos do blog</Link>
-          <Link className="button button-ghost" href="/servicos">Conhecer as soluções da Ravyt</Link>
+          <Link className="button button-ghost" href="/social-media-para-psicologos-parentais">Conhecer o serviço de Social Media</Link>
         </nav>
       </div>
     </main>

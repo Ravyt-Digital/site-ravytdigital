@@ -1,15 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { whatsappUrl } from "@/lib/contact";
 
 export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: boolean }) {
   const [open, setOpen] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
   const section = (hash: string) => fromSubpage ? `/${hash}` : hash;
 
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    const onKey = (event: KeyboardEvent) => {
+      if (!open) return;
+      const controls = root.current?.querySelectorAll<HTMLElement>("button, a[href]");
+      if (!controls?.length) return;
+      if (event.key === "Escape") { setOpen(false); controls[0].focus(); }
+      if (event.key === "Tab") {
+        const first=controls[0],last=controls[controls.length-1];
+        if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+        else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+      }
+    };
     document.addEventListener("keydown", onKey);
     document.body.classList.toggle("menu-open", open);
     return () => {
@@ -19,7 +30,7 @@ export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: bool
   }, [open]);
 
   return (
-    <div className="mobile-menu">
+    <div className="mobile-menu" ref={root}>
       <button className="menu-trigger" type="button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>
         <span /><span /><span className="sr-only">{open ? "Fechar menu" : "Abrir menu"}</span>
       </button>

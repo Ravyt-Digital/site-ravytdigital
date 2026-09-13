@@ -1,2 +1,2 @@
-import { redirect } from "next/navigation";
-export default function Page(){ redirect("/social-media-para-psicologos-parentais"); }
+import { permanentRedirect } from "next/navigation";
+export default function Page(){ permanentRedirect("/social-media-para-psicologos-parentais"); }

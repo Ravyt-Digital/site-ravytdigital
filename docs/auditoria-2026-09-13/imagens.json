@@ -1,0 +1,218 @@
+[
+  {
+    "file": "favicon.png",
+    "bytes": 65521,
+    "size": [
+      512,
+      512
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "apple-touch-icon.png",
+    "bytes": 15865,
+    "size": [
+      180,
+      180
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "projects/ravyt-digital.webp",
+    "bytes": 312118,
+    "size": [
+      1363,
+      7216
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/seja-indispensavel.webp",
+    "bytes": 183746,
+    "size": [
+      1400,
+      10779
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/tabuada-quest.webp",
+    "bytes": 41896,
+    "size": [
+      1600,
+      1000
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/ravyt-motos.webp",
+    "bytes": 49292,
+    "size": [
+      1600,
+      1000
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/excel-no-agro.webp",
+    "bytes": 204682,
+    "size": [
+      1400,
+      9589
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/pressroom-ibiapaba.webp",
+    "bytes": 57524,
+    "size": [
+      1600,
+      1000
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/da-dental-clinic.webp",
+    "bytes": 38656,
+    "size": [
+      1600,
+      1000
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/fluencia-digital.webp",
+    "bytes": 43686,
+    "size": [
+      1600,
+      1000
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/capoeira-haute-savoie.webp",
+    "bytes": 456784,
+    "size": [
+      1363,
+      6840
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/odonto-premium.webp",
+    "bytes": 129490,
+    "size": [
+      1400,
+      4079
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/pressroom-brasil.webp",
+    "bytes": 83136,
+    "size": [
+      1600,
+      1000
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "projects/lucao-capacetes.webp",
+    "bytes": 62642,
+    "size": [
+      1600,
+      1000
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "brand/ravyt-logo-2026.webp",
+    "bytes": 78844,
+    "size": [
+      875,
+      235
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "brand/ravyt-logo.png",
+    "bytes": 159490,
+    "size": [
+      1920,
+      1080
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "brand/ravyt-wordmark.png",
+    "bytes": 112442,
+    "size": [
+      662,
+      241
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "brand/ravyt-symbol-2026.webp",
+    "bytes": 24474,
+    "size": [
+      245,
+      235
+    ],
+    "format": "WEBP"
+  },
+  {
+    "file": "brand/ravyt-social-card.jpg",
+    "bytes": 138723,
+    "size": [
+      1200,
+      630
+    ],
+    "format": "JPEG"
+  },
+  {
+    "file": "brand/ravyt-logo-2026.png",
+    "bytes": 338397,
+    "size": [
+      875,
+      235
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "brand/ravyt-logo-new-dark.png",
+    "bytes": 75480,
+    "size": [
+      327,
+      148
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "brand/ravyt-monogram.png",
+    "bytes": 161003,
+    "size": [
+      512,
+      512
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "brand/ravyt-symbol-2026.png",
+    "bytes": 104121,
+    "size": [
+      245,
+      235
+    ],
+    "format": "PNG"
+  },
+  {
+    "file": "team/ytala-cabral.webp",
+    "bytes": 65922,
+    "size": [
+      1200,
+      1200
+    ],
+    "format": "WEBP"
+  }
+]

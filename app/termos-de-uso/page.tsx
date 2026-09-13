@@ -1,19 +1,20 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Termos de Uso",
   description: "Condições para acesso e uso do site da Ravyt Digital.",
   alternates: { canonical: `${SITE_URL}/termos-de-uso` },
-};
+});
 
 export default function TermsPage() {
   return (
     <LegalPage eyebrow="Condições de acesso" title="Termos de Uso">
       <p className="legal-lead">Ao navegar pelo site da Ravyt Digital, você concorda com estes termos. Se não concordar com alguma condição, interrompa o uso do site.</p>
       <h2>1. Finalidade do site</h2>
-      <p>Este site apresenta a Ravyt Digital, seus serviços, sua forma de trabalho e projetos selecionados. O conteúdo tem caráter institucional e informativo.</p>
+      <p>Este site apresenta a Ravyt Digital, seu serviço de Social Media, sua forma de trabalho e conteúdos sobre comunicação. O conteúdo tem caráter institucional e informativo.</p>
       <h2>2. Propostas e contratação</h2>
       <p>Mensagens, estimativas, exemplos e conteúdos do site não constituem contrato ou oferta definitiva. Escopo, prazos, valores, responsabilidades e condições de cada projeto serão definidos em proposta ou instrumento específico aceito pelas partes.</p>
       <h2>3. Propriedade intelectual</h2>

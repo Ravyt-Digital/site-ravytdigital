@@ -19,4 +19,4 @@ export const metadata: Metadata = {
   icons:{icon:"/favicon.png",shortcut:"/favicon.png",apple:"/apple-touch-icon.png"}
 };
 
-export default function RootLayout({children}:{children:React.ReactNode}) { return <html lang="pt-BR"><head><link rel="stylesheet" href="/styles/site.css?v=20260901" /></head><body>{children}<Analytics/><FloatingWhatsApp/><CookieConsent/></body></html>; }
+export default function RootLayout({children}:{children:React.ReactNode}) { return <html lang="pt-BR"><body><a className="skip-link" href="#conteudo">Pular para o conteúdo</a>{children}<Analytics/><FloatingWhatsApp/><CookieConsent/></body></html>; }

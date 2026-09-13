@@ -17,7 +17,7 @@ export function BlogHeader({ current }: { current?: "services" | "insights" | "c
       <div className="shell blog-nav">
         <a className="brand-link" href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand /></a>
         <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="/#servico" aria-current={current === "services" ? "page" : undefined}>Serviço</a>
+          <a href="/social-media-para-psicologos-parentais" aria-current={current === "services" ? "page" : undefined}>Serviço</a>
           <a href="/#sobre">A Ravyt</a>
           <a className={current === "insights" ? "is-current" : undefined} href="/blog" aria-current={current === "insights" ? "page" : undefined}>Blog</a>
           <a className={current === "contact" ? "is-current" : undefined} href="/contato" aria-current={current === "contact" ? "page" : undefined}>Contato</a>
@@ -36,7 +36,7 @@ export function BlogFooter() {
         <a href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand dark /></a>
         <p>Social Media para Psicólogos Parentais em todo o Brasil.</p>
         <nav aria-label="Links do rodapé">
-          <a href="/#servico">Serviço</a>
+          <a href="/social-media-para-psicologos-parentais">Serviço</a>
           <a href="/#sobre">A Ravyt</a>
           <a href="/blog">Blog</a>
           <a href="/contato">Contato</a>
@@ -44,9 +44,9 @@ export function BlogFooter() {
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>
       </div>
-      <div className="shell footer-bottom">
+      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Rua Mocinha Batista, S/N, Centro, Tianguá - CE · CEP 62320-320</address><p>Atendimento remoto em todo o Brasil · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
-        <p>Criado com muito carinho por Ravyt Digital.</p>
+        <p>Estratégia e gestão de conteúdo.</p>
         <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div>
       </div>
     </footer>

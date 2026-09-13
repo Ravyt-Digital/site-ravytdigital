@@ -28,6 +28,8 @@ interface ExecutionContext {
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+    if (url.hostname === "www.ravytdigital.com") { url.hostname="ravytdigital.com"; url.protocol="https:"; return Response.redirect(url.href,308); }
+
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
@@ -40,7 +42,9 @@ const worker = {
       }, allowedWidths);
     }
 
-    return handler.fetch(request, env, ctx);
+    const response = await handler.fetch(request, env, ctx);
+    if(response.status===404){const headers=new Headers(response.headers);headers.set("X-Robots-Tag","noindex");return new Response(response.body,{status:404,headers});}
+    return response;
   },
 };
 

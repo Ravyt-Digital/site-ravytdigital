@@ -1,11 +1,12 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Política de Cookies",
   description: "Como a Ravyt Digital utiliza armazenamento essencial e medição com consentimento.",
   alternates: { canonical: "/politica-de-cookies" },
-};
+});
 
 export default function CookiePolicyPage() {
   return <LegalPage eyebrow="Privacidade e escolha" title="Política de Cookies">
@@ -16,7 +17,7 @@ export default function CookiePolicyPage() {
     <p>Eventos de visualização de páginas e cliques em WhatsApp, e-mail e chamadas principais só são registrados após o aceite. Nenhum desses eventos inclui nome, e-mail, telefone, conteúdo de mensagem, dados de saúde ou outras informações pessoais ou sensíveis.</p>
     <h2>3. Recusa</h2>
     <p>Ao recusar, os recursos de medição não essenciais permanecem desativados. Os links de WhatsApp e e-mail continuam funcionando normalmente.</p>
-    <h2>4. Contato</h2>
+    <h2>4. Alterar a escolha</h2><p>Use “Alterar preferências de privacidade” ao final de qualquer página. Ao recusar, novos eventos deixam de ser enviados. Não há rastreadores de publicidade neste site.</p><h2>5. Contato</h2>
     <p>Dúvidas podem ser enviadas para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
   </LegalPage>;
 }

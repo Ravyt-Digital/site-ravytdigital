@@ -1,79 +1,13 @@
 "use client";
-
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-
-const STORAGE_KEY = "ravyt_cookie_consent_v1";
-
-function hasConsent() {
-  try {
-    return window.localStorage.getItem(STORAGE_KEY) === "accepted";
-  } catch {
-    return false;
-  }
+function consent(){try{return localStorage.getItem("ravyt_cookie_consent_v1")==="accepted";}catch{return false;}}
+function send(event:string,path:string){
+ if(!consent())return;
+ const payload=JSON.stringify({event,path,occurredAt:new Date().toISOString()});
+ if(navigator.sendBeacon?.("/api/analytics",new Blob([payload],{type:"application/json"})))return;
+ void fetch("/api/analytics",{method:"POST",headers:{"content-type":"application/json"},body:payload,keepalive:true}).catch(()=>{});
 }
-
-export default function Analytics() {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    let sent = false;
-    const sendPageView = () => {
-      if (sent || !hasConsent()) return;
-      sent = true;
-      const payload = JSON.stringify({
-        path: pathname,
-        referrer: document.referrer || null,
-        viewport: `${window.innerWidth}x${window.innerHeight}`,
-        occurredAt: new Date().toISOString(),
-      });
-
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon("/api/analytics", new Blob([payload], { type: "application/json" }));
-      } else {
-        void fetch("/api/analytics", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: payload,
-          keepalive: true,
-        });
-      }
-    };
-
-    const onConsent = (event: Event) => {
-      if ((event as CustomEvent<string>).detail === "accepted") sendPageView();
-    };
-
-    sendPageView();
-    window.addEventListener("ravyt:consent", onConsent);
-    return () => window.removeEventListener("ravyt:consent", onConsent);
-  }, [pathname]);
-
-  useEffect(() => {
-    const onConversion = (event: Event) => {
-      if (!hasConsent()) return;
-      const name = (event as CustomEvent<string>).detail;
-      if (!["form_start", "form_submit", "thank_you_view"].includes(name)) return;
-      const payload = JSON.stringify({ event:name, path:pathname, occurredAt:new Date().toISOString() });
-      if (navigator.sendBeacon) navigator.sendBeacon("/api/analytics", new Blob([payload], {type:"application/json"}));
-    };
-    window.addEventListener("ravyt:conversion", onConversion);
-    return () => window.removeEventListener("ravyt:conversion", onConversion);
-  }, [pathname]);
-
-  useEffect(() => {
-    const onClick = (event: MouseEvent) => {
-      const link = (event.target as Element | null)?.closest<HTMLAnchorElement>("a[data-track]");
-      if (!link || !hasConsent()) return;
-      const eventName = link.dataset.track;
-      if (!eventName || !["whatsapp_click", "email_click", "primary_cta_click"].includes(eventName)) return;
-      const payload = JSON.stringify({ event: eventName, path: pathname, occurredAt: new Date().toISOString() });
-      if (navigator.sendBeacon) navigator.sendBeacon("/api/analytics", new Blob([payload], { type: "application/json" }));
-      else void fetch("/api/analytics", { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
-    };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, [pathname]);
-
-  return null;
-}
+export default function Analytics(){const path=usePathname();
+ useEffect(()=>{let sent=false;const view=()=>{if(!sent&&consent()){send("page_view",path);sent=true;}};view();window.addEventListener("ravyt:consent",view);return()=>window.removeEventListener("ravyt:consent",view);},[path]);
+ useEffect(()=>{const click=(e:MouseEvent)=>{const a=e.target instanceof Element?e.target.closest("a"):null;if(!a)return;const href=a.getAttribute("href")??"";const event=href.startsWith("https://wa.me/")?"whatsapp_click":href.startsWith("mailto:")?"email_click":href.startsWith("tel:")?"phone_click":a.dataset.track==="primary_cta_click"?"primary_cta_click":null;if(event)send(event,path);};document.addEventListener("click",click);return()=>document.removeEventListener("click",click);},[path]);return null;}

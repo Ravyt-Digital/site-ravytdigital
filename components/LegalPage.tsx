@@ -4,13 +4,13 @@ import Image from "next/image";
 
 export default function LegalPage({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
   return (
-    <main className="legal-page">
+    <main id="conteudo" tabIndex={-1} className="legal-page">
       <header className="legal-header shell">
         <a className="legal-brand" href="/" aria-label="Ravyt Digital — página inicial"><Image src="/brand/ravyt-logo-2026.webp" alt="Ravyt Digital" width={875} height={235} priority unoptimized /></a>
         <a className="legal-back" href="/">← Voltar ao site</a>
       </header>
       <section className="legal-hero">
-        <div className="shell"><p>{eyebrow}</p><h1>{title}</h1><span>Última atualização: 5 de agosto de 2026</span></div>
+        <div className="shell"><p>{eyebrow}</p><h1>{title}</h1><span>Última atualização: 13 de setembro de 2026</span></div>
       </section>
       <article className="legal-content shell">{children}</article>
       <footer className="legal-footer shell"><span>© 2026 Ravyt Digital</span><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div></footer>
