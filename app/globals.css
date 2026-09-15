@@ -819,7 +819,7 @@ h1,h2,h3,blockquote,em { font-family: "Inter Variable", Inter, Arial, sans-serif
 /* Ritmo vertical mais compacto */
 .specialist-home-hero { padding-block: clamp(62px, 7vw, 96px); }
 @media (min-width: 1021px) {
-  .specialist-home-hero { min-height: calc(100svh - 94px); display:flex; align-items:center; padding-block:clamp(30px,4vh,52px); }
+  .specialist-home-hero { min-height: min(680px, calc(100svh - 94px)); display:flex; align-items:center; padding-block:clamp(30px,4vh,52px); }
   .specialist-home-hero h1 { max-width:960px; margin-block:clamp(14px,2vh,20px); font-size:clamp(48px,5vw,70px); line-height:1.01; }
   .specialist-home-hero .hero-lead { max-width:760px; font-size:16px; line-height:1.55; }
   .specialist-home-hero .hero-actions { margin-top:24px; }
