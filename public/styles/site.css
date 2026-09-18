@@ -1939,3 +1939,8 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 .specialist-home-hero::before { z-index:1; background:radial-gradient(ellipse at center,rgba(231,226,218,.96) 0%,rgba(231,226,218,.9) 36%,rgba(231,226,218,.28) 100%); mask-image:none; }
 .specialist-home-hero .hero-specialist-grid { z-index:2; }
 @media(max-width:640px){.specialist-home-hero::before{background:rgba(231,226,218,.88)}}
+
+/* Development credit shared by site footers. */
+.site-credit { margin-top: 20px; margin-bottom: 0; color: #696662; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+.legal-footer { flex-wrap: wrap; }
+.legal-footer .site-credit { margin: 0; }

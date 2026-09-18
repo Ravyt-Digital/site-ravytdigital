@@ -49,6 +49,7 @@ export function BlogFooter() {
         <p>Estratégia e gestão de conteúdo.</p>
         <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div>
       </div>
+      <p className="shell site-credit">Site desenvolvido por Marcio Cabral — Marca WebSites</p>
     </footer>
   );
 }

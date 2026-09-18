@@ -14,7 +14,8 @@ done
 for token in "# Ravyt Digital" "Social Media para Psicólogos Parentais" "Ytala Cabral" "Nanda Perim" "PSIMAMA" "https://ravytdigital.com/social-media-para-psicologos-parentais"; do
   grep -q -F "${token}" "${SITES_PROJECT_ROOT}/dist/client/llms.txt" || { echo "llms.txt is missing: ${token}" >&2; exit 66; }
 done
-if rg -n -i "Márcio|Marcio|landing page|copywriting|produtores digitais" "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components" "${SITES_PROJECT_ROOT}/lib"; then
+# The requested development credit is attribution, not a service positioning change.
+if rg -n -i "Márcio|Marcio|landing page|copywriting|produtores digitais" "${SITES_PROJECT_ROOT}/app" "${SITES_PROJECT_ROOT}/components" "${SITES_PROJECT_ROOT}/lib" | sed 's/Site desenvolvido por Marcio Cabral — Marca WebSites//g' | rg -i "Márcio|Marcio|landing page|copywriting|produtores digitais"; then
   echo "Old positioning remains in published source." >&2; exit 66
 fi
 node --input-type=module - "${worker}" "${hosting}" <<'NODE'
