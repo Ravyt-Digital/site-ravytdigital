@@ -36,10 +36,11 @@ export default function MobileMenu({ fromSubpage = false }: { fromSubpage?: bool
       </button>
       <div className={`menu-panel${open ? " is-open" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <nav aria-label="Navegação para celular">
-          <a href={section("#servico")} onClick={() => setOpen(false)}>Serviço <span>01</span></a>
-          <a href={section("#sobre")} onClick={() => setOpen(false)}>A Ravyt <span>02</span></a>
-          <Link href="/blog" onClick={() => setOpen(false)}>Blog <span>03</span></Link>
-          <a href="/contato" onClick={() => setOpen(false)}>Contato <span>04</span></a>
+          <Link href="/gestao-de-midias-sociais" onClick={() => setOpen(false)}>Mídias sociais <span>01</span></Link>
+          <Link href="/criacao-de-sites-online" onClick={() => setOpen(false)}>Criação de sites <span>02</span></Link>
+          <a href={section("#sobre")} onClick={() => setOpen(false)}>A Ravyt <span>03</span></a>
+          <Link href="/blog" onClick={() => setOpen(false)}>Blog <span>04</span></Link>
+          <a href="/contato" onClick={() => setOpen(false)}>Contato <span>05</span></a>
           <a className="menu-contact" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="primary_cta_click" aria-label="Conversar com Ytala pelo WhatsApp (abre em nova aba)" onClick={() => setOpen(false)}>CONVERSAR COM YTALA ↗</a>
         </nav>
       </div>

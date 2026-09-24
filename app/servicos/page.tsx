@@ -1,2 +1,2 @@
 import { permanentRedirect } from "next/navigation";
-export default function Page(){ permanentRedirect("/social-media-para-psicologos-parentais"); }
+export default function Page(){ permanentRedirect("/#servicos"); }

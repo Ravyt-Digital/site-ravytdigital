@@ -11,13 +11,14 @@ function BlogBrand({ dark = false }: { dark?: boolean }) {
   );
 }
 
-export function BlogHeader({ current }: { current?: "services" | "insights" | "contact" }) {
+export function BlogHeader({ current }: { current?: "services" | "social" | "sites" | "insights" | "contact" }) {
   return (
     <header className="blog-site-header">
       <div className="shell blog-nav">
         <a className="brand-link" href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand /></a>
         <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="/social-media-para-psicologos-parentais" aria-current={current === "services" ? "page" : undefined}>Serviço</a>
+          <a href="/gestao-de-midias-sociais" aria-current={current === "social" ? "page" : undefined}>Mídias sociais</a>
+          <a href="/criacao-de-sites-online" aria-current={current === "sites" ? "page" : undefined}>Criação de sites</a>
           <a href="/#sobre">A Ravyt</a>
           <a className={current === "insights" ? "is-current" : undefined} href="/blog" aria-current={current === "insights" ? "page" : undefined}>Blog</a>
           <a className={current === "contact" ? "is-current" : undefined} href="/contato" aria-current={current === "contact" ? "page" : undefined}>Contato</a>
@@ -34,9 +35,10 @@ export function BlogFooter() {
     <footer className="footer blog-footer">
       <div className="shell footer-top">
         <a href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand dark /></a>
-        <p>Social Media para Psicólogos Parentais em todo o Brasil.</p>
+        <p>Gestão de mídias sociais e criação de sites online em todo o Brasil.</p>
         <nav aria-label="Links do rodapé">
-          <a href="/social-media-para-psicologos-parentais">Serviço</a>
+          <a href="/gestao-de-midias-sociais">Mídias sociais</a>
+          <a href="/criacao-de-sites-online">Criação de sites</a>
           <a href="/#sobre">A Ravyt</a>
           <a href="/blog">Blog</a>
           <a href="/contato">Contato</a>
@@ -46,7 +48,7 @@ export function BlogFooter() {
       </div>
       <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p>Atendimento remoto em todo o Brasil · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
-        <p>Estratégia e gestão de conteúdo.</p>
+        <p>Comunicação digital e criação de sites.</p>
         <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div>
       </div>
       <p className="shell site-credit">Site desenvolvido por Marcio Cabral — Marca WebSites</p>

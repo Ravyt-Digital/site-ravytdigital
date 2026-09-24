@@ -2,9 +2,13 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { posts } from "@/app/blog/posts";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-09-13");
+  const lastModified = new Date("2026-09-23");
   return [
     {url:SITE_URL,lastModified,changeFrequency:"monthly",priority:1},
+    {url:`${SITE_URL}/gestao-de-midias-sociais`,lastModified,changeFrequency:"monthly",priority:.9},
+    {url:`${SITE_URL}/criacao-de-sites-online`,lastModified,changeFrequency:"monthly",priority:.9},
+    {url:`${SITE_URL}/quanto-custa-gestao-de-midias-sociais`,lastModified,changeFrequency:"monthly",priority:.7},
+    {url:`${SITE_URL}/quanto-custa-criar-um-site`,lastModified,changeFrequency:"monthly",priority:.7},
     {url:`${SITE_URL}/social-media-para-psicologos-parentais`,lastModified,changeFrequency:"monthly",priority:.9},
     {url:`${SITE_URL}/autores/ytala-cabral`,lastModified,changeFrequency:"monthly",priority:.7},
     {url:`${SITE_URL}/contato`,lastModified,changeFrequency:"monthly",priority:.8},
