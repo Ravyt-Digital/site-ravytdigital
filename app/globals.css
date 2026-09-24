@@ -674,12 +674,6 @@ body:has(.contact-page) { overflow-x: hidden !important; overflow-y: auto !impor
 .article-audio-rate select { min-width: 78px; padding: 0 30px 0 12px; border-radius: 999px; font: 700 10px var(--font-geist-mono),monospace; }
 .article-audio-status { margin: 13px 0 0; color: #7e7485; font-size: 9px; line-height: 1.45; }
 .article-audio-unsupported { display: grid; grid-template-columns: 54px 1fr; gap: 18px; align-items: center; }
-.article-layout aside { position: sticky; top: 35px; align-self: start; padding-top: 12px; }
-.article-layout aside > p { margin: 0 0 22px; color: var(--purple); font-size: 9px; font-weight: 750; text-transform: uppercase; letter-spacing: .15em; }
-.article-layout aside a { display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 13px 0; border-top: 1px solid #ded8e2; color: #7d7583; font-size: 11px; line-height: 1.45; transition: color .2s ease; }
-.article-layout aside a:last-child { border-bottom: 1px solid #ded8e2; }
-.article-layout aside a:hover { color: var(--violet); }
-.article-layout aside a span { color: #a79fab; font-family: var(--font-geist-mono),monospace; font-size: 8px; padding-top: 2px; }
 .article-intro { margin: 0 0 84px; color: #2b2132; font-size: 24px; line-height: 1.6; letter-spacing: -.016em; }
 .article-body > section { position: relative; scroll-margin-top: 40px; margin: 0 0 78px; padding-top: 26px; border-top: 1px solid #dcd6e0; }
 .article-section-number { display: block; margin-bottom: 20px; color: var(--violet); font-family: var(--font-geist-mono),monospace; font-size: 9px; }
@@ -913,8 +907,6 @@ h1,h2,h3,blockquote,em { font-family: "Inter Variable", Inter, Arial, sans-serif
   .blog-cta-inner { grid-template-columns: 1fr; gap: 42px; align-items: start; }
   .blog-cta .button { width: fit-content; }
   .article-layout { grid-template-columns: 1fr; gap: 65px; }
-  .article-layout aside { position: static; }
-  .article-layout aside a { grid-template-columns: 32px 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -1916,6 +1908,10 @@ body {
 .editorial-note p { margin: 8px 0 0; font-size: .95rem; }
 .related-posts { display: grid; gap: 14px; margin: 40px 0 54px; }
 .related-posts h2 { margin-bottom: 8px; }
+.article-body .related-posts { gap: 0; margin: 48px 0 56px; padding: 30px 32px; border: 1px solid rgba(26,28,30,.12); background: rgba(255,255,255,.38); }
+.article-body .related-posts h2 { margin: 0 0 15px; font-size: clamp(27px,3vw,34px); }
+.article-body .related-posts a { display: block; padding: 13px 0; border-top: 1px solid rgba(26,28,30,.14); font-size: 16px; line-height: 1.5; }
+.article-body .related-posts a:hover, .article-body .related-posts a:focus-visible { color: var(--petroleum); text-decoration: underline; }
 .article-meta a { color: inherit; }
 @media (max-width: 900px) {
   .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1923,6 +1919,7 @@ body {
 @media (max-width: 680px) {
   .insights-grid, .process-grid { grid-template-columns: 1fr; }
   .insights-grid a, .process-grid article { min-height: 0; }
+  .article-body .related-posts { padding: 24px 20px; }
 }
 
 /* Auditoria de usabilidade — setembro de 2026 */
