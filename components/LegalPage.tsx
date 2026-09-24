@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 
-export default function LegalPage({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
+export default function LegalPage({ eyebrow, title, children, updated = "13 de setembro de 2026" }: { eyebrow: string; title: string; children: ReactNode; updated?: string }) {
   return (
     <main id="conteudo" tabIndex={-1} className="legal-page">
       <header className="legal-header shell">
@@ -10,7 +10,7 @@ export default function LegalPage({ eyebrow, title, children }: { eyebrow: strin
         <a className="legal-back" href="/">← Voltar ao site</a>
       </header>
       <section className="legal-hero">
-        <div className="shell"><p>{eyebrow}</p><h1>{title}</h1><span>Última atualização: 13 de setembro de 2026</span></div>
+        <div className="shell"><p>{eyebrow}</p><h1>{title}</h1><span>Última atualização: {updated}</span></div>
       </section>
       <article className="legal-content shell">{children}</article>
       <footer className="legal-footer shell"><span>© 2026 Ravyt Digital</span><p className="site-credit">Site desenvolvido por Marcio Cabral — Marca WebSites</p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div></footer>

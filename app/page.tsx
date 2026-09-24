@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
 import { whatsappUrl } from "@/lib/contact";
-import { SITE_URL } from "@/lib/site";
 
 const services = [
   { number:"01", title:"Gestão de mídias sociais", text:"Estratégia, calendário, criação de conteúdo, publicação e análise para sua marca se comunicar com clareza e consistência.", href:"/gestao-de-midias-sociais" },
@@ -10,14 +9,9 @@ const services = [
 ];
 
 export default function Home() {
-  const schema = {"@context":"https://schema.org","@graph":[
-    {"@type":"Organization","@id":`${SITE_URL}/#organization`,name:"Ravyt Digital",legalName:"YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME",taxID:"26.114.696/0001-70",telephone:"+5588996956479",address:{"@type":"PostalAddress",streetAddress:"Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista",addressLocality:"São Paulo",addressRegion:"SP",postalCode:"01310-200",addressCountry:"BR"},url:SITE_URL,email:"ola@ravytdigital.com",description:"Agência de gestão de mídias sociais e criação de sites online com atendimento em todo o Brasil.",founder:{"@id":`${SITE_URL}/autores/ytala-cabral#person`},areaServed:{"@type":"Country",name:"Brasil"}},
-    {"@type":"WebSite","@id":`${SITE_URL}/#website`,url:SITE_URL,name:"Ravyt Digital",inLanguage:"pt-BR",publisher:{"@id":`${SITE_URL}/#organization`}},
-  ]};
   return <>
     <BlogHeader />
     <main id="conteudo" tabIndex={-1}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
       <section className="specialist-home-hero"><div className="shell hero-specialist-grid"><div className="hero-specialist-copy"><p className="eyebrow">Ravyt Digital · Atendimento em todo o Brasil</p><h1>Gestão de mídias sociais e criação de sites para sua marca ser encontrada.</h1><p className="hero-lead">Organizamos sua comunicação nas redes e construímos seu espaço próprio na internet. Duas frentes para apresentar seu trabalho com clareza e abrir caminhos para novos contatos.</p><div className="hero-actions"><a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">CONVERSAR COM A RAVYT</a><a className="button button-ghost" href="#servicos">Conhecer os serviços</a></div></div></div></section>
       <section className="home-services" id="servicos"><div className="shell"><p className="section-kicker">O que fazemos</p><h2>Escolha por onde sua presença digital precisa começar.</h2><div className="service-duo">{services.map(service=><article key={service.number}><span>{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><Link href={service.href}>Conhecer o serviço →</Link></article>)}</div></div></section>
       <section className="difference-section"><div className="shell two-columns"><div><p className="section-kicker">Presença digital com direção</p><h2>Seu público pode chegar por mais de um caminho.</h2><p>Há quem descubra um profissional pelo conteúdo. Há quem pesquise o serviço no Google ou receba uma indicação e queira conhecer melhor o negócio antes de entrar em contato.</p></div><div className="check-list"><p><strong>Nas redes:</strong> uma comunicação planejada ajuda as pessoas a entender seu trabalho e acompanhar sua marca.</p><p><strong>No seu site:</strong> serviços, diferenciais e formas de contato ficam reunidos em um endereço com domínio próprio.</p><p><strong>Na estratégia:</strong> cada canal cumpre uma função e direciona o próximo passo de quem chega até você.</p></div></div></section>

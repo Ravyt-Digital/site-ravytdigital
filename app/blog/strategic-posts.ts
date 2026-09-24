@@ -5,8 +5,28 @@ export const strategicPosts: BlogPost[] = [
     slug:"gestao-de-redes-sociais-ou-producao-de-conteudo",
     title:"Gestão de redes sociais ou produção de conteúdo: qual contratar?",
     excerpt:"Entenda a diferença entre receber posts prontos e delegar planejamento, publicação e análise antes de comparar propostas.",
-    category:"Gestão de mídias sociais",date:"2026-09-23",dateLabel:"23 de setembro de 2026",readingTime:"5 min de leitura",author:"Equipe Ravyt Digital",
+    category:"Gestão de mídias sociais",date:"2026-09-23",modified:"2026-09-24",dateLabel:"23 de setembro de 2026",readingTime:"5 min de leitura",author:"Equipe Ravyt Digital",
     intro:"Duas propostas podem prometer o mesmo número de posts e exigir responsabilidades muito diferentes do cliente. A pergunta útil antes de pedir um pacote é: quem vai decidir o que publicar, colocar o conteúdo no ar e aprender com os resultados?",
+    quickAnswer:"A produção de conteúdo faz sentido quando sua equipe consegue publicar e analisar os resultados. A gestão de redes sociais é indicada quando você também precisa delegar essa rotina. Na Ravyt, as duas modalidades incluem planejamento de conteúdo; a gestão completa acrescenta publicação e acompanhamento, conforme o contrato.",
+    comparison:{
+      title:"Produção e gestão: como a Ravyt divide as responsabilidades",
+      note:"Esta comparação descreve as modalidades da Ravyt. Quantidade de peças, formatos, canais, revisões e frequência são definidos na proposta. O atendimento a mensagens e comentários deve ser combinado expressamente.",
+      headers:["Etapa","Produção sem gestão","Gestão completa"],
+      rows:[
+        ["Planejamento do conteúdo","Incluído no escopo contratado","Incluído no escopo contratado"],
+        ["Criação de textos e peças","Ravyt, nos formatos combinados","Ravyt, nos formatos combinados"],
+        ["Validação de informações da empresa","Cliente aprova e confere os dados","Cliente aprova e confere os dados"],
+        ["Publicação nos canais","Responsabilidade do cliente","Ravyt, nos canais e prazos acordados"],
+        ["Análise e acompanhamento","Fora do escopo de produção","Ravyt, conforme os indicadores acordados"]
+      ]
+    },
+    checklist:{title:"O que conferir antes de contratar uma agência",items:[
+      "Defina quem aprova o conteúdo e quanto tempo essa pessoa terá para responder.",
+      "Peça a relação de canais, formatos, quantidade de entregas e revisões incluídas.",
+      "Confirme quem publica, responde às mensagens e acompanha os resultados.",
+      "Escolha indicadores ligados ao objetivo: contatos recebidos, visitas ao site ou procura por um serviço, por exemplo.",
+      "Compare propostas com as mesmas responsabilidades e registre o que fica fora do contrato."
+    ]},
     sections:[
       {title:"Comece pelas tarefas que ninguém está assumindo",paragraphs:[
         "Imagine uma empresa que recebe oito posts por mês. Se o dono ainda precisa escolher os assuntos, enviar referências, revisar cada legenda, publicar e decidir o que fazer com as métricas, ele contratou produção. Isso pode ser suficiente para uma equipe que já tem direção editorial e tempo para operar os canais.",
@@ -38,8 +58,29 @@ export const strategicPosts: BlogPost[] = [
     slug:"site-institucional-paginas-essenciais",
     title:"Site institucional: quais páginas sua empresa realmente precisa?",
     excerpt:"Um roteiro para definir estrutura, conteúdo, contato e custos antes de solicitar um orçamento de site.",
-    category:"Criação de sites",date:"2026-09-23",dateLabel:"23 de setembro de 2026",readingTime:"5 min de leitura",author:"Equipe Ravyt Digital",
+    category:"Criação de sites",date:"2026-09-23",modified:"2026-09-24",dateLabel:"23 de setembro de 2026",readingTime:"5 min de leitura",author:"Equipe Ravyt Digital",
     intro:"“Preciso de um site” ainda não define o projeto. Antes de pedir orçamento, vale decidir o que uma pessoa precisa entender sobre sua empresa e qual ação deve conseguir realizar sem esforço.",
+    quickAnswer:"Um site institucional precisa explicar a oferta, identificar a empresa e facilitar o contato. Isso pode caber em uma página com seções claras. Páginas próprias para serviços, equipe ou conteúdo passam a fazer sentido quando há informações e dúvidas diferentes para cada assunto.",
+    comparison:{
+      title:"Quais páginas incluir no site institucional?",
+      note:"Use este mapa para discutir o escopo. Ter mais páginas não garante melhor posição no Google: cada uma precisa ajudar o visitante e apresentar conteúdo próprio.",
+      headers:["Página ou seção","Pergunta que precisa responder","Quando separar em uma página"],
+      rows:[
+        ["Início","O que a empresa faz, para quem e onde atende?","É o ponto de entrada principal do site."],
+        ["Serviços","O que recebo e como a contratação funciona?","Quando cada serviço tem público, processo ou dúvidas próprias."],
+        ["Sobre ou equipe","Quem é responsável e que experiência pode ser verificada?","Quando a apresentação exige mais contexto do que uma seção curta."],
+        ["Contato","Como pedir informações e qual é o próximo passo?","Quando há vários canais, unidades ou orientações de atendimento."],
+        ["Blog","Que dúvida do cliente vale explicar em profundidade?","Quando existe capacidade de produzir e revisar conteúdo útil."]
+      ]
+    },
+    checklist:{title:"Checklist para pedir um orçamento de site",items:[
+      "Liste os serviços, o público e a área de atendimento da empresa.",
+      "Defina a ação principal: solicitar orçamento, agendar uma conversa ou conhecer um serviço.",
+      "Separe textos, fotos, identidade visual e referências que você pode usar.",
+      "Informe se já possui domínio próprio e quem é o titular e responsável pela renovação.",
+      "Relacione formulários, integrações e páginas necessárias.",
+      "Combine quem cuidará da hospedagem, das atualizações e da manutenção após a entrega."
+    ]},
     sections:[
       {title:"A página inicial precisa orientar, não contar tudo",paragraphs:[
         "Uma pessoa que chega pela primeira vez deve identificar o serviço, a região ou modalidade de atendimento e o caminho para saber mais ou entrar em contato. Um título vago seguido de uma foto bonita obriga o visitante a procurar a informação principal.",
@@ -71,8 +112,17 @@ export const strategicPosts: BlogPost[] = [
     slug:"criacao-de-site-para-psicologos",
     title:"Criação de site para psicólogos: o que explicar antes do contato?",
     excerpt:"Uma estrutura de site para apresentar atuação, modalidade de atendimento e informações profissionais com clareza e responsabilidade.",
-    category:"Sites para profissionais",date:"2026-09-23",dateLabel:"23 de setembro de 2026",readingTime:"5 min de leitura",author:"Equipe Ravyt Digital",
+    category:"Sites para profissionais",date:"2026-09-23",modified:"2026-09-24",dateLabel:"23 de setembro de 2026",readingTime:"5 min de leitura",author:"Equipe Ravyt Digital",
     intro:"Alguém que procura uma psicóloga ou um psicólogo pode chegar ao site por uma indicação, por uma busca no Google ou depois de conhecer o conteúdo nas redes. Em poucos minutos, essa pessoa precisa entender quem é o profissional, como trabalha e como obter informações sobre atendimento.",
+    quickAnswer:"Comece pela apresentação profissional, pelos serviços efetivamente oferecidos, pela modalidade de atendimento e por um contato fácil de encontrar. A estrutura pode ser enxuta. O profissional deve conferir as informações sobre sua atuação e validar o conteúdo técnico antes da publicação.",
+    checklist:{title:"Materiais para começar o projeto do site",items:[
+      "Nome profissional, registro e qualificações conferidos pelo responsável.",
+      "Descrição dos serviços, do público atendido e das modalidades realmente disponíveis.",
+      "Informações sobre local de atendimento ou funcionamento da modalidade online.",
+      "Canal de contato e orientações para a primeira conversa.",
+      "Textos e imagens que podem ser publicados, com origem e autorizações verificadas.",
+      "Nome de quem validará os textos técnicos e cuidará das futuras atualizações."
+    ]},
     sections:[
       {title:"Explique a atuação com palavras compreensíveis",paragraphs:[
         "“Acolhimento e transformação” não informa qual serviço é oferecido. Uma apresentação útil identifica o profissional, sua área de atuação real, o público atendido e as modalidades disponíveis. Os termos técnicos podem aparecer, desde que sejam explicados para quem ainda não conhece a abordagem.",

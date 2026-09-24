@@ -42,6 +42,7 @@ export function BlogFooter() {
           <a href="/#sobre">A Ravyt</a>
           <a href="/blog">Blog</a>
           <a href="/contato">Contato</a>
+          <a href="https://www.instagram.com/ravytdigital/" target="_blank" rel="noopener noreferrer">Instagram da Ravyt ↗</a>
           <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">WhatsApp</a>
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>

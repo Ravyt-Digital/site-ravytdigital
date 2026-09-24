@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PrivacyPage() {
   return (
-    <LegalPage eyebrow="Privacidade e transparência" title="Política de Privacidade">
+    <LegalPage eyebrow="Privacidade e transparência" title="Política de Privacidade" updated="24 de setembro de 2026">
       <p className="legal-lead">A Ravyt Digital respeita sua privacidade. Esta política explica, de forma clara, quais dados podem ser tratados durante sua interação com nosso site e canais de contato.</p>
       <h2>1. Quem é responsável pelos dados</h2>
       <p>A Ravyt Digital atua como controladora dos dados pessoais relacionados a este site e aos contatos comerciais recebidos por seus canais. Dúvidas ou solicitações podem ser enviadas para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
       <h2>4. Fundamentos para o tratamento</h2>
       <p>O tratamento ocorre conforme as hipóteses aplicáveis da Lei Geral de Proteção de Dados, incluindo consentimento, procedimentos relacionados a contratos, cumprimento de obrigação legal e legítimo interesse avaliado com respeito aos direitos do titular. Consulte o <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" rel="noreferrer">texto oficial compilado da LGPD</a>.</p>
       <h2>5. Cookies e armazenamento local</h2>
-      <p>O site utiliza armazenamento essencial para lembrar sua escolha de privacidade. Após o seu aceite, nosso monitoramento próprio registra o caminho da página, o tipo de evento e o horário nos registros protegidos da infraestrutura da Ravyt. Não usamos esse recurso para publicidade nem instalamos cookies de terceiros. Você pode revogar ou alterar sua autorização pelo botão “Alterar preferências de privacidade”, disponível no final de todas as páginas.</p>
+      <p>O site utiliza armazenamento essencial para lembrar sua escolha de privacidade. Após o seu aceite, nosso monitoramento próprio registra visualizações e cliques nos canais de contato e nas páginas de serviço e orçamento. Os eventos contêm o caminho da página, o tipo de evento, o horário e, para links internos de serviço ou orçamento, o caminho de destino. Eles são armazenados nos registros da infraestrutura da Ravyt, sem parâmetros de busca ou conteúdo das mensagens. Não usamos esse recurso para publicidade nem instalamos cookies de terceiros. Você pode revogar ou alterar sua autorização pelo botão “Alterar preferências de privacidade”, disponível no final de todas as páginas.</p>
       <h2>6. Compartilhamento</h2>
       <p>Não vendemos dados pessoais. Informações podem ser compartilhadas apenas com fornecedores necessários para hospedagem, comunicação, segurança e execução dos serviços, dentro do limite adequado a cada finalidade, ou quando houver obrigação legal.</p>
       <h2>7. Conservação e segurança</h2>
