@@ -13,7 +13,7 @@ export default function LegalPage({ eyebrow, title, children, updated = "13 de s
         <div className="shell"><p>{eyebrow}</p><h1>{title}</h1><span>Última atualização: {updated}</span></div>
       </section>
       <article className="legal-content shell">{children}</article>
-      <footer className="legal-footer shell"><span>© 2026 Ravyt Digital</span><p className="site-credit">Site desenvolvido por Marcio Cabral — Marca WebSites</p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div></footer>
+      <footer className="legal-footer shell"><span>© 2026 Ravyt Digital</span><p className="site-credit">Site Desenvolvido Por <a href="https://ravytdigital.com">Ravyt Digital</a></p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div></footer>
     </main>
   );
 }

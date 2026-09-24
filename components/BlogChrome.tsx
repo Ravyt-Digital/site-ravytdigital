@@ -52,7 +52,7 @@ export function BlogFooter() {
         <p>Comunicação digital e criação de sites.</p>
         <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div>
       </div>
-      <p className="shell site-credit">Site desenvolvido por Marcio Cabral — Marca WebSites</p>
+      <p className="shell site-credit">Site Desenvolvido Por <a href="https://ravytdigital.com">Ravyt Digital</a></p>
     </footer>
   );
 }
