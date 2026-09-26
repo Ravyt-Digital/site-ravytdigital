@@ -31,7 +31,7 @@ for (const path of ["/","/gestao-de-midias-sociais","/criacao-de-sites-online","
   if((html.match(/<h1[ >]/g)??[]).length!==1) throw new Error(`${path} must have one H1`);
 }
 const home=await (await request("/")).text();
-for(const token of ["Gestão de mídias sociais","Criação de sites","Ytala Cabral","todo o Brasil"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
+for(const token of ["O que aparece no Google", "Analisar minha presença digital", "Ytala Cabral", "Marcio Cabral", "todo o Brasil"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
 for(const removed of ["/landing-pages-para-psicologia-parental","/copywriting-para-psicologia-parental","/autores/marcio-cabral"]) {
   if((await request(removed)).status!==404) throw new Error(`${removed} must return 404`);
 }

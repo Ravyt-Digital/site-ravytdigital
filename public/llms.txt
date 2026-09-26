@@ -1,8 +1,16 @@
 # Ravyt Digital
 
-> Agência de gestão de mídias sociais e criação de sites online com atendimento em todo o Brasil.
+> SEO, presença local e sites estratégicos com atendimento em todo o Brasil.
 
-## Serviços
+## Serviços principais
+
+- [SEO](https://ravytdigital.com/seo): estratégia de busca, conteúdo e SEO técnico.
+- [Presença Local](https://ravytdigital.com/google-meu-negocio): Perfil da Empresa no Google e SEO local.
+- [Sites Estratégicos](https://ravytdigital.com/sites): UX/UI, copy e desenvolvimento.
+- [Diagnóstico](https://ravytdigital.com/diagnostico): primeiro contato para entender prioridades.
+- [Cases](https://ravytdigital.com/cases): projetos selecionados.
+
+## Outras páginas preservadas
 
 - [Gestão de mídias sociais](https://ravytdigital.com/gestao-de-midias-sociais): diagnóstico, posicionamento, planejamento, criação, publicação, análise e ajustes de conteúdo.
 - [Criação de sites online](https://ravytdigital.com/criacao-de-sites-online): planejamento, copy, design responsivo, estrutura técnica de SEO e publicação de sites com domínio próprio. Registro de domínio, hospedagem e manutenção são definidos na proposta.
@@ -19,4 +27,4 @@
 
 A Ravyt não oferece atendimento psicológico. Não há promessa de posição nos mecanismos de busca ou de resultados comerciais específicos.
 
-Última atualização: 23 de setembro de 2026.
+Última atualização: 26 de setembro de 2026.

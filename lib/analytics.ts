@@ -1,4 +1,5 @@
 export const servicePaths = [
+  "/seo", "/google-meu-negocio", "/sites",
   "/gestao-de-midias-sociais",
   "/criacao-de-sites-online",
   "/social-media-para-psicologos-parentais",

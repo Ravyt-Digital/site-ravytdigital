@@ -2,9 +2,10 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { posts } from "@/app/blog/posts";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-09-23");
+  const lastModified = new Date("2026-09-26");
   const editorialUpdate = new Date("2026-09-24");
   return [
+    ...["/seo", "/google-meu-negocio", "/sites", "/diagnostico", "/cases", "/sobre"].map(path => ({url:`${SITE_URL}${path}`,lastModified,changeFrequency:"monthly" as const,priority:.9})),
     {url:SITE_URL,lastModified,changeFrequency:"monthly",priority:1},
     {url:`${SITE_URL}/gestao-de-midias-sociais`,lastModified,changeFrequency:"monthly",priority:.9},
     {url:`${SITE_URL}/criacao-de-sites-online`,lastModified,changeFrequency:"monthly",priority:.9},

@@ -11,7 +11,7 @@ export const organization = {
   email: "ola@ravytdigital.com",
   telephone: "+5588996956479",
   sameAs: ["https://www.instagram.com/ravytdigital/"],
-  description: "Agência de gestão de mídias sociais e criação de sites online com atendimento remoto em todo o Brasil.",
+  description: "SEO, Google Meu Negócio, copy e sites estratégicos com atendimento remoto em todo o Brasil.",
   areaServed: { "@type": "Country", name: "Brasil" },
   address: {
     "@type": "PostalAddress",
@@ -29,9 +29,9 @@ export const ytala = {
   name: "Ytala Cabral",
   url: `${SITE_URL}/autores/ytala-cabral`,
   image: `${SITE_URL}/team/ytala-cabral.webp`,
-  jobTitle: "Social Media para Psicólogos Parentais",
+  jobTitle: "SEO, Google Meu Negócio e Copy",
   worksFor: { "@id": organization["@id"] },
-  knowsAbout: ["Social Media", "Comunicação digital para psicólogos parentais", "Estratégia de conteúdo", "Posicionamento digital"],
+  knowsAbout: ["SEO", "Google Meu Negócio", "Copywriting", "Estratégia de conteúdo"],
 };
 
 export const website = {
