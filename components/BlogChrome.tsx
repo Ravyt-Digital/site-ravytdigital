@@ -11,15 +11,14 @@ function BlogBrand({ dark = false }: { dark?: boolean }) {
   );
 }
 
-export function BlogHeader({ current }: { current?: "services" | "social" | "sites" | "insights" | "contact" }) {
+export function BlogHeader({ current, transparent = false }: { current?: "services" | "social" | "sites" | "insights" | "contact"; transparent?: boolean }) {
   return (
-    <header className="blog-site-header">
+    <header className={`blog-site-header${transparent ? " is-overlay" : ""}`}>
       <div className="shell blog-nav">
         <a className="brand-link" href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand /></a>
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="/seo">SEO</a><a href="/google-meu-negocio">Presença Local</a><a href="/sites" aria-current={current === "sites" ? "page" : undefined}>Sites</a><a href="/cases">Cases</a><a href="/sobre">A Ravyt</a><a href="/blog" aria-current={current === "insights" ? "page" : undefined}>Blog</a>
         </nav>
-        <a className="header-cta" href="/diagnostico" data-track="primary_cta_click">Analisar minha presença digital <span aria-hidden="true">↗</span></a>
         <MobileMenu fromSubpage />
       </div>
     </header>
