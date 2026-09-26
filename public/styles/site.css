@@ -2024,7 +2024,7 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 /* On the home page the navigation sits over the moving hero, as in the supplied reference. */
 .blog-site-header.is-overlay { position:absolute; inset:0 0 auto; z-index:30; background:transparent; }
 .blog-site-header.is-overlay .blog-nav { background:transparent; border-bottom-color:rgba(255,255,255,.22); }
-.blog-site-header.is-overlay + .rv .rv-hero { padding-top:clamp(230px,22vw,265px); }
+.blog-site-header.is-overlay + .rv .rv-hero { padding-top:clamp(190px,16vw,210px); }
 .blog-nav { grid-template-columns:1fr; }
 .blog-nav .desktop-nav { justify-self:center; grid-column:1; }
-@media (max-width:700px) { .blog-site-header.is-overlay + .rv .rv-hero { padding-top:190px; } }
+@media (max-width:700px) { .blog-site-header.is-overlay + .rv .rv-hero { padding-top:158px; } }
