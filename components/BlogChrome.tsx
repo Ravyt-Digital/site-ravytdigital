@@ -6,7 +6,7 @@ import { whatsappUrl } from "@/lib/contact";
 function BlogBrand({ dark = false }: { dark?: boolean }) {
   return (
     <span className={`brand-lockup${dark ? " brand-lockup-dark" : ""}`}>
-      <Image src={dark ? "/brand/ravyt-logo-header.webp" : "/brand/ravyt-logo-white.webp"} alt="Ravyt Digital" width={438} height={146} priority unoptimized />
+      <Image src={dark ? "/brand/ravyt-footer-new.webp" : "/brand/ravyt-logo-white.webp"} alt="Ravyt Digital" width={438} height={146} priority unoptimized />
     </span>
   );
 }
@@ -37,7 +37,7 @@ export function BlogFooter() {
           <a href="/sobre">A Ravyt</a>
           <a href="/blog">Blog</a>
           <a href="/contato">Contato</a>
-          <a href="https://www.instagram.com/ravytdigital/" target="_blank" rel="noopener noreferrer">Instagram da Ravyt ↗</a>
+
           <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" aria-label="Conversar pelo WhatsApp (abre em nova aba)">WhatsApp</a>
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>

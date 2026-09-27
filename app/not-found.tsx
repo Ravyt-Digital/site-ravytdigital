@@ -17,7 +17,7 @@ export default function NotFound() {
         <nav aria-label="Caminhos para continuar">
           <Link className="button button-light" href="/">Voltar para a página inicial</Link>
           <Link className="button button-ghost" href="/blog">Explorar os conteúdos do blog</Link>
-          <Link className="button button-ghost" href="/social-media-para-psicologos-parentais">Conhecer o serviço de Social Media</Link>
+          <Link className="button button-ghost" href="/sites">Conhecer a criação de sites</Link>
         </nav>
       </div>
     </main>

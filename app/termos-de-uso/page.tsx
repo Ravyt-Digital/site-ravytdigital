@@ -14,7 +14,7 @@ export default function TermsPage() {
     <LegalPage eyebrow="Condições de acesso" title="Termos de Uso">
       <p className="legal-lead">Ao navegar pelo site da Ravyt Digital, você concorda com estes termos. Se não concordar com alguma condição, interrompa o uso do site.</p>
       <h2>1. Finalidade do site</h2>
-      <p>Este site apresenta a Ravyt Digital, seu serviço de Social Media, sua forma de trabalho e conteúdos sobre comunicação. O conteúdo tem caráter institucional e informativo.</p>
+      <p>Este site apresenta a Ravyt Digital, seus serviços de Google, sites e SEO e conteúdos sobre presença digital. O conteúdo tem caráter institucional e informativo.</p>
       <h2>2. Propostas e contratação</h2>
       <p>Mensagens, estimativas, exemplos e conteúdos do site não constituem contrato ou oferta definitiva. Escopo, prazos, valores, responsabilidades e condições de cada projeto serão definidos em proposta ou instrumento específico aceito pelas partes.</p>
       <h2>3. Propriedade intelectual</h2>
@@ -22,7 +22,7 @@ export default function TermsPage() {
       <h2>4. Uso adequado</h2>
       <p>Você se compromete a não usar o site para violar leis, direitos de terceiros, medidas de segurança ou a disponibilidade do serviço; introduzir código malicioso; tentar acesso não autorizado; ou reproduzir conteúdo de forma indevida.</p>
       <h2>5. Links e serviços de terceiros</h2>
-      <p>O site pode direcionar para Instagram, serviços de e-mail ou páginas externas. A Ravyt não controla a disponibilidade, o conteúdo ou as políticas desses ambientes, que são regidos por termos próprios.</p>
+      <p>O site pode direcionar para serviços de e-mail ou páginas externas. A Ravyt não controla a disponibilidade, o conteúdo ou as políticas desses ambientes, que são regidos por termos próprios.</p>
       <h2>6. Disponibilidade e informações</h2>
       <p>Buscamos manter o site atualizado e funcionando corretamente, mas podem ocorrer indisponibilidades, manutenções ou informações desatualizadas. Nada nestes termos exclui direitos que não possam ser afastados pela legislação aplicável.</p>
       <h2>7. Privacidade</h2>

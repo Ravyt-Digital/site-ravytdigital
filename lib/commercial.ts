@@ -9,11 +9,12 @@ export const projects = [
  {name:'Excel no Agro',type:'Página de vendas',image:'excel-no-agro',url:'https://site-excel-no-agro.ravytdigital.workers.dev',text:'Conteúdo e hierarquia visual organizados para apresentar uma oferta educacional.'}
 ];
 export const questions = [
- ['Por onde minha empresa deve começar?','Pelo diagnóstico. Olhamos como sua empresa aparece, o que comunica e como recebe contatos. A recomendação parte do problema prioritário: presença local, SEO, site ou uma combinação dessas frentes.'],
- ['Vocês garantem o primeiro lugar no Google?','Não. A posição depende de concorrência, localização, relevância e critérios do Google. Trabalhamos a estrutura e o conteúdo que podemos melhorar, com acompanhamento e expectativas claras.'],
- ['Em quanto tempo o SEO traz resultado?','SEO é um trabalho progressivo. O prazo varia conforme o ponto de partida, o mercado e a execução. O diagnóstico orienta prioridades e indicadores; não prometemos um prazo único para todas as empresas.'],
- ['Preciso trocar meu site?','Nem sempre. Primeiro avaliamos a estrutura, a mensagem, a experiência e as integrações atuais. Podemos recomendar melhorias no que já existe quando isso atende ao objetivo.'],
- ['Quanto custa e o que está incluído?','O investimento depende do escopo, do estado atual dos canais e do acompanhamento necessário. Após entender o negócio, apresentamos uma proposta com entregas, responsabilidades e condições.'],
- ['Vocês também trabalham com redes sociais?','As redes entram na etapa de expansão, conforme a necessidade do negócio e o escopo acordado. A prioridade é organizar busca, presença local e conversão antes de ampliar novas frentes.'],
- ['Como funciona o diagnóstico?','Você compartilha o nome da empresa, a região e os canais atuais. A conversa continua pelo WhatsApp para entendermos o contexto e combinarmos a análise. O formulário não gera uma auditoria automática.']
+ ['Por que o serviço é mensal?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
+ ['O site é meu?','As condições de titularidade, acesso e eventual encerramento serão apresentadas na proposta antes da contratação.'],
+ ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte da oferta Google + Site + SEO por R$ 597 por mês. As condições específicas são informadas na proposta.'],
+ ['O que a Ravyt faz todos os meses?','Acompanha e aprimora o Perfil da Empresa no Google, mantém o site, presta suporte e trabalha na estrutura e nas otimizações de SEO conforme o escopo contratado.'],
+ ['Em quanto tempo posso perceber evolução no Google?','Depende do mercado, da concorrência, da localização e do histórico da empresa. Não há prazo universal nem garantia de resultado específico.'],
+ ['Preciso já ter um Perfil da Empresa no Google?','Não. Avaliamos a situação atual e estruturamos ou otimizamos o perfil conforme a elegibilidade e as necessidades do negócio.'],
+ ['O serviço garante primeira posição no Google?','Não. Nenhuma posição específica pode ser garantida. Trabalhamos para melhorar a estrutura e a presença digital da empresa.'],
+ ['Quanto custa e como é cobrado?','A mensalidade Google + Site + SEO é de R$ 597. O valor de R$ 19,90 por dia é apenas a equivalência para um período de 30 dias; a cobrança é mensal.']
 ];

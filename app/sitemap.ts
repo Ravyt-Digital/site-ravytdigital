@@ -2,16 +2,13 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { posts } from "@/app/blog/posts";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-09-26");
+  const lastModified = new Date("2026-09-27");
   const editorialUpdate = new Date("2026-09-24");
   return [
     ...["/seo", "/google-meu-negocio", "/sites", "/diagnostico", "/cases", "/sobre"].map(path => ({url:`${SITE_URL}${path}`,lastModified,changeFrequency:"monthly" as const,priority:.9})),
     {url:SITE_URL,lastModified,changeFrequency:"monthly",priority:1},
-    {url:`${SITE_URL}/gestao-de-midias-sociais`,lastModified,changeFrequency:"monthly",priority:.9},
     {url:`${SITE_URL}/criacao-de-sites-online`,lastModified,changeFrequency:"monthly",priority:.9},
-    {url:`${SITE_URL}/quanto-custa-gestao-de-midias-sociais`,lastModified,changeFrequency:"monthly",priority:.7},
     {url:`${SITE_URL}/quanto-custa-criar-um-site`,lastModified,changeFrequency:"monthly",priority:.7},
-    {url:`${SITE_URL}/social-media-para-psicologos-parentais`,lastModified,changeFrequency:"monthly",priority:.9},
     {url:`${SITE_URL}/autores/ytala-cabral`,lastModified:editorialUpdate,changeFrequency:"monthly",priority:.7},
     {url:`${SITE_URL}/contato`,lastModified,changeFrequency:"monthly",priority:.8},
     {url:`${SITE_URL}/blog`,lastModified:editorialUpdate,changeFrequency:"weekly",priority:.8},

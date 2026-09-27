@@ -1,11 +1,8 @@
 export const servicePaths = [
   "/seo", "/google-meu-negocio", "/sites",
-  "/gestao-de-midias-sociais",
   "/criacao-de-sites-online",
-  "/social-media-para-psicologos-parentais",
 ] as const;
 export const quotePaths = [
-  "/quanto-custa-gestao-de-midias-sociais",
   "/quanto-custa-criar-um-site",
 ] as const;
 export const analyticsEvents = [

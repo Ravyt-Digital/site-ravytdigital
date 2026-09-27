@@ -35,7 +35,7 @@ export default function PrivacyPage() {
       <h2>8. Seus direitos</h2>
       <p>Nos termos da legislação aplicável, você pode solicitar confirmação do tratamento, acesso, correção, informação sobre compartilhamentos, anonimização, bloqueio ou eliminação quando cabível, além de revogar consentimentos. Para exercer seus direitos, use o e-mail indicado nesta página.</p>
       <h2>9. Links externos e atualizações</h2>
-      <p>Links para Instagram, e-mail ou outros serviços seguem as políticas próprias dessas plataformas. Esta política pode ser atualizada para refletir mudanças no site, nos serviços ou na legislação; a data da versão vigente será sempre informada no topo.</p>
+      <p>Links para e-mail ou outros serviços seguem as políticas próprias dessas plataformas. Esta política pode ser atualizada para refletir mudanças no site, nos serviços ou na legislação; a data da versão vigente será sempre informada no topo.</p>
     </LegalPage>
   );
 }

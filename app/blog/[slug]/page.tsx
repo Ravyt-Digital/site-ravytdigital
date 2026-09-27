@@ -51,7 +51,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
-  const related = post.relatedSlugs?.map(getPost).filter(item => item !== undefined) ?? posts.filter(item => item.slug !== post.slug).slice(0, 2);
+  const related = post.relatedSlugs?.map(getPost).filter(item => item !== undefined) ?? [];
   const specialist = !post.author;
   const author = articleAuthor(post);
   const canonical = `${SITE_URL}/blog/${post.slug}`;
@@ -65,8 +65,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     author, publisher: { "@id": organization["@id"] },
     ...(post.sources?.length ? { citation: post.sources.map(source => source.url) } : {}),
   };
-  const serviceHref = post.serviceHref ?? "/social-media-para-psicologos-parentais";
-  const serviceLabel = post.serviceLabel ?? "Conheça o planejamento e a gestão de redes sociais para psicólogos parentais";
+  const serviceHref = "/sites";
+  const serviceLabel = "Conheça a criação e manutenção de sites da Ravyt";
   const toc = [
     ...post.sections.map(section => ({ id: sectionId(section.title), title: section.title })),
     ...(post.comparison ? [{ id: "comparacao", title: post.comparison.title }] : []),
@@ -105,14 +105,14 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       </section>}
       {post.checklist && <section id="checklist" className="article-checklist"><h2>{post.checklist.title}</h2><ul>{post.checklist.items.map(item => <li key={item}>{item}</li>)}</ul></section>}
       <p><Link href={serviceHref}>{serviceLabel} →</Link></p>
-      {post.slug === "gestao-de-redes-sociais-ou-producao-de-conteudo" && <p><Link href="/quanto-custa-gestao-de-midias-sociais">Veja o que compõe o orçamento de gestão de mídias sociais →</Link></p>}
+
       {post.slug === "site-institucional-paginas-essenciais" && <p><Link href="/quanto-custa-criar-um-site">Entenda o que altera o orçamento de um site →</Link></p>}
-      {post.slug === "criacao-de-site-para-psicologos" && <p><Link href="/social-media-para-psicologos-parentais">Conheça também a comunicação para Psicologia Parental →</Link></p>}
+
       {!!post.sources?.length && <div className="article-sources"><strong>Referências institucionais</strong><ul>{post.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a></li>)}</ul></div>}
       {post.slug === "comunicacao-etica-psicologia-parental" && <p>Referência institucional: <a href="https://site.cfp.org.br/legislacao/codigo-de-etica/" target="_blank" rel="noopener noreferrer">Código de Ética Profissional — Conselho Federal de Psicologia</a>.</p>}
-      <aside className="editorial-note"><strong>Como este conteúdo foi produzido</strong><p>{post.editorialNote ?? "Este artigo reúne aprendizados da rotina de estratégia e produção de conteúdo da Ravyt para Psicologia Parental. O objetivo é orientar decisões de comunicação, sem substituir avaliação ou orientação psicológica. Os exemplos são ilustrativos; não relatam atendimentos nem resultados de clientes. A atualização de setembro de 2026 recebeu apoio de IA na organização editorial; não foi realizada revisão clínica."}</p></aside>
+      <aside className="editorial-note"><strong>Como este conteúdo foi produzido</strong><p>{post.editorialNote ?? "Este artigo apresenta critérios editoriais para organizar as páginas de um site. Os exemplos são ilustrativos e não representam resultados de clientes."}</p></aside>
       {related.length > 0 && <section className="related-posts"><h2>Continue aprofundando</h2>{related.map(item => <Link key={item.slug} href={`/blog/${item.slug}`}>{item.title} →</Link>)}</section>}
-      <aside className="article-conclusion"><p>{specialist ? "Social Media para Psicólogos Parentais" : post.category}</p><h2>{post.ctaTitle ?? "Quer construir uma presença digital coerente com a profundidade do seu trabalho?"}</h2><Link className="button" href={serviceHref}>Conhecer o serviço</Link></aside>
+      <aside className="article-conclusion"><p>{post.category}</p><h2>{post.ctaTitle ?? "Quer construir uma presença digital coerente com a profundidade do seu trabalho?"}</h2><Link className="button" href={serviceHref}>Conhecer o serviço</Link></aside>
     </div></div>
     <StructuredData data={schema} />
   </article></main>;
