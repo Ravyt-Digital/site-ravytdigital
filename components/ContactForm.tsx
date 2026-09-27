@@ -76,7 +76,7 @@ export default function ContactForm() {
     setFeedback('sending');
     try {
       const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: values });
-      const result = await response.json();
+      const result = await response.json() as { success?: boolean };
       if (!response.ok || result?.success !== true) throw new Error('Submission failed');
       formRef.current?.reset();
       setSelected([]);
