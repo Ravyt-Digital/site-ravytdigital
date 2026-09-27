@@ -6,7 +6,7 @@ import { whatsappUrl } from "@/lib/contact";
 function BlogBrand({ dark = false }: { dark?: boolean }) {
   return (
     <span className={`brand-lockup${dark ? " brand-lockup-dark" : ""}`}>
-      <Image src={dark ? "/brand/ravyt-footer-new.webp" : "/brand/ravyt-logo-white.webp"} alt="Ravyt Digital" width={438} height={146} priority unoptimized />
+      <Image src={dark ? "/brand/ravyt-footer-new.webp" : "/brand/ravyt-logo-white-20260927.webp"} alt="Ravyt Digital" width={438} height={146} priority unoptimized />
     </span>
   );
 }
