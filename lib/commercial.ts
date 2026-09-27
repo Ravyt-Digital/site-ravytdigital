@@ -5,9 +5,9 @@ export const services = [
 ];
 export const projects = [
  {name:'Miraúna Mobiliário',type:'Demonstração conceitual',slug:'mirauna',text:'Vitrine de mobiliário com composição editorial e destaque para os ambientes.'},
- {name:'Vértice Norte Engenharia',type:'Demonstração conceitual',slug:'moreira',text:'Apresentação de engenharia com tipografia marcante e navegação por especialidades.'},
- {name:'Nina Valença Arquitetura',type:'Demonstração conceitual',slug:'nina',text:'Portfólio de arquitetura com imagens amplas e transições de seção.'},
- {name:'Lumea Planejados',type:'Demonstração conceitual',slug:'lumea',text:'Experiência de móveis planejados com ambientes em destaque.'},
+ {name:'Vértice Norte Engenharia',type:'Demonstração conceitual',slug:'moreira',text:'Apresentação de engenharia com tipografia marcante e navegação por especialidades.',nicheHref:'/sites-para-empresas-de-engenharia',nicheLabel:'Sites para empresas de engenharia'},
+ {name:'Nina Valença Arquitetura',type:'Demonstração conceitual',slug:'nina',text:'Portfólio de arquitetura com imagens amplas e transições de seção.',nicheHref:'/sites-para-escritorios-de-arquitetura',nicheLabel:'Sites para escritórios de arquitetura'},
+ {name:'Lumea Planejados',type:'Demonstração conceitual',slug:'lumea',text:'Experiência de móveis planejados com ambientes em destaque.',nicheHref:'/sites-para-moveis-planejados',nicheLabel:'Sites para empresas de móveis planejados'},
  {name:'Arvona Home Center',type:'Demonstração conceitual',slug:'arvona',text:'Catálogo visual para apresentar categorias e facilitar a descoberta.'},
  {name:'Serra Norte Distribuição',type:'Demonstração conceitual',slug:'serra',text:'Site de distribuição com comunicação direta e hierarquia de produtos.'},
  {name:'CEREST Tianguá',type:'Site publicado',slug:'cerest',text:'Informações institucionais organizadas para facilitar o acesso aos serviços.'},

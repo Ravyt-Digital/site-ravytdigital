@@ -24,14 +24,14 @@ if (!worker.default || typeof worker.default.fetch !== "function") throw new Err
 const env={ASSETS:{fetch:async()=>new Response("Not found",{status:404})}};
 const ctx={waitUntil(){},passThroughOnException(){}};
 const request=(path)=>worker.default.fetch(new Request(`https://ravytdigital.com${path}`,{headers:{accept:"text/html"}}),env,ctx);
-for (const path of ["/","/criacao-de-sites-online","/quanto-custa-criar-um-site","/autores/ytala-cabral","/contato","/blog","/blog/site-institucional-paginas-essenciais","/politica-de-privacidade","/politica-de-cookies","/termos-de-uso"]) {
+for (const path of ["/","/criacao-de-sites-online","/quanto-custa-criar-um-site","/sites-para-empresas-de-engenharia","/sites-para-escritorios-de-arquitetura","/sites-para-moveis-planejados","/autores/ytala-cabral","/contato","/blog","/blog/site-institucional-paginas-essenciais","/politica-de-privacidade","/politica-de-cookies","/termos-de-uso"]) {
   const response=await request(path); const html=await response.text();
   if(response.status!==200) throw new Error(`${path} returned ${response.status}`);
   for(const token of ["<title>",'name="description"','property="og:image"']) if(!html.includes(token)) throw new Error(`${path} missing ${token}`);
   if((html.match(/<h1[ >]/g)??[]).length!==1) throw new Error(`${path} must have one H1`);
 }
 for (const path of ["/gestao-de-midias-sociais","/quanto-custa-gestao-de-midias-sociais","/social-media-para-psicologos-parentais"]) {
-  if((await request(path)).status!==308) throw new Error(`${path} must redirect to home`);
+  if((await request(path)).status!==410) throw new Error(`${path} must return 410 Gone`);
 }
 const home=await (await request("/")).text();
 for(const token of ["Google + Site + SEO", "R$ 19,90", "R$ 597", "Ytala Cabral", "Marcio Cabral"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
@@ -39,6 +39,6 @@ for(const removed of ["/landing-pages-para-psicologia-parental","/copywriting-pa
   if((await request(removed)).status!==404) throw new Error(`${removed} must return 404`);
 }
 const sitemap=await (await request("/sitemap.xml")).text();
-if(sitemap.includes("/gestao-de-midias-sociais")||sitemap.includes("/social-media-para-psicologos-parentais")||!sitemap.includes("/criacao-de-sites-online")||!sitemap.includes("/blog")) throw new Error("Sitemap is inconsistent with the current positioning");
+if(sitemap.includes("/gestao-de-midias-sociais")||sitemap.includes("/social-media-para-psicologos-parentais")||!["/criacao-de-sites-online","/sites-para-empresas-de-engenharia","/sites-para-escritorios-de-arquitetura","/sites-para-moveis-planejados","/blog"].every(path=>sitemap.includes(path))) throw new Error("Sitemap is inconsistent with the current positioning");
 NODE
 echo "Validated Ravyt Digital site."
