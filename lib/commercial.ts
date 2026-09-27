@@ -4,9 +4,14 @@ export const services = [
  {slug:'sites',name:'Sites Estratégicos',title:'Depois do clique, começa a decisão.',description:'Sites com UX/UI, copy e SEO técnico para transformar descoberta em compreensão, confiança e contato.',detail:'Seu site explica o que você resolve, para quem e qual é o próximo passo? Construímos essa jornada com conteúdo claro, boa experiência no celular e uma estrutura que pode evoluir.',items:['Arquitetura, UX/UI e copy orientadas à decisão','Desenvolvimento responsivo, acessibilidade e performance','Formulários, WhatsApp e mensuração conforme o escopo']}
 ];
 export const projects = [
- {name:'Odonto Premium',type:'Site institucional',image:'odonto-premium',url:'https://site-odonto-premium.ravytdigital.workers.dev',text:'Apresentação de serviços de saúde em uma experiência digital focada em clareza e contato.'},
- {name:'Capoeira Haute-Savoie',type:'Site institucional',image:'capoeira-haute-savoie',url:'https://site-capoeira-haute-savoie.ravytdigital.workers.dev',text:'Um endereço próprio para apresentar a escola e aproximar novos alunos.'},
- {name:'Excel no Agro',type:'Página de vendas',image:'excel-no-agro',url:'https://site-excel-no-agro.ravytdigital.workers.dev',text:'Conteúdo e hierarquia visual organizados para apresentar uma oferta educacional.'}
+ {name:'Miraúna Mobiliário',type:'Demonstração conceitual',slug:'mirauna',text:'Vitrine de mobiliário com composição editorial e destaque para os ambientes.'},
+ {name:'Vértice Norte Engenharia',type:'Demonstração conceitual',slug:'moreira',text:'Apresentação de engenharia com tipografia marcante e navegação por especialidades.'},
+ {name:'Nina Valença Arquitetura',type:'Demonstração conceitual',slug:'nina',text:'Portfólio de arquitetura com imagens amplas e transições de seção.'},
+ {name:'Lumea Planejados',type:'Demonstração conceitual',slug:'lumea',text:'Experiência de móveis planejados com ambientes em destaque.'},
+ {name:'Arvona Home Center',type:'Demonstração conceitual',slug:'arvona',text:'Catálogo visual para apresentar categorias e facilitar a descoberta.'},
+ {name:'Serra Norte Distribuição',type:'Demonstração conceitual',slug:'serra',text:'Site de distribuição com comunicação direta e hierarquia de produtos.'},
+ {name:'CEREST Tianguá',type:'Site publicado',slug:'cerest',text:'Informações institucionais organizadas para facilitar o acesso aos serviços.'},
+ {name:'Capoeira Haute-Savoie',type:'Site publicado',slug:'capoeira',text:'Apresentação da escola, sua prática e caminhos para novos alunos.'}
 ];
 export const questions = [
  ['Por que o serviço é mensal?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
