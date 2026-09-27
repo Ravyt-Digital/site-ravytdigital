@@ -68,7 +68,11 @@ export default function ContactForm() {
     values.set('services[]', selected.join(', '));
     const currentUtms = readUtms();
     setUtm(currentUtms);
-    for (const key of utmNames) values.set(key, currentUtms[key]);
+    // Keep campaign attribution when present; omit empty fields from the email.
+    for (const key of utmNames) {
+      if (currentUtms[key]) values.set(key, currentUtms[key]);
+      else values.delete(key);
+    }
     values.set('page_url', window.location.href);
     values.set('referrer', document.referrer);
 
