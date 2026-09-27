@@ -1,6 +1,9 @@
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { BlogFooter, BlogHeader } from "@/components/BlogChrome";
-import { whatsappUrl } from "@/lib/contact";
-export const metadata: Metadata = pageMetadata({ title:"Contato", description:"Converse com a Ravyt Digital sobre SEO, presença local ou sites estratégicos. Atendimento em todo o Brasil.", alternates:{canonical:"/contato"} });
-export default function Page(){ return <><BlogHeader current="contact"/><main id="conteudo" tabIndex={-1} className="contact-repositioned"><header className="contact-intro"><div className="shell"><p className="section-kicker">Fale com a Ravyt Digital</p><h1>Vamos conversar sobre seu projeto?</h1><p>Sua empresa precisa aparecer melhor no Google ou transformar visitas em contatos? Conte o que você faz e o que espera melhorar. A Ravyt atende em todo o Brasil.</p><div className="hero-actions"><a className="button button-light" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">CONVERSAR PELO WHATSAPP</a><a className="button button-ghost" href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a></div></div></header></main><BlogFooter/></>; }
+import ContactForm from "@/components/ContactForm";
+import ScrollReveal from "@/components/ScrollReveal";
+
+export const metadata: Metadata = pageMetadata({ title:"Contato", description:"Conte sobre seu projeto de Google, SEO ou criação de sites. Envie sua mensagem à Ravyt Digital pelo formulário de contato.", alternates:{canonical:"/contato"} });
+
+export default function Page(){ return <><BlogHeader current="contact"/><main id="conteudo" tabIndex={-1} className="rv rv-contact"><ScrollReveal/><section className="rv-page-hero rv-contact-hero"><div className="shell"><p className="rv-label">Contato</p><h1>Vamos conversar <em>sobre seu projeto</em></h1><p className="rv-lead">Conte um pouco sobre o que você precisa. Nossa equipe entra em contato para entender seu projeto e indicar o melhor caminho.</p><a className="rv-button" href="#formulario">Falar sobre meu projeto <span aria-hidden="true">↓</span></a></div></section><section className="rv-section rv-contact-section" id="formulario"><div className="shell rv-contact-grid"><div className="rv-contact-copy"><p className="rv-label">Sua mensagem</p><h2>Conte o que você <em>tem em mente.</em></h2><p className="rv-intro">Selecione os serviços de seu interesse e compartilhe os detalhes do projeto. Vamos responder pelo contato informado.</p></div><ContactForm/></div></section></main><BlogFooter/></>; }

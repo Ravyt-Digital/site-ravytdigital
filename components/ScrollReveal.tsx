@@ -7,7 +7,7 @@ const targets = [
   ".rv-path li", ".rv-pillars article", ".rv-flow", ".rv-flow-base",
   ".rv-included .rv-split > div > p:not(.rv-label)", ".rv-deliverables li",
   ".rv-offer-price", ".rv-cases article", ".rv-team article",
-  ".rv-text-link", ".rv-faq details", ".rv-final .rv-button",
+  ".rv-text-link", ".rv-faq details", ".rv-final .rv-button", ".rv-contact-form",
 ].join(",");
 
 export default function ScrollReveal() {

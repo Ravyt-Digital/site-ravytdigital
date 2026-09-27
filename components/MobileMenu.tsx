@@ -36,7 +36,7 @@ export default function MobileMenu(_props: { fromSubpage?: boolean }) {
       </button>
       <div className={`menu-panel${open ? " is-open" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <nav aria-label="Navegação para celular">
-          {[['/seo','SEO'],['/google-meu-negocio','Presença Local'],['/sites','Sites Estratégicos'],['/cases','Cases'],['/sobre','A Ravyt'],['/blog','Blog']].map(([href,label])=><Link key={href} href={href} onClick={()=>setOpen(false)}>{label}</Link>)}
+          {[['/seo','SEO'],['/google-meu-negocio','Presença Local'],['/sites','Sites Estratégicos'],['/cases','Cases'],['/sobre','A Ravyt'],['/blog','Blog'],['/contato','Contato']].map(([href,label])=><Link key={href} href={href} onClick={()=>setOpen(false)}>{label}</Link>)}
           <Link className="menu-contact" href="/diagnostico" data-track="primary_cta_click" onClick={()=>setOpen(false)}>Analisar minha presença digital ↗</Link>
         </nav>
       </div>
