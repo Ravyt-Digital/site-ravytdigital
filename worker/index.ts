@@ -30,6 +30,14 @@ const worker = {
     const url = new URL(request.url);
     if (url.hostname === "www.ravytdigital.com") { url.hostname="ravytdigital.com"; url.protocol="https:"; return Response.redirect(url.href,308); }
 
+    if (url.pathname === "/hero-video-20260927") {
+      const assetUrl = new URL("/hero/ravyt-background-20260927.mp4", request.url);
+      const response = await env.ASSETS.fetch(new Request(assetUrl, request));
+      if (!response.ok) return response;
+      const headers = new Headers(response.headers);
+      headers.set("Cache-Control", "public, max-age=31536000, immutable");
+      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+    }
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
