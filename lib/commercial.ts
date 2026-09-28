@@ -16,10 +16,10 @@ export const projects = [
 export const questions = [
  ['Por que o serviço é mensal?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
  ['O site é meu?','As condições de titularidade, acesso e eventual encerramento serão apresentadas na proposta antes da contratação.'],
- ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte da oferta Google + Site + SEO por R$ 597 por mês. As condições específicas são informadas na proposta.'],
+ ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte dos planos Google + Site + SEO. O anual custa 12x de R$ 547 com implantação incluída; o mensal custa R$ 1.497 de implantação mais R$ 497 por mês. As condições específicas são informadas na proposta.'],
  ['O que a Ravyt faz todos os meses?','Acompanha e aprimora o Perfil da Empresa no Google, mantém o site, presta suporte e trabalha na estrutura e nas otimizações de SEO conforme o escopo contratado.'],
  ['Em quanto tempo posso perceber evolução no Google?','Depende do mercado, da concorrência, da localização e do histórico da empresa. Não há prazo universal nem garantia de resultado específico.'],
  ['Preciso já ter um Perfil da Empresa no Google?','Não. Avaliamos a situação atual e estruturamos ou otimizamos o perfil conforme a elegibilidade e as necessidades do negócio.'],
  ['O serviço garante primeira posição no Google?','Não. Nenhuma posição específica pode ser garantida. Trabalhamos para melhorar a estrutura e a presença digital da empresa.'],
- ['Quanto custa e como é cobrado?','A mensalidade Google + Site + SEO é de R$ 597. O valor de R$ 19,90 por dia é apenas a equivalência para um período de 30 dias; a cobrança é mensal.']
+ ['Quanto custa e como é cobrado?','O plano anual tem compromisso de 12 meses, com 12 mensalidades de R$ 547 e implantação incluída. O plano mensal custa R$ 1.497 de implantação mais R$ 497 por mês e pode ser cancelado a qualquer momento.']
 ];
