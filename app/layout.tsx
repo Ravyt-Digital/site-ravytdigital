@@ -11,12 +11,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "Google + Site + SEO | Ravyt Digital", template: "%s | Ravyt Digital" },
-  description: "Perfil da Empresa no Google, site profissional com domínio, hospedagem e manutenção, e SEO por R$ 597/mês.",
+  description: "Perfil da Empresa no Google, site profissional com domínio, hospedagem e manutenção, e SEO. Plano anual de R$ 547/mês com implantação incluída.",
   applicationName: "Ravyt Digital",
   authors: [{ name: "Ravyt Digital", url: SITE_URL }],
   creator: "Ravyt Digital", publisher: "Ravyt Digital", category: "Marketing digital e criação de sites",
   alternates: { canonical: SITE_URL },
-  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Google + Site + SEO | Ravyt Digital",description:"Google + Site + SEO por R$ 597/mês. Equivalente a R$ 19,90 por dia em 30 dias.",images:[{url:"/brand/ravyt-social-card.jpg",width:1200,height:630,alt:"Ravyt Digital"}] },
+  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Google + Site + SEO | Ravyt Digital",description:"Plano anual Google + Site + SEO: 12x de R$ 547 com implantação incluída. Plano mensal: R$ 1.497 de implantação e R$ 497/mês.",images:[{url:"/brand/ravyt-social-card.jpg",width:1200,height:630,alt:"Ravyt Digital"}] },
   twitter: { card:"summary_large_image",title:"Google + Site + SEO | Ravyt Digital",description:"Google + Site + SEO para empresas em todo o Brasil.",images:["/brand/ravyt-social-card.jpg"] },
   robots: { index:true,follow:true,googleBot:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1} },
   icons:{icon:"/favicon.png",shortcut:"/favicon.png",apple:"/apple-touch-icon.png"}
