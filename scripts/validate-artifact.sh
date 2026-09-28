@@ -11,7 +11,7 @@ for required in app/loading.tsx app/not-found.tsx app/politica-de-cookies/page.t
 done
 [[ -f "${SITES_PROJECT_ROOT}/public/llms.txt" ]] || { echo "Missing public/llms.txt" >&2; exit 66; }
 [[ -f "${SITES_PROJECT_ROOT}/dist/client/llms.txt" ]] || { echo "llms.txt was not included in the production build." >&2; exit 66; }
-for token in "# Ravyt Digital" "Google + Site + SEO" "R$ 597" "https://ravytdigital.com/sites"; do
+for token in "# Ravyt Digital" "Google + Site + SEO" "R$ 547" "R$ 497" "https://ravytdigital.com/sites"; do
   grep -q -F "${token}" "${SITES_PROJECT_ROOT}/dist/client/llms.txt" || { echo "llms.txt is missing: ${token}" >&2; exit 66; }
 done
 node --input-type=module - "${worker}" "${hosting}" <<'NODE'
@@ -34,7 +34,7 @@ for (const path of ["/gestao-de-midias-sociais","/quanto-custa-gestao-de-midias-
   if((await request(path)).status!==410) throw new Error(`${path} must return 410 Gone`);
 }
 const home=await (await request("/")).text();
-for(const token of ["Google + Site + SEO", "R$ 19,90", "R$ 597", "Ytala Cabral", "Marcio Cabral"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
+for(const token of ["Google + Site + SEO", "R$ 547", "R$ 497", "R$ 1.497", "Ytala Cabral", "Marcio Cabral"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
 for(const removed of ["/landing-pages-para-psicologia-parental","/copywriting-para-psicologia-parental","/autores/marcio-cabral"]) {
   if((await request(removed)).status!==404) throw new Error(`${removed} must return 404`);
 }
