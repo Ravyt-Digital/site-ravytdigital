@@ -30,6 +30,16 @@ const worker = {
     const url = new URL(request.url);
     if (url.hostname === "www.ravytdigital.com") { url.hostname="ravytdigital.com"; url.protocol="https:"; return Response.redirect(url.href,308); }
 
+    // Endereços antigos ainda encontrados pelo Google apontam para a página equivalente atual.
+    const legacyRedirects: Record<string, string> = {
+      "/privacidade": "/politica-de-privacidade",
+      "/termos": "/termos-de-uso",
+      "/servicos/criacao-de-sites": "/sites",
+      "/blog/instagram-nao-substitui-site-proprio": "/sites",
+    };
+    const destination = legacyRedirects[url.pathname.replace(/\/$/, "")];
+    if (destination) return Response.redirect(new URL(destination, "https://ravytdigital.com").href, 301);
+
     if (url.pathname === "/hero-video-20260927") {
       const assetUrl = new URL("/hero/ravyt-background-20260927.mp4", request.url);
       const response = await env.ASSETS.fetch(new Request(assetUrl, request));
