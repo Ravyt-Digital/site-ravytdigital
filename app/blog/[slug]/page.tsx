@@ -65,8 +65,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     author, publisher: { "@id": organization["@id"] },
     ...(post.sources?.length ? { citation: post.sources.map(source => source.url) } : {}),
   };
-  const serviceHref = "/sites";
-  const serviceLabel = "Conheça a criação e manutenção de sites da Ravyt";
+  const serviceHref = post.serviceHref ?? "/sites";
+  const serviceLabel = post.serviceLabel ?? "Conheça a criação e manutenção de sites da Ravyt";
   const toc = [
     ...post.sections.map(section => ({ id: sectionId(section.title), title: section.title })),
     ...(post.comparison ? [{ id: "comparacao", title: post.comparison.title }] : []),
@@ -90,7 +90,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       {post.quickAnswer && <aside className="article-answer" aria-labelledby="resposta-rapida"><h2 id="resposta-rapida">Resposta rápida</h2><p>{post.quickAnswer}</p></aside>}
       <nav className="article-toc" aria-label="Neste conteúdo"><strong>Neste conteúdo</strong>{toc.map(item => <a key={item.id} href={`#${item.id}`}>{item.title}</a>)}</nav>
       <p className="article-intro">{post.intro}</p>
-      {post.sections.map(section => <section id={sectionId(section.title)} key={section.title}><h2>{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}
+      {post.sections.map(section => <section id={sectionId(section.title)} key={section.title}><h2>{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.links?.length ? <p>{section.links.map((link, index) => <span key={link.href}>{index > 0 ? " · " : "Leia também: "}{link.href.startsWith("/") ? <Link href={link.href}>{link.label}</Link> : <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>}</span>)}</p> : null}</section>)}
       {post.comparison && <section id="comparacao" className="article-comparison">
         <h2 id="comparacao-titulo">{post.comparison.title}</h2>
         <div className="comparison-scroll" tabIndex={0} role="region" aria-labelledby="comparacao-titulo">
@@ -107,6 +107,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       <p><Link href={serviceHref}>{serviceLabel} →</Link></p>
 
       {post.slug === "site-institucional-paginas-essenciais" && <p><Link href="/quanto-custa-criar-um-site">Entenda o que altera o orçamento de um site →</Link></p>}
+      {post.slug === "site-institucional-paginas-essenciais" && <p><Link href="/blog/criacao-de-site-profissional-para-empresas">Veja como avaliar uma proposta de criação de site profissional →</Link></p>}
 
       {!!post.sources?.length && <div className="article-sources"><strong>Referências institucionais</strong><ul>{post.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a></li>)}</ul></div>}
       {post.slug === "comunicacao-etica-psicologia-parental" && <p>Referência institucional: <a href="https://site.cfp.org.br/legislacao/codigo-de-etica/" target="_blank" rel="noopener noreferrer">Código de Ética Profissional — Conselho Federal de Psicologia</a>.</p>}
