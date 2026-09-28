@@ -3,7 +3,7 @@ import { pageMetadata } from '@/lib/metadata';
 
 export const metadata = pageMetadata({
   title: 'Site para Empresas de Móveis Planejados',
-  description: 'Sites para empresas de móveis planejados com projetos, contato fácil e SEO. Perfil da Empresa no Google + site + SEO por R$ 597/mês.',
+  description: 'Sites para empresas de móveis planejados com projetos, contato fácil e SEO. Perfil da Empresa no Google + site + SEO no plano anual de R$ 547/mês.',
   alternates: { canonical: '/sites-para-moveis-planejados' },
 });
 
