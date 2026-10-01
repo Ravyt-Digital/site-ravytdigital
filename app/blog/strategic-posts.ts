@@ -43,7 +43,7 @@ export const strategicPosts: BlogPost[] = [
       ]},
       {title:"Como comparar propostas sem se perder no preço",paragraphs:[
         "Compare entregas equivalentes. ‘Criação de site’ pode significar uma página de apresentação ou um projeto com várias páginas, textos, formulários e integrações. Peça que cada fornecedor descreva o conteúdo, as páginas, o processo de publicação e as condições de suporte.",
-        "A oferta Google + Site + SEO da Ravyt tem plano anual de 12x de R$ 547 com implantação incluída e plano mensal de R$ 1.497 de implantação mais R$ 497 por mês. Ambos reúnem criação do site, domínio, hospedagem, suporte, manutenção e trabalho contínuo de SEO. O Perfil da Empresa no Google é tratado quando o negócio é elegível. Escopo, acessos, titularidade e condições de encerramento são definidos na proposta. Exigências fora do escopo precisam ser avaliadas antes de prometer entrega."
+        "A oferta Google + Site + SEO da Ravyt tem plano mensal de R$ 457 e plano anual de R$ 4.000, com os mesmos serviços e implantação incluída. Ambos reúnem criação do site, domínio, hospedagem, suporte, manutenção e trabalho contínuo de SEO. O Perfil da Empresa no Google é tratado quando o negócio é elegível. Escopo, acessos, titularidade e condições de encerramento são definidos na proposta. Exigências fora do escopo precisam ser avaliadas antes de prometer entrega."
       ],links:[
         {label:"O que altera o orçamento de um site",href:"/quanto-custa-criar-um-site"},
         {label:"Quais páginas um site institucional precisa",href:"/blog/site-institucional-paginas-essenciais"},
