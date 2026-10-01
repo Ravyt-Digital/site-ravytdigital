@@ -16,10 +16,10 @@ export const projects = [
 export const questions = [
  ['Por que o serviço é mensal?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
  ['O site é meu?','As condições de titularidade, acesso e eventual encerramento serão apresentadas na proposta antes da contratação.'],
- ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte dos planos Google + Site + SEO. O anual custa 12x de R$ 547 com implantação incluída; o mensal custa R$ 1.497 de implantação mais R$ 497 por mês. As condições específicas são informadas na proposta.'],
+ ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte dos planos Google + Site + SEO. O mensal custa R$ 457 por mês; o anual custa R$ 4.000 por 12 meses, pagos antecipadamente ou parcelados no cartão. Ambos incluem implantação. As condições específicas são informadas na proposta.'],
  ['O que a Ravyt faz todos os meses?','Acompanha e aprimora o Perfil da Empresa no Google, mantém o site, presta suporte e trabalha na estrutura e nas otimizações de SEO conforme o escopo contratado.'],
  ['Em quanto tempo posso perceber evolução no Google?','Depende do mercado, da concorrência, da localização e do histórico da empresa. Não há prazo universal nem garantia de resultado específico.'],
  ['Preciso já ter um Perfil da Empresa no Google?','Não. Avaliamos a situação atual e estruturamos ou otimizamos o perfil conforme a elegibilidade e as necessidades do negócio.'],
  ['O serviço garante primeira posição no Google?','Não. Nenhuma posição específica pode ser garantida. Trabalhamos para melhorar a estrutura e a presença digital da empresa.'],
- ['Quanto custa e como é cobrado?','O plano anual tem compromisso de 12 meses, com 12 mensalidades de R$ 547 e implantação incluída. O plano mensal custa R$ 1.497 de implantação mais R$ 497 por mês e pode ser cancelado a qualquer momento.']
+ ['Quanto custa e como é cobrado?','O mensal custa R$ 457 por mês, por boleto, Pix ou cartão, e pode ser cancelado a qualquer momento. O anual custa R$ 4.000 por 12 meses, pagos antecipadamente por Pix ou boleto, ou parcelados no cartão. Se cancelar o anual antes do fim, o serviço segue até completar o período pago, sem reembolso proporcional, respeitados os direitos legais aplicáveis.']
 ];
