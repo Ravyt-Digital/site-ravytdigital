@@ -28,12 +28,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     alternates: { canonical: `/blog/${slug}` },
     authors: [{ name: author.name, url: author.url }],
     creator: author.name,
-    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: ["/brand/ravyt-social-card.jpg"] },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: [post.image?.src ?? "/brand/ravyt-social-card.jpg"] },
     openGraph: {
       title: post.title, description: post.excerpt, type: "article", url: `/blog/${slug}`,
       publishedTime: post.date, modifiedTime: post.modified ?? post.date,
       authors: [author.url], section: post.category,
-      images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }],
+      images: [{ url: post.image?.src ?? "/brand/ravyt-social-card.jpg", width: post.image?.width ?? 1200, height: post.image?.height ?? 630, alt: post.image?.alt ?? "Ravyt Digital" }],
     },
   };
 }
@@ -58,6 +58,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
   const schema = {
     "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${canonical}#article`,
     headline: post.title, description: post.excerpt, url: canonical,
+    ...(post.image ? { image: `${SITE_URL}${post.image.src}` } : {}),
     datePublished: post.date, dateModified: post.modified ?? post.date,
     inLanguage: "pt-BR", articleSection: post.category,
     mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
@@ -90,7 +91,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       {post.quickAnswer && <aside className="article-answer" aria-labelledby="resposta-rapida"><h2 id="resposta-rapida">Resposta rápida</h2><p>{post.quickAnswer}</p></aside>}
       <nav className="article-toc" aria-label="Neste conteúdo"><strong>Neste conteúdo</strong>{toc.map(item => <a key={item.id} href={`#${item.id}`}>{item.title}</a>)}</nav>
       <p className="article-intro">{post.intro}</p>
-      {post.sections.map(section => <section id={sectionId(section.title)} key={section.title}><h2>{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.links?.length ? <p>{section.links.map((link, index) => <span key={link.href}>{index > 0 ? " · " : "Leia também: "}{link.href.startsWith("/") ? <Link href={link.href}>{link.label}</Link> : <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>}</span>)}</p> : null}</section>)}
+      {post.image && <figure className="article-figure"><img src={post.image.src} width={post.image.width} height={post.image.height} alt={post.image.alt} decoding="async" style={{width:"100%",height:"auto",display:"block",borderRadius:"14px"}} /><figcaption>Uma presença local começa por informações que correspondem ao negócio real.</figcaption></figure>}
+      {post.sections.map((section, index) => <section id={sectionId(section.title)} key={section.title}><h2>{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.links?.length ? <p>{section.links.map((link, index) => <span key={link.href}>{index > 0 ? " · " : "Leia também: "}{link.href.startsWith("/") ? <Link href={link.href}>{link.label}</Link> : <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>}</span>)}</p> : null}{index === 3 && post.secondaryImage && <figure className="article-figure"><img src={post.secondaryImage.src} width={post.secondaryImage.width} height={post.secondaryImage.height} alt={post.secondaryImage.alt} loading="lazy" decoding="async" style={{width:"100%",height:"auto",display:"block",borderRadius:"14px"}} /><figcaption>Horário, serviços, fotos e avaliações ajudam quem consulta o perfil a tomar uma decisão.</figcaption></figure>}</section>)}
       {post.comparison && <section id="comparacao" className="article-comparison">
         <h2 id="comparacao-titulo">{post.comparison.title}</h2>
         <div className="comparison-scroll" tabIndex={0} role="region" aria-labelledby="comparacao-titulo">
