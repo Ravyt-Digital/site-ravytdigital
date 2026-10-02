@@ -2096,3 +2096,5 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 .rv-plan-services{display:grid;grid-template-columns:1fr;gap:.8rem;list-style:none;margin:.8rem 0;padding:0}.rv-plan-services li{position:relative;padding-left:1.5rem;font-size:1rem;line-height:1.5;color:#edf2f1}.rv-plan-services li::before{content:"✓";position:absolute;left:0;color:#fff}
 
 .rv-single-plan .rv-plan-list{grid-template-columns:minmax(0,1fr);width:100%;max-width:640px;margin-inline:auto}.rv-plan-bonus{display:grid;gap:.3rem;margin:.5rem 0;padding:1rem;border:1px solid #edf2f155}.rv-plan-list .rv-plan-bonus strong{font-size:1rem;line-height:1.5;letter-spacing:0}
+
+.rv-single-plan .rv-offer-price{background:transparent;color:#151718}.rv-single-plan .rv-offer-price p,.rv-single-plan .rv-offer-price span,.rv-single-plan .rv-offer-price small,.rv-single-plan .rv-plan-services li,.rv-single-plan .rv-plan-services li::before{color:#151718}.rv-single-plan .rv-plan-bonus{border-color:#15171833}
