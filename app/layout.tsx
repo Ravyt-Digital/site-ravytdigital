@@ -11,12 +11,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "Google + Site + SEO | Ravyt Digital", template: "%s | Ravyt Digital" },
-  description: "Perfil da Empresa no Google, site profissional com domínio, hospedagem e manutenção, e SEO. Plano mensal de R$ 457 ou anual em 12x de R$ 390 no cartão, com implantação incluída.",
+  description: "Perfil da Empresa no Google, site profissional com domínio, hospedagem e manutenção, e SEO. Plano único anual de R$ 597,00, pago por Pix, cartão ou boleto, com implantação incluída.",
   applicationName: "Ravyt Digital",
   authors: [{ name: "Ravyt Digital", url: SITE_URL }],
   creator: "Ravyt Digital", publisher: "Ravyt Digital", category: "Marketing digital e criação de sites",
   alternates: { canonical: SITE_URL },
-  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Google + Site + SEO | Ravyt Digital",description:"Google + Site + SEO: plano mensal de R$ 457 ou anual em 12x de R$ 390 no cartão. Mesmos serviços; economize R$ 804 no anual.",images:[{url:"/brand/ravyt-social-card.jpg",width:1200,height:630,alt:"Ravyt Digital"}] },
+  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Google + Site + SEO | Ravyt Digital",description:"Google + Site + SEO: plano único anual de R$ 597,00, pago por Pix, cartão ou boleto. Cartão NFC de Avaliação do Google incluído como bônus.",images:[{url:"/brand/ravyt-social-card.jpg",width:1200,height:630,alt:"Ravyt Digital"}] },
   twitter: { card:"summary_large_image",title:"Google + Site + SEO | Ravyt Digital",description:"Google + Site + SEO para empresas em todo o Brasil.",images:["/brand/ravyt-social-card.jpg"] },
   robots: { index:true,follow:true,googleBot:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1} },
   icons:{icon:"/favicon.png",shortcut:"/favicon.png",apple:"/apple-touch-icon.png"}
