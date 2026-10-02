@@ -16,11 +16,11 @@ export const projects = [
 export const questions = [
  ['Por que o serviço é mensal?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
  ['O site é meu?','As condições de titularidade, acesso e eventual encerramento serão apresentadas na proposta antes da contratação.'],
- ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte dos planos Google + Site + SEO. O mensal custa R$ 457 por mês; o anual é oferecido em 12x de R$ 390 no cartão. Ambos incluem implantação. As condições específicas são informadas na proposta.'],
+ ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte do plano anual Google + Site + SEO. O plano único anual custa R$ 597,00, com pagamento por Pix, cartão ou boleto. Inclui implantação e o Cartão NFC de Avaliação do Google como bônus. As condições específicas são informadas na proposta.'],
  ['O que a Ravyt faz todos os meses?','Acompanha e aprimora o Perfil da Empresa no Google, mantém o site, presta suporte e trabalha na estrutura e nas otimizações de SEO conforme o escopo contratado.'],
  ['Em quanto tempo posso perceber evolução no Google?','Depende do mercado, da concorrência, da localização e do histórico da empresa. Não há prazo universal nem garantia de resultado específico.'],
  ['Preciso já ter um Perfil da Empresa no Google?','Não. Avaliamos a situação atual e estruturamos ou otimizamos o perfil conforme a elegibilidade e as necessidades do negócio.'],
  ['O serviço garante primeira posição no Google?','Não. Nenhuma posição específica pode ser garantida. Trabalhamos para melhorar a estrutura e a presença digital da empresa.'],
- ['Posso desistir nos primeiros 7 dias?','Sim. Nos dois planos, você tem 7 dias para desistir da contratação. O contrato completo é enviado antes do pagamento.'],
- ['Quanto custa e como é cobrado?','O mensal custa R$ 457 por mês, por boleto, Pix ou cartão, e pode ser cancelado a qualquer momento. O anual é oferecido em 12x de R$ 390 no cartão, uma economia de R$ 804 em comparação com 12 mensalidades. Os dois planos têm os mesmos serviços e 7 dias para desistir. As demais condições são enviadas no contrato antes do pagamento.']
+ ['Posso desistir nos primeiros 7 dias?','Sim. No plano anual, você tem 7 dias para desistir da contratação. O contrato completo é enviado antes do pagamento.'],
+ ['Quanto custa e como é cobrado?','O plano único anual custa R$ 597,00, pago por Pix, cartão ou boleto, e inclui o Cartão NFC de Avaliação do Google como bônus. Você tem 7 dias para desistir da contratação. As demais condições são enviadas no contrato antes do pagamento.']
 ];
