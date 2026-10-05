@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title:"Combien coûte un site ? Comprendre le devis",
-  description:"Google + Site + SEO : forfait annuel unique de 597, payable par Pix, carte ou boleto, installation incluse, avec site professionnel, domaine, hébergement, mises à jour et support.",
+  description:"Google + Site + SEO : forfait annuel unique de 597, payable par carte ou boleto, installation incluse, avec site professionnel, domaine, hébergement, mises à jour et support.",
   alternates:{canonical:"/fr/quanto-custa-criar-um-site"},
 });
 

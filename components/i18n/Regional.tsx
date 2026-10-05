@@ -1,6 +1,6 @@
 'use client';
 import {createContext,useContext,Children,cloneElement,isValidElement,type ReactNode} from 'react';
-import {baselineRates,convertPrice} from '@/lib/i18n/regional';
+import {baselineRates,convertPrice,regionalPaymentText} from '@/lib/i18n/regional';
 const RegionalContext=createContext<{currency:string;lang:string}>({currency:'USD',lang:'pt'});
 export function RegionalProvider({children,lang,currency='USD'}:{children:ReactNode;lang:string;currency?:string}) {
  return <RegionalContext.Provider value={{currency,lang}}>{children}</RegionalContext.Provider>;
@@ -8,7 +8,7 @@ export function RegionalProvider({children,lang,currency='USD'}:{children:ReactN
 export function PriceText({children}:{children:ReactNode}){
  const {currency,lang}=useContext(RegionalContext);
  function format(node:ReactNode):ReactNode{
-  if(typeof node==='string')return convertPrice(node,currency,baselineRates,lang);
+  if(typeof node==='string')return convertPrice(regionalPaymentText(node,currency),currency,baselineRates,lang);
   return Children.map(node,child=>isValidElement<{children?:ReactNode}>(child)&&child.props.children!==undefined?cloneElement(child,{},format(child.props.children)):child);
  }
  return <>{format(children)}</>;

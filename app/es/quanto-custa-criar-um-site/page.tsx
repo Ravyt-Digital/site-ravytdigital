@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title:"¿Cuánto cuesta crear un sitio web? Entiende el presupuesto",
-  description:"Google + Sitio web + SEO: plan único anual de 597, pagado por Pix, tarjeta o boleto, con implementación incluida, sitio profesional, dominio, alojamiento, actualizaciones y soporte.",
+  description:"Google + Sitio web + SEO: plan único anual de 597, pagado por tarjeta o boleto, con implementación incluida, sitio profesional, dominio, alojamiento, actualizaciones y soporte.",
   alternates:{canonical:"/es/quanto-custa-criar-um-site"},
 });
 

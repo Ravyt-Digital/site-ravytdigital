@@ -3,7 +3,7 @@ import { pageMetadata } from "@/locales/en/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Websites for Architecture Firms",
-  description: "Websites for architecture firms with a clear portfolio, Google Business Profile and SEO. Google + Website + SEO in a single annual plan of 597, payable by Pix, card or boleto.",
+  description: "Websites for architecture firms with a clear portfolio, Google Business Profile and SEO. Google + Website + SEO in a single annual plan of 597, payable by card or boleto.",
   alternates: { canonical: "/en/sites-para-escritorios-de-arquitetura" },
 });
 

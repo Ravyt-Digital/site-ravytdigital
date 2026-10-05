@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title:"How Much Does a Website Cost? Understanding the Quote",
-  description:"Google + Website + SEO: single annual plan of 597, payable by Pix, card or boleto with setup included, a professional website, domain, hosting, updates and support.",
+  description:"Google + Website + SEO: single annual plan of 597, payable by card or boleto with setup included, a professional website, domain, hosting, updates and support.",
   alternates:{canonical:"/en/quanto-custa-criar-um-site"},
 });
 

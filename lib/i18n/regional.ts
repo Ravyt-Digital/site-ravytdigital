@@ -1,5 +1,9 @@
 export const EUROPE = new Set('AL AD AT BY BE BA BG HR CY CZ DK EE FI FR DE GR HU IS IE IT XK LV LI LT LU MT MD MC ME NL MK NO PL PT RO RU SM RS SK SI ES SE CH TR UA GB VA'.split(' '));
 export function currencyForCountry(country: string) { return country.toUpperCase() === 'BR' ? 'BRL' : EUROPE.has(country.toUpperCase()) ? 'EUR' : 'USD'; }
+// The same country decision used for pricing limits Pix to Brazil in every language.
+export function regionalPaymentText(text: string, currency: string) {
+ return currency === 'BRL' ? text : text.replace(/\bPix\s*,\s*/gi, '').replace(/\bPix\s+(?:ou|or|o)\s+/gi, '');
+}
 export function languageForRequest(path: string, cookie: string, accept: string, country: string) {
  const direct = path.match(/^\/(en|fr|es)(?:\/|$)/)?.[1]; if(direct) return direct;
  const manual = cookie.match(/(?:^|;\s*)ravyt_language=(pt|en|fr|es)(?:;|$)/)?.[1]; if(manual) return manual;
