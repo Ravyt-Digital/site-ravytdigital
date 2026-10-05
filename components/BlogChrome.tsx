@@ -33,6 +33,7 @@ export function BlogFooter() {
         <a href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand dark /></a>
         <p>SEO, presença local e sites estratégicos para sua empresa ser encontrada e escolhida.</p>
         <nav aria-label="Links do rodapé">
+          <a href="/recursos/checklist-presenca-google">Checklist Google</a>
           <a href="/seo">SEO</a><a href="/google-meu-negocio">Presença Local</a>
           <a href="/sites">Sites Estratégicos</a><a href="/cases">Cases</a><a href="/diagnostico">Diagnóstico</a>
           <a href="/sobre">A Ravyt</a>

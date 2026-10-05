@@ -1,3 +1,4 @@
+import { ChecklistCard } from '@/components/ChecklistResource';
 import {ExchangeNote} from "@/components/i18n/Regional";
 
 import {PriceText} from "@/components/i18n/Regional";
@@ -25,5 +26,5 @@ export default function Home(){return <><BlogHeader transparent/><main id="conte
 <section className="rv-section" data-reveal><div className="shell"><div className="rv-heading"><div><p className="rv-label"> Portfolio de sites </p><h2> Sites réalisés <em>  par Ravyt. </em></h2><p className="rv-portfolio-intro"> Démonstrations conceptuelles et sites publiés, présentés en mouvement. </p></div><Link href="/fr/cases"> Découvrir les projets ↗ </Link></div><Cases/></div></section>
 <section className="rv-section rv-dark" id="sobre" data-reveal><div className="shell"><p className="rv-label"> Qui s’occupe de la structure </p><h2> Recherche et expérience. <br/><em> Dans la même direction. </em></h2><Team/><Link className="rv-text-link" href="/fr/sobre"> Découvrir Ravyt → </Link></div></section>
 <section className="rv-section" data-reveal><div className="shell rv-split"><div><p className="rv-label"> Avant de décider </p><h2> De bonnes questions. <br/><em> Des réponses claires. </em></h2></div><FAQ/></div></section>
-<section className="rv-final" data-reveal><div className="shell"><p className="rv-label"> Votre prochaine étape </p><h2> Vos prochains clients font déjà des recherches sur Google. </h2><p> Préparons votre entreprise pour qu’ils la trouvent. </p><DiagnosticCTA/></div></section>
+<ChecklistCard lang="fr"/><section className="rv-final" data-reveal><div className="shell"><p className="rv-label"> Votre prochaine étape </p><h2> Vos prochains clients font déjà des recherches sur Google. </h2><p> Préparons votre entreprise pour qu’ils la trouvent. </p><DiagnosticCTA/></div></section>
 </main><BlogFooter/></>}

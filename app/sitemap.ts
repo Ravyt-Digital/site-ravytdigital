@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/sites-para-moveis-planejados",
     "/criacao-de-sites-online", "/quanto-custa-criar-um-site",
     "/diagnostico", "/contato", "/cases", "/sobre",
-    "/blog", "/autores/ytala-cabral",
+    "/blog", "/autores/ytala-cabral", "/recursos/checklist-presenca-google",
     "/politica-de-privacidade", "/politica-de-cookies", "/termos-de-uso",
   ];
   const original = [

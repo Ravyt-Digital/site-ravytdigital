@@ -22,7 +22,7 @@ test('every sitemap page has a unique title, canonical, indexable HTML and recip
   for(const [,json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g))assert.doesNotThrow(()=>JSON.parse(json),url);
  }
  for(const [path,links] of variants)for(const [,href]of links){const other=variants.get(new URL(href).pathname);assert.ok(other,'Missing variant '+href);assert.deepEqual(other,links,'Non-reciprocal '+path);}
- assert.equal(urls.length,80);
+ assert.equal(urls.length,84);
 });
 test('translated article metadata keeps article type and declares all languages',async()=>{
  for(const lang of ['en','fr','es']){const html=await (await get(`https://ravytdigital.com/${lang}/blog/site-institucional-paginas-essenciais`)).text();assert.match(html,/<meta property="og:type" content="article"/);assert.match(html,/<link rel="alternate" hrefLang="pt-BR"/i);}

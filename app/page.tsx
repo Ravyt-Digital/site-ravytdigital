@@ -1,3 +1,4 @@
+import { ChecklistCard } from '@/components/ChecklistResource';
 import {ExchangeNote} from "@/components/i18n/Regional";
 
 import {PriceText} from "@/components/i18n/Regional";
@@ -25,5 +26,5 @@ export default function Home(){return <><BlogHeader transparent/><main id="conte
 <section className="rv-section" data-reveal><div className="shell"><div className="rv-heading"><div><p className="rv-label">Portfólio de sites</p><h2>Sites construídos <em>pela Ravyt.</em></h2><p className="rv-portfolio-intro">Demonstrações conceituais e sites publicados, apresentados em movimento.</p></div><Link href="/cases">Conhecer os projetos ↗</Link></div><Cases/></div></section>
 <section className="rv-section rv-dark" id="sobre" data-reveal><div className="shell"><p className="rv-label">Quem cuida da estrutura</p><h2>Busca e experiência.<br/><em>Na mesma direção.</em></h2><Team/><Link className="rv-text-link" href="/sobre">Conhecer a Ravyt →</Link></div></section>
 <section className="rv-section" data-reveal><div className="shell rv-split"><div><p className="rv-label">Antes de decidir</p><h2>Boas perguntas.<br/><em>Respostas claras.</em></h2></div><FAQ/></div></section>
-<section className="rv-final" data-reveal><div className="shell"><p className="rv-label">Seu próximo passo</p><h2>Seus próximos clientes já estão pesquisando no Google.</h2><p>Vamos preparar sua empresa para ser encontrada por eles.</p><DiagnosticCTA/></div></section>
+<ChecklistCard lang="pt"/><section className="rv-final" data-reveal><div className="shell"><p className="rv-label">Seu próximo passo</p><h2>Seus próximos clientes já estão pesquisando no Google.</h2><p>Vamos preparar sua empresa para ser encontrada por eles.</p><DiagnosticCTA/></div></section>
 </main><BlogFooter/></>}
