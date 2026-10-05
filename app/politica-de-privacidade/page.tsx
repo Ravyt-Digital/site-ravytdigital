@@ -1,3 +1,4 @@
+import RegionalLegalNotice from "@/components/i18n/RegionalLegalNotice";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
@@ -11,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PrivacyPage() {
   return (
-    <LegalPage eyebrow="Privacidade e transparência" title="Política de Privacidade" updated="4 de outubro de 2026">
+    <LegalPage eyebrow="Privacidade e transparência" title="Política de Privacidade" updated="5 de outubro de 2026">
       <p className="legal-lead">A Ravyt Digital respeita sua privacidade. Esta política explica, de forma clara, quais dados podem ser tratados durante sua interação com nosso site e canais de contato.</p>
       <h2>1. Quem é responsável pelos dados</h2>
       <p>A Ravyt Digital atua como controladora dos dados pessoais relacionados a este site e aos contatos comerciais recebidos por seus canais. Dúvidas ou solicitações podem ser enviadas para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
@@ -22,7 +23,7 @@ export default function PrivacyPage() {
         <li>Dados técnicos essenciais, como endereço IP, tipo de dispositivo, navegador e registros de segurança disponibilizados pela infraestrutura de hospedagem;</li>
         <li>Sua escolha sobre cookies e recursos de medição, armazenada localmente no dispositivo.</li>
       </ul>
-      <p>Os eventos de medição não incluem nome, e-mail, telefone, conteúdo de mensagens, dados de saúde ou outras informações pessoais ou sensíveis informadas nos formulários.</p>
+      <p>Os eventos de medição não incluem nome, e-mail, telefone, conteúdo de mensagens, dados de saúde outras informações preenchidas nos formulários.</p>
       <h2>3. Para que usamos essas informações</h2>
       <p>Os dados podem ser usados para responder solicitações, preparar propostas, prestar serviços contratados, manter a segurança e o funcionamento do site, melhorar a experiência e cumprir obrigações legais ou regulatórias.</p>
       <h2>4. Fundamentos para o tratamento</h2>
@@ -37,6 +38,7 @@ export default function PrivacyPage() {
       <p>Nos termos da legislação aplicável, você pode solicitar confirmação do tratamento, acesso, correção, informação sobre compartilhamentos, anonimização, bloqueio ou eliminação quando cabível, além de revogar consentimentos. Para exercer seus direitos, use o e-mail indicado nesta página.</p>
       <h2>9. Links externos e atualizações</h2>
       <p>Links para e-mail ou outros serviços seguem as políticas próprias dessas plataformas. Esta política pode ser atualizada para refletir mudanças no site, nos serviços ou na legislação; a data da versão vigente será sempre informada no topo.</p>
+    <RegionalLegalNotice lang="pt" kind="privacy"/>
     </LegalPage>
   );
 }

@@ -1,13 +1,33 @@
 'use client';
-import {createContext,useContext,useEffect,useState,type ReactNode} from 'react';
-import {baselineRates,convertPrice,type Rates} from '@/lib/i18n/regional';
-const RegionalContext=createContext<{currency:string;rates:Rates;lang:string;stale:boolean}>({currency:'BRL',rates:baselineRates,lang:'pt',stale:false});
-export function RegionalProvider({children,lang}:{children:ReactNode;lang:string}) {
- const [state,setState]=useState({currency:'BRL',rates:baselineRates,lang,stale:false});
- useEffect(()=>{let active=true;async function refresh(){try{const response=await fetch('/api/exchange-rates',{cache:'no-store'});if(!response.ok)return;const data=await response.json() as {currency:string;rates:Rates;stale?:boolean};if(active&&['BRL','EUR','USD'].includes(data.currency)&&data.rates?.rates&&data.rates.date)setState({currency:data.currency,rates:data.rates,lang,stale:!!data.stale});}catch{/* Retain the Brazilian base price until conversion is available. */}}void refresh();const timer=setInterval(refresh,60*60*1000);const onVisible=()=>{if(document.visibilityState==='visible')void refresh();};document.addEventListener('visibilitychange',onVisible);return()=>{active=false;clearInterval(timer);document.removeEventListener('visibilitychange',onVisible);};},[lang]);
- return <RegionalContext.Provider value={state}>{children}</RegionalContext.Provider>;
+import {createContext,useContext,Children,cloneElement,isValidElement,type ReactNode} from 'react';
+import {baselineRates,convertPrice} from '@/lib/i18n/regional';
+const RegionalContext=createContext<{currency:string;lang:string}>({currency:'USD',lang:'pt'});
+export function RegionalProvider({children,lang,currency='USD'}:{children:ReactNode;lang:string;currency?:string}) {
+ return <RegionalContext.Provider value={{currency,lang}}>{children}</RegionalContext.Provider>;
 }
-export function PriceText({children}:{children:ReactNode}){const {currency,rates,lang}=useContext(RegionalContext);return <>{typeof children==='string'?convertPrice(children,currency,rates,lang):children}</>;}
-const notes={pt:['Preço-base: R$ 597,00 por ano. Conversão pela cotação de referência do BCE de','Última cotação disponível'],en:['Base price: R$597.00 per year. Converted at the ECB reference rate dated','Last available exchange rate'],fr:['Prix de base : 597,00 R$ par an. Conversion au taux de référence de la BCE du','Dernier taux de change disponible'],es:['Precio base: R$ 597,00 al año. Conversión al tipo de referencia del BCE del','Último tipo de cambio disponible']};
-export function ExchangeNote(){const {currency,rates,lang,stale}=useContext(RegionalContext);if(currency==='BRL')return null;const note=notes[lang as keyof typeof notes]??notes.en;return <small className="rv-exchange-note">{note[0]} {new Intl.DateTimeFormat(lang,{timeZone:'UTC'}).format(new Date(rates.date+'T12:00:00Z'))}. {stale?note[1]+'.':''}</small>;}
-export function LanguageSwitcher(){const {lang}=useContext(RegionalContext);return <select className="rv-language" aria-label={{pt:'Idioma',en:'Language',fr:'Langue',es:'Idioma'}[lang]??'Language'} value={lang} onChange={event=>{const next=event.target.value;document.cookie=`ravyt_language=${next}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;const path=location.pathname.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';location.assign((next==='pt'?path:'/'+next+(path==='/'?'':path))+location.search+location.hash);}}><option value="pt">PT</option><option value="en">EN</option><option value="fr">FR</option><option value="es">ES</option></select>;}
+export function PriceText({children}:{children:ReactNode}){
+ const {currency,lang}=useContext(RegionalContext);
+ function format(node:ReactNode):ReactNode{
+  if(typeof node==='string')return convertPrice(node,currency,baselineRates,lang);
+  return Children.map(node,child=>isValidElement<{children?:ReactNode}>(child)&&child.props.children!==undefined?cloneElement(child,{},format(child.props.children)):child);
+ }
+ return <>{format(children)}</>;
+}
+export function ExchangeNote(){return null;}
+const languages=[
+ {code:'pt',flag:'br',label:'Brasil — Português'},
+ {code:'en',flag:'us',label:'USA — English'},
+ {code:'fr',flag:'fr',label:'France — Français'},
+ {code:'es',flag:'es',label:'España — Español'},
+];
+export function LanguageSwitcher(){
+ const {lang}=useContext(RegionalContext);
+ function chooseLanguage(next:string){
+  document.cookie=`ravyt_language=${next}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;
+  const path=location.pathname.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';
+  location.assign((next==='pt'?path:'/'+next+(path==='/'?'':path))+location.search+location.hash);
+ }
+ return <div className="rv-language" role="group" aria-label={{pt:'Idioma',en:'Language',fr:'Langue',es:'Idioma'}[lang]??'Language'}>
+  {languages.map(({code,flag,label})=><button key={code} type="button" className="rv-language-flag" aria-label={label} title={label} aria-pressed={lang===code} onClick={()=>chooseLanguage(code)}><img src={`/flags/${flag}.svg`} width={20} height={14} alt="" aria-hidden="true" /></button>)}
+ </div>;
+}

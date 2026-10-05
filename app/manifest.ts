@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Ravyt Digital",
     short_name: "Ravyt",
-    description: "Google + Site + SEO para empresas em todo o Brasil.",
+    description: "Google + Site + SEO para empresas em todo o mundo.",
     start_url: "/",
     display: "standalone",
     background_color: "#E7E2DA",

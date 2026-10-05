@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title:"Creación de sitios web con dominio propio",
-  description:"Creación de sitios con dominio propio para empresas y profesionales. Planificación, textos, diseño adaptable y estructura técnica de SEO. Atención en todo Brasil.",
+  description:"Creación de sitios con dominio propio para empresas y profesionales. Planificación, textos, diseño adaptable y estructura técnica de SEO. Atención en todo el mundo.",
   alternates:{canonical:"/es/criacao-de-sites-online"},
 });
 const steps=[
@@ -21,7 +21,7 @@ const steps=[
 ];
 const faqs=[
   ["¿El sitio puede tener mi propio dominio?","Sí. El proyecto puede publicarse en un dominio propio. El dominio y el alojamiento forman parte de la oferta anual Google + Sitio web + SEO; las condiciones específicas se definen en la propuesta."],
-  ["¿Ravyt atiende fuera de São Paulo?","Sí. La creación de sitios web se realiza de forma remota para clientes de todo Brasil."],
+  ["¿Ravyt atiende fuera de São Paulo?","Sí. La creación de sitios web se realiza de forma remota para clientes de todo el mundo."],
   ["¿El sitio aparecerá en la primera página de Google?","No existe garantía de posición. Estructuramos títulos, descripciones, contenido, navegación y requisitos técnicos para que los buscadores puedan rastrear y comprender las páginas."],
   ["¿Hacen mantenimiento después de la entrega?","La creación, las actualizaciones y el soporte del sitio forman parte de la oferta anual Google + Sitio web + SEO. La propuesta define el alcance y las responsabilidades."],
 ];
@@ -33,6 +33,6 @@ export default function Page(){
     <section className="process-section"><div className="shell"><p className="section-kicker"> Cómo creamos </p><h2> Un proceso desde el briefing hasta la publicación. </h2><div className="process-grid">{<PriceText>{steps.map(([n,t,d])=><article key={n}><span>{<PriceText>{n}</PriceText>}</span><h3>{<PriceText>{t}</PriceText>}</h3><p>{<PriceText>{d}</PriceText>}</p></article>)}</PriceText>}</div></div></section>
     <section className="difference-section"><div className="shell two-columns"><div><p className="section-kicker"> Después de la entrega </p><h2> Tu sitio debe seguir siendo útil. </h2></div><div><p><PriceText> La información cambia, los servicios evolucionan y los enlaces deben seguir funcionando. La creación y el mantenimiento del sitio forman parte de la oferta Google + Sitio web + SEO en el plan único anual de R$ 597,00, con implementación incluida y pago por Pix, tarjeta o boleto. El alcance se define en la propuesta. </PriceText></p><p> Antes de definir las páginas, lee <Link href="/es/blog/site-institucional-paginas-essenciais">  lo que tu sitio institucional necesita explicar → </Link></p></div></div></section>
     <section className="faq-section"><div className="shell"><p className="section-kicker"> Preguntas frecuentes </p><h2> Antes de crear tu sitio web </h2><div className="faq-list">{<PriceText>{faqs.map(([q,a])=><details key={q}><summary>{<PriceText>{q}</PriceText>}</summary><p>{<PriceText>{a}</PriceText>}</p></details>)}</PriceText>}</div></div></section>
-    <section className="final-specialist-cta"><div className="shell"><h2> ¿Planificamos tu sitio web? </h2><p> Cuéntanos qué hace tu empresa y qué páginas necesita crear. Atendemos en todo Brasil. </p><a className="button button-light" href={whatsappUrl("¡Hola! Quiero hablar sobre la creación de un sitio con dominio propio.")} target="_blank" rel="noopener noreferrer"> HABLAR POR WHATSAPP </a></div></section>
+    <section className="final-specialist-cta"><div className="shell"><h2> ¿Planificamos tu sitio web? </h2><p> Cuéntanos qué hace tu empresa y qué páginas necesita crear. Atendemos en todo el mundo. </p><a className="button button-light" href={whatsappUrl("¡Hola! Quiero hablar sobre la creación de un sitio con dominio propio.")} target="_blank" rel="noopener noreferrer"> HABLAR POR WHATSAPP </a></div></section>
   </main><BlogFooter/></>;
 }

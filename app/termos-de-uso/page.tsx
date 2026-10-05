@@ -1,3 +1,4 @@
+import RegionalLegalNotice from "@/components/i18n/RegionalLegalNotice";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
@@ -11,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function TermsPage() {
   return (
-    <LegalPage eyebrow="Condições de acesso" title="Termos de Uso">
+    <LegalPage eyebrow="Condições de acesso" title="Termos de Uso" updated="5 de outubro de 2026">
       <p className="legal-lead">Ao navegar pelo site da Ravyt Digital, você concorda com estes termos. Se não concordar com alguma condição, interrompa o uso do site.</p>
       <h2>1. Finalidade do site</h2>
       <p>Este site apresenta a Ravyt Digital, seus serviços de Google, sites e SEO e conteúdos sobre presença digital. O conteúdo tem caráter institucional e informativo.</p>
@@ -28,9 +29,10 @@ export default function TermsPage() {
       <h2>7. Privacidade</h2>
       <p>O tratamento de dados pessoais relacionado ao site é explicado na nossa <a href="/politica-de-privacidade">Política de Privacidade</a>.</p>
       <h2>8. Alterações e legislação</h2>
-      <p>Estes termos podem ser atualizados para acompanhar mudanças no site ou nos serviços. A versão vigente será identificada pela data exibida no topo e interpretada conforme a legislação brasileira, observadas as regras legais de competência.</p>
+      <p>Estes termos não afastam normas obrigatórias de privacidade, proteção do consumidor ou competência judicial da União Europeia ou do estado americano aplicável. A escolha do idioma ou a navegação não autoriza cookies opcionais. Condições de prestação de serviços e eventuais direitos de desistência serão apresentados antes da contratação, conforme a legislação aplicável.</p>
       <h2>9. Contato</h2>
       <p>Dúvidas sobre estes termos podem ser enviadas para <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
+    <RegionalLegalNotice lang="pt" kind="terms"/>
     </LegalPage>
   );
 }

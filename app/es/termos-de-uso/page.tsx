@@ -1,3 +1,4 @@
+import RegionalLegalNotice from "@/components/i18n/RegionalLegalNotice";
 import { pageMetadata } from "@/locales/es/lib/metadata";
 import type { Metadata } from "next";
 import LegalPage from "@/locales/es/components/LegalPage";
@@ -6,12 +7,12 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Términos de uso",
   description: "Condiciones de acceso y uso del sitio de Ravyt Digital.",
-  alternates: { canonical: `${SITE_URL}/termos-de-uso` },
+  alternates: { canonical: `${SITE_URL}/es/termos-de-uso` },
 });
 
 export default function TermsPage() {
   return (
-    <LegalPage eyebrow="Condiciones de acceso" title="Términos de uso">
+    <LegalPage eyebrow="Condiciones de acceso" title="Términos de uso" updated="5 de octubre de 2026">
       <p className="legal-lead"> Al navegar por el sitio de Ravyt Digital, aceptas estos términos. Si no estás de acuerdo con alguna condición, deja de utilizar el sitio. </p>
       <h2> 1. Finalidad del sitio </h2>
       <p> Este sitio presenta Ravyt Digital, sus servicios de Google, sitios web y SEO y contenidos sobre presencia digital. El contenido es institucional e informativo. </p>
@@ -28,9 +29,10 @@ export default function TermsPage() {
       <h2> 7. Privacidad </h2>
       <p> El tratamiento de datos personales relacionado con el sitio se explica en nuestra <a href="/es/politica-de-privacidade"> Política de privacidad </a>.</p>
       <h2> 8. Cambios y legislación </h2>
-      <p> Estos términos pueden actualizarse para reflejar cambios en el sitio o los servicios. La versión vigente se identifica por la fecha mostrada arriba y se interpreta conforme a la legislación brasileña, respetando las normas legales de competencia. </p>
+      <p> Estos términos no excluyen las normas imperativas de privacidad, protección del consumidor o competencia judicial aplicables en la Unión Europea o en tu estado estadounidense. Elegir un idioma o navegar no autoriza cookies opcionales. Las condiciones del servicio y los eventuales derechos de desistimiento se presentarán antes de contratar conforme a la ley aplicable. </p>
       <h2> 9. Contacto </h2>
       <p> Las dudas sobre estos términos pueden enviarse a <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
+    <RegionalLegalNotice lang="es" kind="terms"/>
     </LegalPage>
   );
 }

@@ -1,5 +1,5 @@
 import { exchangeResponse } from "./exchange";
-import { languageForRequest } from "../lib/i18n/regional";
+import { currencyForCountry, languageForRequest } from "../lib/i18n/regional";
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
@@ -72,9 +72,11 @@ const worker = {
       return new Response(null,{status:307,headers:{Location:url.href,"Cache-Control":"private, no-store",Vary:"Accept-Language, Cookie, CF-IPCountry"}});
     }
     const requestHeaders=new Headers(request.headers);
+    requestHeaders.set("x-ravyt-currency",currencyForCountry(country));
     requestHeaders.set("x-ravyt-language", /^\/(en|fr|es)(?:\/|$)/.test(url.pathname)?lang:"pt");
     const response = await handler.fetch(new Request(request,{headers:requestHeaders}), env, ctx);
     if(response.status===404){const headers=new Headers(response.headers);headers.set("X-Robots-Tag","noindex");return new Response(response.body,{status:404,headers});}
+    if(isPage){const headers=new Headers(response.headers);headers.set('Cache-Control','private, no-store');headers.append('Vary','CF-IPCountry, Accept-Language, Cookie');return new Response(response.body,{status:response.status,statusText:response.statusText,headers});}
     return response;
   },
 };

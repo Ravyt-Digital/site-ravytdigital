@@ -1,5 +1,5 @@
 export const EUROPE = new Set('AL AD AT BY BE BA BG HR CY CZ DK EE FI FR DE GR HU IS IE IT XK LV LI LT LU MT MD MC ME NL MK NO PL PT RO RU SM RS SK SI ES SE CH TR UA GB VA'.split(' '));
-export function currencyForCountry(country: string) { return (!country || country === 'BR') ? 'BRL' : EUROPE.has(country) ? 'EUR' : 'USD'; }
+export function currencyForCountry(country: string) { return country.toUpperCase() === 'BR' ? 'BRL' : EUROPE.has(country.toUpperCase()) ? 'EUR' : 'USD'; }
 export function languageForRequest(path: string, cookie: string, accept: string, country: string) {
  const direct = path.match(/^\/(en|fr|es)(?:\/|$)/)?.[1]; if(direct) return direct;
  const manual = cookie.match(/(?:^|;\s*)ravyt_language=(pt|en|fr|es)(?:;|$)/)?.[1]; if(manual) return manual;
@@ -18,7 +18,7 @@ export function parseRates(xml:string):Rates {
 export const baselineRates:Rates={date:'2026-10-02',rates:{BRL:1,EUR:1/5.8610,USD:1.1225/5.8610}};
 export function convertPrice(text:string,currency:string,rates:Rates,lang:string) {
  if(currency==='BRL')return text;
- const value=597*rates.rates[currency as 'EUR'|'USD']; if(!Number.isFinite(value))return text;
+ const value=597;
  const formatted=new Intl.NumberFormat(({pt:'pt-BR',en:'en-US',fr:'fr-FR',es:'es-ES'} as Record<string,string>)[lang]??'en-US',{style:'currency',currency,minimumFractionDigits:2,maximumFractionDigits:2}).format(value);
  return text.replace(/R\$\s*597(?:[,.]00)?/g,formatted);
 }

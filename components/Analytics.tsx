@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { destinationEvent, type AnalyticsEvent } from "@/lib/analytics";
 
+import {savedConsent} from "@/lib/privacy-consent";
+
 const GTM_ID = "GTM-T9C5DS9C";
 const META_PIXEL_ID = "2030474547612558";
 
@@ -17,10 +19,8 @@ declare global {
   }
 }
 
-function consent() {
-  try { return localStorage.getItem("ravyt_cookie_consent_v1") === "accepted"; }
-  catch { return false; }
-}
+function consent() { return savedConsent() === "accepted"; }
+
 function send(event: AnalyticsEvent, path: string, destination?: string) {
   if (!consent()) return;
   const payload = JSON.stringify({ event, path, ...(destination ? { destination } : {}) });
@@ -90,7 +90,9 @@ export default function Analytics() {
     });
 
     const applyConsent = (accepted: boolean) => {
+      accepted = accepted && consent();
       updateGoogleConsent(accepted);
+      window.fbq?.("consent", accepted ? "grant" : "revoke");
       if (accepted) {
         loadGoogleTagManager();
         loadMetaPixel();

@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title:"Criação de Sites com Domínio Próprio",
-  description:"Criação de site com domínio próprio para empresas e profissionais. Planejamento, textos, design responsivo e estrutura técnica de SEO. Atendimento em todo o Brasil.",
+  description:"Criação de site com domínio próprio para empresas e profissionais. Planejamento, textos, design responsivo e estrutura técnica de SEO. Atendimento em todo o mundo.",
   alternates:{canonical:"/criacao-de-sites-online"},
 });
 const steps=[
@@ -21,7 +21,7 @@ const steps=[
 ];
 const faqs=[
   ["O site pode ter meu próprio domínio?","Sim. O projeto pode ser publicado em um domínio próprio. Domínio e hospedagem fazem parte da oferta anual Google + Site + SEO; as condições específicas são definidas na proposta."],
-  ["A Ravyt atende fora de São Paulo?","Sim. A criação de sites é realizada remotamente para clientes de todo o Brasil."],
+  ["A Ravyt atende fora de São Paulo?","Sim. A criação de sites é realizada remotamente para clientes de todo o mundo."],
   ["O site vai aparecer na primeira página do Google?","Não existe garantia de posição. Estruturamos títulos, descrições, conteúdo, navegação e requisitos técnicos para que as páginas possam ser rastreadas e compreendidas pelos buscadores."],
   ["Vocês fazem manutenção depois da entrega?","Criação, atualizações e suporte do site fazem parte da oferta anual Google + Site + SEO. A proposta define escopo e responsabilidades."],
 ];
@@ -33,6 +33,6 @@ export default function Page(){
     <section className="process-section"><div className="shell"><p className="section-kicker">Como criamos</p><h2>Um processo do briefing à publicação.</h2><div className="process-grid">{<PriceText>{steps.map(([n,t,d])=><article key={n}><span>{<PriceText>{n}</PriceText>}</span><h3>{<PriceText>{t}</PriceText>}</h3><p>{<PriceText>{d}</PriceText>}</p></article>)}</PriceText>}</div></div></section>
     <section className="difference-section"><div className="shell two-columns"><div><p className="section-kicker">Depois da entrega</p><h2>Seu site precisa continuar útil.</h2></div><div><p><PriceText>Informações mudam, serviços evoluem e links precisam seguir funcionando. A criação e a manutenção do site fazem parte da oferta Google + Site + SEO no plano único anual de R$ 597,00, com implantação incluída e pagamento por Pix, cartão ou boleto. O escopo é definido na proposta.</PriceText></p><p>Antes de definir as páginas, leia <Link href="/blog/site-institucional-paginas-essenciais">o que seu site institucional precisa explicar →</Link></p></div></div></section>
     <section className="faq-section"><div className="shell"><p className="section-kicker">Dúvidas frequentes</p><h2>Antes de criar seu site</h2><div className="faq-list">{<PriceText>{faqs.map(([q,a])=><details key={q}><summary>{<PriceText>{q}</PriceText>}</summary><p>{<PriceText>{a}</PriceText>}</p></details>)}</PriceText>}</div></div></section>
-    <section className="final-specialist-cta"><div className="shell"><h2>Vamos planejar seu site?</h2><p>Conte o que sua empresa faz e que páginas precisa criar. Atendemos em todo o Brasil.</p><a className="button button-light" href={whatsappUrl("Olá! Quero conversar sobre a criação de um site com domínio próprio.")} target="_blank" rel="noopener noreferrer">FALAR PELO WHATSAPP</a></div></section>
+    <section className="final-specialist-cta"><div className="shell"><h2>Vamos planejar seu site?</h2><p>Conte o que sua empresa faz e que páginas precisa criar. Atendemos em todo o mundo.</p><a className="button button-light" href={whatsappUrl("Olá! Quero conversar sobre a criação de um site com domínio próprio.")} target="_blank" rel="noopener noreferrer">FALAR PELO WHATSAPP</a></div></section>
   </main><BlogFooter/></>;
 }

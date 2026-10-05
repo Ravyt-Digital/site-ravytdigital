@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title:"Création de sites avec votre propre domaine",
-  description:"Création de sites avec un domaine propre pour les entreprises et les professionnels. Planification, textes, design adaptatif et structure technique SEO. Services dans tout le Brésil.",
+  description:"Création de sites avec un domaine propre pour les entreprises et les professionnels. Planification, textes, design adaptatif et structure technique SEO. Services dans le monde entier.",
   alternates:{canonical:"/fr/criacao-de-sites-online"},
 });
 const steps=[
@@ -21,7 +21,7 @@ const steps=[
 ];
 const faqs=[
   ["Le site peut-il utiliser mon propre domaine ?","Oui. Le projet peut être publié sur votre propre domaine. Le domaine et l’hébergement font partie de l’offre annuelle Google + Site + SEO ; les conditions précises sont définies dans la proposition."],
-  ["Ravyt accompagne-t-elle des clients en dehors de São Paulo ?","Oui. La création de sites est réalisée à distance pour les clients de tout le Brésil."],
+  ["Ravyt accompagne-t-elle des clients en dehors de São Paulo ?","Oui. La création de sites est réalisée à distance pour les clients du monde entier."],
   ["Le site apparaîtra-t-il sur la première page de Google ?","Aucune position n’est garantie. Nous structurons les titres, descriptions, contenus, navigation et exigences techniques pour que les moteurs de recherche puissent explorer et comprendre les pages."],
   ["Assurez-vous la maintenance après la livraison ?","La création, les mises à jour et le support du site font partie de l’offre annuelle Google + Site + SEO. La proposition définit le périmètre et les responsabilités."],
 ];
@@ -33,6 +33,6 @@ export default function Page(){
     <section className="process-section"><div className="shell"><p className="section-kicker"> Comment nous créons </p><h2> Un processus du brief à la publication. </h2><div className="process-grid">{<PriceText>{steps.map(([n,t,d])=><article key={n}><span>{<PriceText>{n}</PriceText>}</span><h3>{<PriceText>{t}</PriceText>}</h3><p>{<PriceText>{d}</PriceText>}</p></article>)}</PriceText>}</div></div></section>
     <section className="difference-section"><div className="shell two-columns"><div><p className="section-kicker"> Après la livraison </p><h2> Votre site doit rester utile. </h2></div><div><p><PriceText> Les informations changent, les services évoluent et les liens doivent continuer à fonctionner. La création et la maintenance du site font partie de l’offre Google + Site + SEO avec le forfait annuel unique de R$ 597,00, installation incluse et paiement par Pix, carte ou boleto. Le périmètre est défini dans la proposition. </PriceText></p><p> Avant de définir les pages, lisez <Link href="/fr/blog/site-institucional-paginas-essenciais">  ce que votre site institutionnel doit expliquer → </Link></p></div></div></section>
     <section className="faq-section"><div className="shell"><p className="section-kicker"> Questions fréquentes </p><h2> Avant de créer votre site </h2><div className="faq-list">{<PriceText>{faqs.map(([q,a])=><details key={q}><summary>{<PriceText>{q}</PriceText>}</summary><p>{<PriceText>{a}</PriceText>}</p></details>)}</PriceText>}</div></div></section>
-    <section className="final-specialist-cta"><div className="shell"><h2> Planifions votre site ? </h2><p> Dites-nous ce que fait votre entreprise et quelles pages elle doit créer. Nous accompagnons les clients de tout le Brésil. </p><a className="button button-light" href={whatsappUrl("Bonjour ! Je souhaite parler de la création d’un site avec mon propre domaine.")} target="_blank" rel="noopener noreferrer"> PARLER SUR WHATSAPP </a></div></section>
+    <section className="final-specialist-cta"><div className="shell"><h2> Planifions votre site ? </h2><p> Dites-nous ce que fait votre entreprise et quelles pages elle doit créer. Nous accompagnons les clients du monde entier. </p><a className="button button-light" href={whatsappUrl("Bonjour ! Je souhaite parler de la création d’un site avec mon propre domaine.")} target="_blank" rel="noopener noreferrer"> PARLER SUR WHATSAPP </a></div></section>
   </main><BlogFooter/></>;
 }

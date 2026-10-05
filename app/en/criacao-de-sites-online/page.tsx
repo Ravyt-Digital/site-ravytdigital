@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title:"Website Creation with Your Own Domain",
-  description:"Website creation with a custom domain for businesses and professionals. Planning, copy, responsive design and technical SEO structure. Serving all of Brazil.",
+  description:"Website creation with a custom domain for businesses and professionals. Planning, copy, responsive design and technical SEO structure. Serving clients worldwide.",
   alternates:{canonical:"/en/criacao-de-sites-online"},
 });
 const steps=[
@@ -21,7 +21,7 @@ const steps=[
 ];
 const faqs=[
   ["Can the website use my own domain?","Yes. The project can be published on a custom domain. Domain and hosting are part of the annual Google + Website + SEO offer; specific conditions are defined in the proposal."],
-  ["Does Ravyt serve clients outside São Paulo?","Yes. Website creation is provided remotely to clients throughout Brazil."],
+  ["Does Ravyt serve clients outside São Paulo?","Yes. Website creation is provided remotely to clients worldwide."],
   ["Will the website appear on Google’s first page?","No ranking is guaranteed. We structure titles, descriptions, content, navigation and technical requirements so search engines can crawl and understand the pages."],
   ["Do you provide maintenance after delivery?","Website creation, updates and support are part of the annual Google + Website + SEO offer. The proposal defines the scope and responsibilities."],
 ];
@@ -33,6 +33,6 @@ export default function Page(){
     <section className="process-section"><div className="shell"><p className="section-kicker"> How we create </p><h2> A process from briefing to publication. </h2><div className="process-grid">{<PriceText>{steps.map(([n,t,d])=><article key={n}><span>{<PriceText>{n}</PriceText>}</span><h3>{<PriceText>{t}</PriceText>}</h3><p>{<PriceText>{d}</PriceText>}</p></article>)}</PriceText>}</div></div></section>
     <section className="difference-section"><div className="shell two-columns"><div><p className="section-kicker"> After delivery </p><h2> Your website needs to stay useful. </h2></div><div><p><PriceText> Information changes, services evolve and links need to keep working. Website creation and maintenance are part of the Google + Website + SEO offer under the single annual plan of R$ 597,00, with setup included and payment by Pix, card or boleto. The scope is defined in the proposal. </PriceText></p><p> Before defining the pages, read <Link href="/en/blog/site-institucional-paginas-essenciais">  what your corporate website needs to explain → </Link></p></div></div></section>
     <section className="faq-section"><div className="shell"><p className="section-kicker"> Frequently asked questions </p><h2> Before creating your website </h2><div className="faq-list">{<PriceText>{faqs.map(([q,a])=><details key={q}><summary>{<PriceText>{q}</PriceText>}</summary><p>{<PriceText>{a}</PriceText>}</p></details>)}</PriceText>}</div></div></section>
-    <section className="final-specialist-cta"><div className="shell"><h2> Shall we plan your website? </h2><p> Tell us what your business does and which pages it needs. We serve all of Brazil. </p><a className="button button-light" href={whatsappUrl("Hello! I’d like to discuss creating a website with my own domain.")} target="_blank" rel="noopener noreferrer"> TALK ON WHATSAPP </a></div></section>
+    <section className="final-specialist-cta"><div className="shell"><h2> Shall we plan your website? </h2><p> Tell us what your business does and which pages it needs. We serve clients worldwide. </p><a className="button button-light" href={whatsappUrl("Hello! I’d like to discuss creating a website with my own domain.")} target="_blank" rel="noopener noreferrer"> TALK ON WHATSAPP </a></div></section>
   </main><BlogFooter/></>;
 }

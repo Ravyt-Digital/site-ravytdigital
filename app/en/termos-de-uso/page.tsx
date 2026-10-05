@@ -1,3 +1,4 @@
+import RegionalLegalNotice from "@/components/i18n/RegionalLegalNotice";
 import { pageMetadata } from "@/locales/en/lib/metadata";
 import type { Metadata } from "next";
 import LegalPage from "@/locales/en/components/LegalPage";
@@ -6,12 +7,12 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Terms of Use",
   description: "Conditions for accessing and using the Ravyt Digital website.",
-  alternates: { canonical: `${SITE_URL}/termos-de-uso` },
+  alternates: { canonical: `${SITE_URL}/en/termos-de-uso` },
 });
 
 export default function TermsPage() {
   return (
-    <LegalPage eyebrow="Access conditions" title="Terms of Use">
+    <LegalPage eyebrow="Access conditions" title="Terms of Use" updated="October 5, 2026">
       <p className="legal-lead"> By browsing the Ravyt Digital website, you agree to these terms. If you disagree with any condition, stop using the website. </p>
       <h2> 1. Website purpose </h2>
       <p> This website presents Ravyt Digital, its Google, website and SEO services, and content about digital presence. The content is institutional and informational. </p>
@@ -28,9 +29,10 @@ export default function TermsPage() {
       <h2> 7. Privacy </h2>
       <p> Personal data processing related to the website is explained in our <a href="/en/politica-de-privacidade"> Privacy Policy </a>.</p>
       <h2> 8. Changes and legislation </h2>
-      <p> These terms may be updated to reflect changes to the website or services. The current version is identified by the date shown at the top and interpreted under Brazilian law, observing the legal rules on jurisdiction. </p>
+      <p>These terms may be updated to reflect changes to the website or services. Mandatory privacy, consumer protection and jurisdiction rules applicable to your location remain protected.</p>
       <h2> 9. Contact </h2>
       <p> Questions about these terms can be sent to <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
+    <RegionalLegalNotice lang="en" kind="terms"/>
     </LegalPage>
   );
 }

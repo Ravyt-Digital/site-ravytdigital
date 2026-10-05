@@ -1,0 +1,78 @@
+{
+  "pt": {
+    "heading": "União Europeia e Estados Unidos",
+    "scope": "O idioma escolhido não determina seus direitos. A legislação aplicável depende da sua localização, do tratamento realizado e do enquadramento da empresa.",
+    "eu": "União Europeia: quando aplicável, o RGPD/GDPR rege o tratamento de dados pessoais. Na França, também se aplicam a Lei Informatique et Libertés e as regras de cookies supervisionadas pela CNIL; na Espanha, a LOPDGDD e as regras de cookies da LSSI-CE, supervisionadas pela AEPD. Cookies e rastreadores não essenciais ficam desativados até uma escolha afirmativa. Continuar navegando não significa consentir.",
+    "rights": "Você pode solicitar acesso, retificação, eliminação, limitação, portabilidade e oposição, conforme as condições legais, e retirar o consentimento sem afetar o tratamento anterior. Pode apresentar reclamação à autoridade de proteção de dados do seu país, incluindo CNIL na França e AEPD na Espanha. Pedidos sob o GDPR são respondidos, em regra, em um mês; eventual extensão legal será informada.",
+    "us": "Estados Unidos: os direitos de privacidade variam conforme o estado e a aplicabilidade da lei. Na Califórnia, a CCPA, alterada pela CPRA, concede aos consumidores direitos de conhecer, acessar, corrigir e excluir dados, recusar venda ou compartilhamento para publicidade comportamental entre contextos, limitar certos usos de dados sensíveis e não sofrer discriminação pelo exercício desses direitos, quando a empresa estiver sujeita à lei. A CCPA não se aplica automaticamente a toda empresa ou visitante americano.",
+    "choice": "Neste site, Recusar desativa a medição opcional e o compartilhamento publicitário associado. O sinal Global Privacy Control (GPC), quando exposto pelo navegador, é tratado como recusa e prevalece sobre um aceite salvo. Para retirar um aceite, use Alterar preferências de privacidade e Recusar. A escolha fica salva por até 180 dias neste navegador; depois, solicitamos uma nova escolha.",
+    "data": "Identificadores de cookies, endereço IP e informações de navegação podem ser dados pessoais, mesmo quando os eventos não incluem seu nome ou o conteúdo do formulário. A integração com Google e Meta pode envolver compartilhamento para publicidade. Não receber dinheiro por esses dados não exclui, por si só, as definições legais americanas de venda ou compartilhamento. A hospedagem e as ferramentas de terceiros podem envolver tratamento fora do seu país, inclusive no Brasil ou nos EUA. Quando o GDPR se aplica, transferências para fora do EEE exigem um mecanismo legal válido e, quando necessário, garantias adicionais. Você pode solicitar informações sobre destinos e mecanismos pelo contato de privacidade.",
+    "contact": "Para exercer direitos, escreva para ola@ravytdigital.com e informe seu pedido e região. Podemos solicitar somente os dados necessários para verificar a identidade quando exigido; a recusa de rastreamento não exige cadastro. Prazos, exceções e recursos seguem a legislação aplicável. Na Califórnia, quando a CCPA se aplica, pedidos de acesso, correção e exclusão têm prazo geral de 45 dias, com extensão legal comunicada.",
+    "contract": "Estes termos não afastam normas obrigatórias de privacidade, proteção do consumidor ou competência judicial da União Europeia ou do estado americano aplicável. A escolha do idioma ou a navegação não autoriza cookies opcionais. Condições de prestação de serviços e eventuais direitos de desistência serão apresentados antes da contratação, conforme a legislação aplicável.",
+    "links": [
+      "Fontes oficiais",
+      "GDPR: direitos e obrigações",
+      "CNIL: cookies",
+      "AEPD: cookies",
+      "Califórnia: CCPA/CPRA",
+      "Califórnia: GPC"
+    ]
+  },
+  "en": {
+    "heading": "European Union and United States",
+    "scope": "Your selected language does not determine your rights. Applicable law depends on your location, the processing involved and whether the business falls within the law’s scope.",
+    "eu": "European Union: where applicable, the GDPR governs personal data processing. France also applies the Informatique et Libertés law and cookie rules overseen by CNIL; Spain applies the LOPDGDD and LSSI-CE cookie rules overseen by AEPD. Nonessential cookies and trackers remain disabled until an affirmative choice. Continuing to browse is not consent.",
+    "rights": "Subject to legal conditions, you may request access, rectification, erasure, restriction, portability and objection, and withdraw consent without affecting earlier lawful processing. You may complain to your national supervisory authority, including CNIL in France or AEPD in Spain. GDPR requests are generally answered within one month; any lawful extension will be explained.",
+    "us": "United States: privacy rights vary by state and statutory applicability. In California, the CCPA, as amended by the CPRA, gives consumers rights to know, access, correct and delete personal information, opt out of sale or sharing for cross-context behavioral advertising, limit certain uses of sensitive information, and receive nondiscriminatory treatment for exercising their rights, when the business is subject to the law. The CCPA does not automatically cover every business or US visitor.",
+    "choice": "On this website, Reject disables optional measurement and associated advertising sharing. A Global Privacy Control (GPC) signal exposed by your browser is treated as rejection and overrides stored acceptance. To withdraw consent, use Change privacy preferences and Reject. Your choice is saved in this browser for up to 180 days, after which we request a new choice.",
+    "data": "Cookie identifiers, IP addresses and browsing information may be personal information even when events do not include your name or form contents. Google and Meta integrations may involve sharing for advertising. Receiving no money for data does not, by itself, exclude statutory definitions of sale or sharing in the United States. Hosting and third-party tools may involve processing outside your country, including Brazil or the United States. Where GDPR applies, transfers outside the EEA require a valid legal mechanism and additional safeguards where needed. You may request information about destinations and mechanisms through our privacy contact.",
+    "contact": "To exercise rights, email ola@ravytdigital.com with your request and region. We may request only information needed for identity verification where required; rejecting tracking does not require registration. Deadlines, exceptions and appeals follow applicable law. When the CCPA applies, California access, correction and deletion requests generally have a 45-day response period, with notice of any lawful extension.",
+    "contract": "These terms do not waive mandatory privacy, consumer protection or jurisdiction rules applicable in the European Union or your US state. Selecting a language or browsing does not authorize optional cookies. Service terms and any applicable cancellation rights will be presented before contracting under applicable law.",
+    "links": [
+      "Official sources",
+      "GDPR: rights and obligations",
+      "CNIL: cookies",
+      "AEPD: cookies",
+      "California: CCPA/CPRA",
+      "California: GPC"
+    ]
+  },
+  "fr": {
+    "heading": "Union européenne et États-Unis",
+    "scope": "La langue choisie ne détermine pas vos droits. La loi applicable dépend de votre localisation, du traitement et du champ d’application de la loi à l’entreprise.",
+    "eu": "Union européenne : lorsqu’il est applicable, le RGPD régit le traitement des données personnelles. En France, la loi Informatique et Libertés et les règles relatives aux cookies contrôlées par la CNIL s’appliquent également ; en Espagne, la LOPDGDD et les règles de la LSSI-CE contrôlées par l’AEPD. Les cookies et traceurs non essentiels restent désactivés jusqu’à un choix affirmatif. Poursuivre la navigation ne vaut pas consentement.",
+    "rights": "Sous réserve des conditions légales, vous pouvez demander accès, rectification, effacement, limitation, portabilité et opposition, et retirer votre consentement sans affecter le traitement antérieur licite. Vous pouvez déposer une réclamation auprès de votre autorité nationale, notamment la CNIL en France ou l’AEPD en Espagne. Les demandes fondées sur le RGPD reçoivent en principe une réponse sous un mois ; toute prolongation légale sera expliquée.",
+    "us": "États-Unis : les droits varient selon l’État et l’applicabilité de la loi. En Californie, la CCPA modifiée par la CPRA prévoit les droits de connaître, consulter, corriger et supprimer les données, de refuser leur vente ou partage pour la publicité comportementale entre contextes, de limiter certains usages des données sensibles et de ne pas subir de discrimination, lorsque l’entreprise relève de cette loi. La CCPA ne s’applique pas automatiquement à toute entreprise ou tout visiteur américain.",
+    "choice": "Sur ce site, Refuser désactive la mesure facultative et le partage publicitaire associé. Le signal Global Privacy Control (GPC), lorsqu’il est exposé par le navigateur, vaut refus et prévaut sur une acceptation enregistrée. Pour retirer votre consentement, utilisez Modifier les préférences de confidentialité puis Refuser. Le choix est conservé au maximum 180 jours dans ce navigateur ; un nouveau choix est ensuite demandé.",
+    "data": "Les identifiants de cookies, adresses IP et informations de navigation peuvent être des données personnelles même si les événements ne contiennent ni votre nom ni les contenus des formulaires. Les intégrations Google et Meta peuvent impliquer un partage publicitaire. L’absence de paiement pour ces données n’exclut pas, à elle seule, les définitions légales américaines de vente ou de partage. L’hébergement et les outils tiers peuvent impliquer un traitement hors de votre pays, notamment au Brésil ou aux États-Unis. Lorsque le RGPD s’applique, les transferts hors EEE exigent un mécanisme légal valide et, si nécessaire, des garanties supplémentaires. Vous pouvez demander des informations sur les destinations et mécanismes au contact de confidentialité.",
+    "contact": "Pour exercer vos droits, écrivez à ola@ravytdigital.com en précisant votre demande et votre région. Seules les informations nécessaires à une vérification d’identité peuvent être demandées lorsque celle-ci est requise ; le refus du suivi ne nécessite aucune inscription. Délais, exceptions et recours suivent la loi applicable. Lorsque la CCPA s’applique, les demandes californiennes d’accès, de rectification et de suppression ont un délai général de 45 jours, avec notification de toute prolongation légale.",
+    "contract": "Ces conditions n’écartent aucune règle impérative de confidentialité, de protection des consommateurs ou de compétence applicable dans l’Union européenne ou dans votre État américain. Choisir une langue ou naviguer n’autorise pas les cookies facultatifs. Les conditions de service et les éventuels droits de rétractation seront présentés avant la conclusion du contrat conformément à la loi applicable.",
+    "links": [
+      "Sources officielles",
+      "RGPD : droits et obligations",
+      "CNIL : cookies",
+      "AEPD : cookies",
+      "Californie : CCPA/CPRA",
+      "Californie : GPC"
+    ]
+  },
+  "es": {
+    "heading": "Unión Europea y Estados Unidos",
+    "scope": "El idioma elegido no determina tus derechos. La ley aplicable depende de tu ubicación, del tratamiento y de si la empresa está comprendida en su ámbito de aplicación.",
+    "eu": "Unión Europea: cuando resulte aplicable, el RGPD regula el tratamiento de datos personales. En España también se aplican la LOPDGDD y las reglas de cookies de la LSSI-CE supervisadas por la AEPD; en Francia, la ley Informatique et Libertés y las reglas supervisadas por la CNIL. Las cookies y rastreadores no esenciales permanecen desactivados hasta una elección afirmativa. Seguir navegando no constituye consentimiento.",
+    "rights": "Conforme a las condiciones legales, puedes solicitar acceso, rectificación, supresión, limitación, portabilidad y oposición, y retirar el consentimiento sin afectar al tratamiento lícito anterior. Puedes reclamar ante tu autoridad nacional, incluida la AEPD en España o la CNIL en Francia. Las solicitudes bajo el RGPD se responden, por regla general, en un mes; se informará de cualquier prórroga legal.",
+    "us": "Estados Unidos: los derechos varían según el estado y la aplicabilidad legal. En California, la CCPA modificada por la CPRA reconoce derechos a conocer, acceder, corregir y eliminar datos, rechazar su venta o comunicación para publicidad conductual entre contextos, limitar ciertos usos de información sensible y no sufrir discriminación por ejercer derechos, cuando la empresa esté sujeta a la ley. La CCPA no se aplica automáticamente a toda empresa o visitante estadounidense.",
+    "choice": "En este sitio, Rechazar desactiva la medición opcional y la comunicación publicitaria asociada. La señal Global Privacy Control (GPC), cuando el navegador la expone, se trata como rechazo y prevalece sobre una aceptación guardada. Para retirar tu consentimiento, usa Cambiar preferencias de privacidad y Rechazar. La elección se guarda hasta 180 días en este navegador; después solicitamos una nueva elección.",
+    "data": "Los identificadores de cookies, direcciones IP e información de navegación pueden ser datos personales aunque los eventos no incluyan tu nombre ni el contenido del formulario. Las integraciones de Google y Meta pueden implicar comunicación de datos para publicidad. No recibir dinero por esos datos no excluye por sí solo las definiciones legales estadounidenses de venta o comunicación. El alojamiento y las herramientas de terceros pueden implicar tratamiento fuera de tu país, incluido Brasil o Estados Unidos. Cuando el RGPD sea aplicable, las transferencias fuera del EEE requieren un mecanismo legal válido y garantías adicionales cuando sean necesarias. Puedes pedir información sobre destinos y mecanismos al contacto de privacidad.",
+    "contact": "Para ejercer derechos, escribe a ola@ravytdigital.com indicando tu solicitud y región. Podemos pedir solo los datos necesarios para verificar la identidad cuando sea obligatorio; rechazar el seguimiento no requiere registro. Plazos, excepciones y recursos siguen la ley aplicable. Cuando la CCPA sea aplicable, las solicitudes californianas de acceso, corrección y eliminación tienen un plazo general de 45 días, informando de cualquier prórroga legal.",
+    "contract": "Estos términos no excluyen las normas imperativas de privacidad, protección del consumidor o competencia judicial aplicables en la Unión Europea o en tu estado estadounidense. Elegir un idioma o navegar no autoriza cookies opcionales. Las condiciones del servicio y los eventuales derechos de desistimiento se presentarán antes de contratar conforme a la ley aplicable.",
+    "links": [
+      "Fuentes oficiales",
+      "RGPD: derechos y obligaciones",
+      "CNIL: cookies",
+      "AEPD: cookies",
+      "California: CCPA/CPRA",
+      "California: GPC"
+    ]
+  }
+}

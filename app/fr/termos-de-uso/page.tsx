@@ -1,3 +1,4 @@
+import RegionalLegalNotice from "@/components/i18n/RegionalLegalNotice";
 import { pageMetadata } from "@/locales/fr/lib/metadata";
 import type { Metadata } from "next";
 import LegalPage from "@/locales/fr/components/LegalPage";
@@ -6,12 +7,12 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Conditions d’utilisation",
   description: "Conditions d’accès et d’utilisation du site de Ravyt Digital.",
-  alternates: { canonical: `${SITE_URL}/termos-de-uso` },
+  alternates: { canonical: `${SITE_URL}/fr/termos-de-uso` },
 });
 
 export default function TermsPage() {
   return (
-    <LegalPage eyebrow="Conditions d’accès" title="Conditions d’utilisation">
+    <LegalPage eyebrow="Conditions d’accès" title="Conditions d’utilisation" updated="5 octobre 2026">
       <p className="legal-lead"> En naviguant sur le site de Ravyt Digital, vous acceptez ces conditions. Si vous n’acceptez pas une condition, cessez d’utiliser le site. </p>
       <h2> 1. Objet du site </h2>
       <p> Ce site présente Ravyt Digital, ses services Google, sites et SEO ainsi que des contenus sur la présence numérique. Le contenu est institutionnel et informatif. </p>
@@ -28,9 +29,10 @@ export default function TermsPage() {
       <h2> 7. Confidentialité </h2>
       <p> Le traitement des données personnelles lié au site est expliqué dans notre <a href="/fr/politica-de-privacidade"> Politique de confidentialité </a>.</p>
       <h2> 8. Modifications et législation </h2>
-      <p> Ces conditions peuvent être mises à jour pour accompagner les changements du site ou des services. La version en vigueur est identifiée par la date en haut et interprétée selon la législation brésilienne, dans le respect des règles légales de compétence. </p>
+      <p> Ces conditions n’écartent aucune règle impérative de confidentialité, de protection des consommateurs ou de compétence applicable dans l’Union européenne ou dans votre État américain. Choisir une langue ou naviguer n’autorise pas les cookies facultatifs. Les conditions de service et les éventuels droits de rétractation seront présentés avant la conclusion du contrat conformément à la loi applicable. </p>
       <h2> 9. Contact </h2>
       <p> Les questions concernant ces conditions peuvent être envoyées à <a href="mailto:ola@ravytdigital.com">ola@ravytdigital.com</a>.</p>
+    <RegionalLegalNotice lang="fr" kind="terms"/>
     </LegalPage>
   );
 }
