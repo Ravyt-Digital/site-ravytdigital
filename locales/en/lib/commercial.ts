@@ -16,11 +16,11 @@ export const projects = [
 export const questions = [
  ["Why is maintenance ongoing?","Because the work continues after publication: website maintenance and updates, support, Google Business Profile information and SEO optimizations."],
  ["Is the website mine?","Ownership, access and any termination conditions will be presented in the proposal before the agreement."],
- ["Are domain and hosting included?","Yes. Domain and hosting are part of the annual Google + Website + SEO plan. The single annual plan costs R$ 597,00, payable by Pix, card or boleto. It includes setup and a Google Review NFC Card as a bonus. Specific conditions are provided in the proposal."],
+ ["Are domain and hosting included?","Yes. Domain and hosting are part of the annual Google + Website + SEO plan. The single annual plan costs R$ 597,00, payable by Pix, card or boleto. It includes setup and a Google Review NFC Card (available only in Brazil) as a bonus. Specific conditions are provided in the proposal."],
  ["What does Ravyt do every month?","We monitor and improve the Google Business Profile, maintain the website, provide support and work on SEO structure and optimization within the contracted scope."],
  ["How soon can I see progress on Google?","It depends on the market, competition, location and the company’s history. There is no universal timeline or guarantee of a specific result."],
  ["Do I need to already have a Google Business Profile?","No. We assess the current situation and set up or optimize the profile according to the business’s eligibility and needs."],
  ["Does the service guarantee first place on Google?","No. No specific ranking can be guaranteed. We work to improve the business’s structure and digital presence."],
  ["Can I withdraw within the first 7 days?","Yes. With the annual plan, you have 7 days to withdraw from the agreement. The full contract is sent before payment."],
- ["How much does it cost and how is it charged?","The single annual plan costs R$ 597,00, payable by Pix, card or boleto, and includes a Google Review NFC Card as a bonus. You have 7 days to withdraw from the agreement. Other conditions are sent in the contract before payment."]
+ ["How much does it cost and how is it charged?","The single annual plan costs R$ 597,00, payable by Pix, card or boleto, and includes a Google Review NFC Card (available only in Brazil) as a bonus. You have 7 days to withdraw from the agreement. Other conditions are sent in the contract before payment."]
 ];

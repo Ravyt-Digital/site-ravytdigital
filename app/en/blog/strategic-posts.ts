@@ -43,7 +43,7 @@ export const strategicPosts: BlogPost[] = [
       ]},
       {title:"How to compare proposals without getting lost in price",paragraphs:[
         "Compare equivalent deliverables. “Website creation” may mean a presentation page or a project with multiple pages, copy, forms and integrations. Ask each provider to describe the content, pages, publication process and support conditions.",
-        "Ravyt’s Google + Website + SEO offer has a single annual plan of R$ 597,00, payable by Pix, card or boleto, with setup included and a Google Review NFC Card as a bonus. The plan brings together website creation, domain, hosting, support, maintenance and ongoing SEO work. Google Business Profile is handled when the business is eligible. Scope, access, ownership and termination conditions are defined in the proposal. Requirements outside the scope need to be assessed before promising delivery."
+        "Ravyt’s Google + Website + SEO offer has a single annual plan of R$ 597,00, payable by Pix, card or boleto, with setup included and a Google Review NFC Card (available only in Brazil) as a bonus. The plan brings together website creation, domain, hosting, support, maintenance and ongoing SEO work. Google Business Profile is handled when the business is eligible. Scope, access, ownership and termination conditions are defined in the proposal. Requirements outside the scope need to be assessed before promising delivery."
       ],links:[
         {label:"What affects a website quote",href:"/en/quanto-custa-criar-um-site"},
         {label:"Which pages a corporate website needs",href:"/en/blog/site-institucional-paginas-essenciais"},
