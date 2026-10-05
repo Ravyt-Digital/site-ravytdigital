@@ -38,6 +38,6 @@ export const website = {
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
   name: "Ravyt Digital",
-  inLanguage: "pt-BR",
+  inLanguage: ["pt-BR", "en", "fr", "es"],
   publisher: { "@id": organization["@id"] },
 };

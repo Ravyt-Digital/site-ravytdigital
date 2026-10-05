@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 
 import {PriceText} from "@/components/i18n/Regional";
 import type { Metadata } from "next";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) return {};
   const author = articleAuthor(post);
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
     alternates: { canonical: `/fr/blog/${slug}` },
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       authors: [author.url], section: post.category,
       images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }],
     },
-  };
+  });
 }
 
 function sectionId(title: string) {
