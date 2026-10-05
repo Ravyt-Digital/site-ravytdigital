@@ -6,7 +6,6 @@ import handler from "vinext/server/app-router-entry";
 
 interface Env {
   ASSETS: Fetcher;
-  DB: D1Database;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -63,7 +62,7 @@ const worker = {
     }
 
     const country = String((request as Request & {cf?: {country?:string}}).cf?.country ?? request.headers.get("cf-ipcountry") ?? "");
-    if(url.pathname === "/api/exchange-rates") return exchangeResponse(country, env.DB);
+    if(url.pathname === "/api/exchange-rates") return exchangeResponse(country);
     const lang = languageForRequest(url.pathname, request.headers.get("cookie")??"", request.headers.get("accept-language")??"", country);
     const isPage=request.method==="GET"&&!url.pathname.startsWith("/api/")&&!url.pathname.startsWith("/_")&&!/\.[a-z0-9]+$/i.test(url.pathname);
     const isBot=/bot|crawler|spider|slurp/i.test(request.headers.get("user-agent")??"");
