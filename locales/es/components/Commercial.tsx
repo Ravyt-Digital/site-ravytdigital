@@ -1,0 +1,11 @@
+
+import {PriceText} from "@/components/i18n/Regional";
+import Image from 'next/image';
+import Link from 'next/link';
+import { projects, questions } from "@/locales/es/lib/commercial";
+import PortfolioPreview from "@/locales/es/components/PortfolioPreview";
+export function DiagnosticCTA(){return <Link className="rv-button" href="/es/diagnostico" data-track="primary_cta_click"> Quiero fortalecer mi presencia en Google <span aria-hidden="true">↗</span></Link>;}
+export function FinalCTA(){return <section className="rv-final"><div className="shell"><p className="rv-label"> Tu siguiente paso </p><h2> Tu cliente ya está buscando. <br/> ¿Qué encuentra sobre ti? </h2><p> Veamos tu negocio y entendamos qué necesita atención primero. </p><DiagnosticCTA/></div></section>;}
+export function Cases(){return <div className="rv-cases">{<PriceText>{projects.map(p=><article key={p.slug}><PortfolioPreview slug={p.slug} name={p.name}/><p className="rv-label">{<PriceText>{p.type}</PriceText>}</p><h3>{<PriceText>{p.name}</PriceText>}</h3><p>{<PriceText>{p.text}</PriceText>}{<PriceText>{'nicheHref' in p && p.nicheHref && <><br/><Link href={p.nicheHref}>{<PriceText>{p.nicheLabel}</PriceText>} →</Link></>}</PriceText>}</p></article>)}</PriceText>}</div>;}
+export function Team(){return <div className="rv-team"><article><Image src="/team/ytala-cabral-card.webp" alt="Ytala Cabral" width={320} height={464} unoptimized/><div><p className="rv-label"> Ser encontrada y comprendida </p><h3>Ytala Cabral</h3><strong> SEO · Perfil de Empresa en Google · Redacción </strong><p> Investigación, intención de búsqueda y mensaje. Ytala conecta lo que busca tu cliente con lo que tu empresa necesita comunicar. </p></div></article><article><Image src="/team/marcio-cabral-card.webp" alt="Marcio Cabral" width={280} height={380} unoptimized/><div><p className="rv-label"> Ser elegida y contactada </p><h3>Marcio Cabral</h3><strong> UX/UI · Diseño web </strong><p> Arquitectura, diseño e implementación. Marcio transforma la estrategia en una experiencia clara, accesible y preparada para el siguiente clic. </p></div></article></div>;}
+export function FAQ(){return <div className="rv-faq">{<PriceText>{questions.map(([q,a])=><details key={q}><summary>{<PriceText>{q}</PriceText>}</summary><p>{<PriceText>{a}</PriceText>}</p></details>)}</PriceText>}</div>;}

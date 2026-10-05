@@ -14,7 +14,7 @@ export const projects = [
  {name:'Capoeira Haute-Savoie',type:'Site publicado',slug:'capoeira',text:'Apresentação da escola, sua prática e caminhos para novos alunos.'}
 ];
 export const questions = [
- ['Por que o serviço é mensal?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
+ ['Por que a manutenção é contínua?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
  ['O site é meu?','As condições de titularidade, acesso e eventual encerramento serão apresentadas na proposta antes da contratação.'],
  ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte do plano anual Google + Site + SEO. O plano único anual custa R$ 597,00, com pagamento por Pix, cartão ou boleto. Inclui implantação e o Cartão NFC de Avaliação do Google como bônus. As condições específicas são informadas na proposta.'],
  ['O que a Ravyt faz todos os meses?','Acompanha e aprimora o Perfil da Empresa no Google, mantém o site, presta suporte e trabalha na estrutura e nas otimizações de SEO conforme o escopo contratado.'],

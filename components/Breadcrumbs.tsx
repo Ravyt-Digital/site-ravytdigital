@@ -1,3 +1,5 @@
+
+import {PriceText} from "@/components/i18n/Regional";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import StructuredData from "./StructuredData";
@@ -15,10 +17,10 @@ export default function Breadcrumbs({ items, structured = true }: { items: Crumb
   };
   return <>
     <nav className="content-breadcrumbs" aria-label="Caminho da página">
-      <ol>{items.map((item, index) => <li key={item.href}>
-        {index === items.length - 1 ? <span aria-current="page">{item.name}</span> : <Link href={item.href}>{item.name}</Link>}
-      </li>)}</ol>
+      <ol>{<PriceText>{items.map((item, index) => <li key={item.href}>
+        {<PriceText>{index === items.length - 1 ? <span aria-current="page">{<PriceText>{item.name}</PriceText>}</span> : <Link href={item.href}>{<PriceText>{item.name}</PriceText>}</Link>}</PriceText>}
+      </li>)}</PriceText>}</ol>
     </nav>
-    {structured && <StructuredData data={schema} />}
+    {<PriceText>{structured && <StructuredData data={schema} />}</PriceText>}
   </>;
 }

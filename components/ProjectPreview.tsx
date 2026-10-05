@@ -1,5 +1,7 @@
 "use client";
 
+
+import {PriceText} from "@/components/i18n/Regional";
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
@@ -65,8 +67,8 @@ export default function ProjectPreview({ src, image, title, category }: ProjectP
       <section className="project-modal" role="dialog" aria-modal="true" aria-labelledby={titleId}>
         <header className="project-modal-header">
           <div>
-            <span>{category}</span>
-            <h2 id={titleId}>{title}</h2>
+            <span>{<PriceText>{category}</PriceText>}</span>
+            <h2 id={titleId}>{<PriceText>{title}</PriceText>}</h2>
           </div>
           <div className="project-modal-actions">
             <a href={src} target="_blank" rel="noopener noreferrer">
@@ -108,7 +110,7 @@ export default function ProjectPreview({ src, image, title, category }: ProjectP
         <span>Conheça o projeto</span>
         <i aria-hidden="true">↗</i>
       </button>
-      {typeof document !== "undefined" && modal ? createPortal(modal, document.body) : null}
+      {<PriceText>{typeof document !== "undefined" && modal ? createPortal(modal, document.body) : null}</PriceText>}
     </>
   );
 }

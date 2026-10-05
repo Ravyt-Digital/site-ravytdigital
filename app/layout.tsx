@@ -1,3 +1,11 @@
+import {headers} from "next/headers";
+import {RegionalProvider} from "@/components/i18n/Regional";
+import CookieEn from "@/locales/en/components/CookieConsent";
+import CookieFr from "@/locales/fr/components/CookieConsent";
+import CookieEs from "@/locales/es/components/CookieConsent";
+import WhatsappEn from "@/locales/en/components/FloatingWhatsApp";
+import WhatsappFr from "@/locales/fr/components/FloatingWhatsApp";
+import WhatsappEs from "@/locales/es/components/FloatingWhatsApp";
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -22,4 +30,4 @@ export const metadata: Metadata = {
   icons:{icon:"/favicon.png",shortcut:"/favicon.png",apple:"/apple-touch-icon.png"}
 };
 
-export default function RootLayout({children}:{children:React.ReactNode}) { return <html lang="pt-BR"><head><link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/><link rel="preload" href="/fonts/fraunces-latin-italic.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/></head><body><StructuredData data={{"@context":"https://schema.org","@graph":[organization,website]}}/><a className="skip-link" href="#conteudo">Pular para o conteúdo</a>{children}<UtmCapture/><Analytics/><FloatingWhatsApp/><CookieConsent/></body></html>; }
+export default async function RootLayout({children}:{children:React.ReactNode}) { const lang=(await headers()).get("x-ravyt-language")??"pt"; const Cookie={en:CookieEn,fr:CookieFr,es:CookieEs}[lang]??CookieConsent; const Whatsapp={en:WhatsappEn,fr:WhatsappFr,es:WhatsappEs}[lang]??FloatingWhatsApp; return <html lang={lang==="pt"?"pt-BR":lang}><head><link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/><link rel="preload" href="/fonts/fraunces-latin-italic.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/></head><body><RegionalProvider lang={lang}><StructuredData data={{"@context":"https://schema.org","@graph":[organization,website]}}/><a className="skip-link" href="#conteudo">{{pt:"Pular para o conteúdo",en:"Skip to content",fr:"Aller au contenu",es:"Saltar al contenido"}[lang]}</a>{children}<UtmCapture/><Analytics/><Whatsapp/><Cookie/></RegionalProvider></body></html>; }

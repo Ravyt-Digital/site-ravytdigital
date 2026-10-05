@@ -1,4 +1,7 @@
-// Intentionally empty by default.
-// Add Drizzle tables here when the site actually needs a database.
-// See examples/d1/db/schema.ts for an opt-in example.
-export {};
+import {sqliteTable,integer,text} from "drizzle-orm/sqlite-core";
+// Last validated reference quotation persists across Worker restarts.
+export const exchangeRates = sqliteTable("ravyt_exchange_rates", {
+ id: integer("id").primaryKey(),
+ payload: text("payload").notNull(),
+ checked: integer("checked").notNull(),
+});

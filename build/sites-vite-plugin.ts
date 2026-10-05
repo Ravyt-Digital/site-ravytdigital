@@ -21,6 +21,8 @@ export function sites(): Plugin {
   return {
     name: "sites",
     apply: "build",
+    // Package shared metadata once; parallel environment hooks otherwise race.
+    applyToEnvironment(environment) { return environment.name === "rsc"; },
     configResolved(config) {
       root = config.root;
     },

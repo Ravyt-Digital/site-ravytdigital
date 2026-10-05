@@ -1,0 +1,3 @@
+import Link from "next/link";
+export const metadata={title:"Page introuvable",robots:{index:false,follow:false}};
+export default function NotFound(){return <main id="conteudo" className="not-found-page"><div className="shell"><p>404</p><h1>Cette page est introuvable.</h1><span>L’adresse a peut-être changé ou le contenu n’est plus disponible.</span><nav><Link className="button button-light" href="/fr">Retour à l’accueil</Link><Link className="button button-ghost" href="/fr/blog">Découvrir le blog</Link><Link className="button button-ghost" href="/fr/sites">Découvrir la création de sites</Link></nav></div></main>;}

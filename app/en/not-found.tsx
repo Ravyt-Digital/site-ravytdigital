@@ -1,0 +1,3 @@
+import Link from "next/link";
+export const metadata={title:"Page not found",robots:{index:false,follow:false}};
+export default function NotFound(){return <main id="conteudo" className="not-found-page"><div className="shell"><p>404</p><h1>This page was not found.</h1><span>The address may have changed or the content may no longer be available.</span><nav><Link className="button button-light" href="/en">Back to the home page</Link><Link className="button button-ghost" href="/en/blog">Explore the blog</Link><Link className="button button-ghost" href="/en/sites">Explore website creation</Link></nav></div></main>;}

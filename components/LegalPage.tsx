@@ -1,3 +1,5 @@
+
+import {PriceText} from "@/components/i18n/Regional";
 import type { ReactNode } from "react";
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
@@ -10,9 +12,9 @@ export default function LegalPage({ eyebrow, title, children, updated = "13 de s
         <a className="legal-back" href="/">← Voltar ao site</a>
       </header>
       <section className="legal-hero">
-        <div className="shell"><p>{eyebrow}</p><h1>{title}</h1><span>Última atualização: {updated}</span></div>
+        <div className="shell"><p>{<PriceText>{eyebrow}</PriceText>}</p><h1>{<PriceText>{title}</PriceText>}</h1><span>Última atualização: {<PriceText>{updated}</PriceText>}</span></div>
       </section>
-      <article className="legal-content shell">{children}</article>
+      <article className="legal-content shell">{<PriceText>{children}</PriceText>}</article>
       <footer className="legal-footer shell"><span>© 2026 Ravyt Digital</span><p className="site-credit">Site Desenvolvido Por <a href="https://ravytdigital.com">Ravyt Digital</a></p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div></footer>
     </main>
   );

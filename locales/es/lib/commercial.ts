@@ -1,0 +1,26 @@
+export const services = [
+ {slug:'seo',name:'SEO',title:"¿Quien busca tu solución puede encontrarte?",description:"SEO estratégico para acercar tu empresa a quienes ya buscan lo que ofrece.",detail:"Aparecer por el nombre es un comienzo. La oportunidad está en ser encontrado por el servicio, la duda y la necesidad que llevan a alguien a comprar.",items:["Investigación de intención de búsqueda y competencia","Arquitectura y contenido de las páginas de servicios","SEO técnico, indexación y seguimiento"]},
+ {slug:'google-meu-negocio',name:"Presencia local",title:"Cerca del cliente. Presente en el momento de elegir.",description:"Perfil de Empresa en Google y SEO local para empresas que necesitan ser encontradas en Google y Maps.",detail:"Tu Perfil de Empresa en Google —antes llamado Google My Business— puede ser el primer contacto de alguien con tu negocio. Los servicios, horarios y reseñas deben contar la misma historia.",items:["Análisis de elegibilidad y configuración del perfil","Categorías, servicios e información coherentes","Orientación para reseñas y seguimiento local"]},
+ {slug:'sites',name:"Sitios estratégicos",title:"Después del clic, empieza la decisión.",description:"Sitios con UX/UI, redacción y SEO técnico para transformar el descubrimiento en comprensión, confianza y contacto.",detail:"¿Tu sitio explica qué resuelves, para quién y cuál es el siguiente paso? Construimos este recorrido con contenido claro, buena experiencia en el móvil y una estructura que puede evolucionar.",items:["Arquitectura, UX/UI y textos orientados a la decisión","Desarrollo adaptable, accesibilidad y rendimiento","Formularios, WhatsApp y medición según el alcance"]}
+];
+export const projects = [
+ {name:'Miraúna Mobiliário',type:"Demostración conceptual",slug:'mirauna',text:"Vitrina de mobiliario con composición editorial y destaque de ambientes."},
+ {name:'Vértice Norte Engenharia',type:"Demostración conceptual",slug:'moreira',text:"Presentación de ingeniería con tipografía destacada y navegación por especialidades.",nicheHref:"/es/sites-para-empresas-de-engenharia",nicheLabel:"Sitios para empresas de ingeniería"},
+ {name:'Nina Valença Arquitetura',type:"Demostración conceptual",slug:'nina',text:"Portafolio de arquitectura con imágenes amplias y transiciones de sección.",nicheHref:"/es/sites-para-escritorios-de-arquitetura",nicheLabel:"Sitios para estudios de arquitectura"},
+ {name:'Lumea Planejados',type:"Demostración conceptual",slug:'lumea',text:"Experiencia de muebles a medida con ambientes destacados.",nicheHref:"/es/sites-para-moveis-planejados",nicheLabel:"Sitios para empresas de muebles a medida"},
+ {name:'Arvona Home Center',type:"Demostración conceptual",slug:'arvona',text:"Catálogo visual para presentar categorías y facilitar el descubrimiento."},
+ {name:'Serra Norte Distribuição',type:"Demostración conceptual",slug:'serra',text:"Sitio de distribución con comunicación directa y jerarquía de productos."},
+ {name:'CEREST Tianguá',type:"Sitio publicado",slug:'cerest',text:"Información institucional organizada para facilitar el acceso a los servicios."},
+ {name:'Capoeira Haute-Savoie',type:"Sitio publicado",slug:'capoeira',text:"Presentación de la escuela, su práctica y caminos para nuevos alumnos."}
+];
+export const questions = [
+ ["¿Por qué el mantenimiento es continuo?","Porque el trabajo continúa después de la publicación: mantenimiento y actualizaciones del sitio, soporte, información del Perfil de Empresa en Google y optimizaciones de SEO."],
+ ["¿El sitio es mío?","Las condiciones de titularidad, acceso y eventual finalización se presentarán en la propuesta antes de la contratación."],
+ ["¿El dominio y el alojamiento están incluidos?","Sí. El dominio y el alojamiento forman parte del plan anual Google + Sitio web + SEO. El plan único anual cuesta R$ 597,00, pagado por Pix, tarjeta o boleto. Incluye implementación y la tarjeta NFC de reseñas de Google como bono. Las condiciones específicas se informan en la propuesta."],
+ ["¿Qué hace Ravyt cada mes?","Acompañamos y mejoramos el Perfil de Empresa en Google, mantenemos el sitio, prestamos soporte y trabajamos la estructura y las optimizaciones de SEO según el alcance contratado."],
+ ["¿En cuánto tiempo puedo notar una evolución en Google?","Depende del mercado, la competencia, la ubicación y el historial de la empresa. No existe un plazo universal ni garantía de un resultado específico."],
+ ["¿Necesito tener ya un Perfil de Empresa en Google?","No. Evaluamos la situación actual y estructuramos u optimizamos el perfil según la elegibilidad y las necesidades del negocio."],
+ ["¿El servicio garantiza la primera posición en Google?","No. No puede garantizarse ninguna posición específica. Trabajamos para mejorar la estructura y la presencia digital de la empresa."],
+ ["¿Puedo desistir durante los primeros 7 días?","Sí. En el plan anual, tienes 7 días para desistir de la contratación. El contrato completo se envía antes del pago."],
+ ["¿Cuánto cuesta y cómo se cobra?","El plan único anual cuesta R$ 597,00, pagado por Pix, tarjeta o boleto, e incluye una tarjeta NFC de reseñas de Google como bono. Tienes 7 días para desistir de la contratación. Las demás condiciones se envían en el contrato antes del pago."]
+];

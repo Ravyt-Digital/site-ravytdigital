@@ -1,3 +1,4 @@
+import {LanguageSwitcher} from "@/components/i18n/Regional";
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 import MobileMenu from "@/components/MobileMenu";
@@ -19,7 +20,7 @@ export function BlogHeader({ current, transparent = false }: { current?: "servic
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="/seo">SEO</a><a href="/google-meu-negocio">Presença Local</a><a href="/sites" aria-current={current === "sites" ? "page" : undefined}>Sites</a><a href="/cases">Cases</a><a href="/sobre">A Ravyt</a><a href="/blog" aria-current={current === "insights" ? "page" : undefined}>Blog</a><a href="/contato" aria-current={current === "contact" ? "page" : undefined}>Contato</a>
         </nav>
-        <MobileMenu fromSubpage />
+        <LanguageSwitcher/><MobileMenu fromSubpage />
       </div>
     </header>
   );
