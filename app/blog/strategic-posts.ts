@@ -81,7 +81,7 @@ export const strategicPosts: BlogPost[] = [
     ],
     serviceHref:"/contato",serviceLabel:"Conte à Ravyt sobre seu projeto",ctaTitle:"O que o seu site precisa explicar para o próximo cliente?",
     editorialNote:"A equipe Ravyt reescreveu e revisou este guia para ajudar empresas a avaliar propostas de sites. O exemplo de manutenção predial é ilustrativo e não representa um cliente ou resultado real. As referências técnicas estão ligadas às fontes originais; condições comerciais seguem a proposta de cada projeto.",
-    relatedSlugs:["site-institucional-paginas-essenciais"]
+    relatedSlugs:["site-institucional-paginas-essenciais","manutencao-de-site-o-que-inclui"]
   },
   {
     slug:"site-institucional-paginas-essenciais",

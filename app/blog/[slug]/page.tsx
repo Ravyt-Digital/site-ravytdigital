@@ -4,6 +4,7 @@ import {PriceText} from "@/components/i18n/Regional";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import StructuredData from "@/components/StructuredData";
 import { SITE_URL } from "@/lib/site";
@@ -31,12 +32,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     alternates: { canonical: `/blog/${slug}` },
     authors: [{ name: author.name, url: author.url }],
     creator: author.name,
-    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: ["/brand/ravyt-social-card.jpg"] },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: [post.images?.[0]?.src ?? "/brand/ravyt-social-card.jpg"] },
     openGraph: {
       title: post.title, description: post.excerpt, type: "article", url: `/blog/${slug}`,
       publishedTime: post.date, modifiedTime: post.modified ?? post.date,
       authors: [author.url], section: post.category,
-      images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }],
+      images: post.images?.length ? [{ url: post.images[0].src, width: post.images[0].width, height: post.images[0].height, alt: post.images[0].alt }] : [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }],
     },
   });
 }
@@ -66,6 +67,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
     isPartOf: { "@type": "Blog", "@id": `${SITE_URL}/blog#blog`, url: `${SITE_URL}/blog`, name: "Blog Ravyt Digital" },
     author, publisher: { "@id": organization["@id"] },
+    ...(post.images?.length ? { image: post.images.map(item => `${SITE_URL}${item.src}`) } : {}),
     ...(post.sources?.length ? { citation: post.sources.map(source => source.url) } : {}),
   };
   const serviceHref = post.serviceHref ?? "/sites";
@@ -93,7 +95,9 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       {<PriceText>{post.quickAnswer && <aside className="article-answer" aria-labelledby="resposta-rapida"><h2 id="resposta-rapida">Resposta rápida</h2><p>{<PriceText>{post.quickAnswer}</PriceText>}</p></aside>}</PriceText>}
       <nav className="article-toc" aria-label="Neste conteúdo"><strong>Neste conteúdo</strong>{<PriceText>{toc.map(item => <a key={item.id} href={`#${item.id}`}>{<PriceText>{item.title}</PriceText>}</a>)}</PriceText>}</nav>
       <p className="article-intro">{<PriceText>{post.intro}</PriceText>}</p>
+      {post.images?.[0] && <figure style={{ margin: "32px 0" }}><Image src={post.images[0].src} width={post.images[0].width} height={post.images[0].height} alt={post.images[0].alt} priority style={{ width: "100%", height: "auto", borderRadius: 16 }} /><figcaption>{post.images[0].caption}</figcaption></figure>}
       {<PriceText>{post.sections.map(section => <section id={sectionId(section.title)} key={section.title}><h2>{<PriceText>{section.title}</PriceText>}</h2>{<PriceText>{section.paragraphs.map(paragraph => <p key={paragraph}>{<PriceText>{paragraph}</PriceText>}</p>)}</PriceText>}{<PriceText>{section.links?.length ? <p>{<PriceText>{section.links.map((link, index) => <span key={link.href}>{<PriceText>{index > 0 ? " · " : "Leia também: "}</PriceText>}{<PriceText>{link.href.startsWith("/") ? <Link href={link.href}>{<PriceText>{link.label}</PriceText>}</Link> : <a href={link.href} target="_blank" rel="noopener noreferrer">{<PriceText>{link.label}</PriceText>} ↗</a>}</PriceText>}</span>)}</PriceText>}</p> : null}</PriceText>}</section>)}</PriceText>}
+      {post.images?.[1] && <figure style={{ margin: "32px 0" }}><Image src={post.images[1].src} width={post.images[1].width} height={post.images[1].height} alt={post.images[1].alt} loading="lazy" style={{ width: "100%", height: "auto", borderRadius: 16 }} /><figcaption>{post.images[1].caption}</figcaption></figure>}
       {<PriceText>{post.comparison && <section id="comparacao" className="article-comparison">
         <h2 id="comparacao-titulo">{<PriceText>{post.comparison.title}</PriceText>}</h2>
         <div className="comparison-scroll" tabIndex={0} role="region" aria-labelledby="comparacao-titulo">
