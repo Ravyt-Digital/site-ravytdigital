@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import ts from 'typescript';
+const js=ts.transpileModule(readFileSync(new URL('../lib/rss.ts',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+const context={exports:{},URL,Date};vm.runInNewContext(js,context);const {blogRss}=context.exports;
+const post={slug:'teste',title:'Título & <texto>',excerpt:'Resumo "útil"',category:'SEO & Sites',date:'2026-09-23',modified:'2026-10-05',intro:'Conteúdo <script> & acentos',sections:[{title:'Etapa',paragraphs:['Ação ]]> explicada'],links:[{label:'Outro artigo',href:'/blog/outro'}]}],author:'Equipe Ravyt Digital'};
+test('RSS preserves identity and original publication dates when an article changes',()=>{const first=blogRss([post],'https://ravytdigital.com');const updated=blogRss([{...post,modified:'2026-10-06'}],'https://ravytdigital.com');const guid=/<guid[^>]*>(.*?)<\/guid>/.exec(first)[1];assert.ok(updated.includes(guid));assert.match(first,/<pubDate>Wed, 23 Sep 2026 12:00:00 GMT<\/pubDate>/);assert.match(first,/<lastBuildDate>Mon, 05 Oct 2026 12:00:00 GMT<\/lastBuildDate>/);assert.match(first,/<dc:creator>Equipe Ravyt Digital<\/dc:creator>/);});
+test('RSS escapes XML, includes readable full content and absolute links, and orders newer articles first',()=>{const xml=blogRss([post,{...post,slug:'novo',date:'2026-10-06'}],'https://ravytdigital.com');assert.ok(xml.indexOf('/blog/novo</link>')<xml.indexOf('/blog/teste</link>'));assert.match(xml,/Título &amp; &lt;texto&gt;/);assert.match(xml,/content:encoded><!\[CDATA\[/);assert.match(xml,/https:\/\/ravytdigital.com\/blog\/outro/);assert.doesNotMatch(xml,/<script>/);assert.match(xml,/Ação \]\]&gt; explicada/);assert.equal((xml.match(/<item>/g)??[]).length,2);});
