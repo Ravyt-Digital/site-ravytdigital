@@ -34,7 +34,7 @@ for (const path of ["/gestao-de-midias-sociais","/quanto-custa-gestao-de-midias-
   if((await request(path)).status!==410) throw new Error(`${path} must return 410 Gone`);
 }
 const home=await (await request("/")).text();
-for(const token of ["Google + Site + SEO", "R$ 597,00", "Plano único anual", "Cartão NFC de Avaliação do Google", "Ytala Cabral", "Marcio Cabral"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
+for(const token of ["Google + Site + SEO", "597", "49,75", "PRESENÇA DIGITAL COMPLETA", "Ytala Cabral", "Marcio Cabral"]) if(!home.includes(token)) throw new Error(`Homepage missing ${token}`);
 for(const removed of ["/landing-pages-para-psicologia-parental","/copywriting-para-psicologia-parental","/autores/marcio-cabral"]) {
   if((await request(removed)).status!==404) throw new Error(`${removed} must return 404`);
 }

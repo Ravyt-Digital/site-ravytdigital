@@ -16,11 +16,11 @@ export const projects = [
 export const questions = [
  ['Por que a manutenção é contínua?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
  ['O site é meu?','As condições de titularidade, acesso e eventual encerramento serão apresentadas na proposta antes da contratação.'],
- ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte do plano anual Google + Site + SEO. O plano único anual custa R$ 597,00, com pagamento por Pix, cartão ou boleto. Inclui implantação e o Cartão NFC de Avaliação do Google (disponível somente no Brasil) como bônus. As condições específicas são informadas na proposta.'],
+ ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte do plano anual Google + Site + SEO. O plano único anual custa [[annual]] ([[monthly]]/mês equivalente), com pagamento por Pix, cartão ou boleto. Inclui implantação. As condições específicas são informadas na proposta.'],
  ['O que a Ravyt faz todos os meses?','Acompanha e aprimora o Perfil da Empresa no Google, mantém o site, presta suporte e trabalha na estrutura e nas otimizações de SEO conforme o escopo contratado.'],
  ['Em quanto tempo posso perceber evolução no Google?','Depende do mercado, da concorrência, da localização e do histórico da empresa. Não há prazo universal nem garantia de resultado específico.'],
  ['Preciso já ter um Perfil da Empresa no Google?','Não. Avaliamos a situação atual e estruturamos ou otimizamos o perfil conforme a elegibilidade e as necessidades do negócio.'],
  ['O serviço garante primeira posição no Google?','Não. Nenhuma posição específica pode ser garantida. Trabalhamos para melhorar a estrutura e a presença digital da empresa.'],
  ['Posso desistir nos primeiros 7 dias?','Sim. No plano anual, você tem 7 dias para desistir da contratação. O contrato completo é enviado antes do pagamento.'],
- ['Quanto custa e como é cobrado?','O plano único anual custa R$ 597,00, pago por Pix, cartão ou boleto, e inclui o Cartão NFC de Avaliação do Google (disponível somente no Brasil) como bônus. Você tem 7 dias para desistir da contratação. As demais condições são enviadas no contrato antes do pagamento.']
+ ['Quanto custa e como é cobrado?','O plano único anual custa [[annual]] ([[monthly]]/mês equivalente), pago por Pix, cartão ou boleto. Você tem 7 dias para desistir da contratação. As demais condições são enviadas no contrato antes do pagamento.']
 ];

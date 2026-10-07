@@ -10,7 +10,7 @@ export const organization = {
   logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-logo-2026.webp`, width: 875, height: 235 },
   email: "ola@ravytdigital.com",
   telephone: "+5588996956479",
-  description: "Perfil da Empresa no Google, criação e manutenção de sites e SEO. Plano único anual de 597, pago por Pix, cartão ou boleto, com implantação incluída, com atendimento remoto em todo o mundo.",
+  description: "Perfil da Empresa no Google, criação e manutenção de sites e SEO. Plano único anual de 597, com serviços e acompanhamento durante 12 meses, com implantação incluída, com atendimento remoto em todo o mundo.",
   areaServed: { "@type": "Place", name: "Worldwide" },
   address: {
     "@type": "PostalAddress",

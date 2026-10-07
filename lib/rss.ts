@@ -1,6 +1,7 @@
+import {formatPrices} from "./i18n/regional";
 import type {BlogPost} from "../app/blog/posts";
 
-export function xmlText(value:string){return value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");}
+export function xmlText(value:string){return formatPrices(value,'BRL','pt').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");}
 function date(value:string){const result=new Date(value.length===10?value+"T12:00:00Z":value);if(!Number.isFinite(result.getTime()))throw new Error("Invalid article date: "+value);return result;}
 function articleHtml(post:BlogPost,origin:string){
  const paragraph=(text:string)=>`<p>${xmlText(text)}</p>`;

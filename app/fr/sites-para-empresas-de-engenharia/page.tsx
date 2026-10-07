@@ -3,7 +3,7 @@ import { pageMetadata } from "@/locales/fr/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Sites pour les entreprises d’ingénierie",
-  description: "Création de sites pour les entreprises d’ingénierie avec Profil d’entreprise Google et SEO. Google + Site + SEO avec un forfait annuel unique de 597, payable par carte ou boleto, avec services à distance.",
+  description: "Création de sites pour les entreprises d’ingénierie avec Profil d’entreprise Google et SEO. Google + Site + SEO avec un forfait annuel unique de 597, avec les modalités de paiement dans la proposition, avec services à distance.",
   alternates: { canonical: "/fr/sites-para-empresas-de-engenharia" },
 });
 

@@ -2109,3 +2109,16 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 @media(max-width:700px){.blog-nav .rv-language{top:4px;right:10px}.rv-language-flag{width:28px;min-height:28px}.rv-language-flag img{width:18px;height:13px}}
 
 .cookie-actions button{min-width:100px;min-height:44px;font-size:14px;border-color:rgba(255,255,255,.65);background:transparent;color:#fff}.cookie-actions button:hover{background:#ffffff18}.cookie-actions button:focus-visible{outline:2px solid #fff;outline-offset:3px}.cookie-banner p{color:#eee;line-height:1.6}.cookie-banner strong{font-size:16px}@media(max-width:640px){.cookie-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.cookie-actions button{width:100%;padding-inline:12px}}
+
+/* Shared annual pricing: monthly equivalent first, annual total always adjacent. */
+.rv-offer-price .rv-price-main{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem;letter-spacing:-.045em;font-size:clamp(2rem,4.5vw,3.7rem)}
+.rv-price-main>span,.rv-price-annual>span,.rv-price-daily span{white-space:nowrap}
+.rv-offer-price .rv-price-main small{font-size:1rem;letter-spacing:0}
+.rv-offer-price .rv-price-annual{font-size:1.1rem;font-weight:600;line-height:1.6}
+.rv-offer-price .rv-price-daily{font-size:1rem;line-height:1.7}
+.rv-single-plan .rv-plan-list{grid-template-columns:1fr}
+.rv-language{flex-wrap:wrap;gap:.5rem}
+.rv-currency{display:flex;align-items:center;gap:.4rem;font-size:.75rem}
+.rv-currency select{font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:4px;padding:.25rem}
+.rv-currency option{color:#0B141B;background:#FAF8F1}
+@media(max-width:800px){.rv-offer-price .rv-price-main{font-size:clamp(1.8rem,8vw,3rem)}.rv-offer-price .rv-price-annual{font-size:1rem}.rv-offer-price .rv-button{white-space:normal;overflow-wrap:anywhere}.rv-currency>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}

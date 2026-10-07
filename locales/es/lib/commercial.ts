@@ -16,11 +16,11 @@ export const projects = [
 export const questions = [
  ["¿Por qué el mantenimiento es continuo?","Porque el trabajo continúa después de la publicación: mantenimiento y actualizaciones del sitio, soporte, información del Perfil de Empresa en Google y optimizaciones de SEO."],
  ["¿El sitio es mío?","Las condiciones de titularidad, acceso y eventual finalización se presentarán en la propuesta antes de la contratación."],
- ["¿El dominio y el alojamiento están incluidos?","Sí. El dominio y el alojamiento forman parte del plan anual Google + Sitio web + SEO. El plan único anual cuesta R$ 597,00, pagado por Pix, tarjeta o boleto. Incluye implementación y la tarjeta NFC de reseñas de Google (disponible solo en Brasil) como bono. Las condiciones específicas se informan en la propuesta."],
+ ["¿El dominio y el alojamiento están incluidos?","Sí. El dominio y el alojamiento forman parte del plan anual Google + Sitio web + SEO. El plan único anual cuesta [[annual]] ([[monthly]]/mes equivalente), pagado por Pix, tarjeta o boleto. Incluye implementación. Las condiciones específicas se informan en la propuesta."],
  ["¿Qué hace Ravyt cada mes?","Acompañamos y mejoramos el Perfil de Empresa en Google, mantenemos el sitio, prestamos soporte y trabajamos la estructura y las optimizaciones de SEO según el alcance contratado."],
  ["¿En cuánto tiempo puedo notar una evolución en Google?","Depende del mercado, la competencia, la ubicación y el historial de la empresa. No existe un plazo universal ni garantía de un resultado específico."],
  ["¿Necesito tener ya un Perfil de Empresa en Google?","No. Evaluamos la situación actual y estructuramos u optimizamos el perfil según la elegibilidad y las necesidades del negocio."],
  ["¿El servicio garantiza la primera posición en Google?","No. No puede garantizarse ninguna posición específica. Trabajamos para mejorar la estructura y la presencia digital de la empresa."],
  ["¿Puedo desistir durante los primeros 7 días?","Sí. En el plan anual, tienes 7 días para desistir de la contratación. El contrato completo se envía antes del pago."],
- ["¿Cuánto cuesta y cómo se cobra?","El plan único anual cuesta R$ 597,00, pagado por Pix, tarjeta o boleto, e incluye una tarjeta NFC de reseñas de Google (disponible solo en Brasil) como bono. Tienes 7 días para desistir de la contratación. Las demás condiciones se envían en el contrato antes del pago."]
+ ["¿Cuánto cuesta y cómo se cobra?","El plan único anual cuesta [[annual]] ([[monthly]]/mes equivalente), pagado por Pix, tarjeta o boleto, e incluy. Tienes 7 días para desistir de la contratación. Las demás condiciones se envían en el contrato antes del pago."]
 ];
