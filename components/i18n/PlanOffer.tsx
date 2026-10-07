@@ -17,7 +17,6 @@ export function PlanOffer(){const {currency,lang,country}=useRegional();const c=
  <p className="rv-price-daily">{c.less} {format(2)} {c.daily}<br/>{c.approx} <span>{format(PRICING.annual/PRICING.days)}{c.day}</span>.</p>
  <small>{c.info}</small><span className="rv-plan-perk">{c.setup}</span>
  <ul className="rv-plan-services">{c.benefits.map(item=><li key={item}>{item}</li>)}</ul>
- {country==='BR'&&<span className="rv-plan-bonus">{c.bonus}</span>}
  <small>{country==='BR'?c.pix:c.payment}</small><small>{c.cancel}</small>
  <Link className="rv-button" href={(lang==='pt'?'':'/'+lang)+'/diagnostico'} data-track="primary_cta_click">{c.cta}<span aria-hidden="true">↗</span></Link>
  </div>;}
