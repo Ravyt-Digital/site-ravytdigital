@@ -14,7 +14,7 @@ export function PlanOffer(){const {currency,lang,country}=useRegional();const c=
  <strong className="rv-price-main"><span>{format(PRICING.annual/PRICING.months)}</span><small>{c.month}</small></strong>
  <p className="rv-price-annual">{c.equivalent} <span>{format(PRICING.annual)}</span>.</p>
  <p>{c.annual} {format(PRICING.annual)}, {c.duration}</p>
- <p className="rv-price-daily">{c.less} {format(2)} {c.daily}<br/>{c.approx} <span>{format(PRICING.annual/PRICING.days)}{c.day}</span>.</p>
+ <p className="rv-price-daily">{c.approx} <span>{format(PRICING.annual/PRICING.days)}{c.day}</span>.</p>
  <small>{c.info}</small><span className="rv-plan-perk">{c.setup}</span>
  <ul className="rv-plan-services">{c.benefits.map(item=><li key={item}>{item}</li>)}</ul>
  <small>{country==='BR'?c.pix:c.payment}</small><small>{c.cancel}</small>
