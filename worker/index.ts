@@ -79,6 +79,7 @@ const worker = {
       return new Response(null,{status:307,headers:{Location:url.href,"Cache-Control":"private, no-store",Vary:"Accept-Language, Cookie, CF-IPCountry"}});
     }
     const requestHeaders=new Headers(request.headers);
+    requestHeaders.set("x-ravyt-page-path",url.pathname);
     requestHeaders.set("x-ravyt-country",country);
     requestHeaders.set("x-ravyt-language", /^\/(en|fr|es)(?:\/|$)/.test(url.pathname)?lang:"pt");
     const response = await handler.fetch(new Request(request,{headers:requestHeaders}), env, ctx);

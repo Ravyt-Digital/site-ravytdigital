@@ -58,5 +58,10 @@ export const webpVariants: Record<string,{mobile:string;desktop:string;width:num
     "mobile": "/blog/capas/site-confianca-480.webp",
     "desktop": "/blog/capas/site-confianca-960.webp",
     "width": 960
+  },
+  "/team/ytala-cabral.webp": {
+    "mobile": "/team/ytala-cabral-480.webp",
+    "desktop": "/team/ytala-cabral-960.webp",
+    "width": 960
   }
 };

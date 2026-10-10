@@ -2,14 +2,13 @@ import FooterSocialLinks from '@/components/FooterSocialLinks';
 import {brandCopy} from '@/lib/brand-copy';
 import {LanguageSwitcher} from "@/components/i18n/Regional";
 /* eslint-disable @next/next/no-html-link-for-pages */
-import Image from "next/image";
 import MobileMenu from "@/locales/es/components/MobileMenu";
 import { whatsappUrl } from "@/locales/es/lib/contact";
 
 function BlogBrand({ dark = false }: { dark?: boolean }) {
   return (
     <span className={`brand-lockup${dark ? " brand-lockup-dark" : ""}`}>
-      <Image src={dark ? "/brand/ravyt-footer-new.webp" : "/brand/ravyt-logo-white-20260927.webp"} alt="Ravyt Digital" width={438} height={146} priority unoptimized />
+      <img src={dark ? "/brand/ravyt-footer-428.webp" : "/brand/ravyt-logo-white-356.webp"} alt="Ravyt Digital" width={438} height={146} loading={dark ? "lazy" : "eager"} decoding="async" />
     </span>
   );
 }

@@ -1,12 +1,27 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {existsSync} from 'node:fs';
+import {existsSync,readFileSync} from 'node:fs';
 import worker from '../dist/server/index.js';
 const env={ASSETS:{fetch:async()=>new Response('',{status:404})}},ctx={waitUntil(){}};
 const request=path=>worker.fetch(new Request('https://ravytdigital.com'+path,{headers:{'accept-language':'pt-BR'}}),env,ctx);
 const rendered=new Map();
 async function render(path){if(!rendered.has(path)){const r=await request(path);assert.equal(r.status,200,path);rendered.set(path,await r.text());}return rendered.get(path);}
 const statements={pt:'Sites, SEO e presença no Google para profissionais liberais.',en:'Websites, SEO and Google presence for independent professionals.',fr:'Sites, SEO et présence sur Google pour les professionnels indépendants.',es:'Sitios, SEO y presencia en Google para profesionales independientes.'};
+test('every published page has a sequential heading outline and valid WebP images with reserved dimensions',async()=>{
+ const xml=await(await request('/sitemap.xml')).text();
+ const paths=[...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(x=>new URL(x[1]).pathname);
+ const checked=new Set();
+ for(const path of paths){const html=await render(path);let previous=0;
+  for(const heading of html.matchAll(/<h([1-6])\b[^>]*>/g)){const level=Number(heading[1]);assert.ok(level<=previous+1,path+' skipped heading level: h'+previous+' to h'+level);previous=level;}
+  for(const [tag] of html.matchAll(/<img\b[^>]*>/g)){
+   assert.match(tag,/\bwidth="[1-9]\d*"/,path+' image width');assert.match(tag,/\bheight="[1-9]\d*"/,path+' image height');
+   let src=tag.match(/\bsrc="([^"]+)"/)?.[1]?.replaceAll('&amp;','&');assert.ok(src,path+' image src');
+   if(src.startsWith('/_vinext/image'))src=new URL(src,'https://ravytdigital.com').searchParams.get('url');
+   assert.ok(src?.endsWith('.webp'),path+' image must use WebP: '+src);
+   if(!checked.has(src)){const bytes=readFileSync('public'+src);assert.equal(bytes.toString('ascii',0,4),'RIFF',src);assert.equal(bytes.toString('ascii',8,12),'WEBP',src);checked.add(src);}
+  }
+ }
+});
 test('all sitemap pages share identity, navigation and footer language selection',async()=>{
  const xml=await(await request('/sitemap.xml')).text();
  const paths=[...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(x=>new URL(x[1]).pathname);

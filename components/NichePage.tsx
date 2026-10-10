@@ -5,7 +5,6 @@ import {PriceText} from "@/components/i18n/Regional";
 import Link from 'next/link';
 import { BlogFooter, BlogHeader } from '@/components/BlogChrome';
 import { DiagnosticCTA } from '@/components/Commercial';
-import ScrollReveal from '@/components/ScrollReveal';
 
 type Niche = {
   label: string;
@@ -60,11 +59,11 @@ export const niches: Record<'engenharia' | 'arquitetura' | 'moveis', Niche> = {
 };
 
 export default function NichePage({ niche }: { niche: Niche }) {
-  return <><BlogHeader/><main className="rv" id="conteudo" tabIndex={-1}><ScrollReveal/>
+  return <><BlogHeader/><main className="rv" id="conteudo" tabIndex={-1}>
     <section className="rv-page-hero"><div className="shell"><p className="rv-label">{<PriceText>{niche.label}</PriceText>}</p><h1>{<PriceText>{niche.heading}</PriceText>}</h1><p className="rv-lead">{<PriceText>{niche.intro}</PriceText>}</p><div className="rv-actions"><DiagnosticCTA/></div></div></section>
-    <section className="rv-section" data-reveal><div className="shell"><p className="rv-label">O ponto de partida</p><h2>{<PriceText>{niche.challenge}</PriceText>}</h2><p className="rv-intro">{<PriceText>{niche.challengeText}</PriceText>}</p></div></section>
-    <section className="rv-section rv-services" data-reveal><div className="shell"><p className="rv-label">Google + Site + SEO</p><h2>Uma presença digital com três pilares.</h2><div className="rv-method"><article><span className="rv-step">01 / SITE</span><h3>Site profissional</h3><p>{<PriceText>{brandCopy.pt.scope}</PriceText>}</p></article><article><span className="rv-step">02 / GOOGLE</span><h3>Perfil da Empresa no Google</h3><p>{<PriceText>{niche.google}</PriceText>}</p></article><article><span className="rv-step">03 / SEO</span><h3>Estrutura para pesquisas</h3><p>{<PriceText>{niche.seo}</PriceText>}</p></article></div></div></section>
-    <section className="rv-section rv-dark" data-reveal><div className="shell"><p className="rv-label">Portfólio</p><h2>{<PriceText>{niche.example}</PriceText>}</h2><p className="rv-intro">{<PriceText>{niche.exampleText}</PriceText>}</p><Link className="rv-text-link" href="/cases">Ver demonstrações e sites publicados →</Link></div></section>
-    <section className="rv-section rv-offer" data-reveal><div className="shell rv-offer-grid"><div><p className="rv-label">Atendimento remoto em todo o Brasil</p><h2>Um serviço contínuo para sua empresa.</h2><p className="rv-intro">Perfil da Empresa no Google, conforme elegibilidade, site profissional, domínio, hospedagem, atualizações, suporte e otimizações de SEO. O escopo é detalhado na proposta.</p></div><PlanOffer/></div></section>
+    <section className="rv-section"><div className="shell"><p className="rv-label">O ponto de partida</p><h2>{<PriceText>{niche.challenge}</PriceText>}</h2><p className="rv-intro">{<PriceText>{niche.challengeText}</PriceText>}</p></div></section>
+    <section className="rv-section rv-services"><div className="shell"><p className="rv-label">Google + Site + SEO</p><h2>Uma presença digital com três pilares.</h2><div className="rv-method"><article><span className="rv-step">01 / SITE</span><h3>Site profissional</h3><p>{<PriceText>{brandCopy.pt.scope}</PriceText>}</p></article><article><span className="rv-step">02 / GOOGLE</span><h3>Perfil da Empresa no Google</h3><p>{<PriceText>{niche.google}</PriceText>}</p></article><article><span className="rv-step">03 / SEO</span><h3>Estrutura para pesquisas</h3><p>{<PriceText>{niche.seo}</PriceText>}</p></article></div></div></section>
+    <section className="rv-section rv-dark"><div className="shell"><p className="rv-label">Portfólio</p><h2>{<PriceText>{niche.example}</PriceText>}</h2><p className="rv-intro">{<PriceText>{niche.exampleText}</PriceText>}</p><Link className="rv-text-link" href="/cases">Ver demonstrações e sites publicados →</Link></div></section>
+    <section className="rv-section rv-offer"><div className="shell rv-offer-grid"><div><p className="rv-label">Atendimento remoto em todo o Brasil</p><h2>Um serviço contínuo para sua empresa.</h2><p className="rv-intro">Perfil da Empresa no Google, conforme elegibilidade, site profissional, domínio, hospedagem, atualizações, suporte e otimizações de SEO. O escopo é detalhado na proposta.</p></div><PlanOffer/></div></section>
   </main><BlogFooter/></>;
 }
