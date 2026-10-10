@@ -1,21 +1,16 @@
+import {BlogHeader,BlogFooter} from '@/components/BlogChrome';
 
 import {PriceText} from "@/components/i18n/Regional";
 import type { ReactNode } from "react";
 /* eslint-disable @next/next/no-html-link-for-pages */
-import Image from "next/image";
 
 export default function LegalPage({ eyebrow, title, children, updated = "13 de setembro de 2026" }: { eyebrow: string; title: string; children: ReactNode; updated?: string }) {
   return (
-    <main id="conteudo" tabIndex={-1} className="legal-page">
-      <header className="legal-header shell">
-        <a className="legal-brand" href="/" aria-label="Ravyt Digital — página inicial"><Image src="/brand/ravyt-logo-2026.webp" alt="Ravyt Digital" width={875} height={235} priority unoptimized /></a>
-        <a className="legal-back" href="/">← Voltar ao site</a>
-      </header>
+    <><BlogHeader/><main id="conteudo" tabIndex={-1} className="legal-page">
       <section className="legal-hero">
         <div className="shell"><p>{<PriceText>{eyebrow}</PriceText>}</p><h1>{<PriceText>{title}</PriceText>}</h1><span>Última atualização: {<PriceText>{updated}</PriceText>}</span></div>
       </section>
       <article className="legal-content shell">{<PriceText>{children}</PriceText>}</article>
-      <footer className="legal-footer shell"><span>© 2026 Ravyt Digital</span><p className="site-credit">Site Desenvolvido Por <a href="https://ravytdigital.com">Ravyt Digital</a></p><div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div></footer>
-    </main>
+    </main><BlogFooter/></>
   );
 }

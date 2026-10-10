@@ -1,4 +1,6 @@
-import ServicePage from "@/locales/en/components/ServicePage";
-import { pageMetadata } from "@/locales/en/lib/metadata";
-export const metadata=pageMetadata({title:"Strategic Websites with UX, Copywriting and SEO",description:"Turn discovery into trust and contact. Responsive websites with UX/UI, copywriting, technical SEO and conversion measurement.",alternates:{canonical:"/en/sites"}});
+import ServicePage from '@/locales/en/components/ServicePage';
+import {services} from '@/locales/en/lib/commercial';
+import {pageMetadata} from '@/locales/en/lib/metadata';
+const service=services.find(item=>item.slug==='sites')!;
+export const metadata=pageMetadata({title:service.title,description:service.description,alternates:{canonical:'/en/sites'}});
 export default function Page(){return <ServicePage slug="sites"/>;}

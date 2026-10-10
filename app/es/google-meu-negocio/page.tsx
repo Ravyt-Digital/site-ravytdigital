@@ -1,4 +1,6 @@
-import ServicePage from "@/locales/es/components/ServicePage";
-import { pageMetadata } from "@/locales/es/lib/metadata";
-export const metadata=pageMetadata({title:"Perfil de Empresa en Google y presencia local",description:"Organiza tu Perfil de Empresa en Google y tu presencia en Maps. SEO local, información coherente y un recorrido claro hasta el contacto.",alternates:{canonical:"/es/google-meu-negocio"}});
+import ServicePage from '@/locales/es/components/ServicePage';
+import {services} from '@/locales/es/lib/commercial';
+import {pageMetadata} from '@/locales/es/lib/metadata';
+const service=services.find(item=>item.slug==='google-meu-negocio')!;
+export const metadata=pageMetadata({title:service.title,description:service.description,alternates:{canonical:'/es/google-meu-negocio'}});
 export default function Page(){return <ServicePage slug="google-meu-negocio"/>;}

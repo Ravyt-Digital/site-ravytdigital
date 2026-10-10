@@ -14,7 +14,6 @@ export function PriceText({children}:{children:ReactNode}){
  return <>{format(children)}</>;
 }
 export function useRegional(){return useContext(RegionalContext);}
-export function BrazilOnly({children,fallback}:{children:ReactNode;fallback?:ReactNode}){return useRegional().country==='BR'?<>{children}</>:<>{fallback}</>;}
 const languages=[
  {code:'pt',label:'Brasil — Português'},
  {code:'en',label:'USA — English'},

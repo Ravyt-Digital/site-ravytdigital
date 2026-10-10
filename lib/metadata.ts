@@ -9,10 +9,10 @@ const searchTitles: Record<string, string[]> = {
  "/quanto-custa-criar-um-site": ["Quanto custa criar um site profissional?", "How much does a professional website cost?", "Combien coûte un site professionnel ?", "¿Cuánto cuesta un sitio web profesional?"],
  "/blog/criacao-de-site-profissional-para-empresas": ["Site profissional: como avaliar uma proposta", "Business websites: how to choose a provider", "Site professionnel : choisir un prestataire", "Sitio profesional: cómo elegir proveedor"],
  "/blog/site-institucional-paginas-essenciais": ["Site institucional: páginas essenciais", "Corporate websites: essential pages", "Site d’entreprise : les pages essentielles", "Sitio corporativo: páginas esenciales"],
- "/sites": ["Criação de sites para profissionais liberais", "Strategic websites with UX and SEO", "Sites stratégiques avec UX et SEO", "Sitios estratégicos con UX y SEO"],
+ "/sites": ["Criação de sites para profissionais liberais", "Websites for independent professionals", "Sites pour les professionnels indépendants", "Sitios para profesionales independientes"],
  "/google-meu-negocio": ["Presença no Google para profissionais locais", "Google Business Profile and local presence", "Profil d’entreprise Google et SEO local", "Perfil de Empresa en Google y SEO local"],
  "/sites-para-moveis-planejados": ["Sites para empresas de móveis planejados", "Websites for custom furniture businesses", "Sites pour les meubles sur mesure", "Sitios para empresas de muebles a medida"],
- "/seo": ["SEO para profissionais liberais", "Strategic SEO for businesses", "SEO stratégique pour les entreprises", "SEO para empresas y búsqueda orgánica"],
+ "/seo": ["SEO para profissionais liberais", "SEO for independent professionals", "SEO pour les professionnels indépendants", "SEO para profesionales independientes"],
  "/termos-de-uso": ["Termos de uso dos serviços e do site", "Website and service terms of use", "Conditions d’utilisation du site", "Condiciones de uso del sitio"],
  "/politica-de-cookies": ["Política de cookies e preferências", "Cookie policy and privacy preferences", "Cookies et préférences de confidentialité", "Cookies y preferencias de privacidad"],
 };

@@ -1,3 +1,4 @@
+import {BrandFinal} from '@/components/BrandContent';
 import { pageMetadata } from "@/lib/metadata";
 
 import {PriceText} from "@/components/i18n/Regional";
@@ -31,12 +32,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     alternates: { canonical: `/fr/blog/${slug}` },
     authors: [{ name: author.name, url: author.url }],
     creator: author.name,
-    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: ["/brand/ravyt-social-card.jpg"] },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: [post.images?.[0]?.src ?? "/brand/ravyt-social-card.jpg"] },
     openGraph: {
       title: post.title, description: post.excerpt, type: "article", url: `/fr/blog/${slug}`,
       publishedTime: post.date, modifiedTime: post.modified ?? post.date,
       authors: [author.url], section: post.category,
-      images: [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }],
+      images: post.images?.length ? [{url:post.images[0].src,width:post.images[0].width,height:post.images[0].height,alt:post.title}] : [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }],
     },
   });
 }
@@ -83,7 +84,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       <h1>{<PriceText>{post.title}</PriceText>}</h1>
       <p className="article-excerpt">{<PriceText>{post.excerpt}</PriceText>}</p>
       <div className="article-meta">
-        <span> Par <Link href={specialist ? "/fr/autores/ytala-cabral" : "/#sobre"}>{<PriceText>{post.author ?? "Ytala Cabral"}</PriceText>}</Link></span>
+        <span> Par <Link href={specialist ? "/fr/autores/ytala-cabral" : "/fr/sobre"}>{<PriceText>{post.author ?? "Ytala Cabral"}</PriceText>}</Link></span>
         <time dateTime={post.date}>{<PriceText>{post.dateLabel}</PriceText>}</time>
         <span>{<PriceText>{post.readingTime}</PriceText>}</span>
         {<PriceText>{post.modified && <time dateTime={post.modified}> Mis à jour le {<PriceText>{dateLabel(post.modified)}</PriceText>}</time>}</PriceText>}
@@ -92,6 +93,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     <div className="article-layout shell"><div className="article-body">
       {<PriceText>{post.quickAnswer && <aside className="article-answer" aria-labelledby="resposta-rapida"><h2 id="resposta-rapida"> Réponse rapide </h2><p>{<PriceText>{post.quickAnswer}</PriceText>}</p></aside>}</PriceText>}
       <nav className="article-toc" aria-label="Dans cet article"><strong> Dans cet article </strong>{<PriceText>{toc.map(item => <a key={item.id} href={`#${item.id}`}>{<PriceText>{item.title}</PriceText>}</a>)}</PriceText>}</nav>
+      {post.images?.[0] && <figure className="article-cover"><img src={post.images[0].src} width={post.images[0].width} height={post.images[0].height} alt={post.title}/></figure>}
       <p className="article-intro">{<PriceText>{post.intro}</PriceText>}</p>
       {<PriceText>{post.sections.map(section => <section id={sectionId(section.title)} key={section.title}><h2>{<PriceText>{section.title}</PriceText>}</h2>{<PriceText>{section.paragraphs.map(paragraph => <p key={paragraph}>{<PriceText>{paragraph}</PriceText>}</p>)}</PriceText>}{<PriceText>{section.links?.length ? <p>{<PriceText>{section.links.map((link, index) => <span key={link.href}>{<PriceText>{index > 0 ? " · " : "À lire aussi : "}</PriceText>}{<PriceText>{link.href.startsWith("/fr") ? <Link href={link.href}>{<PriceText>{link.label}</PriceText>}</Link> : <a href={link.href} target="_blank" rel="noopener noreferrer">{<PriceText>{link.label}</PriceText>} ↗</a>}</PriceText>}</span>)}</PriceText>}</p> : null}</PriceText>}</section>)}</PriceText>}
       {<PriceText>{post.comparison && <section id="comparacao" className="article-comparison">
@@ -116,8 +118,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       {<PriceText>{post.slug === "comunicacao-etica-psicologia-parental" && <p> Référence institutionnelle : <a href="https://site.cfp.org.br/legislacao/codigo-de-etica/" target="_blank" rel="noopener noreferrer"> Code de déontologie professionnelle — Conseil fédéral de psychologie </a>.</p>}</PriceText>}
       <aside className="editorial-note"><strong> Comment ce contenu a été élaboré </strong><p>{<PriceText>{post.editorialNote ?? "Cet article présente des critères éditoriaux pour organiser les pages d’un site. Les exemples sont illustratifs et ne représentent pas des résultats de clients."}</PriceText>}</p></aside>
       {<PriceText>{related.length > 0 && <section className="related-posts"><h2> Approfondissez le sujet </h2>{<PriceText>{related.map(item => <Link key={item.slug} href={`/fr/blog/${item.slug}`}>{<PriceText>{item.title}</PriceText>} →</Link>)}</PriceText>}</section>}</PriceText>}
-      <aside className="article-conclusion"><p>{<PriceText>{post.category}</PriceText>}</p><h2>{<PriceText>{post.ctaTitle ?? "Vous souhaitez construire une présence numérique à la hauteur de la profondeur de votre travail ?"}</PriceText>}</h2><Link className="button" href={serviceHref}> Découvrir le service </Link></aside>
+
     </div></div>
     <StructuredData data={schema} />
-  </article></main>;
+  </article><BrandFinal lang="fr"/></main>;
 }

@@ -1,7 +1,40 @@
 export const services = [
- {slug:'seo',name:'SEO',title:"Ceux qui recherchent votre solution peuvent-ils vous trouver ?",description:"SEO stratégique pour rapprocher votre entreprise de ceux qui recherchent déjà ce qu’elle propose.",detail:"Apparaître par votre nom est un début. L’opportunité consiste à être trouvé par le service, la question et le besoin qui conduisent quelqu’un à acheter.",items:["Recherche d’intention de recherche et de concurrence","Architecture et contenu des pages de services","SEO technique, indexation et suivi"]},
- {slug:'google-meu-negocio',name:"Présence locale",title:"Proche du client. Présent au moment du choix.",description:"Profil d’entreprise Google et SEO local pour les entreprises qui doivent être trouvées sur Google et Maps.",detail:"Votre Profil d’entreprise Google — anciennement Google My Business — peut être le premier contact avec votre entreprise. Les services, horaires et avis doivent raconter la même histoire.",items:["Analyse d’éligibilité et configuration du profil","Catégories, services et informations cohérents","Conseils pour les avis et suivi local"]},
- {slug:'sites',name:"Sites stratégiques",title:"Après le clic, la décision commence.",description:"Sites avec UX/UI, rédaction et SEO technique pour transformer la découverte en compréhension, confiance et contact.",detail:"Votre site explique-t-il ce que vous résolvez, pour qui et quelle est la prochaine étape ? Nous construisons ce parcours avec un contenu clair, une bonne expérience mobile et une structure évolutive.",items:["Architecture, UX/UI et textes orientés vers la décision","Développement adaptatif, accessibilité et performance","Formulaires, WhatsApp et mesure selon le périmètre"]}
+  {
+    "slug": "seo",
+    "name": "SEO",
+    "title": "SEO pour les professionnels indépendants.",
+    "description": "Recherche, structure et optimisation du site pour présenter vos services aux personnes qui les recherchent.",
+    "detail": "Ytala étudie l’intention de recherche et organise le contenu. Le forfait annuel inclut le SEO initial et des améliorations dans le périmètre convenu.",
+    "items": [
+      "Structure technique et contenu clair",
+      "Optimisation dans le périmètre convenu",
+      "Vérification de l’indexation et suivi"
+    ]
+  },
+  {
+    "slug": "google-meu-negocio",
+    "name": "Présence sur Google",
+    "title": "Présence sur Google pour les professionnels locaux éligibles.",
+    "description": "Informations, services et suivi du Profil d’entreprise Google sous réserve d’éligibilité.",
+    "detail": "Ytala évalue l’éligibilité et organise les informations du profil en cohérence avec votre site et votre activité. Une activité exclusivement en ligne nécessite une stratégie de site et de SEO adaptée.",
+    "items": [
+      "Analyse d’éligibilité et création ou optimisation",
+      "Services et coordonnées cohérents",
+      "Conseils pour les avis et suivi local"
+    ]
+  },
+  {
+    "slug": "sites",
+    "name": "Création de sites",
+    "title": "Création de sites pour les professionnels indépendants.",
+    "description": "Présentez votre activité et vos services avec des informations claires et un contact facile.",
+    "detail": "Márcio prend en charge la structure, le design et la création chez Ravyt Digital. Le forfait inclut un site One Page responsive, le domaine, l’hébergement et la maintenance pendant 12 mois.",
+    "items": [
+      "Site One Page avec présentation et services",
+      "Expérience mobile et contact WhatsApp",
+      "Domaine, hébergement et maintenance pendant 12 mois"
+    ]
+  }
 ];
 export const projects = [
  {name:'Miraúna Mobiliário',type:"Démonstration conceptuelle",slug:'mirauna',text:"Vitrine de mobilier avec composition éditoriale et mise en valeur des espaces."},
@@ -22,5 +55,5 @@ export const questions = [
  ["Dois-je déjà avoir un Profil d’entreprise Google ?","Non. Nous évaluons la situation et structurons ou optimisons le profil selon l’éligibilité et les besoins de l’entreprise."],
  ["Le service garantit-il la première position sur Google ?","Non. Aucune position précise ne peut être garantie. Nous travaillons à améliorer la structure et la présence numérique de l’entreprise."],
  ["Puis-je me rétracter dans les 7 premiers jours ?","Oui. Avec le forfait annuel, vous disposez de 7 jours pour vous rétracter. Le contrat complet est envoyé avant le paiement."],
- ["Combien coûte le service et comment est-il facturé ?","Le forfait annuel unique coûte [[annual]] ([[monthly]]/mois équivalent), payable par Pix, carte ou boleto, et comprend un. Vous disposez de 7 jours pour vous rétracter. Les autres conditions sont envoyées dans le contrat avant le paiement."]
+ ["Combien coûte le service et comment est-il facturé ?","Le forfait annuel unique coûte [[annual]] ([[monthly]]/mois équivalent), payable par Pix, carte ou boleto, et inclut la mise en place. Vous disposez de 7 jours pour vous rétracter. Les autres conditions sont envoyées dans le contrat avant le paiement."]
 ];

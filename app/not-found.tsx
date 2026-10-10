@@ -1,3 +1,4 @@
+import {BlogHeader,BlogFooter} from '@/components/BlogChrome';
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main id="conteudo" className="not-found-page">
+    <><BlogHeader/><main id="conteudo" className="not-found-page">
       <div className="shell">
         <p>Erro 404</p>
         <h1>Esta página não foi encontrada.</h1>
@@ -20,6 +21,6 @@ export default function NotFound() {
           <Link className="button button-ghost" href="/sites">Conhecer a criação de sites</Link>
         </nav>
       </div>
-    </main>
+    </main><BlogFooter/></>
   );
 }

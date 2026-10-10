@@ -1,3 +1,4 @@
+import {BrandFinal} from '@/components/BrandContent';
 import { pageMetadata } from "@/lib/metadata";
 
 import {PriceText} from "@/components/i18n/Regional";
@@ -120,8 +121,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       {<PriceText>{post.slug === "comunicacao-etica-psicologia-parental" && <p>Referência institucional: <a href="https://site.cfp.org.br/legislacao/codigo-de-etica/" target="_blank" rel="noopener noreferrer">Código de Ética Profissional — Conselho Federal de Psicologia</a>.</p>}</PriceText>}
       <aside className="editorial-note"><strong>Como este conteúdo foi produzido</strong><p>{<PriceText>{post.editorialNote ?? "Este artigo apresenta critérios editoriais para organizar as páginas de um site. Os exemplos são ilustrativos e não representam resultados de clientes."}</PriceText>}</p></aside>
       {<PriceText>{related.length > 0 && <section className="related-posts"><h2>Continue aprofundando</h2>{<PriceText>{related.map(item => <Link key={item.slug} href={`/blog/${item.slug}`}>{<PriceText>{item.title}</PriceText>} →</Link>)}</PriceText>}</section>}</PriceText>}
-      <aside className="article-conclusion"><p>{<PriceText>{post.category}</PriceText>}</p><h2>{<PriceText>{post.ctaTitle ?? "Quer construir uma presença digital coerente com a profundidade do seu trabalho?"}</PriceText>}</h2><Link className="button" href={serviceHref}>Conhecer o serviço</Link></aside>
+
     </div></div>
     <StructuredData data={schema} />
-  </article></main>;
+  </article><BrandFinal lang="pt"/></main>;
 }

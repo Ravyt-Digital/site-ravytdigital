@@ -3,6 +3,7 @@ import type { BlogPost } from "./posts";
 export const strategicPosts: BlogPost[] = [
   {
     slug:"criacao-de-site-profissional-para-empresas",
+    images:[{"src": "/blog/capas/site-confianca.webp", "width": 1200, "height": 675, "alt": "Ilustração da estrutura de um site profissional com apresentação e sinais de confiança", "caption": "Ilustração da estrutura de um site profissional com apresentação e sinais de confiança. Ilustração editorial da Ravyt Digital."}],
     title:"Criação de site profissional para empresas: o que avaliar antes de contratar",
     excerpt:"Entenda como avaliar conteúdo, contato, desempenho, SEO e manutenção de um site empresarial antes de fechar uma proposta.",
     category:"Criação de sites",date:"2026-09-27",dateLabel:"27 de setembro de 2026",readingTime:"7 min de leitura",author:"Equipe Ravyt Digital",
@@ -85,6 +86,7 @@ export const strategicPosts: BlogPost[] = [
   },
   {
     slug:"site-institucional-paginas-essenciais",
+    images:[{"src": "/blog/capas/pagina-vendas-vs-site.webp", "width": 1200, "height": 675, "alt": "Ilustração de uma página e da organização de conteúdos em um site institucional", "caption": "Ilustração de uma página e da organização de conteúdos em um site institucional. Ilustração editorial da Ravyt Digital."}],
     title:"Site institucional: quais páginas sua empresa realmente precisa?",
     excerpt:"Um roteiro para definir estrutura, conteúdo, contato e custos antes de solicitar um orçamento de site.",
     category:"Criação de sites",date:"2026-09-23",modified:"2026-09-24",dateLabel:"23 de setembro de 2026",readingTime:"5 min de leitura",author:"Equipe Ravyt Digital",

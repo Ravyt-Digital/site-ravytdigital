@@ -1,7 +1,40 @@
 export const services = [
- {slug:'seo',name:'SEO',title:"Can people looking for your solution find you?",description:"Strategic SEO to bring your business closer to people already looking for what it offers.",detail:"Appearing by name is a start. The opportunity is to be found for the service, question and need that lead someone to buy.",items:["Search intent and competitor research","Service page architecture and content","Technical SEO, indexing and monitoring"]},
- {slug:'google-meu-negocio',name:"Local Presence",title:"Close to customers. Present when they choose.",description:"Google Business Profile and local SEO for businesses that need to be found on Google and Maps.",detail:"Your Google Business Profile — formerly Google My Business — may be someone’s first contact with your business. Services, hours and reviews need to tell the same story.",items:["Eligibility assessment and profile setup","Consistent categories, services and information","Review guidance and local monitoring"]},
- {slug:'sites',name:"Strategic Websites",title:"After the click, the decision begins.",description:"Websites with UX/UI, copywriting and technical SEO to turn discovery into understanding, trust and contact.",detail:"Does your website explain what you solve, for whom and the next step? We build this journey with clear content, a good mobile experience and a structure that can evolve.",items:["Architecture, UX/UI and decision-oriented copy","Responsive development, accessibility and performance","Forms, WhatsApp and measurement within the scope"]}
+  {
+    "slug": "seo",
+    "name": "SEO",
+    "title": "SEO for independent professionals.",
+    "description": "Research, structure and website optimization to present your services to people searching for them.",
+    "detail": "Ytala researches search intent and organizes website content. The annual plan includes initial SEO and improvements within the agreed scope.",
+    "items": [
+      "Content and technical structure",
+      "Optimization within the agreed scope",
+      "Indexing checks and monitoring"
+    ]
+  },
+  {
+    "slug": "google-meu-negocio",
+    "name": "Google presence",
+    "title": "Google presence for eligible local professionals.",
+    "description": "Google Business Profile information, services and local monitoring when you are eligible.",
+    "detail": "Ytala assesses eligibility and organizes profile information to match your website and how you work. Professionals working exclusively online need a website and SEO strategy suited to that model.",
+    "items": [
+      "Eligibility assessment and setup or optimization",
+      "Consistent services and contact information",
+      "Review guidance and local monitoring"
+    ]
+  },
+  {
+    "slug": "sites",
+    "name": "Website creation",
+    "title": "Website creation for independent professionals.",
+    "description": "Present your practice and services with clear information and an easy path to contact.",
+    "detail": "Márcio handles structure, design and implementation through Ravyt Digital. The annual plan includes a responsive One Page website, domain, hosting and maintenance for 12 months.",
+    "items": [
+      "One Page website with introduction and services",
+      "Mobile experience and WhatsApp contact",
+      "Domain, hosting and 12 months of maintenance"
+    ]
+  }
 ];
 export const projects = [
  {name:'Miraúna Mobiliário',type:"Conceptual demonstration",slug:'mirauna',text:"Furniture showcase with editorial composition and emphasis on spaces."},

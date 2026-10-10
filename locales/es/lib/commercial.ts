@@ -1,7 +1,40 @@
 export const services = [
- {slug:'seo',name:'SEO',title:"¿Quien busca tu solución puede encontrarte?",description:"SEO estratégico para acercar tu empresa a quienes ya buscan lo que ofrece.",detail:"Aparecer por el nombre es un comienzo. La oportunidad está en ser encontrado por el servicio, la duda y la necesidad que llevan a alguien a comprar.",items:["Investigación de intención de búsqueda y competencia","Arquitectura y contenido de las páginas de servicios","SEO técnico, indexación y seguimiento"]},
- {slug:'google-meu-negocio',name:"Presencia local",title:"Cerca del cliente. Presente en el momento de elegir.",description:"Perfil de Empresa en Google y SEO local para empresas que necesitan ser encontradas en Google y Maps.",detail:"Tu Perfil de Empresa en Google —antes llamado Google My Business— puede ser el primer contacto de alguien con tu negocio. Los servicios, horarios y reseñas deben contar la misma historia.",items:["Análisis de elegibilidad y configuración del perfil","Categorías, servicios e información coherentes","Orientación para reseñas y seguimiento local"]},
- {slug:'sites',name:"Sitios estratégicos",title:"Después del clic, empieza la decisión.",description:"Sitios con UX/UI, redacción y SEO técnico para transformar el descubrimiento en comprensión, confianza y contacto.",detail:"¿Tu sitio explica qué resuelves, para quién y cuál es el siguiente paso? Construimos este recorrido con contenido claro, buena experiencia en el móvil y una estructura que puede evolucionar.",items:["Arquitectura, UX/UI y textos orientados a la decisión","Desarrollo adaptable, accesibilidad y rendimiento","Formularios, WhatsApp y medición según el alcance"]}
+  {
+    "slug": "seo",
+    "name": "SEO",
+    "title": "SEO para profesionales independientes.",
+    "description": "Investigación, estructura y optimización del sitio para presentar tus servicios a quienes los buscan.",
+    "detail": "Ytala investiga la intención de búsqueda y organiza el contenido. El plan anual incluye SEO inicial y mejoras dentro del alcance acordado.",
+    "items": [
+      "Estructura técnica y contenido claro",
+      "Optimización dentro del alcance acordado",
+      "Verificación de indexación y seguimiento"
+    ]
+  },
+  {
+    "slug": "google-meu-negocio",
+    "name": "Presencia en Google",
+    "title": "Presencia en Google para profesionales locales elegibles.",
+    "description": "Información, servicios y seguimiento del Perfil de Empresa en Google cuando sea elegible.",
+    "detail": "Ytala evalúa la elegibilidad y organiza el perfil en coherencia con el sitio y tu forma de atender. La atención exclusivamente online necesita una estrategia adecuada de sitio y SEO.",
+    "items": [
+      "Análisis de elegibilidad y creación u optimización",
+      "Servicios e información de contacto coherentes",
+      "Orientación sobre reseñas y seguimiento local"
+    ]
+  },
+  {
+    "slug": "sites",
+    "name": "Creación de sitios",
+    "title": "Creación de sitios para profesionales independientes.",
+    "description": "Presenta tu actividad y servicios con información clara y un contacto fácil.",
+    "detail": "Márcio se encarga de la estructura, el diseño y la implementación por Ravyt Digital. El plan incluye un sitio One Page adaptable, dominio, alojamiento y mantenimiento durante 12 meses.",
+    "items": [
+      "Sitio One Page con presentación y servicios",
+      "Experiencia móvil y contacto por WhatsApp",
+      "Dominio, alojamiento y mantenimiento durante 12 meses"
+    ]
+  }
 ];
 export const projects = [
  {name:'Miraúna Mobiliário',type:"Demostración conceptual",slug:'mirauna',text:"Vitrina de mobiliario con composición editorial y destaque de ambientes."},
@@ -22,5 +55,5 @@ export const questions = [
  ["¿Necesito tener ya un Perfil de Empresa en Google?","No. Evaluamos la situación actual y estructuramos u optimizamos el perfil según la elegibilidad y las necesidades del negocio."],
  ["¿El servicio garantiza la primera posición en Google?","No. No puede garantizarse ninguna posición específica. Trabajamos para mejorar la estructura y la presencia digital de la empresa."],
  ["¿Puedo desistir durante los primeros 7 días?","Sí. En el plan anual, tienes 7 días para desistir de la contratación. El contrato completo se envía antes del pago."],
- ["¿Cuánto cuesta y cómo se cobra?","El plan único anual cuesta [[annual]] ([[monthly]]/mes equivalente), pagado por Pix, tarjeta o boleto, e incluy. Tienes 7 días para desistir de la contratación. Las demás condiciones se envían en el contrato antes del pago."]
+ ["¿Cuánto cuesta y cómo se cobra?","El plan único anual cuesta [[annual]] ([[monthly]]/mes equivalente), pagado por Pix, tarjeta o boleto, e incluye la implementación. Tienes 7 días para desistir de la contratación. Las demás condiciones se envían en el contrato antes del pago."]
 ];

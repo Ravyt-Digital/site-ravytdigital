@@ -20,7 +20,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "Sites e presença no Google | Ravyt Digital", template: "%s | Ravyt Digital" },
-  description: "Perfil da Empresa no Google, site profissional com domínio, hospedagem e manutenção, e SEO. Plano único anual de 597, com condições de pagamento na proposta, com implantação incluída.",
+  description: "Perfil da Empresa no Google quando elegível, site profissional One Page com domínio, hospedagem e manutenção, e SEO. Plano anual de R$ 597,00, com condições de pagamento na proposta, com implantação incluída.",
   applicationName: "Ravyt Digital",
   authors: [{ name: "Ravyt Digital", url: SITE_URL }],
   creator: "Ravyt Digital", publisher: "Ravyt Digital", category: "Marketing digital e criação de sites",

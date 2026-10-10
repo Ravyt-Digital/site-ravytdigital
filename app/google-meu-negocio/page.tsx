@@ -1,4 +1,6 @@
 import ServicePage from '@/components/ServicePage';
-import { pageMetadata } from '@/lib/metadata';
-export const metadata=pageMetadata({title:'Presença no Google para profissionais locais',description:'Perfil da Empresa no Google para profissionais elegíveis: informações, serviços e acompanhamento local. Conheça o trabalho de Ytala pela Ravyt.',alternates:{canonical:'/google-meu-negocio'}});
+import {services} from '@/lib/commercial';
+import {pageMetadata} from '@/lib/metadata';
+const service=services.find(item=>item.slug==='google-meu-negocio')!;
+export const metadata=pageMetadata({title:service.title,description:service.description,alternates:{canonical:'/google-meu-negocio'}});
 export default function Page(){return <ServicePage slug="google-meu-negocio"/>;}
