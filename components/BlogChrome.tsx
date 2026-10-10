@@ -31,7 +31,7 @@ export function BlogFooter() {
     <footer className="footer blog-footer">
       <div className="shell footer-top">
         <a href="/" aria-label="Ravyt Digital — página inicial"><BlogBrand dark /></a>
-        <p>SEO, presença local e sites estratégicos para sua empresa ser encontrada e escolhida.</p>
+        <p>Sites, SEO e presença no Google para profissionais liberais.</p>
         <nav aria-label="Links do rodapé">
           <a href="/recursos/checklist-presenca-google">Checklist Google</a>
           <a href="/seo">SEO</a><a href="/google-meu-negocio">Presença Local</a>
@@ -44,7 +44,7 @@ export function BlogFooter() {
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>
       </div>
-      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p>Atendimento remoto em todo o mundo · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell footer-bottom">
+      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p>Atendimento remoto em todo o Brasil · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
         <p>Comunicação digital e criação de sites.</p>
         <div><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/politica-de-cookies">Política de Cookies</a><a href="/termos-de-uso">Termos de Uso</a></div>

@@ -19,14 +19,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Google + Site + SEO | Ravyt Digital", template: "%s | Ravyt Digital" },
+  title: { default: "Sites e presença no Google | Ravyt Digital", template: "%s | Ravyt Digital" },
   description: "Perfil da Empresa no Google, site profissional com domínio, hospedagem e manutenção, e SEO. Plano único anual de 597, com condições de pagamento na proposta, com implantação incluída.",
   applicationName: "Ravyt Digital",
   authors: [{ name: "Ravyt Digital", url: SITE_URL }],
   creator: "Ravyt Digital", publisher: "Ravyt Digital", category: "Marketing digital e criação de sites",
   alternates: { canonical: SITE_URL },
-  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Google + Site + SEO | Ravyt Digital",description:"Google + Site + SEO: plano único anual de 597, com condições de pagamento na proposta. Cartão NFC de Avaliação do Google (disponível somente no Brasil) incluído como bônus.",images:[{url:"/brand/ravyt-social-card.jpg",width:1200,height:630,alt:"Ravyt Digital"}] },
-  twitter: { card:"summary_large_image",title:"Google + Site + SEO | Ravyt Digital",description:"Google + Site + SEO para empresas em todo o mundo.",images:["/brand/ravyt-social-card.jpg"] },
+  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Sites e presença no Google | Ravyt Digital",description:"Google + Site + SEO: plano único anual de 597, com condições de pagamento na proposta. Cartão NFC de Avaliação do Google (disponível somente no Brasil) incluído como bônus.",images:[{url:"/brand/ravyt-social-card.jpg",width:1200,height:630,alt:"Ravyt Digital"}] },
+  twitter: { card:"summary_large_image",title:"Sites e presença no Google | Ravyt Digital",description:"Sites e presença no Google para profissionais liberais.",images:["/brand/ravyt-social-card.jpg"] },
   robots: { index:true,follow:true,googleBot:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1} },
   icons:{icon:"/favicon.png",shortcut:"/favicon.png",apple:"/apple-touch-icon.png"}
 };

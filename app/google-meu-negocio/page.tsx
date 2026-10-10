@@ -1,4 +1,4 @@
 import ServicePage from '@/components/ServicePage';
 import { pageMetadata } from '@/lib/metadata';
-export const metadata=pageMetadata({title:'Google Meu Negócio e Presença Local',description:'Organize seu Perfil da Empresa no Google e sua presença no Maps. SEO local, informações consistentes e uma jornada clara até o contato.',alternates:{canonical:'/google-meu-negocio'}});
+export const metadata=pageMetadata({title:'Presença no Google para profissionais locais',description:'Perfil da Empresa no Google para profissionais elegíveis: informações, serviços e acompanhamento local. Conheça o trabalho de Ytala pela Ravyt.',alternates:{canonical:'/google-meu-negocio'}});
 export default function Page(){return <ServicePage slug="google-meu-negocio"/>;}
