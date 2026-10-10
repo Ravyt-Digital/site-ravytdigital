@@ -1,3 +1,4 @@
+import ResponsiveWebp from '@/components/ResponsiveWebp';
 import {BrandFinal} from '@/components/BrandContent';
 import { pageMetadata } from "@/lib/metadata";
 
@@ -96,9 +97,9 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       {<PriceText>{post.quickAnswer && <aside className="article-answer" aria-labelledby="resposta-rapida"><h2 id="resposta-rapida">Resposta rápida</h2><p>{<PriceText>{post.quickAnswer}</PriceText>}</p></aside>}</PriceText>}
       <nav className="article-toc" aria-label="Neste conteúdo"><strong>Neste conteúdo</strong>{<PriceText>{toc.map(item => <a key={item.id} href={`#${item.id}`}>{<PriceText>{item.title}</PriceText>}</a>)}</PriceText>}</nav>
       <p className="article-intro">{<PriceText>{post.intro}</PriceText>}</p>
-      {post.images?.[0] && <figure style={{ margin: "32px 0" }}><Image src={post.images[0].src} width={post.images[0].width} height={post.images[0].height} alt={post.images[0].alt} priority style={{ width: "100%", height: "auto", borderRadius: 16 }} /><figcaption>{post.images[0].caption}</figcaption></figure>}
+      {post.images?.[0] && <figure style={{ margin: "32px 0" }}><ResponsiveWebp src={post.images[0].src} width={post.images[0].width} height={post.images[0].height} alt={post.images[0].alt} priority style={{ width: "100%", height: "auto", borderRadius: 16 }} /><figcaption>{post.images[0].caption}</figcaption></figure>}
       {<PriceText>{post.sections.map(section => <section id={sectionId(section.title)} key={section.title}><h2>{<PriceText>{section.title}</PriceText>}</h2>{<PriceText>{section.paragraphs.map(paragraph => <p key={paragraph}>{<PriceText>{paragraph}</PriceText>}</p>)}</PriceText>}{<PriceText>{section.links?.length ? <p>{<PriceText>{section.links.map((link, index) => <span key={link.href}>{<PriceText>{index > 0 ? " · " : "Leia também: "}</PriceText>}{<PriceText>{link.href.startsWith("/") ? <Link href={link.href}>{<PriceText>{link.label}</PriceText>}</Link> : <a href={link.href} target="_blank" rel="noopener noreferrer">{<PriceText>{link.label}</PriceText>} ↗</a>}</PriceText>}</span>)}</PriceText>}</p> : null}</PriceText>}</section>)}</PriceText>}
-      {post.images?.[1] && <figure style={{ margin: "32px 0" }}><Image src={post.images[1].src} width={post.images[1].width} height={post.images[1].height} alt={post.images[1].alt} loading="lazy" style={{ width: "100%", height: "auto", borderRadius: 16 }} /><figcaption>{post.images[1].caption}</figcaption></figure>}
+      {post.images?.[1] && <figure style={{ margin: "32px 0" }}><ResponsiveWebp src={post.images[1].src} width={post.images[1].width} height={post.images[1].height} alt={post.images[1].alt} loading="lazy" style={{ width: "100%", height: "auto", borderRadius: 16 }} /><figcaption>{post.images[1].caption}</figcaption></figure>}
       {<PriceText>{post.comparison && <section id="comparacao" className="article-comparison">
         <h2 id="comparacao-titulo">{<PriceText>{post.comparison.title}</PriceText>}</h2>
         <div className="comparison-scroll" tabIndex={0} role="region" aria-labelledby="comparacao-titulo">

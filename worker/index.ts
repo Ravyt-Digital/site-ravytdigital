@@ -1,3 +1,6 @@
+import {posts as enPosts} from "../app/en/blog/posts";
+import {posts as frPosts} from "../app/fr/blog/posts";
+import {posts as esPosts} from "../app/es/blog/posts";
 import { languageForRequest } from "../lib/i18n/regional";
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
@@ -61,7 +64,14 @@ const worker = {
     }
 
     const country = String((request as Request & {cf?: {country?:string}}).cf?.country ?? request.headers.get("cf-ipcountry") ?? "");
-    const lang = languageForRequest(url.pathname, request.headers.get("cookie")??"", request.headers.get("accept-language")??"", country);
+    const explicitLanguage = url.searchParams.get("lang");
+    const preference = explicitLanguage && /^(pt|en|fr|es)$/.test(explicitLanguage) ? `ravyt_language=${explicitLanguage}` : request.headers.get("cookie")??"";
+    let lang = languageForRequest(url.pathname, preference, request.headers.get("accept-language")??"", country);
+    const articleSlug = url.pathname.match(/^\/blog\/([^/]+)\/?$/)?.[1];
+    if (articleSlug && lang !== "pt") {
+      const localizedPosts = {en:enPosts,fr:frPosts,es:esPosts}[lang];
+      if (!localizedPosts?.some(post => post.slug === articleSlug)) lang = "pt";
+    }
     const isPage=request.method==="GET"&&!url.pathname.startsWith("/api/")&&!url.pathname.startsWith("/_")&&!/\.[a-z0-9]+$/i.test(url.pathname);
     const isBot=/bot|crawler|spider|slurp/i.test(request.headers.get("user-agent")??"");
     if(isPage&&!isBot&&!/^\/(en|fr|es)(?:\/|$)/.test(url.pathname)&&lang!=="pt"){
