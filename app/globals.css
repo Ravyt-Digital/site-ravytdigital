@@ -9,9 +9,9 @@
 }
 @font-face {
   font-family: "Fraunces Variable";
-  src: url("/fonts/fraunces-latin-italic.woff2") format("woff2");
+  src: url("/fonts/fraunces-latin-italic-400.woff2") format("woff2");
   font-style: italic;
-  font-weight: 100 900;
+  font-weight: 400;
   font-display: swap;
 }
 @font-face {
@@ -838,27 +838,9 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 .rv-home-focused .rv-process-grid li{background:#faf8f1}
 .rv-home-focused .rv-process-grid li>h3{color:#151718}.rv-home-focused .rv-process-grid li>span{color:#71432b}
 
-@font-face {
-  font-family: "Fraunces Variable";
-  src: url("/fonts/fraunces-latin.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Fraunces Variable";
-  src: url("/fonts/fraunces-latin-italic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter Variable";
-  src: url("/fonts/inter-latin.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
+
+
+
 .button-light { background: #fff; color: var(--purple); }
 .button-light:hover, .button-light:focus-visible { background: var(--lavender); }
 .button-ghost { border-color: rgba(255,255,255,.2); color: rgba(255,255,255,.82); }
@@ -897,3 +879,6 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 @property --rv-beam-angle { syntax:'<angle>'; inherits:false; initial-value:0deg; }
 
 .whatsapp-contact{bottom:calc(12px + env(safe-area-inset-bottom))!important;transform:translateY(calc(12px - var(--consent-height,12px)))}
+
+.rv .rv-offer-price .rv-label{color:#faf8f1}
+.rv-home-focused .rv-focus-process,.rv-home-focused #duvidas{background:#f0ebdd}

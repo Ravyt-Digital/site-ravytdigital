@@ -25,7 +25,10 @@ export function LanguageSwitcher(){
  function chooseLanguage(next:string){
   document.cookie=`ravyt_language=${next}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;
   const path=location.pathname.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';
-  location.assign((next==='pt'?path:'/'+next+(path==='/'?'':path))+location.search+location.hash);
+  const query=new URLSearchParams(location.search);
+  query.delete('lang');
+  const search=query.toString();
+  location.assign((next==='pt'?path:'/'+next+(path==='/'?'':path))+(search?'?'+search:'')+location.hash);
  }
  return <div className="rv-language" role="group" aria-label={{pt:'Idioma',en:'Language',fr:'Langue',es:'Idioma'}[lang]??'Language'}>
   <label className="rv-language-select"><span>{{pt:'Idioma',en:'Language',fr:'Langue',es:'Idioma'}[lang]??'Language'}</span><select value={lang} onChange={event=>chooseLanguage(event.target.value)}>{languages.map(({code,label})=><option key={code} value={code}>{label}</option>)}</select></label>
