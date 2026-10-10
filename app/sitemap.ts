@@ -20,5 +20,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(post.modified ?? post.date),
     })),
   ];
-  return original.flatMap(entry=>{const ptOnly=["/blog/manutencao-de-site-o-que-inclui", "/blog/testar-velocidade-site-celular", "/blog/site-recebe-visitas-mas-nao-contatos"].some(path => entry.url.endsWith(path));return (ptOnly?["pt"]:["pt","en","fr","es"]).map(lang=>{const path=entry.url.slice(SITE_URL.length);return {...entry,url:SITE_URL+(lang==="pt"?path:"/"+lang+path),alternates:{languages:ptOnly?{"pt-BR":entry.url,"x-default":entry.url}:{"pt-BR":entry.url,en:SITE_URL+"/en"+path,fr:SITE_URL+"/fr"+path,es:SITE_URL+"/es"+path,"x-default":entry.url}}};});});
+  return original.flatMap(entry=>{const ptOnly=["/blog/manutencao-de-site-o-que-inclui", "/blog/testar-velocidade-site-celular", "/blog/site-recebe-visitas-mas-nao-contatos", "/blog/perfil-empresa-google-atendimento-online"].some(path => entry.url.endsWith(path));return (ptOnly?["pt"]:["pt","en","fr","es"]).map(lang=>{const path=entry.url.slice(SITE_URL.length);return {...entry,url:SITE_URL+(lang==="pt"?path:"/"+lang+path),alternates:{languages:ptOnly?{"pt-BR":entry.url,"x-default":entry.url}:{"pt-BR":entry.url,en:SITE_URL+"/en"+path,fr:SITE_URL+"/fr"+path,es:SITE_URL+"/es"+path,"x-default":entry.url}}};});});
 }

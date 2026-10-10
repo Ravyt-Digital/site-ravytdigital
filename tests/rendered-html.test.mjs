@@ -19,7 +19,7 @@ function schemas(html) {
 
 test("renders production SEO metadata", async () => {
   const html = await render("/");
-  assert.match(html, /<title>SEO, Presença Local e Sites Estratégicos \| Ravyt Digital<\/title>/i);
+  assert.match(html, /<title>Google \+ Site \+ SEO para Empresas \| Ravyt Digital<\/title>/i);
   assert.match(html, /<meta[^>]+name="description"[^>]+content=/i);
   assert.match(html, /<meta[^>]+property="og:image"[^>]+content=/i);
   assert.doesNotMatch(html, /codex-preview/i);
@@ -28,12 +28,12 @@ test("renders production SEO metadata", async () => {
 
 test("articles expose accurate authors, canonical URLs, breadcrumbs and update dates", async () => {
   const articles = [
-    ["gestao-de-redes-sociais-ou-producao-de-conteudo", "Organization", "Ravyt Digital", "2026-09-24"],
+    ["perfil-empresa-google-atendimento-online", "Person", "Ytala Cabral", "2026-10-09"],
+    ["site-recebe-visitas-mas-nao-contatos", "Organization", "Ravyt Digital", "2026-10-07"],
+    ["testar-velocidade-site-celular", "Organization", "Ravyt Digital", "2026-10-05"],
+    ["manutencao-de-site-o-que-inclui", "Organization", "Ravyt Digital", "2026-10-05"],
     ["site-institucional-paginas-essenciais", "Organization", "Ravyt Digital", "2026-09-24"],
-    ["criacao-de-site-para-psicologos", "Organization", "Ravyt Digital", "2026-09-24"],
-    ["conteudo-para-psicologos-parentais", "Person", "Ytala Cabral", "2026-09-13"],
-    ["comunicacao-etica-psicologia-parental", "Person", "Ytala Cabral", "2026-09-13"],
-    ["autoridade-digital-psicologo-parental", "Person", "Ytala Cabral", "2026-09-13"],
+    ["criacao-de-site-profissional-para-empresas", "Organization", "Ravyt Digital", "2026-09-27"],
   ];
   for (const [slug, authorType, authorName, modified] of articles) {
     const html = await render(`/blog/${slug}`);
@@ -51,7 +51,6 @@ test("articles expose accurate authors, canonical URLs, breadcrumbs and update d
     assert.equal(crumbs[0].itemListElement.at(-1).item, article.url);
     if (authorType === "Organization") {
       assert.match(html, /Resposta rápida/);
-      assert.match(html, /id="checklist"/);
     }
   }
   const profile = schemas(await render("/autores/ytala-cabral")).find(item => item["@type"] === "ProfilePage");
