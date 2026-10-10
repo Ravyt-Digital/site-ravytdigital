@@ -2204,3 +2204,11 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 .post-card-meta{display:flex;flex-direction:column;gap:7px;padding-top:16px;border-top:1px solid #dfd7c7;margin-top:auto;font-size:13px;line-height:1.5;color:#384448}
 .post-card-meta strong{font-weight:650;color:#004550}
 @media(max-width:700px){.post-card-copy{padding:20px}.post-card-meta{font-size:13px}}
+
+/* Shared footer social profiles */
+.footer-brand{display:flex;flex-direction:column;align-items:flex-start;gap:22px;min-width:0}
+.footer-social-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-social-link{--social-icon-cutout:#fff;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #d3cec6;border-radius:50%;background:#fff;color:#42474b;transition:color .18s ease,border-color .18s ease,box-shadow .18s ease}
+.footer-social-link:hover{border-color:currentColor;box-shadow:0 3px 10px #15191c0d}
+.footer-social-instagram:hover{color:#b52f73}.footer-social-linkedin:hover{color:#0a66c2}.footer-social-facebook:hover{color:#0866ff}.footer-social-youtube:hover{color:#c00}
+.footer-social-link:focus-visible{outline:3px solid var(--copper,#9b5c32);outline-offset:4px}

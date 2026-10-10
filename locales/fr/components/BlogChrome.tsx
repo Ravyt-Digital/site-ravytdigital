@@ -1,3 +1,4 @@
+import FooterSocialLinks from '@/components/FooterSocialLinks';
 import {brandCopy} from '@/lib/brand-copy';
 import {LanguageSwitcher} from "@/components/i18n/Regional";
 /* eslint-disable @next/next/no-html-link-for-pages */
@@ -31,7 +32,10 @@ export function BlogFooter() {
   return (
     <footer className="footer blog-footer">
       <div className="shell footer-top">
-        <a href="/fr" aria-label="Ravyt Digital — page d’accueil"><BlogBrand dark /></a>
+        <div className="footer-brand">
+          <a href="/fr" aria-label="Ravyt Digital — page d’accueil"><BlogBrand dark /></a>
+          <FooterSocialLinks lang="fr"/>
+        </div>
         <p>{brandCopy['fr'].tagline}</p>
         <nav aria-label="Liens du pied de page">
           <a href="/fr/recursos/checklist-presenca-google">Checklist Google</a>
