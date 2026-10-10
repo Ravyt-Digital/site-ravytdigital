@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Ravyt Digital", url: SITE_URL }],
   creator: "Ravyt Digital", publisher: "Ravyt Digital", category: "Marketing digital e criação de sites",
   alternates: { canonical: SITE_URL },
-  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Sites e presença no Google | Ravyt Digital",description:"Google + Site + SEO: plano único anual de 597, com condições de pagamento na proposta. Cartão NFC de Avaliação do Google (disponível somente no Brasil) incluído como bônus.",images:[{url:"/brand/ravyt-social-card.jpg",width:1200,height:630,alt:"Ravyt Digital"}] },
-  twitter: { card:"summary_large_image",title:"Sites e presença no Google | Ravyt Digital",description:"Sites e presença no Google para profissionais liberais.",images:["/brand/ravyt-social-card.jpg"] },
+  openGraph: { type:"website",locale:"pt_BR",url:SITE_URL,siteName:"Ravyt Digital",title:"Sites e presença no Google | Ravyt Digital",description:"Google + Site + SEO: plano único anual de 597, com condições de pagamento na proposta. Cartão NFC de Avaliação do Google (disponível somente no Brasil) incluído como bônus.",images:[{url:"/brand/ravyt-social-card.webp",width:1200,height:630,alt:"Ravyt Digital"}] },
+  twitter: { card:"summary_large_image",title:"Sites e presença no Google | Ravyt Digital",description:"Sites e presença no Google para profissionais liberais.",images:["/brand/ravyt-social-card.webp"] },
   robots: { index:true,follow:true,googleBot:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1} },
   icons:{icon:"/favicon.png",shortcut:"/favicon.png",apple:"/apple-touch-icon.png"}
 };

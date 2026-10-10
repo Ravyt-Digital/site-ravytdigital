@@ -6,7 +6,7 @@ worker="${SITES_PROJECT_ROOT}/dist/server/index.js"
 hosting="${SITES_PROJECT_ROOT}/dist/.openai/hosting.json"
 [[ -f "${worker}" && -f "${hosting}" ]] || { echo "Missing production artifact." >&2; exit 66; }
 cmp -s "${SITES_PROJECT_ROOT}/app/globals.css" "${SITES_PROJECT_ROOT}/public/styles/site.css" || { echo "CSS fallback is out of sync." >&2; exit 66; }
-for required in app/loading.tsx app/not-found.tsx app/politica-de-cookies/page.tsx app/politica-de-privacidade/page.tsx app/termos-de-uso/page.tsx public/favicon.png public/brand/ravyt-social-card.jpg; do
+for required in app/loading.tsx app/not-found.tsx app/politica-de-cookies/page.tsx app/politica-de-privacidade/page.tsx app/termos-de-uso/page.tsx public/favicon.png public/brand/ravyt-social-card.webp; do
   [[ -f "${SITES_PROJECT_ROOT}/${required}" ]] || { echo "Missing: ${required}" >&2; exit 66; }
 done
 [[ -f "${SITES_PROJECT_ROOT}/public/llms.txt" ]] || { echo "Missing public/llms.txt" >&2; exit 66; }

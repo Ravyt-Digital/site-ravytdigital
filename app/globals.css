@@ -2212,3 +2212,12 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 .footer-social-link:hover{border-color:currentColor;box-shadow:0 3px 10px #15191c0d}
 .footer-social-instagram:hover{color:#b52f73}.footer-social-linkedin:hover{color:#0a66c2}.footer-social-facebook:hover{color:#0866ff}.footer-social-youtube:hover{color:#c00}
 .footer-social-link:focus-visible{outline:3px solid var(--copper,#9b5c32);outline-offset:4px}
+
+/* Performance: lightweight static previews until motion is visible. */
+.rv-project-image{position:relative;overflow:hidden}
+.rv-project-image>img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.rv-project-image>video{position:absolute;inset:0;opacity:0;transition:opacity .15s}
+.rv-project-image>video.is-playing{opacity:1}
+.rv-home-focused .rv-offer-price,.rv-home-focused .rv-offer-price p,.rv-home-focused .rv-offer-price span,.rv-home-focused .rv-offer-price small,.rv-home-focused .rv-offer-price .rv-plan-services li,.rv-home-focused .rv-offer-price .rv-plan-services li::before{color:#faf8f1}
+.rv-home-focused .rv-offer-price>.rv-button,.rv-home-focused .rv-offer-price>.rv-button span{color:#0b141b!important}
+.rv-process-grid li{color:#151718;background:transparent}.rv-process-grid li>h3{color:#151718}.rv-process-grid li>span{color:#71432b}

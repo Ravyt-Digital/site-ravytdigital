@@ -32,12 +32,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     alternates: { canonical: `/es/blog/${slug}` },
     authors: [{ name: author.name, url: author.url }],
     creator: author.name,
-    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: [post.images?.[0]?.src ?? "/brand/ravyt-social-card.jpg"] },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: [post.images?.[0]?.src ?? "/brand/ravyt-social-card.webp"] },
     openGraph: {
       title: post.title, description: post.excerpt, type: "article", url: `/es/blog/${slug}`,
       publishedTime: post.date, modifiedTime: post.modified ?? post.date,
       authors: [author.url], section: post.category,
-      images: post.images?.length ? [{url:post.images[0].src,width:post.images[0].width,height:post.images[0].height,alt:post.title}] : [{ url: "/brand/ravyt-social-card.jpg", width: 1200, height: 630, alt: "Ravyt Digital" }],
+      images: post.images?.length ? [{url:post.images[0].src,width:post.images[0].width,height:post.images[0].height,alt:post.title}] : [{ url: "/brand/ravyt-social-card.webp", width: 1200, height: 630, alt: "Ravyt Digital" }],
     },
   });
 }
