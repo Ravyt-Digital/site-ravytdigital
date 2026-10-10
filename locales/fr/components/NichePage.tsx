@@ -1,5 +1,4 @@
 import {PlanOffer} from "@/components/i18n/PlanOffer";
-import {ExchangeNote} from "@/components/i18n/Regional";
 
 import {PriceText} from "@/components/i18n/Regional";
 import Link from 'next/link';

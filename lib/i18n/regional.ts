@@ -1,10 +1,6 @@
-export const PRICING = {annual:597, months:12, days:365, currencies:['BRL','USD','EUR']} as const;
-export type Currency = typeof PRICING.currencies[number];
-export const EUROZONE = new Set('AT BE BG HR CY EE FI FR DE GR IE IT LV LT LU MT NL PT SK SI ES'.split(' '));
-export function currencyForCountry(country:string):Currency {return country.toUpperCase()==='BR'?'BRL':EUROZONE.has(country.toUpperCase())?'EUR':'USD';}
-export function currencyForRequest(country:string,cookie:string):Currency {return (cookie.match(/(?:^|;\s*)ravyt_currency=(BRL|USD|EUR)(?:;|$)/)?.[1] as Currency) ?? currencyForCountry(country);}
-export function money(amount:number,currency:string,lang:string){return new Intl.NumberFormat(({pt:'pt-BR',en:'en-US',fr:'fr-FR',es:'es-ES'} as Record<string,string>)[lang]??'en-US',{style:'currency',currency,minimumFractionDigits:2,maximumFractionDigits:2}).format(amount);}
-export function formatPrices(text:string,currency:string,lang:string){return text.replace(/\[\[(annual|monthly)\]\]/g,(_,key)=>money(key==='annual'?PRICING.annual:PRICING.annual/PRICING.months,currency,lang)).replace(/R\$\s*(597(?:[,.]00)?|49[,.]75|1[,.]64)/g,(_,value)=>money(Number(value.replace(',','.')),currency,lang));}
+export const PRICING = {annual:597, months:12} as const;
+export function money(amount:number){return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:2,maximumFractionDigits:2}).format(amount);}
+export function formatPrices(text:string){return text.replace(/\[\[(annual|monthly)\]\]/g,(_,key)=>money(key==='annual'?PRICING.annual:PRICING.annual/PRICING.months)).replace(/R\$\s*(597(?:[,.]00)?|49[,.]75|1[,.]64)/g,(_,value)=>money(Number(value.replace(',','.'))));}
 export function regionalPaymentText(text:string,country:string){return country==='BR'?text:text.replace(/\bPix\s*,\s*/gi,'').replace(/\bPix\s+(?:ou|or|o)\s+/gi,'').replace(/\s+(?:ou|or|o)\s+boleto/gi,'');}
 export function languageForRequest(path: string, cookie: string, accept: string, country: string) {
  const direct = path.match(/^\/(en|fr|es)(?:\/|$)/)?.[1]; if(direct) return direct;

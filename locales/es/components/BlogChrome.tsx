@@ -20,7 +20,7 @@ export function BlogHeader({ current, transparent = false }: { current?: "servic
         <nav className="desktop-nav" aria-label="Navegación principal">
           <a href="/es/seo">SEO</a><a href="/es/google-meu-negocio"> Presencia local </a><a href="/es/sites" aria-current={current === "sites" ? "page" : undefined}> Sitios web </a><a href="/es/cases"> Proyectos </a><a href="/es/sobre"> Sobre Ravyt </a><a href="/es/blog" aria-current={current === "insights" ? "page" : undefined}>Blog</a><a href="/es/contato" aria-current={current === "contact" ? "page" : undefined}> Contacto </a>
         </nav>
-        <LanguageSwitcher/><MobileMenu fromSubpage />
+        <MobileMenu fromSubpage />
       </div>
     </header>
   );
@@ -44,7 +44,7 @@ export function BlogFooter() {
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>
       </div>
-      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p> Atención remota en todo el mundo · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell footer-bottom">
+      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p> Atención remota en todo el mundo · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell rv-footer-preferences"><LanguageSwitcher/></div><div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
         <p> Comunicación digital y creación de sitios web. </p>
         <div><a href="/es/politica-de-privacidade"> Política de privacidad </a><a href="/es/politica-de-cookies"> Política de cookies </a><a href="/es/termos-de-uso"> Términos de uso </a></div>

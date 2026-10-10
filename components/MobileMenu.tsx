@@ -4,6 +4,7 @@
 import {PriceText} from "@/components/i18n/Regional";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { whatsappUrl } from "@/lib/contact";
 
 
 export default function MobileMenu(_props: { fromSubpage?: boolean }) {
@@ -39,7 +40,7 @@ export default function MobileMenu(_props: { fromSubpage?: boolean }) {
       <div className={`menu-panel${open ? " is-open" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <nav aria-label="Navegação para celular">
           {<PriceText>{[['/seo','SEO'],['/google-meu-negocio','Presença Local'],['/sites','Sites Estratégicos'],['/cases','Cases'],['/sobre','A Ravyt'],['/blog','Blog'],['/contato','Contato']].map(([href,label])=><Link key={href} href={href} onClick={()=>setOpen(false)}>{<PriceText>{label}</PriceText>}</Link>)}</PriceText>}
-          <Link className="menu-contact" href="/diagnostico" data-track="primary_cta_click" onClick={()=>setOpen(false)}>Analisar minha presença digital ↗</Link>
+          <Link className="menu-contact" href={whatsappUrl()} data-track="whatsapp_click" onClick={()=>setOpen(false)}>Conversar sobre meu projeto ↗</Link>
         </nav>
       </div>
     </div>

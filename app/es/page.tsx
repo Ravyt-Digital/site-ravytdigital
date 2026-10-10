@@ -1,7 +1,6 @@
 import {PlanOffer, CompactPrice, PlanPreview} from "@/components/i18n/PlanOffer";
 import {BrazilOnly} from "@/components/i18n/Regional";
 import { ChecklistCard } from '@/components/ChecklistResource';
-import {ExchangeNote} from "@/components/i18n/Regional";
 
 import {PriceText} from "@/components/i18n/Regional";
 import Link from 'next/link';

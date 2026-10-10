@@ -1,5 +1,4 @@
-import { exchangeResponse } from "./exchange";
-import { currencyForRequest, languageForRequest } from "../lib/i18n/regional";
+import { languageForRequest } from "../lib/i18n/regional";
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
@@ -62,7 +61,6 @@ const worker = {
     }
 
     const country = String((request as Request & {cf?: {country?:string}}).cf?.country ?? request.headers.get("cf-ipcountry") ?? "");
-    if(url.pathname === "/api/exchange-rates") return exchangeResponse(country,request.headers.get("cookie")??"");
     const lang = languageForRequest(url.pathname, request.headers.get("cookie")??"", request.headers.get("accept-language")??"", country);
     const isPage=request.method==="GET"&&!url.pathname.startsWith("/api/")&&!url.pathname.startsWith("/_")&&!/\.[a-z0-9]+$/i.test(url.pathname);
     const isBot=/bot|crawler|spider|slurp/i.test(request.headers.get("user-agent")??"");
@@ -71,7 +69,6 @@ const worker = {
       return new Response(null,{status:307,headers:{Location:url.href,"Cache-Control":"private, no-store",Vary:"Accept-Language, Cookie, CF-IPCountry"}});
     }
     const requestHeaders=new Headers(request.headers);
-    requestHeaders.set("x-ravyt-currency",currencyForRequest(country,request.headers.get("cookie")??""));
     requestHeaders.set("x-ravyt-country",country);
     requestHeaders.set("x-ravyt-language", /^\/(en|fr|es)(?:\/|$)/.test(url.pathname)?lang:"pt");
     const response = await handler.fetch(new Request(request,{headers:requestHeaders}), env, ctx);
