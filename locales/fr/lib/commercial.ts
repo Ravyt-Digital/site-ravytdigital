@@ -47,6 +47,7 @@ export const projects = [
  {name:'Capoeira Haute-Savoie',type:"Site publié",slug:'capoeira',text:"Présentation de l’école, de sa pratique et des parcours pour les nouveaux élèves."}
 ];
 export const questions = [
+ ["Puis-je souscrire si je travaille uniquement en ligne ?", "Oui. Nous évaluons un site et le SEO adaptés à votre activité. Un Profil d’entreprise Google n’est pas automatiquement disponible : son éligibilité doit être évaluée."],
  ["Pourquoi la maintenance est-elle continue ?","Parce que le travail continue après la publication : maintenance et mises à jour du site, support, informations du Profil d’entreprise Google et optimisations SEO."],
  ["Le site m’appartient-il ?","Les conditions de titularité, d’accès et d’éventuelle résiliation seront présentées dans la proposition avant la signature."],
  ["Le domaine et l’hébergement sont-ils inclus ?","Oui. Domaine et hébergement font partie du forfait annuel Google + Site + SEO. Le forfait annuel unique coûte [[annual]] ([[monthly]]/mois équivalent), payable par Pix, carte ou boleto. Il comprend l’installation. Les conditions précises sont indiquées dans la proposition."],

@@ -2,7 +2,7 @@ export const homeCopy = {
   "en": {
     "hero": [
       "Your work clearly presented.",
-      "Your contact easy to find."
+      "Your contact details, easy to find."
     ],
     "preview": "Your website on desktop and mobile.",
     "fiction": "Illustrative example · Fictional Clínica Aurora",
@@ -36,7 +36,7 @@ export const homeCopy = {
   "fr": {
     "hero": [
       "Votre travail présenté clairement.",
-      "Votre contact facile à trouver."
+      "Vos coordonnées faciles à trouver."
     ],
     "preview": "Votre site sur ordinateur et mobile.",
     "fiction": "Exemple illustratif · Clinique Aurora fictive",

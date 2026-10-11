@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title, description: post.excerpt, type: "article", url: `/fr/blog/${slug}`,
       publishedTime: post.date, modifiedTime: post.modified ?? post.date,
       authors: [author.url], section: post.category,
-      images: post.images?.length ? [{url:post.images[0].src,width:post.images[0].width,height:post.images[0].height,alt:post.title}] : [{ url: "/brand/ravyt-social-card.webp", width: 1200, height: 630, alt: "Ravyt Digital" }],
+      images: post.images?.length ? [{url:post.images[0].src,width:post.images[0].width,height:post.images[0].height,alt:post.images[0].alt}] : [{ url: "/brand/ravyt-social-card.webp", width: 1200, height: 630, alt: "Ravyt Digital" }],
     },
   });
 }
@@ -94,8 +94,9 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     <div className="article-layout shell"><div className="article-body">
       {<PriceText>{post.quickAnswer && <aside className="article-answer" aria-labelledby="resposta-rapida"><h2 id="resposta-rapida"> Réponse rapide </h2><p>{<PriceText>{post.quickAnswer}</PriceText>}</p></aside>}</PriceText>}
       <nav className="article-toc" aria-label="Dans cet article"><strong> Dans cet article </strong>{<PriceText>{toc.map(item => <a key={item.id} href={`#${item.id}`}>{<PriceText>{item.title}</PriceText>}</a>)}</PriceText>}</nav>
-      {post.images?.[0] && <figure className="article-cover"><ResponsiveWebp priority src={post.images[0].src} width={post.images[0].width} height={post.images[0].height} alt={post.title}/></figure>}
+      {post.images?.[0] && <figure className="article-cover"><ResponsiveWebp priority src={post.images[0].src} width={post.images[0].width} height={post.images[0].height} alt={post.images[0].alt}/><figcaption>{post.images[0].caption}</figcaption></figure>}
       <p className="article-intro">{<PriceText>{post.intro}</PriceText>}</p>
+      {post.images?.[1] && <figure className="article-cover"><ResponsiveWebp src={post.images[1].src} width={post.images[1].width} height={post.images[1].height} alt={post.images[1].alt} loading="lazy"/><figcaption>{post.images[1].caption}</figcaption></figure>}
       {<PriceText>{post.sections.map(section => <section id={sectionId(section.title)} key={section.title}><h2>{<PriceText>{section.title}</PriceText>}</h2>{<PriceText>{section.paragraphs.map(paragraph => <p key={paragraph}>{<PriceText>{paragraph}</PriceText>}</p>)}</PriceText>}{<PriceText>{section.links?.length ? <p>{<PriceText>{section.links.map((link, index) => <span key={link.href}>{<PriceText>{index > 0 ? " · " : "À lire aussi : "}</PriceText>}{<PriceText>{link.href.startsWith("/fr") ? <Link href={link.href}>{<PriceText>{link.label}</PriceText>}</Link> : <a href={link.href} target="_blank" rel="noopener noreferrer">{<PriceText>{link.label}</PriceText>} ↗</a>}</PriceText>}</span>)}</PriceText>}</p> : null}</PriceText>}</section>)}</PriceText>}
       {<PriceText>{post.comparison && <section id="comparacao" className="article-comparison">
         <h2 id="comparacao-titulo">{<PriceText>{post.comparison.title}</PriceText>}</h2>

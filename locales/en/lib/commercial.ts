@@ -47,6 +47,7 @@ export const projects = [
  {name:'Capoeira Haute-Savoie',type:"Published website",slug:'capoeira',text:"Presentation of the school, its practice and paths for new students."}
 ];
 export const questions = [
+ ["Can I sign up if I work exclusively online?", "Yes. We assess a website and SEO strategy suited to your practice. A Google Business Profile is not automatically available: eligibility must be assessed."],
  ["Why is maintenance ongoing?","Because the work continues after publication: website maintenance and updates, support, Google Business Profile information and SEO optimizations."],
  ["Is the website mine?","Ownership, access and any termination conditions will be presented in the proposal before the agreement."],
  ["Are domain and hosting included?","Yes. Domain and hosting are part of the annual Google + Website + SEO plan. The single annual plan costs [[annual]] ([[monthly]]/month equivalent), payable by Pix, card or boleto. It includes setup. Specific conditions are provided in the proposal."],

@@ -10,8 +10,8 @@ export const organization = {
   logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ravyt-logo-2026.webp`, width: 875, height: 235 },
   email: "ola@ravytdigital.com",
   telephone: "+5588996956479",
-  description: "Perfil da Empresa no Google quando elegível, criação e manutenção de sites e SEO. Plano anual de R$ 597,00, com serviços e acompanhamento durante 12 meses, com implantação incluída, com atendimento remoto em todo o Brasil.",
-  areaServed: { "@type": "Place", name: "Brasil" },
+  description: "Perfil da Empresa no Google quando elegível, criação e manutenção de sites e SEO. Plano anual de R$ 597,00, com serviços e acompanhamento durante 12 meses, com implantação incluída, com atendimento remoto em todo o mundo.",
+  areaServed: { "@type": "Place", name: "Worldwide" },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista",

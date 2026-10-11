@@ -1,24 +1,25 @@
 'use client';
 import {createContext,useContext,Children,cloneElement,isValidElement,type ReactNode} from 'react';
+import {regionalServiceText,type SiteLanguage} from '@/lib/i18n/countries';
 import {formatPrices,regionalPaymentText} from '@/lib/i18n/regional';
 const RegionalContext=createContext<{lang:string;country:string}>({lang:'pt',country:''});
 export function RegionalProvider({children,lang,country='' }:{children:ReactNode;lang:string;country?:string}) {
  return <RegionalContext.Provider value={{lang,country}}>{children}</RegionalContext.Provider>;
 }
 export function PriceText({children}:{children:ReactNode}){
- const {country}=useContext(RegionalContext);
+ const {country,lang}=useContext(RegionalContext);
  function format(node:ReactNode):ReactNode{
-  if(typeof node==='string')return formatPrices(regionalPaymentText(node,country));
+  if(typeof node==='string')return formatPrices(regionalPaymentText(regionalServiceText(node,country,lang as SiteLanguage),country));
   return Children.map(node,child=>isValidElement<{children?:ReactNode}>(child)&&child.props.children!==undefined?cloneElement(child,{},format(child.props.children)):child);
  }
  return <>{format(children)}</>;
 }
 export function useRegional(){return useContext(RegionalContext);}
 const languages=[
- {code:'pt',label:'Brasil — Português'},
- {code:'en',label:'USA — English'},
- {code:'fr',label:'France — Français'},
- {code:'es',label:'España — Español'},
+ {code:'pt',label:'Português'},
+ {code:'en',label:'English'},
+ {code:'fr',label:'Français'},
+ {code:'es',label:'Español'},
 ];
 export function LanguageSwitcher(){
  const {lang}=useContext(RegionalContext);

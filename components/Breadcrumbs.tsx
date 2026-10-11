@@ -6,7 +6,7 @@ import StructuredData from "./StructuredData";
 
 type Crumb = { name: string; href: string };
 
-export default function Breadcrumbs({ items, structured = true }: { items: Crumb[]; structured?: boolean }) {
+export default function Breadcrumbs({ items, structured = true, lang = 'pt' }: { items: Crumb[]; structured?: boolean; lang?: 'pt'|'en'|'fr'|'es' }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -16,7 +16,7 @@ export default function Breadcrumbs({ items, structured = true }: { items: Crumb
     })),
   };
   return <>
-    <nav className="content-breadcrumbs" aria-label="Caminho da página">
+    <nav className="content-breadcrumbs" aria-label={{pt:'Caminho da página',en:'Breadcrumb trail',fr:'Fil d’Ariane',es:'Ruta de la página'}[lang]}>
       <ol>{<PriceText>{items.map((item, index) => <li key={item.href}>
         {<PriceText>{index === items.length - 1 ? <span aria-current="page">{<PriceText>{item.name}</PriceText>}</span> : <Link href={item.href}>{<PriceText>{item.name}</PriceText>}</Link>}</PriceText>}
       </li>)}</PriceText>}</ol>

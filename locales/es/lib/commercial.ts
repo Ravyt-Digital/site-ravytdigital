@@ -37,7 +37,7 @@ export const services = [
   }
 ];
 export const projects = [
- {name:'Miraúna Mobiliário',type:"Demostración conceptual",slug:'mirauna',text:"Vitrina de mobiliario con composición editorial y destaque de ambientes."},
+ {name:'Miraúna Mobiliário',type:"Demostración conceptual",slug:'mirauna',text:"Vitrina de mobiliario con composición editorial y énfasis en los ambientes."},
  {name:'Vértice Norte Engenharia',type:"Demostración conceptual",slug:'moreira',text:"Presentación de ingeniería con tipografía destacada y navegación por especialidades.",nicheHref:"/es/sites-para-empresas-de-engenharia",nicheLabel:"Sitios para empresas de ingeniería"},
  {name:'Nina Valença Arquitetura',type:"Demostración conceptual",slug:'nina',text:"Portafolio de arquitectura con imágenes amplias y transiciones de sección.",nicheHref:"/es/sites-para-escritorios-de-arquitetura",nicheLabel:"Sitios para estudios de arquitectura"},
  {name:'Lumea Planejados',type:"Demostración conceptual",slug:'lumea',text:"Experiencia de muebles a medida con ambientes destacados.",nicheHref:"/es/sites-para-moveis-planejados",nicheLabel:"Sitios para empresas de muebles a medida"},
@@ -47,6 +47,7 @@ export const projects = [
  {name:'Capoeira Haute-Savoie',type:"Sitio publicado",slug:'capoeira',text:"Presentación de la escuela, su práctica y caminos para nuevos alumnos."}
 ];
 export const questions = [
+ ["¿Puedo contratar si atiendo exclusivamente online?", "Sí. Evaluamos sitio y SEO para tu actividad. El Perfil de Empresa en Google no se aplica automáticamente: depende de la elegibilidad."],
  ["¿Por qué el mantenimiento es continuo?","Porque el trabajo continúa después de la publicación: mantenimiento y actualizaciones del sitio, soporte, información del Perfil de Empresa en Google y optimizaciones de SEO."],
  ["¿El sitio es mío?","Las condiciones de titularidad, acceso y eventual finalización se presentarán en la propuesta antes de la contratación."],
  ["¿El dominio y el alojamiento están incluidos?","Sí. El dominio y el alojamiento forman parte del plan anual Google + Sitio web + SEO. El plan único anual cuesta [[annual]] ([[monthly]]/mes equivalente), pagado por Pix, tarjeta o boleto. Incluye implementación. Las condiciones específicas se informan en la propuesta."],
