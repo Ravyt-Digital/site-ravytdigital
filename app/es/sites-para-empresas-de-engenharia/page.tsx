@@ -1,10 +1,10 @@
-import NichePage, { niches } from "@/locales/es/components/NichePage";
+import SegmentedLanding from "@/locales/es/components/SegmentedLanding";
 import { pageMetadata } from "@/locales/es/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Sitios web para empresas de ingeniería",
-  description: "Creación de sitios para empresas de ingeniería con Perfil de Empresa en Google y SEO. Google + Sitio web + SEO en el plan único anual de 597, con condiciones de pago en la propuesta, con atención remota.",
+  description: "Sitios de ingeniería con especialidades, proyectos y SEO. Perfil de Empresa en Google cuando sea elegible. Plan anual One Page: R$ 597 (reales brasileños).",
   alternates: { canonical: "/es/sites-para-empresas-de-engenharia" },
 });
 
-export default function Page() { return <NichePage niche={niches.engenharia}/>; }
+export default function Page() { return <SegmentedLanding segment="engenharia"/>; }

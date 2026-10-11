@@ -1,10 +1,10 @@
-import NichePage, { niches } from "@/locales/es/components/NichePage";
+import SegmentedLanding from "@/locales/es/components/SegmentedLanding";
 import { pageMetadata } from "@/locales/es/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Sitios web para empresas de muebles a medida",
-  description: "Sitios para empresas de muebles a medida con proyectos, contacto fácil y SEO. Perfil de Empresa en Google + sitio web + SEO en el plan único anual de 597, con condiciones de pago en la propuesta.",
+  description: "Sitios de muebles a medida con ambientes, SEO y contacto fácil. Perfil de Empresa en Google cuando sea elegible. Plan anual One Page: R$ 597 (reales brasileños).",
   alternates: { canonical: "/es/sites-para-moveis-planejados" },
 });
 
-export default function Page() { return <NichePage niche={niches.moveis}/>; }
+export default function Page() { return <SegmentedLanding segment="moveis"/>; }

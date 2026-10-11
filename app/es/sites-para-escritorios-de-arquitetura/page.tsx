@@ -1,10 +1,10 @@
-import NichePage, { niches } from "@/locales/es/components/NichePage";
+import SegmentedLanding from "@/locales/es/components/SegmentedLanding";
 import { pageMetadata } from "@/locales/es/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Sitios web para estudios de arquitectura",
-  description: "Sitios para estudios de arquitectura con portafolio claro, Perfil de Empresa en Google y SEO. Google + Sitio web + SEO en el plan único anual de 597, con condiciones de pago en la propuesta.",
+  description: "Sitios de arquitectura con portafolio claro, SEO y Perfil de Empresa en Google cuando sea elegible. Plan anual One Page: R$ 597 (reales brasileños).",
   alternates: { canonical: "/es/sites-para-escritorios-de-arquitetura" },
 });
 
-export default function Page() { return <NichePage niche={niches.arquitetura}/>; }
+export default function Page() { return <SegmentedLanding segment="arquitetura"/>; }

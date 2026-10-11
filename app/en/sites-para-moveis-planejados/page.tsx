@@ -1,10 +1,10 @@
-import NichePage, { niches } from "@/locales/en/components/NichePage";
+import SegmentedLanding from "@/locales/en/components/SegmentedLanding";
 import { pageMetadata } from "@/locales/en/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Websites for Custom Furniture Companies",
-  description: "Websites for custom furniture businesses with projects, easy contact and SEO. Google Business Profile + website + SEO in a single annual plan of 597, with payment terms in the proposal.",
+  description: "Custom furniture websites with room showcases, SEO and easy contact. Google Business Profile when eligible. One Page annual plan: R$ 597 (Brazilian reais).",
   alternates: { canonical: "/en/sites-para-moveis-planejados" },
 });
 
-export default function Page() { return <NichePage niche={niches.moveis}/>; }
+export default function Page() { return <SegmentedLanding segment="moveis"/>; }

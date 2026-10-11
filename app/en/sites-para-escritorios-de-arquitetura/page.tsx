@@ -1,10 +1,10 @@
-import NichePage, { niches } from "@/locales/en/components/NichePage";
+import SegmentedLanding from "@/locales/en/components/SegmentedLanding";
 import { pageMetadata } from "@/locales/en/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Websites for Architecture Firms",
-  description: "Websites for architecture firms with a clear portfolio, Google Business Profile and SEO. Google + Website + SEO in a single annual plan of 597, with payment terms in the proposal.",
+  description: "Architecture websites with clear portfolios, SEO and Google Business Profile when eligible. One Page annual plan: R$ 597 (Brazilian reais).",
   alternates: { canonical: "/en/sites-para-escritorios-de-arquitetura" },
 });
 
-export default function Page() { return <NichePage niche={niches.arquitetura}/>; }
+export default function Page() { return <SegmentedLanding segment="arquitetura"/>; }
