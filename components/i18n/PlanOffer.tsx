@@ -11,7 +11,7 @@ const copy={
  es:{name:'PRESENCIA DIGITAL COMPLETA',month:'/mes',equivalent:'Equivalente mensual del plan anual de',annual:'Plan anual de',duration:'con servicios y acompañamiento durante 12 meses.',info:'Los equivalentes mensual son informativos. La contratación es anual.',setup:'Sin tarifa de implementación',payment:'Tarjeta de crédito, según las condiciones de la propuesta.',pix:'Pix, tarjeta de crédito o boleto, según las condiciones de la propuesta.',cancel:'Tienes 7 días para desistir de la contratación.',benefits:['Implementación de la presencia digital','Creación y optimización del Perfil de Empresa en Google para negocios elegibles','Sitio profesional One Page, adaptable y optimizado','Estructura inicial de SEO','Mejoras continuas de SEO dentro del alcance contratado','Dominio y alojamiento incluidos','Mantenimiento durante los 12 meses','Actualizaciones y soporte según el alcance']}
 };
 export function CompactPrice(){const {lang}=useRegional();const c=copy[lang as keyof typeof copy]??copy.pt;return <>{c.annual} {money(PRICING.annual)} — {c.duration}</>;}
-export function PlanOffer(){const {lang,country}=useRegional();const c=copy[lang as keyof typeof copy]??copy.pt;const format=(amount:number)=>money(amount);return <div className="rv-offer-price" data-pricing-currency="BRL">
+export function PlanOffer({contactHref}:{contactHref?:string}={}){const {lang,country}=useRegional();const c=copy[lang as keyof typeof copy]??copy.pt;const format=(amount:number)=>money(amount);return <div className="rv-offer-price" data-pricing-currency="BRL">
  <p className="rv-label">{c.name}</p><p>{brandCopy[lang as SiteLanguage]?.scope ?? brandCopy.pt.scope}</p>
  <strong className="rv-price-main"><span>{format(PRICING.annual)}</span><small>{lang==='pt'?'/ano':lang==='fr'?'/an':lang==='es'?'/año':'/year'}</small></strong>
  <p className="rv-price-annual">{format(PRICING.annual/PRICING.months)}{c.month} — {c.equivalent} {format(PRICING.annual)}.</p>
@@ -20,5 +20,5 @@ export function PlanOffer(){const {lang,country}=useRegional();const c=copy[lang
  <small>{lang==='pt'?'Contratação anual. O valor mensal acima é apenas um equivalente.':c.info}</small><span className="rv-plan-perk">{c.setup}</span>
  <ul className="rv-plan-services">{c.benefits.map(item=><li key={item}>{item}</li>)}</ul>
  <small>{country==='BR'?c.pix:c.payment}</small><small>{c.cancel}</small>
- <Link className="rv-button" href={whatsappUrl()} data-track="whatsapp_click">{brandCopy[lang as SiteLanguage]?.cta ?? brandCopy.pt.cta}<span aria-hidden="true">↗</span></Link>
+ <Link className="rv-button" href={contactHref??whatsappUrl()} data-track="whatsapp_click">{brandCopy[lang as SiteLanguage]?.cta ?? brandCopy.pt.cta}<span aria-hidden="true">↗</span></Link>
  </div>;}
