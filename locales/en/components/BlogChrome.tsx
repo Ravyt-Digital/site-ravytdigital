@@ -1,6 +1,6 @@
 import FooterSocialLinks from '@/components/FooterSocialLinks';
 import {brandCopy} from '@/lib/brand-copy';
-import {LanguageSwitcher} from "@/components/i18n/Regional";
+import {LanguageSwitcher,PriceText} from "@/components/i18n/Regional";
 /* eslint-disable @next/next/no-html-link-for-pages */
 import MobileMenu from "@/locales/en/components/MobileMenu";
 import { whatsappUrl } from "@/locales/en/lib/contact";
@@ -48,7 +48,7 @@ export function BlogFooter() {
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>
       </div>
-      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p>{brandCopy['en'].remote} · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell rv-footer-preferences"><LanguageSwitcher/></div><div className="shell footer-bottom">
+      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p><PriceText>{brandCopy['en'].remote}</PriceText> · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell rv-footer-preferences"><LanguageSwitcher/></div><div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
         <p> Digital communication and website creation. </p>
         <div><a href="/en/politica-de-privacidade"> Privacy Policy </a><a href="/en/politica-de-cookies"> Cookie Policy </a><a href="/en/termos-de-uso"> Terms of Use </a></div>
