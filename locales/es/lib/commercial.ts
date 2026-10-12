@@ -1,38 +1,38 @@
 export const services = [
   {
     "slug": "seo",
-    "name": "SEO",
-    "title": "SEO para profesionales independientes.",
-    "description": "Investigación, estructura y optimización del sitio para presentar tus servicios a quienes los buscan.",
-    "detail": "Ytala investiga la intención de búsqueda y organiza el contenido. El plan anual incluye SEO inicial y mejoras dentro del alcance acordado.",
+    "name": "SEO inicial",
+    "title": "SEO inicial para sitios profesionales.",
+    "description": "Preparamos la estructura técnica y la información de tu sitio para búsquedas relacionadas con tus servicios.",
+    "detail": "Ytala Cabral investiga la intención de búsqueda y organiza títulos, descripciones y contenido del sitio One Page. La implementación incluye SEO técnico inicial: estructura rastreable, enlaces, sitemap y configuración de indexación cuando haya acceso. El SEO local refleja tu área real de atención. El plan anual no incluye consultoría continua, producción recurrente de contenido ni gestión mensual de SEO.",
     "items": [
-      "Estructura técnica y contenido claro",
-      "Optimización dentro del alcance acordado",
-      "Verificación de indexación y seguimiento"
+      "Títulos, descripciones y jerarquía del contenido",
+      "Estructura técnica, enlaces y sitemap",
+      "Verificación inicial del rastreo y orientación sobre indexación"
     ]
   },
   {
     "slug": "google-meu-negocio",
     "name": "Presencia en Google",
-    "title": "Presencia en Google para profesionales locales elegibles.",
-    "description": "Información, servicios y seguimiento del Perfil de Empresa en Google cuando sea elegible.",
-    "detail": "Ytala evalúa la elegibilidad y organiza el perfil en coherencia con el sitio y tu forma de atender. La atención exclusivamente online necesita una estrategia adecuada de sitio y SEO.",
+    "title": "Creación y optimización inicial del Perfil de Empresa en Google.",
+    "description": "Organizamos la información del Perfil de Empresa en Google para profesionales, prestadores de servicios y pequeños negocios elegibles.",
+    "detail": "Ytala evalúa la actividad real antes de crear u optimizar el perfil. El Perfil de Empresa en Google, antes Google My Business, es gratuito; el precio remunera el trabajo profesional de configuración inicial. Categorías, servicios, horarios, área atendida y contactos se alinean con el sitio. Debes atender presencialmente en tu establecimiento o en el del cliente. Los negocios exclusivamente online no son elegibles. La verificación y aprobación dependen de Google. La gestión mensual, publicaciones recurrentes y respuestas continuas a reseñas no están incluidas.",
     "items": [
-      "Análisis de elegibilidad y creación u optimización",
-      "Servicios e información de contacto coherentes",
-      "Orientación sobre reseñas y seguimiento local"
+      "Evaluación de elegibilidad y accesos del titular",
+      "Creación u optimización inicial de la información",
+      "Orientación sobre verificación y reseñas auténticas"
     ]
   },
   {
     "slug": "sites",
     "name": "Creación de sitios",
-    "title": "Creación de sitios para profesionales independientes.",
-    "description": "Presenta tu actividad y servicios con información clara y un contacto fácil.",
-    "detail": "Márcio se encarga de la estructura, el diseño y la implementación por Ravyt Digital. El plan incluye un sitio One Page adaptable, dominio, alojamiento y mantenimiento durante 12 meses.",
+    "title": "Creación de sitios profesionales.",
+    "description": "Sitios One Page para profesionales independientes, prestadores de servicios y pequeños negocios: presentación clara, diseño móvil y contacto por WhatsApp.",
+    "detail": "Márcio Cabral se encarga personalmente de la estructura, el diseño, la experiencia y la implementación manual. Presentación, servicios, área o modalidad de atención y contacto se organizan en una página. El plan anual incluye SEO técnico inicial, dominio, alojamiento y mantenimiento técnico durante 12 meses. Las páginas adicionales y funciones extensas requieren otro presupuesto.",
     "items": [
-      "Sitio One Page con presentación y servicios",
-      "Experiencia móvil y contacto por WhatsApp",
-      "Dominio, alojamiento y mantenimiento durante 12 meses"
+      "Implementación manual de un sitio profesional One Page",
+      "Diseño adaptable e integración con WhatsApp",
+      "SEO técnico inicial, alojamiento y mantenimiento durante 12 meses"
     ]
   }
 ];
@@ -47,14 +47,44 @@ export const projects = [
  {name:'Capoeira Haute-Savoie',type:"Sitio publicado",slug:'capoeira',text:"Presentación de la escuela, su práctica y caminos para nuevos alumnos."}
 ];
 export const questions = [
- ["¿Puedo contratar si atiendo exclusivamente online?", "Sí. Evaluamos sitio y SEO para tu actividad. El Perfil de Empresa en Google no se aplica automáticamente: depende de la elegibilidad."],
- ["¿Por qué el mantenimiento es continuo?","Porque el trabajo continúa después de la publicación: mantenimiento y actualizaciones del sitio, soporte, información del Perfil de Empresa en Google y optimizaciones de SEO."],
- ["¿El sitio es mío?","Las condiciones de titularidad, acceso y eventual finalización se presentarán en la propuesta antes de la contratación."],
- ["¿El dominio y el alojamiento están incluidos?","Sí. El dominio y el alojamiento forman parte del plan anual Google + Sitio web + SEO. El plan único anual cuesta [[annual]] ([[monthly]]/mes equivalente), pagado por Pix, tarjeta o boleto. Incluye implementación. Las condiciones específicas se informan en la propuesta."],
- ["¿Qué hace Ravyt cada mes?","Acompañamos y mejoramos el Perfil de Empresa en Google, mantenemos el sitio, prestamos soporte y trabajamos la estructura y las optimizaciones de SEO según el alcance contratado."],
- ["¿En cuánto tiempo puedo notar una evolución en Google?","Depende del mercado, la competencia, la ubicación y el historial de la empresa. No existe un plazo universal ni garantía de un resultado específico."],
- ["¿Necesito tener ya un Perfil de Empresa en Google?","No. Evaluamos la situación actual y estructuramos u optimizamos el perfil según la elegibilidad y las necesidades del negocio."],
- ["¿El servicio garantiza la primera posición en Google?","No. No puede garantizarse ninguna posición específica. Trabajamos para mejorar la estructura y la presencia digital de la empresa."],
- ["¿Puedo desistir durante los primeros 7 días?","Sí. En el plan anual, tienes 7 días para desistir de la contratación. El contrato completo se envía antes del pago."],
- ["¿Cuánto cuesta y cómo se cobra?","El plan único anual cuesta [[annual]] ([[monthly]]/mes equivalente), pagado por Pix, tarjeta o boleto, e incluye la implementación. Tienes 7 días para desistir de la contratación. Las demás condiciones se envían en el contrato antes del pago."]
+  [
+    "¿Puedo contratar si atiendo exclusivamente online?",
+    "Sí, sitio y SEO inicial. Los negocios exclusivamente online no son elegibles para el Perfil de Empresa en Google; la propuesta refleja tu actividad real."
+  ],
+  [
+    "¿Qué sucede después de la implementación?",
+    "El plan mantiene alojamiento y mantenimiento técnico durante 12 meses. SEO y Perfil de Empresa reciben configuración u optimización inicial. La gestión mensual personalizada, nuevos contenidos y páginas adicionales requieren otro presupuesto."
+  ],
+  [
+    "¿El sitio es mío?",
+    "Titularidad, acceso al dominio y al código, renovación y condiciones de cancelación se definen en la propuesta y contrato antes del pago."
+  ],
+  [
+    "¿Están incluidos dominio y alojamiento?",
+    "Sí, según las condiciones de la propuesta. El plan anual cuesta [[annual]]. La propuesta define titularidad, registro y renovación del dominio, alojamiento y responsabilidades."
+  ],
+  [
+    "¿Cómo solicito pequeños cambios?",
+    "Por el canal de soporte indicado en el contrato. Los límites y plazos de solicitudes simples se definen antes de contratar. Cambios extensos, nuevas páginas y contenido adicional requieren otro presupuesto."
+  ],
+  [
+    "¿Cuándo puedo notar evolución en Google?",
+    "Depende de la demanda, competencia e historial del negocio. Publicar un sitio o configurar un perfil no garantiza indexación, posiciones, visitas ni contactos."
+  ],
+  [
+    "¿Necesito tener un Perfil de Empresa en Google?",
+    "No. Evaluamos elegibilidad y accesos. Cuando corresponde, creamos u optimizamos inicialmente el perfil; verificación y aprobación dependen de Google."
+  ],
+  [
+    "¿El servicio garantiza la primera posición en Google?",
+    "No. No garantizamos posiciones, cantidad de visitantes, leads, clientes ni facturación."
+  ],
+  [
+    "¿Puedo desistir en los primeros 7 días?",
+    "Tienes 7 días para desistir, según las condiciones del contrato informado antes del pago."
+  ],
+  [
+    "¿Cuánto cuesta y cómo se cobra?",
+    "R$ 597 por año, con implementación incluida. [[monthly]] al mes es solo un equivalente, no una suscripción mensual. Pago y renovación se definen en la propuesta."
+  ]
 ];

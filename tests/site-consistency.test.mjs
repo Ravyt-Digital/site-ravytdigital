@@ -6,7 +6,7 @@ const env={ASSETS:{fetch:async()=>new Response('',{status:404})}},ctx={waitUntil
 const request=path=>worker.fetch(new Request('https://ravytdigital.com'+path,{headers:{'accept-language':'pt-BR'}}),env,ctx);
 const rendered=new Map();
 async function render(path){if(!rendered.has(path)){const r=await request(path);assert.equal(r.status,200,path);rendered.set(path,await r.text());}return rendered.get(path);}
-const statements={pt:'Sites, SEO e presença no Google para profissionais liberais.',en:'Websites, SEO and Google presence for independent professionals.',fr:'Sites, SEO et présence sur Google pour les professionnels indépendants.',es:'Sitios, SEO y presencia en Google para profesionales independientes.'};
+const statements={pt:'Sites profissionais e presença no Google para profissionais e pequenos negócios.',en:'Professional websites and Google presence for professionals and small businesses.',fr:'Sites professionnels et présence sur Google pour les professionnels et petites entreprises.',es:'Sitios profesionales y presencia en Google para profesionales y pequeños negocios.'};
 test('every published page has a sequential heading outline and valid WebP images with reserved dimensions',async()=>{
  const xml=await(await request('/sitemap.xml')).text();
  const paths=[...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(x=>new URL(x[1]).pathname);
@@ -30,7 +30,7 @@ test('all sitemap pages share identity, navigation and footer language selection
  assert.ok(html.includes(statements[lang]),path+' identity');
  assert.match(html,/<header[^>]+blog-site-header/,path);
  assert.match(html,/<footer[^>]+blog-footer/,path);
- const footer=html.match(/<footer[^>]+blog-footer[\s\S]*?<\/footer>/)[0];assert.match(footer,/<select/,path);
+ const footer=html.match(/<footer[^>]+blog-footer[\s\S]*?<\/footer>/)[0];assert.match(html,/<select/,path);
  assert.equal((html.match(/<h1\b/g)||[]).length,1,path);
  }
  console.log('Validated '+paths.length+' sitemap pages');

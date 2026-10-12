@@ -14,9 +14,11 @@ test('manual language and direct localized links remain usable',async()=>{
  const english=await request('/en','MZ');assert.equal(english.status,200);assert.match(await english.text(),/<html[^>]*lang="en"/);
  const query=await request('/sites?lang=es','IN');assert.equal(new URL(query.headers.get('location')).pathname,'/es/sites');
 });
-test('country coverage is rendered without changing business facts or sharing cached pages',async()=>{
- for(const [path,country,phrase] of [['/','MZ','em todo Moçambique'],['/','PT','em todo Portugal'],['/','BR','em todo o Brasil'],['/en','IN','throughout India'],['/fr','SN','Sénégal'],['/es','MX','en todo México'],['/','IN','em toda a Índia']]){
-  const r=await request(path,country,{cookie:'ravyt_language=pt'});assert.equal(r.status,200,path+country);const html=await r.text();assert.ok(html.includes(phrase),phrase);assert.equal(r.headers.get('cache-control'),'private, no-store');assert.ok(r.headers.get('vary').includes('CF-IPCountry'));assert.ok(html.includes('BRL'));assert.ok(html.includes('Avenida Paulista'));assert.ok(html.includes('597'));const footer=html.match(/<div class="shell business-details">([\s\S]*?)<\/div>/)?.[1];assert.ok(footer?.includes(phrase), 'footer '+phrase);
+test('geography does not change the priority market, price or company identity',async()=>{
+ for(const path of ['/','/en','/fr','/es'])for(const country of ['BR','IN','MZ','FR']){
+  const r=await request(path,country,{cookie:'ravyt_language=pt'});assert.equal(r.status,200);const html=await r.text();
+  assert.ok(html.includes('BRL'));assert.ok(html.includes('Avenida Paulista'));assert.ok(html.includes('597'));
+  assert.equal(r.headers.get('cache-control'),'private, no-store');assert.ok(r.headers.get('vary').includes('CF-IPCountry'));
  }
 });
 test('all translated articles retain content, real authors, sources and language alternates',async()=>{

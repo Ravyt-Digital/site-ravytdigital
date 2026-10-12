@@ -1,8 +1,8 @@
 export const offerCopy = {
   "pt": {
-    "siteTitle": "Criação de sites para profissionais liberais",
+    "siteTitle": "Como contratar a criação de um site online",
     "priceTitle": "Quanto custa criar um site profissional?",
-    "siteLead": "Uma página para apresentar sua atuação, explicar seus serviços e facilitar o contato. Márcio cuida da criação do site pela Ravyt Digital.",
+    "siteLead": "Da primeira conversa à publicação, o processo acontece remotamente. Você envia informações e materiais; Márcio implanta o site One Page manualmente e você revisa a apresentação antes da publicação.",
     "priceLead": "O plano anual custa R$ 597,00. O valor de R$ 49,75 por mês é apenas um equivalente: a contratação é anual, com implantação incluída.",
     "scopeTitle": "Uma página, com entregas definidas.",
     "scopeText": "O plano inclui um site One Page: apresentação, serviços e contato em uma página adaptada ao celular e ao computador. Domínio, hospedagem, manutenção e suporte fazem parte dos 12 meses.",
@@ -26,9 +26,9 @@ export const offerCopy = {
     ]
   },
   "en": {
-    "siteTitle": "Website creation for independent professionals",
+    "siteTitle": "How to commission a website remotely",
     "priceTitle": "How much does a professional website cost?",
-    "siteLead": "One page to introduce your practice, explain your services and make contact easier. Márcio handles website creation through Ravyt Digital.",
+    "siteLead": "From the first conversation to publication, the process is remote. You send information and materials; Márcio manually builds your One Page website and you review its presentation before publication.",
     "priceLead": "The annual plan costs R$ 597,00. R$ 49,75 per month is an equivalent only: the agreement is annual and includes setup.",
     "scopeTitle": "One page, with defined deliverables.",
     "scopeText": "The plan includes a One Page website: your introduction, services and contact on one page adapted to mobile and desktop. Domain, hosting, maintenance and support are included for 12 months.",
@@ -52,9 +52,9 @@ export const offerCopy = {
     ]
   },
   "fr": {
-    "siteTitle": "Création de sites pour les professionnels indépendants",
+    "siteTitle": "Comment commander un site à distance",
     "priceTitle": "Combien coûte un site professionnel ?",
-    "siteLead": "Une page pour présenter votre activité, expliquer vos services et faciliter le contact. Márcio crée les sites pour Ravyt Digital.",
+    "siteLead": "Du premier échange à la publication, le processus se déroule à distance. Vous transmettez les informations et éléments ; Márcio crée manuellement le site One Page, que vous examinez avant sa publication.",
     "priceLead": "Le forfait annuel coûte R$ 597,00. R$ 49,75 par mois est seulement un équivalent : le contrat est annuel et inclut la mise en place.",
     "scopeTitle": "Une page, des livrables définis.",
     "scopeText": "Le forfait inclut un site One Page : présentation, services et contact sur une page adaptée au mobile et à l’ordinateur. Domaine, hébergement, maintenance et support pendant 12 mois.",
@@ -78,9 +78,9 @@ export const offerCopy = {
     ]
   },
   "es": {
-    "siteTitle": "Creación de sitios para profesionales independientes",
+    "siteTitle": "Cómo contratar la creación de un sitio online",
     "priceTitle": "¿Cuánto cuesta crear un sitio profesional?",
-    "siteLead": "Una página para presentar tu actividad, explicar tus servicios y facilitar el contacto. Márcio crea los sitios por Ravyt Digital.",
+    "siteLead": "Desde la primera conversación hasta la publicación, el proceso es remoto. Envías información y materiales; Márcio crea manualmente el sitio One Page y revisas la presentación antes de publicarlo.",
     "priceLead": "El plan anual cuesta R$ 597,00. R$ 49,75 al mes es solo un equivalente: la contratación es anual e incluye la implementación.",
     "scopeTitle": "Una página, con entregas definidas.",
     "scopeText": "El plan incluye un sitio One Page: presentación, servicios y contacto en una página adaptada al móvil y al ordenador. Dominio, alojamiento, mantenimiento y soporte durante 12 meses.",

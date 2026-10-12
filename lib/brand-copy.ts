@@ -1,55 +1,55 @@
 export const brandCopy = {
   "pt": {
-    "tagline": "Sites, SEO e presença no Google para profissionais liberais.",
-    "intro": "Criamos sites e trabalhamos a presença no Google de profissionais liberais, com atendimento remoto em todo o Brasil.",
-    "remote": "Atendimento remoto em todo o Brasil",
+    "tagline": "Sites profissionais e presença no Google para profissionais e pequenos negócios.",
+    "intro": "Criamos sites One Page com SEO inicial para profissionais liberais, prestadores de serviços e pequenos negócios. Organizamos o Perfil da Empresa no Google quando elegível, com atendimento remoto e foco no Brasil.",
+    "remote": "Atendimento remoto · mercado prioritário: Brasil",
     "cta": "Conversar sobre meu projeto",
-    "scope": "Site One Page, domínio, hospedagem, manutenção e suporte durante 12 meses. SEO dentro do escopo contratado e Perfil da Empresa no Google quando elegível.",
+    "scope": "Implantação manual de site One Page, SEO técnico inicial e configuração ou otimização inicial do Perfil da Empresa no Google, quando elegível. Domínio, hospedagem e manutenção técnica por 12 meses, conforme o contrato.",
     "online": "Atende exclusivamente online? Avaliamos uma estratégia de site e SEO adequada à sua atuação. Um perfil local no Google depende de elegibilidade.",
-    "team": "Ytala cuida da presença no Google e do SEO; Márcio, da criação de sites. A Ravyt Digital responde pela proposta, pelo contrato, pela implantação e pelo acompanhamento.",
+    "team": "Somos duas pessoas: Ytala cuida da estratégia, do SEO inicial, do Perfil da Empresa no Google e do relacionamento; Márcio cuida do design, desenvolvimento e infraestrutura.",
     "offer": "O que está incluído",
     "offerTitle": "Site, SEO e presença no Google.",
     "finalTitle": "Vamos conversar sobre seu projeto?",
-    "finalText": "Conte o que você faz e como atende. Nossa equipe explica as entregas e condições antes da contratação."
+    "finalText": "Conte o que faz e como atende. Ytala ou Márcio explica o escopo e envia a proposta antes da contratação."
   },
   "en": {
-    "tagline": "Websites, SEO and Google presence for independent professionals.",
-    "intro": "We create websites and work on Google presence for independent professionals, with remote service throughout Brazil.",
-    "remote": "Remote service throughout Brazil",
+    "tagline": "Professional websites and Google presence for professionals and small businesses.",
+    "intro": "We create One Page websites with initial SEO for independent professionals, service providers and small businesses. We set up Google Business Profiles when eligible, with remote service focused on Brazil.",
+    "remote": "Remote service · priority market: Brazil",
     "cta": "Discuss my project",
-    "scope": "One Page website, domain, hosting, maintenance and support for 12 months. SEO within the agreed scope and Google Business Profile when eligible.",
+    "scope": "Manual One Page website setup, initial technical SEO and Google Business Profile creation or initial optimization when eligible. Domain, hosting and technical maintenance for 12 months, subject to the contract.",
     "online": "Do you work exclusively online? We assess a website and SEO strategy suited to your practice. A local Google profile depends on eligibility.",
-    "team": "Ytala handles Google presence and SEO; Márcio handles website creation. Ravyt Digital is responsible for the proposal, contract, implementation and ongoing support.",
+    "team": "We are two people: Ytala handles strategy, initial SEO, Google Business Profile and customer relationships; Márcio handles design, development and technical infrastructure.",
     "offer": "What is included",
     "offerTitle": "Website, SEO and Google presence.",
     "finalTitle": "Let’s discuss your project.",
-    "finalText": "Tell us what you do and how you work. Our team explains the deliverables and conditions before you sign up."
+    "finalText": "Tell us what you do and how you work. Ytala or Márcio explains the scope and sends a proposal before you sign up."
   },
   "fr": {
-    "tagline": "Sites, SEO et présence sur Google pour les professionnels indépendants.",
-    "intro": "Nous créons des sites et travaillons la présence sur Google des professionnels indépendants, avec un service à distance dans tout le Brésil.",
-    "remote": "Service à distance dans tout le Brésil",
+    "tagline": "Sites professionnels et présence sur Google pour les professionnels et petites entreprises.",
+    "intro": "Nous créons des sites One Page avec SEO initial pour les professionnels indépendants, prestataires et petites entreprises. Nous configurons le Profil d’entreprise Google sous réserve d’éligibilité, à distance, avec le Brésil comme marché prioritaire.",
+    "remote": "Service à distance · marché prioritaire : Brésil",
     "cta": "Discuter de mon projet",
-    "scope": "Site One Page, domaine, hébergement, maintenance et support pendant 12 mois. SEO dans le périmètre convenu et Profil d’entreprise Google sous réserve d’éligibilité.",
+    "scope": "Mise en place manuelle d’un site One Page, SEO technique initial et création ou optimisation initiale du Profil d’entreprise Google sous réserve d’éligibilité. Domaine, hébergement et maintenance technique pendant 12 mois, selon le contrat.",
     "online": "Vous travaillez exclusivement en ligne ? Nous évaluons une stratégie de site et de SEO adaptée à votre activité. Un profil local sur Google dépend de l’éligibilité.",
-    "team": "Ytala s’occupe de la présence sur Google et du SEO ; Márcio, de la création des sites. Ravyt Digital prend en charge la proposition, le contrat, la mise en place et le suivi.",
+    "team": "Nous sommes deux personnes : Ytala s’occupe de la stratégie, du SEO initial, du Profil d’entreprise Google et de la relation client ; Márcio, du design, développement et de l’infrastructure.",
     "offer": "Ce qui est inclus",
     "offerTitle": "Site, SEO et présence sur Google.",
     "finalTitle": "Discutons de votre projet.",
-    "finalText": "Présentez votre activité et votre mode de travail. Notre équipe explique les livrables et les conditions avant la souscription."
+    "finalText": "Présentez votre activité et votre mode de travail. Ytala ou Márcio explique le périmètre et envoie une proposition avant la souscription."
   },
   "es": {
-    "tagline": "Sitios, SEO y presencia en Google para profesionales independientes.",
-    "intro": "Creamos sitios y trabajamos la presencia en Google de profesionales independientes, con atención remota en todo Brasil.",
-    "remote": "Atención remota en todo Brasil",
+    "tagline": "Sitios profesionales y presencia en Google para profesionales y pequeños negocios.",
+    "intro": "Creamos sitios One Page con SEO inicial para profesionales independientes, prestadores de servicios y pequeños negocios. Configuramos el Perfil de Empresa en Google cuando sea elegible, con atención remota y foco en Brasil.",
+    "remote": "Atención remota · mercado prioritario: Brasil",
     "cta": "Conversar sobre mi proyecto",
-    "scope": "Sitio One Page, dominio, alojamiento, mantenimiento y soporte durante 12 meses. SEO dentro del alcance acordado y Perfil de Empresa en Google cuando sea elegible.",
+    "scope": "Implementación manual de sitio One Page, SEO técnico inicial y creación u optimización inicial del Perfil de Empresa en Google cuando sea elegible. Dominio, alojamiento y mantenimiento técnico durante 12 meses, según el contrato.",
     "online": "¿Atiendes exclusivamente online? Evaluamos una estrategia de sitio y SEO adecuada a tu actividad. Un perfil local en Google depende de la elegibilidad.",
-    "team": "Ytala se encarga de la presencia en Google y del SEO; Márcio, de la creación de sitios. Ravyt Digital responde por la propuesta, el contrato, la implementación y el acompañamiento.",
+    "team": "Somos dos personas: Ytala se encarga de estrategia, SEO inicial, Perfil de Empresa en Google y relación comercial; Márcio, del diseño, desarrollo e infraestructura.",
     "offer": "Qué está incluido",
     "offerTitle": "Sitio, SEO y presencia en Google.",
     "finalTitle": "Conversemos sobre tu proyecto.",
-    "finalText": "Cuéntanos qué haces y cómo atiendes. Nuestro equipo explica las entregas y las condiciones antes de contratar."
+    "finalText": "Cuéntanos qué haces y cómo atiendes. Ytala o Márcio explica el alcance y envía una propuesta antes de contratar."
   }
 } as const;
 export type SiteLanguage = keyof typeof brandCopy;

@@ -52,7 +52,7 @@ export const niches: Record<'engenharia' | 'arquitetura' | 'moveis', Niche> = {
     challengeText: "Ceux qui recherchent des meubles sur mesure comparent les styles et possibilités avant de contacter une entreprise. Une présentation organisée par pièces peut aider le visiteur à reconnaître ce qu’il cherche et demander un accompagnement.",
     site: "Nous créons une vitrine d’espaces et services avec les informations essentielles et un contact accessible sur mobile. Domaine, hébergement, mises à jour et support sont inclus dans l’abonnement.",
     google: "Pour les entreprises éligibles, nous organisons le Profil d’entreprise Google avec des informations cohérentes sur l’activité et la zone locale desservie.",
-    seo: "Nous structurons des pages pour les espaces et services, avec des contenus et titres spécifiques, ainsi que des améliorations techniques et un suivi continu.",
+    seo: "Nous structurons des pages pour les espaces et services, avec des contenus et titres spécifiques, avec une optimisation technique initiale.",
     example: "Une référence visuelle pour les meubles sur mesure",
     exampleText: "Lumea Planejados, une démonstration conceptuelle du portfolio, met les espaces en avant pour aider à imaginer les applications du produit.",
   },

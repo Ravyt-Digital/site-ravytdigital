@@ -52,7 +52,7 @@ export const niches: Record<'engenharia' | 'arquitetura' | 'moveis', Niche> = {
     challengeText: "Quien busca muebles a medida compara estilos y posibilidades antes de hablar con una empresa. Una presentación organizada por ambientes puede ayudar al visitante a reconocer lo que busca y solicitar atención.",
     site: "Creamos una vitrina de ambientes y servicios con información esencial y contacto accesible en el móvil. El dominio, el alojamiento, las actualizaciones y el soporte están incluidos en la suscripción.",
     google: "Para empresas elegibles, organizamos el Perfil de Empresa en Google con información coherente sobre la actividad y la zona local atendida.",
-    seo: "Estructuramos páginas para ambientes y servicios, con contenido y títulos específicos, además de mejoras técnicas y seguimiento continuo.",
+    seo: "Estructuramos páginas para ambientes y servicios, con contenido y títulos específicos, con optimización técnica inicial.",
     example: "Una referencia visual para muebles a medida",
     exampleText: "Lumea Planejados, una demostración conceptual del portafolio, destaca ambientes para ayudar a imaginar aplicaciones del producto.",
   },

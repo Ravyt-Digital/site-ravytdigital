@@ -48,9 +48,9 @@ export function BlogFooter() {
           <a href="mailto:ola@ravytdigital.com" data-track="email_click">ola@ravytdigital.com</a>
         </nav>
       </div>
-      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p><PriceText>{brandCopy['fr'].remote}</PriceText> · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell rv-footer-preferences"><LanguageSwitcher/></div><div className="shell footer-bottom">
+      <div className="shell business-details"><p>YTALA RAVENA DE SOUSA SILVA CABRAL CONTEUDO DIGITAL LTDA - ME · CNPJ 26.114.696/0001-70</p><address>Adresse administrative · service à distance : Avenida Paulista, 1636, Conj. 4 PAVM, Bela Vista, São Paulo - SP · CEP 01310-200</address><p><PriceText>{brandCopy['fr'].remote}</PriceText> · <a href="tel:+5588996956479">(88) 99695-6479</a></p></div><div className="shell rv-footer-preferences"><LanguageSwitcher/></div><div className="shell footer-bottom">
         <span>© 2026 Ravyt Digital</span>
-        <p> Communication numérique et création de sites. </p>
+        <p> Sites professionnels · SEO initial · présence sur Google. </p>
         <div><a href="/fr/politica-de-privacidade"> Politique de confidentialité </a><a href="/fr/politica-de-cookies"> Politique relative aux cookies </a><a href="/fr/termos-de-uso"> Conditions d’utilisation </a></div>
       </div>
       <p className="shell site-credit"> Site développé par <a href="https://ravytdigital.com">Ravyt Digital</a></p>

@@ -52,7 +52,7 @@ export const niches: Record<'engenharia' | 'arquitetura' | 'moveis', Niche> = {
     challengeText: "People searching for custom furniture compare styles and possibilities before talking to a company. A presentation organized by room can help visitors recognize what they want and request service.",
     site: "We create a showcase of spaces and services with essential information and mobile-accessible contact. Domain, hosting, updates and support are included in the subscription.",
     google: "For eligible businesses, we organize the Google Business Profile with consistent information about operations and the local service area.",
-    seo: "We structure pages for spaces and services with specific content and titles, plus technical improvements and ongoing monitoring.",
+    seo: "We structure pages for spaces and services with specific content and titles, with initial technical optimization.",
     example: "A visual reference for custom furniture",
     exampleText: "Lumea Planejados, a conceptual portfolio demonstration, highlights spaces to help visitors imagine product applications.",
   },

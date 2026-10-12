@@ -9,8 +9,7 @@ export const mapsPost: BlogPost = {
   dateLabel: "2 de outubro de 2026",
   readingTime: "8 min de leitura",
   author: "Equipe Ravyt Digital",
-  image: { src: "/blog/como-aparecer-google-maps.webp", width: 1279, height: 720, alt: "Ilustração de uma pessoa seguindo um trajeto até um estabelecimento marcado em um mapa" },
-  secondaryImage: { src: "/blog/otimizar-perfil-empresa-google.webp", width: 1279, height: 720, alt: "Ilustração de um celular com mapa ao lado de cartões de horários, fotos, avaliações e serviços" },
+  images: [{ src: "/blog/como-aparecer-google-maps.webp", width: 1279, height: 720, alt: "Ilustração de uma pessoa seguindo um trajeto até um estabelecimento marcado em um mapa", caption:"Ilustração editorial; não representa resultado real de busca." }, { src: "/blog/otimizar-perfil-empresa-google.webp", width: 1279, height: 720, alt: "Ilustração de um celular com mapa ao lado de cartões de horários, fotos, avaliações e serviços", caption:"Ilustração editorial da organização de informações de um perfil." }],
   intro: "Imagine alguém procurando um serviço na sua cidade e encontrando uma ficha com telefone antigo, horário errado e nenhuma explicação sobre o atendimento. Mesmo quando a empresa aparece no mapa, esse encontro pode terminar ali. Antes de tentar ‘subir no Google Maps’, vale acertar o básico: a empresa é elegível, o perfil pertence ao responsável pelo negócio e as informações ajudam uma pessoa real a decidir?",
   quickAnswer: "Para aparecer no Google Maps, uma empresa elegível deve adicionar ou reivindicar seu Perfil da Empresa no Google, concluir a verificação e manter dados corretos sobre nome, categoria, endereço ou área de cobertura, horário e contato. A presença no mapa e a posição para cada pesquisa dependem dos sistemas do Google. Cadastrar uma ficha não garante primeira posição nem novos clientes.",
   sections: [

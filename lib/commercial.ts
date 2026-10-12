@@ -1,7 +1,40 @@
 export const services = [
- {slug:'seo',name:'SEO',title:'SEO para profissionais liberais.',description:'Pesquisa, estrutura e otimização do site para apresentar seus serviços a quem procura pelo seu trabalho.',detail:'Ytala Cabral pesquisa a intenção de busca e trabalha a organização das páginas. O plano inclui estrutura inicial de SEO e melhorias dentro do escopo contratado, com prioridades adequadas à sua atuação e ao seu modelo de atendimento.',items:['Estrutura técnica e informações claras nas páginas','Otimização do conteúdo dentro do escopo contratado','Verificação de indexação e acompanhamento']},
- {slug:'google-meu-negocio',name:'Presença Local',title:'Presença no Google para profissionais com atendimento local.',description:'Ytala Cabral avalia a elegibilidade e organiza as informações do seu Perfil da Empresa no Google. O trabalho se conecta ao site e ao SEO.',detail:'Serviços, horários, localização e contato precisam apresentar seu trabalho com consistência. O Perfil da Empresa no Google depende de elegibilidade; quem atende exclusivamente online precisa de uma estratégia de site e SEO adequada ao seu modelo, sem assumir que pode criar um perfil local.',items:['Análise de elegibilidade e configuração ou otimização do perfil','Categorias, serviços e informações consistentes','Orientação para avaliações e acompanhamento local']},
- {slug:'sites',name:'Criação de Sites',title:'Criação de sites para profissionais liberais.',description:'Um site para apresentar sua atuação, explicar seus serviços e facilitar pedidos de informação ou agendamento. Márcio Cabral cuida da estrutura, do design e da implementação pela Ravyt Digital.',detail:'Organizamos sua apresentação, seus serviços, as modalidades de atendimento e o caminho até o contato. O plano anual inclui um site One Page: uma página responsiva, com estrutura inicial de SEO, domínio, hospedagem e manutenção durante 12 meses.',items:['Site One Page com apresentação e serviços','Experiência no celular e caminho claro até o WhatsApp','Domínio, hospedagem e manutenção durante 12 meses']}
+  {
+    "slug": "seo",
+    "name": "SEO inicial",
+    "title": "SEO inicial para sites profissionais.",
+    "description": "Preparamos a estrutura técnica e as informações do seu site para buscas relevantes aos serviços que você oferece.",
+    "detail": "Ytala Cabral pesquisa a intenção de busca e organiza títulos, descrições e conteúdo do site One Page. A implantação inclui SEO técnico inicial: estrutura rastreável, links, sitemap e configuração de indexação quando houver acesso. SEO local considera a região real de atendimento. O plano anual não inclui consultoria contínua, produção recorrente de conteúdo ou gestão mensal de SEO.",
+    "items": [
+      "Títulos, descrições e hierarquia de conteúdo",
+      "Estrutura técnica, links e sitemap",
+      "Verificação inicial de rastreabilidade e orientação sobre indexação"
+    ]
+  },
+  {
+    "slug": "google-meu-negocio",
+    "name": "Presença no Google",
+    "title": "Configuração e otimização inicial do Perfil da Empresa no Google.",
+    "description": "Organizamos as informações do Perfil da Empresa no Google para profissionais, prestadores de serviços e pequenos negócios elegíveis.",
+    "detail": "Ytala avalia a operação real antes de criar ou otimizar o perfil. O Perfil da Empresa no Google, antes Google Meu Negócio, é uma ferramenta gratuita; a contratação remunera o trabalho profissional de configuração inicial. Categorias, serviços, horários, área atendida e contatos são alinhados ao site. É necessário atender clientes presencialmente ou no endereço deles. Negócios exclusivamente online não se qualificam. Verificação e aprovação dependem do Google. Gestão mensal, postagens recorrentes e respostas contínuas a avaliações não estão incluídas.",
+    "items": [
+      "Avaliação de elegibilidade e acessos do titular",
+      "Criação ou otimização inicial das informações",
+      "Orientações para verificação e avaliações autênticas"
+    ]
+  },
+  {
+    "slug": "sites",
+    "name": "Criação de sites",
+    "title": "Criação de sites profissionais.",
+    "description": "Sites One Page para profissionais liberais, prestadores de serviços e pequenos negócios: apresentação clara, versão para celular e contato pelo WhatsApp.",
+    "detail": "Márcio Cabral cuida pessoalmente da estrutura, do web design, da experiência e da implantação manual. Organizamos apresentação, serviços, área ou modalidade de atendimento e contato em uma única página. O plano anual inclui SEO técnico inicial, domínio, hospedagem e manutenção técnica por 12 meses. Páginas adicionais e funcionalidades extensas exigem orçamento.",
+    "items": [
+      "Implantação manual de site profissional One Page",
+      "Design responsivo e integração com WhatsApp",
+      "SEO técnico inicial, hospedagem e manutenção por 12 meses"
+    ]
+  }
 ];
 export const projects = [
  {name:'Miraúna Mobiliário',type:'Demonstração conceitual',slug:'mirauna',text:'Vitrine de mobiliário com composição editorial e destaque para os ambientes.'},
@@ -14,14 +47,44 @@ export const projects = [
  {name:'Capoeira Haute-Savoie',type:'Site publicado',slug:'capoeira',text:'Apresentação da escola, sua prática e caminhos para novos alunos.'}
 ];
 export const questions = [
- ['Atendo exclusivamente online. Posso contratar?','Sim. Avaliamos o site e o SEO de acordo com sua atuação. O Perfil da Empresa no Google não se aplica automaticamente: sua criação depende de elegibilidade.'],
- ['Por que a manutenção é contínua?','Porque o trabalho continua após a publicação: manutenção e atualizações do site, suporte, informações do Perfil da Empresa no Google e otimizações de SEO.'],
- ['O site é meu?','As condições de titularidade, acesso e eventual encerramento serão apresentadas na proposta antes da contratação.'],
- ['Domínio e hospedagem estão incluídos?','Sim. Domínio e hospedagem fazem parte do plano anual Google + Site + SEO. O plano único anual custa [[annual]] ([[monthly]]/mês equivalente), com pagamento por Pix, cartão ou boleto. Inclui implantação. As condições específicas são informadas na proposta.'],
- ['O que a Ravyt faz todos os meses?','Acompanha e aprimora o Perfil da Empresa no Google, mantém o site, presta suporte e trabalha na estrutura e nas otimizações de SEO conforme o escopo contratado.'],
- ['Em quanto tempo posso perceber evolução no Google?','Depende do mercado, da concorrência, da localização e do histórico da empresa. Não há prazo universal nem garantia de resultado específico.'],
- ['Preciso já ter um Perfil da Empresa no Google?','Não. Avaliamos a situação atual e estruturamos ou otimizamos o perfil conforme a elegibilidade e as necessidades do negócio.'],
- ['O serviço garante primeira posição no Google?','Não. Nenhuma posição específica pode ser garantida. Trabalhamos para melhorar a estrutura e a presença digital da empresa.'],
- ['Posso desistir nos primeiros 7 dias?','Sim. No plano anual, você tem 7 dias para desistir da contratação. O contrato completo é enviado antes do pagamento.'],
- ['Quanto custa e como é cobrado?','O plano único anual custa [[annual]] ([[monthly]]/mês equivalente), pago por Pix, cartão ou boleto. Você tem 7 dias para desistir da contratação. As demais condições são enviadas no contrato antes do pagamento.']
+  [
+    "Atendo exclusivamente online. Posso contratar?",
+    "Sim. Você pode contratar site e SEO inicial. Negócios exclusivamente online não são elegíveis para o Perfil da Empresa no Google; a oferta será ajustada à sua operação."
+  ],
+  [
+    "O que acontece depois da implantação?",
+    "O plano mantém hospedagem e manutenção técnica durante 12 meses. SEO e Perfil da Empresa recebem configuração ou otimização inicial. Gestão mensal personalizada, novos conteúdos e páginas adicionais exigem orçamento."
+  ],
+  [
+    "O site é meu?",
+    "Titularidade, acesso ao domínio e ao código, renovação e condições de encerramento são definidos na proposta e no contrato antes do pagamento."
+  ],
+  [
+    "Domínio e hospedagem estão incluídos?",
+    "Sim, dentro das condições da proposta. O plano anual custa [[annual]]. A proposta informa titularidade, registro e renovação do domínio, hospedagem e responsabilidades."
+  ],
+  [
+    "Como solicito pequenas alterações?",
+    "Pelo canal de suporte informado no contrato. Solicitações simples têm limites e prazos definidos antes da contratação. Alterações extensas, páginas adicionais e novos conteúdos exigem orçamento."
+  ],
+  [
+    "Em quanto tempo posso perceber evolução no Google?",
+    "Depende da procura, da concorrência e do histórico do negócio. Publicar um site ou configurar um perfil não garante indexação, posição, visitas ou contatos."
+  ],
+  [
+    "Preciso já ter um Perfil da Empresa no Google?",
+    "Não. Avaliamos elegibilidade e acessos. Quando aplicável, criamos ou otimizamos inicialmente o perfil; verificação e aprovação dependem do Google."
+  ],
+  [
+    "O serviço garante primeira posição no Google?",
+    "Não. Não garantimos posições, quantidade de visitantes, leads, clientes ou faturamento."
+  ],
+  [
+    "Posso desistir nos primeiros 7 dias?",
+    "Você tem 7 dias para desistir da contratação, conforme as condições informadas no contrato antes do pagamento."
+  ],
+  [
+    "Quanto custa e como é cobrado?",
+    "R$ 597 por ano, com implantação incluída. [[monthly]] por mês é apenas um equivalente, não uma assinatura mensal. Pagamento e renovação são definidos na proposta."
+  ]
 ];

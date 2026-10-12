@@ -38,7 +38,6 @@ const worker = {
       "/privacidade": "/politica-de-privacidade",
       "/termos": "/termos-de-uso",
       "/servicos/criacao-de-sites": "/sites",
-      "/blog/instagram-nao-substitui-site-proprio": "/sites",
     };
     const destination = legacyRedirects[url.pathname.replace(/\/$/, "")];
     if (destination) return Response.redirect(new URL(destination, "https://ravytdigital.com").href, 301);

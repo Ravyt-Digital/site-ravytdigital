@@ -1,11 +1,2 @@
-import {BrandOffer} from '@/components/BrandContent';
-import {brandCopy} from '@/lib/brand-copy';
-
-import {PriceText} from "@/components/i18n/Regional";
-import Link from 'next/link';
-import { BlogHeader, BlogFooter } from "@/locales/es/components/BlogChrome";
-import { DiagnosticCTA, FinalCTA } from "@/locales/es/components/Commercial";
-import StructuredData from "@/locales/es/components/StructuredData";
-import { services } from "@/locales/es/lib/commercial";
-import { SITE_URL } from '@/lib/site';
-export default function ServicePage({slug}:{slug:string}){const s=services.find(s=>s.slug===slug)!;return <><BlogHeader/><main id="conteudo" tabIndex={-1} className="rv"><StructuredData data={{'@context':'https://schema.org','@type':'Service',name:s.name,description:s.description,url:SITE_URL+"/es/"+slug,provider:{'@id':SITE_URL+'/#organization'},areaServed:"Worldwide"}}/><section className="rv-page-hero"><div className="shell"><p className="rv-label">Ravyt Digital / {<PriceText>{s.name}</PriceText>}</p><h1>{<PriceText>{s.title}</PriceText>}</h1><p className="rv-lead">{<PriceText>{s.description}</PriceText>}</p><DiagnosticCTA/></div></section><section className="rv-section"><div className="shell rv-split"><div><h2> Antes de la herramienta, <br/><em>  tu negocio. </em></h2><p>{<PriceText>{s.detail}</PriceText>}</p></div><div><h2 className="rv-small-heading"> Qué incluye el plan </h2><ul className="rv-deliverables">{<PriceText>{s.items.map(i=><li key={i}>{<PriceText>{i}</PriceText>}</li>)}</PriceText>}</ul><p>Este servicio forma parte del plan anual de presencia digital. Las entregas, los límites de actualización y las condiciones se presentan en la propuesta y el contrato antes del pago. Los sistemas de reservas y las integraciones adicionales dependen del alcance acordado.</p></div></div></section><section className="rv-section rv-dark"><div className="shell"><p className="rv-label"> Cómo empezamos </p><h2> Entender. Priorizar. Implementar. Acompañar. </h2><p className="rv-intro"> Analizamos los canales actuales y el objetivo comercial, definimos qué resolver primero y acordamos cómo seguir la evolución. No prometemos posiciones en Google ni un volumen garantizado de contactos. </p><div className="rv-actions">{<PriceText>{services.filter(x=>x.slug!==slug).map(x=><Link href={"/es/"+x.slug} key={x.slug}> Conocer {<PriceText>{x.name}</PriceText>} →</Link>)}</PriceText>}</div></div></section><BrandOffer lang="es"/><FinalCTA/></main><BlogFooter/></>;}
+import ServicePage from '@/components/ServicePage';
+export default function LocalizedServicePage({slug}:{slug:string}){return <ServicePage slug={slug} lang="es"/>;}

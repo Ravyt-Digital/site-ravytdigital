@@ -1,14 +1,14 @@
 export const homeCopy = {
   "en": {
     "hero": [
-      "Your work clearly presented.",
-      "Your contact details, easy to find."
+      "Professional websites and",
+      "digital presence on Google."
     ],
     "preview": "Your website on desktop and mobile.",
     "fiction": "Illustrative example · Fictional Clínica Aurora",
     "portfolio": "Website portfolio",
     "portfolioTitle": "Websites created by Ravyt.",
-    "portfolioIntro": "See our existing projects. Published websites and conceptual demonstrations are identified separately.",
+    "portfolioIntro": "See published websites and identified conceptual demonstrations. Complex projects and additional features are not automatically included in the annual One Page plan.",
     "teamTitle": "You speak with the people doing the work.",
     "processTitle": "From the first conversation to the published website.",
     "steps": [
@@ -26,7 +26,7 @@ export const homeCopy = {
       ],
       [
         "Ongoing support",
-        "We maintain the website and work on improvements over the 12 months."
+        "We maintain the technical infrastructure for 12 months. Small changes follow the contract; SEO and Google receive initial optimization."
       ]
     ],
     "faq": "What you need to know.",
@@ -35,14 +35,14 @@ export const homeCopy = {
   },
   "fr": {
     "hero": [
-      "Votre travail présenté clairement.",
-      "Vos coordonnées faciles à trouver."
+      "Sites professionnels et",
+      "présence numérique sur Google."
     ],
     "preview": "Votre site sur ordinateur et mobile.",
     "fiction": "Exemple illustratif · Clinique Aurora fictive",
     "portfolio": "Portfolio de sites",
     "portfolioTitle": "Sites créés par Ravyt.",
-    "portfolioIntro": "Découvrez nos projets existants. Les sites publiés et les démonstrations conceptuelles sont identifiés.",
+    "portfolioIntro": "Découvrez les sites publiés et démonstrations identifiées. Les projets complexes et fonctions supplémentaires ne sont pas automatiquement inclus dans le forfait annuel One Page.",
     "teamTitle": "Vous échangez avec les personnes qui réalisent le travail.",
     "processTitle": "Du premier échange au site publié.",
     "steps": [
@@ -60,7 +60,7 @@ export const homeCopy = {
       ],
       [
         "Suivi",
-        "Nous maintenons le site et travaillons les améliorations pendant 12 mois."
+        "Nous maintenons l’infrastructure technique pendant 12 mois. Les petites modifications suivent le contrat ; le SEO et Google sont optimisés initialement."
       ]
     ],
     "faq": "Ce que vous devez savoir.",
@@ -69,14 +69,14 @@ export const homeCopy = {
   },
   "es": {
     "hero": [
-      "Tu trabajo bien presentado.",
-      "Tu contacto fácil de encontrar."
+      "Sitios profesionales y",
+      "presencia digital en Google."
     ],
     "preview": "Tu sitio en ordenador y móvil.",
     "fiction": "Ejemplo ilustrativo · Clínica Aurora ficticia",
     "portfolio": "Portafolio de sitios",
     "portfolioTitle": "Sitios creados por Ravyt.",
-    "portfolioIntro": "Consulta nuestros proyectos existentes. Los sitios publicados y las demostraciones conceptuales están identificados.",
+    "portfolioIntro": "Consulta sitios publicados y demostraciones identificadas. Los proyectos complejos y funciones adicionales no están automáticamente incluidos en el plan anual One Page.",
     "teamTitle": "Hablas con quienes realizan el trabajo.",
     "processTitle": "De la primera conversación al sitio publicado.",
     "steps": [
@@ -94,7 +94,7 @@ export const homeCopy = {
       ],
       [
         "Acompañamiento",
-        "Mantenemos el sitio y trabajamos las mejoras durante 12 meses."
+        "Mantenemos la infraestructura técnica durante 12 meses. Los pequeños cambios siguen el contrato; SEO y Google reciben optimización inicial."
       ]
     ],
     "faq": "Lo que necesitas saber.",
