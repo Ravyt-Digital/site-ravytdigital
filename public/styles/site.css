@@ -895,3 +895,49 @@ h1,h2,h3{overflow-wrap:break-word}.insights-section h2{font-size:clamp(30px,4vw,
 
 .specialist-page .section-kicker{color:#72503d}
 .rv-page-hero .content-breadcrumbs{color:#d2d7d8}
+
+/* Ravyt One Page: one navigation and one contact channel. */
+.op-page section[id],.op-legal details[id]{scroll-margin-top:100px}
+.op-header{position:sticky;top:0;z-index:80}
+.op-logo{width:150px;height:auto;display:block}
+.op-mobile-menu{display:none}
+.op-hero-price{font-size:16px;line-height:1.6;margin:24px 0}
+.op-hero-price strong{display:block;font-size:24px;color:var(--petroleum);margin-bottom:4px}
+.op-plan{background:#f3f0eb}
+.op-deliveries{display:grid;gap:22px;margin-top:32px}
+.op-deliveries article{display:flex;gap:16px;align-items:flex-start}
+.op-deliveries article>span{color:var(--copper);font-size:14px;letter-spacing:.08em;padding-top:5px}
+.op-deliveries h3{font-size:19px;margin:0 0 6px}
+.op-deliveries p{margin:0;line-height:1.7}
+.op-price{align-self:start;position:sticky;top:116px}
+.op-price .rv-price-main{margin-top:24px}
+.op-price .rv-button{display:flex;justify-content:space-between;margin:24px 0 18px}
+.op-scope-note{font-size:14px;line-height:1.8;color:#5b6062;margin-top:26px;max-width:860px}
+.op-projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:36px}
+.op-projects article{min-width:0}
+.op-projects img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #1a1c1e1c;margin-bottom:22px}
+.op-projects h3{font-size:23px;margin:8px 0 12px}
+.op-projects p{line-height:1.7}
+.op-team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:32px}
+.op-team article{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;align-items:start}
+.op-team img{width:120px;height:160px;object-fit:cover;object-position:top;border-radius:12px}
+.op-team h3{font-size:24px;margin:0 0 12px}
+.op-team p{line-height:1.75}
+.op-team .rv-label{font-size:11px}
+.op-faq{background:#f3f0eb}
+.op-contact{background:var(--paper)}
+.op-contact .rv-contact-copy>p{line-height:1.8}
+.op-footer{padding:42px 0 25px}
+.op-footer-top{display:flex;justify-content:space-between;gap:24px;align-items:center;padding-bottom:24px}
+.op-footer-top img{width:180px;height:auto}
+.op-footer-top p{font-size:14px;line-height:1.8;text-align:right}
+.op-legal{border-top:1px solid #1a1c1e25}
+.op-legal details{border-bottom:1px solid #1a1c1e25;padding:18px 0}
+.op-legal summary{font-size:14px;cursor:pointer;font-weight:600}
+.op-legal details>div{max-width:850px;padding-top:10px}
+.op-legal p{font-size:14px;line-height:1.85}
+.op-legal a{text-decoration:underline;text-underline-offset:3px}
+.op-company{display:flex;justify-content:space-between;gap:24px;margin-top:22px;font-size:11px;line-height:1.8;align-items:end}
+.op-company p{margin:0}
+@media(max-width:900px){.op-header .desktop-nav{display:none}.op-mobile-menu{display:block;position:relative}.op-mobile-menu summary{cursor:pointer;list-style:none;color:white;font-size:14px;display:flex;gap:14px;align-items:center}.op-mobile-menu summary::-webkit-details-marker{display:none}.op-mobile-menu nav{position:absolute;right:0;top:35px;width:210px;display:grid;gap:0;background:var(--petroleum);border-radius:10px;box-shadow:0 8px 30px #0003;padding:12px}.op-mobile-menu nav a{display:block;padding:12px;color:white;font-size:15px}.op-team{gap:28px}.op-team article{grid-template-columns:85px minmax(0,1fr);gap:16px}.op-team img{width:85px;height:120px}.op-price{position:static}}
+@media(max-width:700px){.op-logo{width:130px}.op-projects,.op-team{grid-template-columns:1fr;gap:34px}.op-team article{grid-template-columns:100px minmax(0,1fr)}.op-team img{width:100px;height:145px}.op-team h3{font-size:22px}.op-footer-top{align-items:flex-start;flex-direction:column}.op-footer-top p{text-align:left;margin:0}.op-company{flex-direction:column;align-items:flex-start;gap:16px}.op-hero-price strong{font-size:22px}.op-contact .rv-contact-grid{gap:32px}}

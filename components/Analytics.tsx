@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { destinationEvent, type AnalyticsEvent } from "@/lib/analytics";
+import { type AnalyticsEvent } from "@/lib/analytics";
 
 import {savedConsent} from "@/lib/privacy-consent";
 
@@ -121,22 +121,13 @@ export default function Analytics() {
       const anchor = event.target instanceof Element ? event.target.closest("a") : null;
       if (!anchor) return;
       const href = anchor.getAttribute("href") ?? "";
-      if (href.startsWith("https://wa.me/")) { send("whatsapp_click", path); return trackMeta("Contact"); }
-      if (href.startsWith("mailto:")) { send("email_click", path); return trackMeta("Contact"); }
-      if (href.startsWith("tel:")) { send("phone_click", path); return trackMeta("Contact"); }
-      try {
-        const url = new URL(href, window.location.href);
-        const destination = url.pathname.replace(/\/$/, "") || "/";
-        const targetEvent = url.origin === window.location.origin ? destinationEvent(destination) : null;
-        if (targetEvent && destination !== path) return send(targetEvent, path, destination);
-      } catch { /* Invalid links do not produce measurement events. */ }
-      if (anchor.dataset.track === "primary_cta_click") send("primary_cta_click", path);
+      if (href === '#contato') send("primary_cta_click", path);
     };
     document.addEventListener("click", click);
     return () => document.removeEventListener("click", click);
   }, [path]);
   useEffect(() => {
-    const lead = () => trackMeta("Lead");
+    const lead = () => { send("form_submit", path); trackMeta("Lead"); };
     window.addEventListener("ravyt:lead", lead);
     return () => window.removeEventListener("ravyt:lead", lead);
   }, []);

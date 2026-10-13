@@ -1,18 +1,2 @@
-export const servicePaths = [
-  "/seo", "/google-meu-negocio", "/sites",
-  "/criacao-de-sites-online",
-] as const;
-export const quotePaths = [
-  "/quanto-custa-criar-um-site",
-] as const;
-export const analyticsEvents = [
-  "page_view", "whatsapp_click", "email_click", "phone_click", "primary_cta_click",
-  "service_page_click", "quote_page_click",
-] as const;
+export const analyticsEvents = ["page_view", "primary_cta_click", "form_submit"] as const;
 export type AnalyticsEvent = typeof analyticsEvents[number];
-
-export function destinationEvent(path: string): AnalyticsEvent | null {
-  if (servicePaths.some(item => item === path)) return "service_page_click";
-  if (quotePaths.some(item => item === path)) return "quote_page_click";
-  return null;
-}

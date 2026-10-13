@@ -1,9 +1,0 @@
-import Link from 'next/link';
-import * as PT from '@/components/BlogChrome';
-import * as EN from '@/locales/en/components/BlogChrome';
-import * as FR from '@/locales/fr/components/BlogChrome';
-import * as ES from '@/locales/es/components/BlogChrome';
-import {BrandCTA,BrandOffer,BrandFinal} from '@/components/BrandContent';
-import {brandCopy,type SiteLanguage} from '@/lib/brand-copy';
-import {offerCopy} from '@/lib/offer-copy';
-export default function OfferDetailPage({lang='pt',kind}:{lang?:SiteLanguage;kind:'site'|'price'}){const c=brandCopy[lang],o=offerCopy[lang],prefix=lang==='pt'?'':'/'+lang;const {BlogHeader,BlogFooter}={pt:PT,en:EN,fr:FR,es:ES}[lang];return <><BlogHeader current="sites"/><main id="conteudo" tabIndex={-1} className="rv"><section className="rv-page-hero"><div className="shell"><p className="rv-label">Ravyt Digital · {c.remote}</p><h1>{kind==='site'?o.siteTitle:o.priceTitle}</h1><p className="rv-lead">{kind==='site'?o.siteLead:o.priceLead}</p><BrandCTA lang={lang}/></div></section><section className="rv-section"><div className="shell rv-split"><div><h2>{o.scopeTitle}</h2><p className="rv-intro">{o.scopeText}</p><p className="rv-focus-online">{c.online}</p></div><div><h2>{o.extraTitle}</h2><p className="rv-intro">{o.extraText}</p><nav className="rv-service-links" aria-label={o.links}><Link href={prefix+'/sites'}>{lang==='en'?'Websites':lang==='es'?'Sitios web':'Sites'} →</Link><Link href={prefix+'/seo'}>SEO →</Link><Link href={prefix+'/google-meu-negocio'}>Google →</Link><Link href={prefix+'/blog'}>Blog →</Link></nav></div></div></section><BrandOffer lang={lang}/><section className="rv-section"><div className="shell rv-split"><h2>{o.faqTitle}</h2><div className="rv-faq">{o.faq.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></div></section><BrandFinal lang={lang}/></main><BlogFooter/></>;}

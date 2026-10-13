@@ -1,12 +1,13 @@
 'use client';
 
 
-import {PriceText} from "@/components/i18n/Regional";
-import Link from 'next/link';
+
+
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { readUtms, utmNames, type UtmName } from '@/lib/utm';
 
-const services = ['Google', 'SEO', 'Criação de Sites'] as const;
+const services = ['Site profissional', 'Presença inicial no Google', 'SEO inicial'] as const;
+function PriceText({children}:{children:React.ReactNode}){return <>{children}</>;}
 type Field = 'name' | 'email' | 'phone' | 'message' | 'services';
 type Errors = Partial<Record<Field, string>>;
 type Feedback = 'idle' | 'sending' | 'success' | 'error';
@@ -50,8 +51,8 @@ export default function ContactForm() {
     if (!name) next.name = 'Informe seu nome.';
     if (!email) next.email = 'Informe seu e-mail.';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = 'Informe um e-mail válido.';
-    if (!phone) next.phone = 'Informe seu WhatsApp.';
-    if (!selected.length) next.services = 'Selecione pelo menos um serviço.';
+    if (phone && phone.replace(/\D/g,'').length < 8) next.phone = 'Confira o telefone informado.';
+
     if (!message) next.message = 'Conte um pouco sobre seu projeto.';
     setErrors(next);
     setFeedback('idle');
@@ -96,8 +97,9 @@ export default function ContactForm() {
     }
   }
 
-  return <form ref={formRef} id="contato-form" className="rv-contact-form" action="https://api.web3forms.com/submit" method="POST" onSubmit={submit} noValidate>
+  return <form ref={formRef} id="contato-form" className="rv-contact-form" action="https://api.web3forms.com/submit" method="POST" onSubmit={submit}>
     <input type="hidden" name="access_key" value="12456711-3ce4-4bee-bdf2-30d72e95328c" />
+    <input type="hidden" name="redirect" value="https://ravytdigital.com/?enviado=1#contato" />
     <input type="hidden" name="subject" value="Novo lead pelo site da Ravyt Digital" />
     {<PriceText>{utmNames.map(key => <input key={key} type="hidden" name={key} value={utm[key]} readOnly />)}</PriceText>}
     <input type="hidden" name="page_url" value={origin.page_url} readOnly />
@@ -107,16 +109,16 @@ export default function ContactForm() {
       <div className="rv-contact-field"><label htmlFor="contact-name">Nome <span aria-hidden="true">*</span></label><input id="contact-name" name="name" type="text" autoComplete="name" maxLength={100} required aria-invalid={!!errors.name} aria-describedby={errors.name ? 'contact-name-error' : undefined} onChange={() => clearError('name')} />{<PriceText>{errors.name && <span className="rv-contact-error" id="contact-name-error">{<PriceText>{errors.name}</PriceText>}</span>}</PriceText>}</div>
       <div className="rv-contact-field"><label htmlFor="contact-company">Nome profissional ou do seu espaço</label><input id="contact-company" name="company" type="text" autoComplete="organization" maxLength={150} /></div>
       <div className="rv-contact-field"><label htmlFor="contact-email">E-mail <span aria-hidden="true">*</span></label><input id="contact-email" name="email" type="email" autoComplete="email" maxLength={150} required aria-invalid={!!errors.email} aria-describedby={errors.email ? 'contact-email-error' : undefined} onChange={() => clearError('email')} />{<PriceText>{errors.email && <span className="rv-contact-error" id="contact-email-error">{<PriceText>{errors.email}</PriceText>}</span>}</PriceText>}</div>
-      <div className="rv-contact-field"><label htmlFor="contact-phone">WhatsApp <span aria-hidden="true">*</span></label><input id="contact-phone" name="phone" type="tel" autoComplete="tel" maxLength={40} required aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'contact-phone-error' : undefined} onChange={() => clearError('phone')} />{<PriceText>{errors.phone && <span className="rv-contact-error" id="contact-phone-error">{<PriceText>{errors.phone}</PriceText>}</span>}</PriceText>}</div>
+      <div className="rv-contact-field"><label htmlFor="contact-phone">Telefone (opcional)</label><input id="contact-phone" name="phone" type="tel" autoComplete="tel" maxLength={40} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'contact-phone-error' : undefined} onChange={() => clearError('phone')} />{<PriceText>{errors.phone && <span className="rv-contact-error" id="contact-phone-error">{<PriceText>{errors.phone}</PriceText>}</span>}</PriceText>}</div>
     </div>
     <fieldset className="rv-contact-services" aria-invalid={!!errors.services} aria-describedby={errors.services ? 'contact-services-error' : undefined}>
-      <legend>Quais serviços você procura? <span aria-hidden="true">*</span></legend>
+      <legend>O que você precisa organizar? (opcional)</legend>
       <div className="rv-contact-options">{<PriceText>{services.map(service => <label className="rv-contact-option" key={service}><input type="checkbox" name="services[]" value={service} checked={selected.includes(service)} onChange={() => toggleService(service)} /><span className="rv-contact-check" aria-hidden="true">✓</span><span>{<PriceText>{service}</PriceText>}</span></label>)}</PriceText>}</div>
       {<PriceText>{errors.services && <span className="rv-contact-error" id="contact-services-error">{<PriceText>{errors.services}</PriceText>}</span>}</PriceText>}
     </fieldset>
     <div className="rv-contact-field rv-contact-message"><label htmlFor="contact-message">Conte um pouco sobre seu projeto <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" rows={6} required maxLength={4000} placeholder="Explique brevemente o que você precisa, seus objetivos ou qualquer informação que possa nos ajudar a entender melhor seu projeto." aria-invalid={!!errors.message} aria-describedby={errors.message ? 'contact-message-error' : undefined} onChange={() => clearError('message')} />{<PriceText>{errors.message && <span className="rv-contact-error" id="contact-message-error">{<PriceText>{errors.message}</PriceText>}</span>}</PriceText>}</div>
     <button className="rv-button rv-contact-submit" type="submit" disabled={feedback === 'sending'}>{<PriceText>{feedback === 'sending' ? 'Enviando...' : 'Enviar mensagem'}</PriceText>} <span aria-hidden="true">↗</span></button>
-    <div className="rv-contact-feedback" role="status" aria-live="polite" aria-atomic="true">{<PriceText>{feedback === 'success' && <div className="rv-contact-success"><strong>Mensagem enviada com sucesso.</strong><p>Recebemos seus dados e entraremos em contato em breve.</p></div>}</PriceText>}{<PriceText>{feedback === 'error' && <p className="rv-contact-failure">Não foi possível enviar sua mensagem agora. Tente novamente em alguns instantes.</p>}</PriceText>}</div>
-    <p className="rv-contact-consent">Ao enviar este formulário, você concorda que a Ravyt Digital utilize os dados informados para entrar em contato sobre sua solicitação. Consulte a <Link href="/politica-de-privacidade">Política de Privacidade</Link>.</p>
+    <div className="rv-contact-feedback" role="status" aria-live="polite" aria-atomic="true">{<PriceText>{feedback === 'success' && <div className="rv-contact-success"><strong>Mensagem enviada com sucesso.</strong><p>Sua mensagem foi recebida pelo serviço de envio. A Ravyt responderá pelo contato informado.</p></div>}</PriceText>}{<PriceText>{feedback === 'error' && <p className="rv-contact-failure">Não foi possível enviar sua mensagem agora. Tente novamente em alguns instantes.</p>}</PriceText>}</div>
+    <p className="rv-contact-consent">Ao enviar este formulário, você concorda que a Ravyt Digital utilize os dados informados para entrar em contato sobre sua solicitação. Consulte a <a href="#privacidade">Política de Privacidade</a>.</p>
   </form>;
 }
