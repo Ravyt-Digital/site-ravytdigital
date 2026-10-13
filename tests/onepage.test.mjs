@@ -30,3 +30,9 @@ test('WebP images, heading hierarchy and structured data remain valid',async()=>
  let organization=0;for(const [,json]of h.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)){const d=JSON.parse(json);for(const x of d['@graph']??[d]){if(x['@type']==='Organization')organization++;assert.doesNotMatch(JSON.stringify(x),/mailto:|wa\.me|"telephone"|"email"|\/autores\/|\/sobre#/);}}
  assert.equal(organization,1);assert.doesNotMatch(h,/hrefLang=|application\/rss/);
 });
+test('retired marketing artifacts and public descriptions are absent from the source and build',()=>{
+ for(const p of ['docs','examples','public/ai.txt','public/blog','public/hero','public/mockups/cartao-nfc.webp','lib/webp-variants.ts'])assert.equal(existsSync(p),false,p);
+ const css=readFileSync('app/globals.css','utf8');assert.doesNotMatch(css,/whatsapp|nfc|footer-social|checklist-page|blog-nav|blog-site-header/i);
+ const llms=readFileSync('public/llms.txt','utf8');assert.doesNotMatch(llms,/NFC|moeda selecionada|otimizações contínuas|\/blog|\/sites\b|\/diagnostico/);
+ for(const p of ['dist/client/ai.txt','dist/client/blog','dist/client/hero'])assert.equal(existsSync(p),false,p);
+});
