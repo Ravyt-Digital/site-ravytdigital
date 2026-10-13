@@ -315,6 +315,10 @@ h1, h2, h3{overflow-wrap:break-word}
 .op-team .rv-label{font-size:11px}
 .op-faq{background:#f3f0eb}
 .op-contact{background:var(--paper)}
+.rv-home-focused #como-funciona .rv-process-grid li{padding:28px;min-width:0}
+.rv-home-focused #como-funciona .rv-process-grid p{color:#505458}
+@media(max-width:700px){.rv-home-focused #como-funciona .rv-process-grid li{padding:24px}}
+@media(max-width:550px){.rv-home-focused #como-funciona .rv-process-grid{grid-template-columns:1fr}}
 .op-contact .rv-contact-copy>p{line-height:1.8}
 .op-footer{padding:42px 0 25px}
 .op-footer-top{display:flex;justify-content:space-between;gap:24px;align-items:center;padding-bottom:24px}
