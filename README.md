@@ -26,4 +26,4 @@ O build inclui validação do artefato. CSS publicado em `public/styles/site.css
 
 ## Limites de validação
 
-Testes de submissão usam respostas simuladas de sucesso/falha, sem disparar mensagens reais. Confirmação na caixa de entrada exige teste identificado e autorizado do titular. A política não é garantia de conformidade jurídica. A rotina operacional de exclusão deve ser executada pela Ravyt, também nos prestadores.
+Testes automatizados de submissão usam respostas simuladas de sucesso/falha. Teste controlado autorizado `RAVYT-QA-20261014-0112`, com dados sintéticos e instrução de não contatar, recebeu HTTP 200 e `success: true` da API. O retorno confirmou todos os campos, mas o recebimento no e-mail destinatário não foi confirmado: o Gmail conectado é de outra conta e não apresentou o teste na busca. O envio AJAX mantém endpoint, chave e destinatário; o payload foi padronizado para JSON, formato confirmado no teste, evitando a resposta não JSON encontrada na tentativa multipart. A política não é garantia de conformidade jurídica. A rotina operacional de exclusão deve ser executada pela Ravyt, também nos prestadores.
