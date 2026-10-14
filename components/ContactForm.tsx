@@ -1,124 +1,33 @@
 'use client';
-
-
-
-
-import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { readUtms, utmNames, type UtmName } from '@/lib/utm';
-
-const services = ['Site profissional', 'Presença inicial no Google', 'SEO inicial'] as const;
-function PriceText({children}:{children:React.ReactNode}){return <>{children}</>;}
-type Field = 'name' | 'email' | 'phone' | 'message' | 'services';
-type Errors = Partial<Record<Field, string>>;
-type Feedback = 'idle' | 'sending' | 'success' | 'error';
-const emptyUtms = Object.fromEntries(utmNames.map(name => [name, ''])) as Record<UtmName, string>;
-
-export default function ContactForm() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const sendingRef = useRef(false);
-  const [selected, setSelected] = useState<string[]>([]);
-  const [errors, setErrors] = useState<Errors>({});
-  const [feedback, setFeedback] = useState<Feedback>('idle');
-  const [utm, setUtm] = useState(emptyUtms);
-  const [origin, setOrigin] = useState({ page_url: '', referrer: '' });
-
-  useEffect(() => {
-    setUtm(readUtms());
-    setOrigin({ page_url: window.location.href, referrer: document.referrer });
-  }, []);
-
-  function toggleService(service: string) {
-    setSelected(previous => previous.includes(service) ? previous.filter(item => item !== service) : [...previous, service]);
-    setErrors(previous => ({ ...previous, services: undefined }));
-    if (feedback !== 'sending') setFeedback('idle');
-  }
-
-  function clearError(field: Field) {
-    if (errors[field]) setErrors(previous => ({ ...previous, [field]: undefined }));
-    if (feedback === 'error') setFeedback('idle');
-  }
-
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (sendingRef.current) return;
-    const form = event.currentTarget;
-    const values = new FormData(form);
-    const name = String(values.get('name') || '').trim();
-    const email = String(values.get('email') || '').trim();
-    const phone = String(values.get('phone') || '').trim();
-    const message = String(values.get('message') || '').trim();
-    const next: Errors = {};
-    if (!name) next.name = 'Informe seu nome.';
-    if (!email) next.email = 'Informe seu e-mail.';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = 'Informe um e-mail válido.';
-    if (phone && phone.replace(/\D/g,'').length < 8) next.phone = 'Confira o telefone informado.';
-
-    if (!message) next.message = 'Conte um pouco sobre seu projeto.';
-    setErrors(next);
-    setFeedback('idle');
-    const first = (Object.keys(next) as Field[])[0];
-    if (first) {
-      const selector = first === 'services' ? 'input[name="services[]"]' : `[name="${first}"]`;
-      form.querySelector<HTMLElement>(selector)?.focus();
-      return;
-    }
-
-    values.set('name', name);
-    values.set('email', email);
-    values.set('phone', phone);
-    values.set('message', message);
-    // Web3Forms expects a comma-separated value for multiple checkboxes in AJAX submissions.
-    values.set('services[]', selected.join(', '));
-    const currentUtms = readUtms();
-    setUtm(currentUtms);
-    // Keep campaign attribution when present; omit empty fields from the email.
-    for (const key of utmNames) {
-      if (currentUtms[key]) values.set(key, currentUtms[key]);
-      else values.delete(key);
-    }
-    values.set('page_url', window.location.href);
-    values.set('referrer', document.referrer);
-
-    sendingRef.current = true;
-    setFeedback('sending');
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: values });
-      const result = await response.json() as { success?: boolean };
-      if (!response.ok || result?.success !== true) throw new Error('Submission failed');
-      formRef.current?.reset();
-      setSelected([]);
-      setErrors({});
-      setFeedback('success');
-      window.dispatchEvent(new CustomEvent('ravyt:lead'));
-    } catch {
-      setFeedback('error');
-    } finally {
-      sendingRef.current = false;
-    }
-  }
-
-  return <form ref={formRef} id="contato-form" className="rv-contact-form" action="https://api.web3forms.com/submit" method="POST" onSubmit={submit}>
-    <input type="hidden" name="access_key" value="12456711-3ce4-4bee-bdf2-30d72e95328c" />
-    <input type="hidden" name="redirect" value="https://ravytdigital.com/?enviado=1#contato" />
-    <input type="hidden" name="subject" value="Novo lead pelo site da Ravyt Digital" />
-    {<PriceText>{utmNames.map(key => <input key={key} type="hidden" name={key} value={utm[key]} readOnly />)}</PriceText>}
-    <input type="hidden" name="page_url" value={origin.page_url} readOnly />
-    <input type="hidden" name="referrer" value={origin.referrer} readOnly />
-    <input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="rv-honeypot" />
-    <div className="rv-contact-fields">
-      <div className="rv-contact-field"><label htmlFor="contact-name">Nome <span aria-hidden="true">*</span></label><input id="contact-name" name="name" type="text" autoComplete="name" maxLength={100} required aria-invalid={!!errors.name} aria-describedby={errors.name ? 'contact-name-error' : undefined} onChange={() => clearError('name')} />{<PriceText>{errors.name && <span className="rv-contact-error" id="contact-name-error">{<PriceText>{errors.name}</PriceText>}</span>}</PriceText>}</div>
-      <div className="rv-contact-field"><label htmlFor="contact-company">Nome profissional ou do seu espaço</label><input id="contact-company" name="company" type="text" autoComplete="organization" maxLength={150} /></div>
-      <div className="rv-contact-field"><label htmlFor="contact-email">E-mail <span aria-hidden="true">*</span></label><input id="contact-email" name="email" type="email" autoComplete="email" maxLength={150} required aria-invalid={!!errors.email} aria-describedby={errors.email ? 'contact-email-error' : undefined} onChange={() => clearError('email')} />{<PriceText>{errors.email && <span className="rv-contact-error" id="contact-email-error">{<PriceText>{errors.email}</PriceText>}</span>}</PriceText>}</div>
-      <div className="rv-contact-field"><label htmlFor="contact-phone">Telefone (opcional)</label><input id="contact-phone" name="phone" type="tel" autoComplete="tel" maxLength={40} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'contact-phone-error' : undefined} onChange={() => clearError('phone')} />{<PriceText>{errors.phone && <span className="rv-contact-error" id="contact-phone-error">{<PriceText>{errors.phone}</PriceText>}</span>}</PriceText>}</div>
-    </div>
-    <fieldset className="rv-contact-services" aria-invalid={!!errors.services} aria-describedby={errors.services ? 'contact-services-error' : undefined}>
-      <legend>O que você precisa organizar? (opcional)</legend>
-      <div className="rv-contact-options">{<PriceText>{services.map(service => <label className="rv-contact-option" key={service}><input type="checkbox" name="services[]" value={service} checked={selected.includes(service)} onChange={() => toggleService(service)} /><span className="rv-contact-check" aria-hidden="true">✓</span><span>{<PriceText>{service}</PriceText>}</span></label>)}</PriceText>}</div>
-      {<PriceText>{errors.services && <span className="rv-contact-error" id="contact-services-error">{<PriceText>{errors.services}</PriceText>}</span>}</PriceText>}
-    </fieldset>
-    <div className="rv-contact-field rv-contact-message"><label htmlFor="contact-message">Conte um pouco sobre seu projeto <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" rows={6} required maxLength={4000} placeholder="Explique brevemente o que você precisa, seus objetivos ou qualquer informação que possa nos ajudar a entender melhor seu projeto." aria-invalid={!!errors.message} aria-describedby={errors.message ? 'contact-message-error' : undefined} onChange={() => clearError('message')} />{<PriceText>{errors.message && <span className="rv-contact-error" id="contact-message-error">{<PriceText>{errors.message}</PriceText>}</span>}</PriceText>}</div>
-    <button className="rv-button rv-contact-submit" type="submit" disabled={feedback === 'sending'}>{<PriceText>{feedback === 'sending' ? 'Enviando...' : 'Enviar mensagem'}</PriceText>} <span aria-hidden="true">↗</span></button>
-    <div className="rv-contact-feedback" role="status" aria-live="polite" aria-atomic="true">{<PriceText>{feedback === 'success' && <div className="rv-contact-success"><strong>Mensagem enviada com sucesso.</strong><p>Sua mensagem foi recebida pelo serviço de envio. A Ravyt responderá pelo contato informado.</p></div>}</PriceText>}{<PriceText>{feedback === 'error' && <p className="rv-contact-failure">Não foi possível enviar sua mensagem agora. Tente novamente em alguns instantes.</p>}</PriceText>}</div>
-    <p className="rv-contact-consent">Ao enviar este formulário, você concorda que a Ravyt Digital utilize os dados informados para entrar em contato sobre sua solicitação. Consulte a <a href="#privacidade">Política de Privacidade</a>.</p>
-  </form>;
+import {useRef,useState,type FormEvent} from 'react';
+import {readUtms} from '@/lib/utm';
+import {contactErrors,formatPhone,leadFields,submitLead,type DiagnosticResult} from '@/lib/diagnostic.mjs';
+export default function ContactForm({answers,result}:{answers:number[];result:DiagnosticResult}){
+ const formRef=useRef<HTMLFormElement>(null),sending=useRef(false);
+ const [phone,setPhone]=useState(''),[errors,setErrors]=useState<Partial<Record<'name'|'phone'|'consent',string>>>({}),[status,setStatus]=useState<'idle'|'sending'|'success'|'error'>('idle');
+ async function submit(event:FormEvent<HTMLFormElement>){
+  event.preventDefault();if(sending.current)return;
+  const form=event.currentTarget,values=new FormData(form);
+  if(values.get('botcheck'))return;
+  const contact={name:String(values.get('name')||''),phone,profile:String(values.get('profile')||'')};
+  const next=contactErrors({...contact,consent:values.get('consent')==='on'});setErrors(next);
+  const first=Object.keys(next)[0];if(first){form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();return;}
+  sending.current=true;setStatus('sending');
+  try{await submitLead(leadFields(answers,result,contact,readUtms()));setStatus('success');window.dispatchEvent(new CustomEvent('ravyt:lead'));}
+  catch{setStatus('error');}finally{sending.current=false;}
+ }
+ if(status==='success')return <section className="dg-success" role="status" aria-live="polite"><span className="dg-success-icon" aria-hidden="true">✓</span><h2>Sua solicitação foi enviada!</h2><p>Recebemos suas informações. A equipe da Ravyt poderá entrar em contato pelo WhatsApp informado para conversar sobre seu projeto.</p></section>;
+ return <section className="dg-contact" aria-labelledby="contact-title"><p className="dg-eyebrow">Próximo passo</p><h2 id="contact-title">Solicite um contato de <em>Ytala Cabral.</em></h2><p>Agora que conhecemos um pouco mais sobre o seu trabalho, você pode solicitar uma conversa para entender quais melhorias fazem sentido para sua presença digital.</p>
+ <form ref={formRef} id="contato-form" action="https://api.web3forms.com/submit" method="POST" onSubmit={submit} noValidate>
+ <input type="hidden" name="access_key" value="12456711-3ce4-4bee-bdf2-30d72e95328c"/><input type="hidden" name="subject" value="Novo Diagnóstico Ravyt | Tianguá"/><input type="hidden" name="from_name" value="Diagnóstico Ravyt Digital"/><input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="dg-honeypot"/>
+ <fieldset disabled={status==='sending'}><legend className="sr-only">Seus dados de contato</legend>
+ <div className="dg-fields"><div><label htmlFor="lead-name">Nome <span>(obrigatório)</span></label><input id="lead-name" name="name" autoComplete="name" required maxLength={100} aria-invalid={!!errors.name} aria-describedby={errors.name?'name-error':undefined} onChange={()=>setErrors(e=>({...e,name:undefined}))}/>{errors.name&&<p className="dg-error" id="name-error">{errors.name}</p>}</div>
+ <div><label htmlFor="lead-phone">WhatsApp <span>(obrigatório)</span></label><input id="lead-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel-national" placeholder="(88) 99999-9999" required maxLength={15} value={phone} onChange={e=>{setPhone(formatPhone(e.target.value));setErrors(v=>({...v,phone:undefined}));}} aria-invalid={!!errors.phone} aria-describedby={errors.phone?'phone-help phone-error':'phone-help'}/><small id="phone-help">Informe um celular brasileiro com DDD.</small>{errors.phone&&<p className="dg-error" id="phone-error">{errors.phone}</p>}</div>
+ <div className="dg-field-wide"><label htmlFor="lead-profile">Site ou rede social profissional <span>(opcional)</span></label><input id="lead-profile" name="profile" type="text" maxLength={250} placeholder="https://seusite.com.br ou @seuperfil" autoCapitalize="none" spellCheck={false}/></div></div>
+ <label className="dg-consent"><input name="consent" type="checkbox" required aria-invalid={!!errors.consent} aria-describedby={errors.consent?'consent-error':undefined} onChange={()=>setErrors(e=>({...e,consent:undefined}))}/><span>Autorizo a Ravyt Digital a utilizar os dados informados para responder à minha solicitação e entrar em contato sobre os serviços apresentados, conforme a <a href="#privacidade" onClick={()=>{const el=document.getElementById('privacidade');if(el instanceof HTMLDetailsElement)el.open=true;}}>Política de Privacidade</a>.</span></label>
+ {errors.consent&&<p className="dg-error" id="consent-error">{errors.consent}</p>}
+ <button className="dg-button" type="submit">{status==='sending'?'Enviando solicitação…':'Solicitar contato de Ytala'}<span aria-hidden="true">↗</span></button>
+ </fieldset><div role="status" aria-live="polite">{status==='error'&&<p className="dg-error dg-send-error">Não foi possível enviar sua solicitação agora. Suas respostas foram mantidas. Tente novamente em alguns instantes.</p>}</div>
+ <p className="dg-form-note">Seus dados são enviados somente ao solicitar contato. Não envie senhas ou informações sensíveis.</p>
+ </form></section>;
 }

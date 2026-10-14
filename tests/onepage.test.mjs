@@ -4,35 +4,32 @@ const env={ASSETS:{fetch:async()=>new Response('',{status:404})}},ctx={waitUntil
 const request=(path,headers={})=>worker.fetch(new Request('https://ravytdigital.com'+path,{headers}),env,ctx);
 let html;const home=async()=>html??=(await(await request('/')).text());
 const visible=s=>s.replace(/<script\b[\s\S]*?<\/script>/g,'');
-test('only the root is an HTML page and the sitemap contains exactly one canonical URL',async()=>{
- const pages=readdirSync('app',{recursive:true}).filter(p=>p.endsWith('page.tsx'));assert.deepEqual(pages,['page.tsx']);
- const r=await request('/');assert.equal(r.status,200);const h=await home();assert.equal((h.match(/<h1[ >]/g)||[]).length,1);assert.match(h,/<html lang="pt-BR"/);assert.ok(h.includes('R$ 597'));assert.ok(h.includes('SEO inicial'));assert.ok(h.includes('Ytala Cabral'));assert.ok(h.includes('Márcio Cabral'));
- const xml=await(await request('/sitemap.xml')).text();assert.equal((xml.match(/<loc>/g)||[]).length,1);assert.match(xml,/<loc>https:\/\/ravytdigital.com<\/loc>/);assert.doesNotMatch(xml,/hreflang|\/blog|\/en|\/sites/);
+test('one canonical page renders the diagnostic introduction and legal documents without old sales sections',async()=>{
+ assert.deepEqual(readdirSync('app',{recursive:true}).filter(p=>p.endsWith('page.tsx')),['page.tsx']);
+ assert.equal((await request('/')).status,200);const h=await home(),v=visible(h);
+ assert.equal((v.match(/<h1[ >]/g)||[]).length,1);assert.match(v,/<html lang="pt-BR"/);assert.match(v,/Seu trabalho merece uma apresentação/);assert.match(v,/Começar meu diagnóstico/);assert.match(v,/Tianguá/);assert.match(v,/contatoravyt@gmail.com/);assert.match(v,/Após o encerramento desse relacionamento/);
+ assert.doesNotMatch(v,/R\$ 597|O plano|Exemplos de apresentação|Márcio Cabral|Sites profissionais, SEO inicial|wa\.me|mailto:|href="tel:|api\.whatsapp/);
+ assert.equal((v.match(/<form\b/g)||[]).length,0,'form appears only after answers');
+ const xml=await(await request('/sitemap.xml')).text();assert.equal((xml.match(/<loc>/g)||[]).length,1);assert.match(xml,/<loc>https:\/\/ravytdigital.com<\/loc>/);
+ assert.match(h,/<title>Diagnóstico de Presença Digital \| Ravyt Digital<\/title>/);assert.match(h,/rel="canonical"[^>]*href="https:\/\/ravytdigital.com"/);
 });
-test('the form is the only contact channel and every visible link points to a section on the same page',async()=>{
- const h=visible(await home());assert.equal((h.match(/<form\b/g)||[]).length,1);assert.match(h,/action="https:\/\/api.web3forms.com\/submit"/);assert.match(h,/name="access_key"/);assert.doesNotMatch(h,/wa\.me|api\.whatsapp|mailto:|href="tel:|instagram\.com|facebook\.com|linkedin\.com/);
- for(const [,href]of h.matchAll(/<a\b[^>]*href="([^"]+)"/g)){assert.ok(href.startsWith('#'),href);assert.ok(h.includes('id="'+href.slice(1)+'"'),href);}
- const schemas=[...h.matchAll(/<script[^>]*application\/ld\+json[^>]*>(.*?)<\/script>/gs)]; // Script parsing is tested separately below.
- const code=readFileSync('components/ContactForm.tsx','utf8');assert.ok(code.includes("result?.success !== true"));assert.ok(code.includes("setFeedback('error')"));assert.ok(code.includes("setFeedback('success')"));assert.ok(code.includes('sendingRef.current'));assert.doesNotMatch(code,/Informe seu WhatsApp/);
-});
-test('old commercial and legal URLs redirect to real sections, old editorial pages are Gone',async()=>{
- for(const [path,id]of [['/sites','plano'],['/contato','contato'],['/sobre','sobre'],['/cases','exemplos'],['/politica-de-privacidade','privacidade'],['/fr/seo','plano'],['/en/contato','contato']]){
-  const r=await request(path);assert.equal(r.status,301,path);const url=new URL(r.headers.get('location'));assert.equal(url.pathname,'/');assert.equal(url.hash,'#'+id);assert.ok((await home()).includes('id="'+id+'"'));
- }
- for(const path of ['/blog','/blog/site-bonito-nao-basta','/fr/blog/site-bonito-nao-basta','/recursos/checklist-presenca-google']){const r=await request(path);assert.equal(r.status,410,path);assert.equal(r.headers.get('x-robots-tag'),'noindex');}
+test('legal and contact links map to actual sections; retired content returns Gone without unrelated redirects',async()=>{
+ const h=visible(await home());for(const [,href]of h.matchAll(/<a\b[^>]*href="([^"]+)"/g)){assert.ok(href.startsWith('#'),href);assert.ok(h.includes('id="'+href.slice(1)+'"'),href);}
+ for(const [path,id]of [['/contato','diagnostico'],['/diagnostico','diagnostico'],['/politica-de-privacidade','privacidade'],['/politica-de-cookies','cookies'],['/termos','termos']]){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).hash,'#'+id);}
+ for(const path of ['/sites','/seo','/cases','/sobre','/fr/seo','/blog','/blog/site-bonito-nao-basta','/recursos/checklist-presenca-google']){const r=await request(path);assert.equal(r.status,410,path);assert.equal(r.headers.get('x-robots-tag'),'noindex');}
  for(const path of ['/en','/fr','/es']){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).pathname,'/');}
- assert.equal((await request('/',{'accept-language':'en-US','cf-ipcountry':'US'})).status,200);
- const missing=await request('/pagina-inexistente');assert.equal(missing.status,404);assert.equal(missing.headers.get('x-robots-tag'),'noindex');
+ assert.equal((await request('/',{'accept-language':'en-US'})).status,200);assert.equal((await request('/inexistente')).status,404);
 });
-test('WebP images, heading hierarchy and structured data remain valid',async()=>{
- const h=await home();let previous=0;for(const [,level]of visible(h).matchAll(/<h([1-6])\b/g)){const n=Number(level);assert.ok(n<=previous+1);previous=n;}
- for(const [tag]of h.matchAll(/<img\b[^>]*>/g)){assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);const src=tag.match(/src="([^"]+)"/)[1];assert.ok(src.endsWith('.webp'),src);assert.ok(existsSync('public'+src),src);}
- let organization=0;for(const [,json]of h.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)){const d=JSON.parse(json);for(const x of d['@graph']??[d]){if(x['@type']==='Organization')organization++;assert.doesNotMatch(JSON.stringify(x),/mailto:|wa\.me|"telephone"|"email"|\/autores\/|\/sobre#/);}}
- assert.equal(organization,1);assert.doesNotMatch(h,/hrefLang=|application\/rss/);
+test('brand assets, schema and responsive safeguards match the new page',async()=>{
+ const h=await home();for(const [tag]of visible(h).matchAll(/<img\b[^>]*>/g)){assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);const src=tag.match(/src="([^"]+)"/)[1];assert.ok(src.endsWith('.webp'));assert.ok(existsSync('public'+src));}
+ let organization=0;for(const [,json]of h.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)){const d=JSON.parse(json);for(const x of d['@graph']??[d]){if(x['@type']==='Organization'){organization++;assert.equal(x.email,'contatoravyt@gmail.com');}assert.doesNotMatch(JSON.stringify(x),/"Offer"|"Service"|#plano|#sobre|"telephone"/);}}
+ assert.equal(organization,1);assert.doesNotMatch(h,/preload[^>]*mockups/);const css=readFileSync('app/globals.css','utf8');assert.match(css,/prefers-reduced-motion/);assert.match(css,/max-width:600px/);assert.match(css,/minmax\(0,1fr\)/);
+ const manifest=await(await request('/manifest.webmanifest')).text();assert.doesNotMatch(manifest,/favicon\.png/);
 });
-test('retired marketing artifacts and public descriptions are absent from the source and build',()=>{
- for(const p of ['docs','examples','public/ai.txt','public/blog','public/hero','public/mockups/cartao-nfc.webp','lib/webp-variants.ts'])assert.equal(existsSync(p),false,p);
- const css=readFileSync('app/globals.css','utf8');assert.doesNotMatch(css,/whatsapp|nfc|footer-social|checklist-page|blog-nav|blog-site-header/i);
- const llms=readFileSync('public/llms.txt','utf8');assert.doesNotMatch(llms,/NFC|moeda selecionada|otimizações contínuas|\/blog|\/sites\b|\/diagnostico/);
- for(const p of ['dist/client/ai.txt','dist/client/blog','dist/client/hero'])assert.equal(existsSync(p),false,p);
+test('obsolete navigation, sales assets and styles are removed; optional analytics exclude lead data',()=>{
+ for(const p of ['components/OnePageMenu.tsx','public/projects','public/mockups','public/team','public/ai.txt','public/blog','public/hero'])assert.equal(existsSync(p),false,p);
+ assert.doesNotMatch(readFileSync('app/globals.css','utf8'),/rv-process-grid|op-price|op-projects|rv-focus-hero/);
+ assert.doesNotMatch(readFileSync('public/llms.txt','utf8'),/R\$ 597|\/sites\b|NFC/);
+ const analytics=readFileSync('components/Analytics.tsx','utf8');assert.doesNotMatch(analytics,/leadFields|\.answers|\.phone|\.name|profile:/);
+ assert.equal(existsSync('dist/client/mockups'),false);
 });

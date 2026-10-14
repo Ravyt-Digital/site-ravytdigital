@@ -121,7 +121,7 @@ export default function Analytics() {
       const anchor = event.target instanceof Element ? event.target.closest("a") : null;
       if (!anchor) return;
       const href = anchor.getAttribute("href") ?? "";
-      if (href === '#contato') send("primary_cta_click", path);
+      if (href === '#diagnostico') send("primary_cta_click", path);
     };
     document.addEventListener("click", click);
     return () => document.removeEventListener("click", click);

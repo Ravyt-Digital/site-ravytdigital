@@ -3,9 +3,3 @@
 
 /brand/*
   Cache-Control: public, max-age=3600
-
-/projects/portfolio/*
-  Cache-Control: public, max-age=3600
-
-/mockups/*
-  Cache-Control: public, max-age=3600

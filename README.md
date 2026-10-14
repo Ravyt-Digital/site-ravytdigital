@@ -1,32 +1,29 @@
-# Ravyt Digital
+# Ravyt Digital — diagnóstico de presença digital
 
-Site institucional One Page da Ravyt Digital, publicado em https://ravytdigital.com.
+Página única, em português, para campanhas de profissionais liberais e prestadores de serviços de Tianguá e região. Marca, fontes e infraestrutura de publicação preservadas.
 
-## Conteúdo atual
+## Experiência e dados
 
-Uma única página em português apresenta o plano anual de R$ 597, a implantação manual de um site One Page, SEO técnico inicial, configuração inicial do Perfil da Empresa no Google quando elegível e manutenção técnica por 12 meses conforme o contrato.
+`components/Diagnostic.tsx` apresenta cinco perguntas, navegação reversível e resultado preliminar. `lib/diagnostic.mjs` reúne a máquina de estados, critérios de classificação, telefone, payload e envio. Não há consultas automáticas ao Google ou às redes sociais.
 
-Oferta, exemplos de design, processo, responsáveis, dúvidas, privacidade e termos estão em seções da página principal. O formulário é o único canal de contato do site e mantém a integração existente com Web3Forms.
+Classificação: objetivo explícito de Google → B; começando ou sem orientação → C; site e redes existentes → D; apresentação/organização → A. O resultado também apresenta objetivo, dificuldade, percepção sobre Google e região. Compatibilidade é interesse declarado em serviços atendidos; não é aprovação contratual ou elegibilidade do Google.
 
-## Desenvolvimento
+`components/ContactForm.tsx` preserva a chave pública e o endpoint Web3Forms. Envia nome (`name`), WhatsApp (`phone`), perfil opcional (`professional_profile`), cinco campos `diagnostic_*`, `interest_category`, `preliminary_compatibility`, `compatibility_reason`, `contact_consent`, `consent_text`, `privacy_policy_version`, `lead_source`, `submitted_at` e UTMs limitadas. Assunto: `Novo Diagnóstico Ravyt | Tianguá`; nome do remetente: `Diagnóstico Ravyt Digital`. Não envia URL completa ou referrer; eventos de medição não contêm dados de contato ou respostas. O destinatário continua associado à chave existente, sem substituição pelo e-mail institucional. Sucesso somente após resposta positiva do serviço; erro mantém informações para nova tentativa.
 
-- Node.js 22.13 ou superior.
-- `npm run install:ci`: instalação das dependências travadas.
-- `npm run build`: build Vinext e validação do artefato One Page.
-- `npm test`: build e testes do site e da medição consentida.
-- `npm run types:worker`: geração dos tipos do Cloudflare.
+As respostas ficam em memória até o envio; não são gravadas em banco pelo quiz. Ao encerrar o relacionamento, a Ravyt deve excluir dados de suas caixas de e-mail e sistemas, ressalvadas obrigações legais de conservação. O site não executa exclusão nesses prestadores: confirmar procedimento operacional, responsável e alcance dos registros/backups. Canal institucional: contatoravyt@gmail.com.
 
-A identidade do projeto Sites está em `.openai/hosting.json`. O deploy existente do domínio principal usa o Cloudflare Worker `site-ravyt-digital` a partir da branch `main`. Não altere bindings ou configurações de publicação sem necessidade.
+## Publicação e SEO
 
-## Arquitetura
+`app/page.tsx` contém experiência e documentos legais inline. Um único canonical e item de sitemap. Rotas de contato e documentos legais redirecionam para seções equivalentes; páginas comerciais/editoriais retiradas retornam 410. Nunca encaminhar conteúdos sem equivalência para a home.
 
-- `app/page.tsx`: conteúdo da página.
-- `components/ContactForm.tsx`: formulário, validação e retorno do envio.
-- `components/CookieConsent.tsx`: preferências de medição.
-- `app/sitemap.ts`: somente a URL canônica principal.
-- `worker/index.ts`: execução do site e tratamento dos endereços anteriores. Redirecionamentos para seções correspondentes e respostas 410 são regras de compatibilidade, não páginas ou ofertas adicionais.
-- `public/`: apenas os arquivos utilizados pela versão atual e os arquivos técnicos de publicação.
+```sh
+npm run build
+node --test tests/*.test.mjs
+bash scripts/sites-env.sh -- node node_modules/typescript/bin/tsc --noEmit
+```
 
-## Validação
+O build inclui validação do artefato. CSS publicado em `public/styles/site.css` sincronizado por script. `.openai/hosting.json`, bindings e fluxo de Workers/Sites preservados. Métricas opcionais dependem de consentimento.
 
-A confirmação visual ou lógica do formulário não comprova recebimento na caixa de entrada. O feedback de sucesso depende da resposta positiva do serviço de envio. Dados pessoais preenchidos não são enviados nos eventos de medição.
+## Limites de validação
+
+Testes de submissão usam respostas simuladas de sucesso/falha, sem disparar mensagens reais. Confirmação na caixa de entrada exige teste identificado e autorizado do titular. A política não é garantia de conformidade jurídica. A rotina operacional de exclusão deve ser executada pela Ravyt, também nos prestadores.

@@ -1,6 +1,6 @@
 export const CONSENT_KEY = 'ravyt_cookie_consent_v1';
 const RECEIPT_KEY = `${CONSENT_KEY}_receipt`;
-export const CONSENT_VERSION = '2026-10-05';
+export const CONSENT_VERSION = '2026-10-14';
 const MAX_AGE = 180 * 24 * 60 * 60 * 1000;
 export function privacySignalActive() {
  return typeof navigator !== 'undefined' && (navigator as Navigator & {globalPrivacyControl?: boolean}).globalPrivacyControl === true;
