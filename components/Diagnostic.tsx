@@ -4,7 +4,7 @@ import {classify,initialState,questions,quizReducer} from '@/lib/diagnostic.mjs'
 import ContactForm from './ContactForm';
 export default function Diagnostic(){
  const [state,dispatch]=useReducer(quizReducer,initialState),[error,setError]=useState('');const heading=useRef<HTMLHeadingElement>(null),started=useRef(false);
- useEffect(()=>{if(started.current)heading.current?.focus({preventScroll:true});else started.current=true;},[state.step,state.stage]);
+ useEffect(()=>{if(started.current)heading.current?.focus();else started.current=true;},[state.step,state.stage]);
  const completed=state.answers.filter(v=>v!==null).length;
  function next(){if(state.answers[state.step]===null){setError('Selecione uma alternativa para continuar.');return;}setError('');dispatch({type:'next'});}
  if(state.stage==='intro')return <div className="dg-start" id="diagnostico"><button className="dg-button" type="button" onClick={()=>dispatch({type:'start'})}>Começar meu diagnóstico <span aria-hidden="true">↗</span></button><p>Responda algumas perguntas rápidas sobre seu trabalho.</p><div className="dg-start-meta"><span>5 perguntas</span><span>Resultado preliminar</span><span>Sem compromisso</span></div><noscript>Ative o JavaScript para responder ao diagnóstico interativo.</noscript></div>;
