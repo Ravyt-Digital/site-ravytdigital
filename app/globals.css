@@ -66,3 +66,5 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
  .dg-testimonials{padding:8px 0}
  .dg-footer{padding-top:8px}
 }
+
+.dg-review-photo{width:42px;height:42px;flex-shrink:0;border-radius:50%;object-fit:cover;background:#e9efec}
