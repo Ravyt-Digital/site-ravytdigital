@@ -49,3 +49,20 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 @media(prefers-reduced-motion:reduce){.dg-confirmation{animation:none}}
 .dg-stages{margin:40px auto 0;max-width:680px;width:100%}.dg-contact-wrap{width:100%}.dg-contact-wrap[hidden]{display:none}.dg-next-step{margin-top:24px;padding:20px;border-left:3px solid var(--petroleum);background:#fffdf899;border-radius:0 8px 8px 0}.dg-next-step h3{font-size:13px;line-height:1.5;margin:0 0 8px;font-weight:600}.dg-next-step p{font-size:14px;color:#44554c}.dg-result>.dg-result-compatibility{font-size:12px;line-height:1.65;color:#5c6a62}.dg-result-cta{width:100%;margin-top:26px}.dg-result>.dg-back{display:block;margin-top:12px}.dg-contact-back{display:block;margin:14px auto 0}.dg-contact{scroll-margin-top:24px;animation:question-in .2s ease}.dg-contact h2:focus{outline:none}
 @media(max-width:600px){.dg-stages{margin-top:28px}.dg-next-step{padding:16px}.dg-result-cta{font-size:14px;padding:16px 18px;gap:16px}}
+
+/* Compact page spacing; keep testimonial cards and controls unchanged. */
+.dg-header .shell{min-height:64px}
+.dg-main{padding:12px 0}
+.dg-lead{margin-top:16px}
+.dg-start{margin-top:20px}
+.dg-testimonials{padding:12px 0}
+.dg-footer{padding-top:10px}
+@media(max-width:600px){
+ .dg-header .shell{min-height:48px}
+ .dg-main{padding:10px 0}
+ .dg-lead{margin-top:10px}
+ .dg-start{margin-top:12px}
+ .dg-start>p{margin-top:6px}
+ .dg-testimonials{padding:8px 0}
+ .dg-footer{padding-top:8px}
+}
