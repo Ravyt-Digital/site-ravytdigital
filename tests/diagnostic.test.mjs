@@ -20,7 +20,7 @@ test('contact validation rejects missing consent and invalid numbers; phone mask
 });
 test('final form has exactly the required contact fields, unchecked consent and original endpoint/key',()=>{
  const h=renderToStaticMarkup(React.createElement(ContactForm,{answers:[0,0,2,0,0],result:classify([0,0,2,0,0])}));
- assert.equal((h.match(/<form\b/g)||[]).length,1);assert.match(h,/api.web3forms.com\/submit/);assert.match(h,/12456711-3ce4-4bee-bdf2-30d72e95328c/);assert.match(h,/<input(?=[^>]*name="phone")(?=[^>]*required)[^>]*>/);assert.match(h,/<input(?=[^>]*name="consent")(?=[^>]*required)[^>]*>/);assert.doesNotMatch(h,/checked|name="email"|name="message"|wa\.me|mailto:|redirect/);assert.match(h,/name="botcheck"/);assert.match(h,/Solicitar contato de Ytala/);
+ assert.equal((h.match(/<form\b/g)||[]).length,1);assert.match(h,/api.web3forms.com\/submit/);assert.match(h,/12456711-3ce4-4bee-bdf2-30d72e95328c/);assert.match(h,/<input(?=[^>]*name="phone")(?=[^>]*required)[^>]*>/);assert.match(h,/<input(?=[^>]*name="consent")(?=[^>]*required)[^>]*>/);assert.doesNotMatch(h,/checked|name="email"|name="message"|wa\.me|mailto:|redirect/);assert.match(h,/name="botcheck"/);assert.match(h,/Enviar minha solicitação/);
 });
 test('payload includes every answer, contact, consent and source while omitting arbitrary URL parameters',()=>{
  const answers=[0,2,3,0,2],r=classify(answers),fields=leadFields(answers,r,{name:' Teste ',phone:'88996777332',profile:'@perfil'},{utm_source:'video',email:'private',page_url:'https://x/?phone=private'},new Date('2026-10-14T01:00:00Z'));
@@ -36,7 +36,7 @@ test('Web3Forms accepts only confirmed HTTP success; failures are retryable with
 
 test('contact handler prevents concurrent duplicate sends until the API resolves',async()=>{
  let sends=0,finish;const states=[];const pending=new Promise(resolve=>finish=resolve);
- const hooks={useRef:value=>({current:value===''?'unit-test-token':value}),useState:value=>[value===''?'(88) 99677-7332':value,next=>states.push(next)]};
+ const hooks={useEffect(){},useRef:value=>({current:value===''?'unit-test-token':value}),useState:value=>[value===''?'(88) 99677-7332':value,next=>states.push(next)]};
  class FormValues{get(key){return {name:'Teste',profile:'@teste',consent:'on',botcheck:''}[key]??null;}}
  const Form=loadComponent('components/ContactForm.tsx',{'react':hooks,'@/lib/diagnostic.mjs':{...diagnostic,submitLead:async()=>{sends++;await pending;return true;}},'./HCaptcha':{__esModule:true,default:()=>null},'@/lib/utm':{readUtms:()=>({})}},{FormData:FormValues,window:{dispatchEvent(){}},CustomEvent:class{}});
  const tree=Form({answers:[0,0,0,0,0],result:classify([0,0,0,0,0])});

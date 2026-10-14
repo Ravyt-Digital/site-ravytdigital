@@ -23,7 +23,7 @@ test('legal and contact links map to actual sections; retired content returns Go
 test('brand assets, schema and responsive safeguards match the new page',async()=>{
  const h=await home();for(const [tag]of visible(h).matchAll(/<img\b[^>]*>/g)){assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);const src=tag.match(/src="([^"]+)"/)[1];assert.ok(src.endsWith('.webp'));assert.ok(existsSync('public'+src));}
  let organization=0;for(const [,json]of h.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)){const d=JSON.parse(json);for(const x of d['@graph']??[d]){if(x['@type']==='Organization'){organization++;assert.equal(x.email,'contatoravyt@gmail.com');}assert.doesNotMatch(JSON.stringify(x),/"Offer"|"Service"|#plano|#sobre|"telephone"/);}}
- assert.equal(organization,1);assert.doesNotMatch(h,/preload[^>]*mockups/);const css=readFileSync('app/globals.css','utf8');assert.match(css,/prefers-reduced-motion/);assert.match(css,/max-width:600px/);assert.match(css,/minmax\(0,1fr\)/);
+ assert.equal(organization,1);assert.doesNotMatch(h,/preload[^>]*mockups/);const css=readFileSync('app/globals.css','utf8');assert.match(css,/prefers-reduced-motion/);assert.match(css,/max-width:600px/);assert.match(css,/\.dg-stages\{[^}]*max-width:680px/);assert.match(css,/\.dg-contact-wrap\[hidden\]\{display:none/);
  const manifest=await(await request('/manifest.webmanifest')).text();assert.doesNotMatch(manifest,/favicon\.png/);
 });
 test('obsolete navigation, sales assets and styles are removed; optional analytics exclude lead data',()=>{
