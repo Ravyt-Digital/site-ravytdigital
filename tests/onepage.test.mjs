@@ -7,7 +7,7 @@ const visible=s=>s.replace(/<script\b[\s\S]*?<\/script>/g,'');
 test('one canonical page renders the diagnostic introduction and legal documents without old sales sections',async()=>{
  assert.deepEqual(readdirSync('app',{recursive:true}).filter(p=>p.endsWith('page.tsx')),['page.tsx']);
  assert.equal((await request('/')).status,200);const h=await home(),v=visible(h);
- assert.equal((v.match(/<h1[ >]/g)||[]).length,1);assert.match(v,/<html lang="pt-BR"/);assert.match(v,/Seu trabalho merece uma apresentação/);assert.match(v,/Começar meu diagnóstico/);assert.match(v,/Tianguá/);assert.match(v,/contatoravyt@gmail.com/);assert.match(v,/Após o encerramento desse relacionamento/);
+ assert.equal((v.match(/<h1[ >]/g)||[]).length,1);assert.match(v,/<html lang="pt-BR"/);assert.match(v,/Descubra como melhorar/);assert.match(v,/Responda 5 perguntas rápidas e receba uma avaliação inicial do seu negócio/);assert.match(v,/Gratuito • Sem compromisso/);assert.doesNotMatch(v,/dg-audience|dg-start-meta|Seu trabalho merece/);assert.match(v,/Começar meu diagnóstico/);assert.match(v,/contatoravyt@gmail.com/);assert.match(v,/Após o encerramento desse relacionamento/);
  assert.doesNotMatch(v,/R\$ 597|O plano|Exemplos de apresentação|Márcio Cabral|Sites profissionais, SEO inicial|wa\.me|mailto:|href="tel:|api\.whatsapp/);
  assert.equal((v.match(/<form\b/g)||[]).length,0,'form appears only after answers');
  const xml=await(await request('/sitemap.xml')).text();assert.equal((xml.match(/<loc>/g)||[]).length,1);assert.match(xml,/<loc>https:\/\/ravytdigital.com<\/loc>/);

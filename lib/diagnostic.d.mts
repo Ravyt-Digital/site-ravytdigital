@@ -9,3 +9,6 @@ export function validPhone(value:string):boolean;
 export function contactErrors(contact:{name:string;phone:string;consent:boolean}):Partial<Record<'name'|'phone'|'consent',string>>;
 export function leadFields(answers:number[],result:DiagnosticResult,contact:{name:string;phone:string;profile:string},campaign?:Record<string,string>,now?:Date):Record<string,string>;
 export function submitLead(fields:Record<string,string>,fetcher?:typeof fetch):Promise<true>;
+
+export function emailSubject(name:unknown,location:number):string;
+export function emailPayload(fields:Record<string,string>):Record<string,string>;

@@ -27,11 +27,11 @@ test('payload includes every answer, contact, consent and source while omitting 
  for(let i=0;i<5;i++)assert.equal(fields[`diagnostic_${questions[i].key}`],`${questions[i].title} — ${questions[i].options[answers[i]]}`);assert.equal(fields.name,'Teste');assert.equal(fields.professional_profile,'@perfil');assert.equal(fields.interest_category,'B — Presença no Google');assert.equal(fields.lead_source,'Diagnóstico Ravyt');assert.equal(fields.utm_source,'video');assert.equal(fields.privacy_policy_version,'2026-10-14');assert.equal(fields.contact_consent,'Autorização explícita de contato concedida');assert.equal(fields.submitted_at,'2026-10-14T01:00:00.000Z');assert.equal(fields.page_url,undefined);assert.equal(fields.email,undefined);
 });
 test('Web3Forms accepts only confirmed HTTP success; failures are retryable without mutating answers',async()=>{
- const fields={name:'Teste técnico',WhatsApp:'redacted','h-captcha-response':'unit-test-token'};let captured;
+ const fields={name:'Teste técnico',phone:'redacted','h-captcha-response':'unit-test-token'};let captured;
  assert.equal(await submitLead(fields,async(url,options)=>{captured={url,values:JSON.parse(options.body),headers:options.headers};return new Response(JSON.stringify({success:true}),{status:200});}),true);
- assert.equal(captured.url,'https://api.web3forms.com/submit');assert.equal(captured.values.access_key,'12456711-3ce4-4bee-bdf2-30d72e95328c');assert.equal(captured.values.WhatsApp,'redacted');assert.equal(captured.values.subject,'Novo Diagnóstico Ravyt | Tianguá');assert.equal(captured.values.from_name,'Diagnóstico Ravyt Digital');
+ assert.equal(captured.url,'https://api.web3forms.com/submit');assert.equal(captured.values.access_key,'12456711-3ce4-4bee-bdf2-30d72e95328c');assert.equal(captured.values.WhatsApp,'redacted');assert.equal(captured.values.subject,'Novo diagnóstico | Teste técnico | Outra localidade');assert.equal(captured.values.from_name,'Diagnóstico Ravyt Digital');
  for(const mock of [async()=>new Response(JSON.stringify({success:false}),{status:200}),async()=>new Response(JSON.stringify({success:true}),{status:500}),async()=>{throw new Error('offline');},async()=>new Response('bad json')])await assert.rejects(submitLead(fields,mock));
- assert.deepEqual(fields,{name:'Teste técnico',WhatsApp:'redacted','h-captcha-response':'unit-test-token'});
+ assert.deepEqual(fields,{name:'Teste técnico',phone:'redacted','h-captcha-response':'unit-test-token'});
 });
 
 test('contact handler prevents concurrent duplicate sends until the API resolves',async()=>{
