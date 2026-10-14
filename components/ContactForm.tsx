@@ -3,7 +3,7 @@ import {useRef,useState,type FormEvent} from 'react';
 import HCaptcha,{type CaptchaHandle} from './HCaptcha';
 import {readUtms} from '@/lib/utm';
 import {contactErrors,formatPhone,leadFields,submitLead,type DiagnosticResult} from '@/lib/diagnostic.mjs';
-export default function ContactForm({answers,result}:{answers:number[];result:DiagnosticResult}){
+export default function ContactForm({answers,result,onSuccess}:{answers:number[];result:DiagnosticResult;onSuccess?:()=>void}){
  const formRef=useRef<HTMLFormElement>(null),sending=useRef(false),captchaToken=useRef(''),captcha=useRef<CaptchaHandle>(null);
  const [phone,setPhone]=useState(''),[errors,setErrors]=useState<Partial<Record<'name'|'phone'|'consent'|'captcha',string>>>({}),[status,setStatus]=useState<'idle'|'sending'|'success'|'error'>('idle');
  async function submit(event:FormEvent<HTMLFormElement>){
@@ -14,10 +14,10 @@ export default function ContactForm({answers,result}:{answers:number[];result:Di
   const next:Partial<Record<'name'|'phone'|'consent'|'captcha',string>>=contactErrors({...contact,consent:values.get('consent')==='on'});if(!captchaToken.current)next.captcha='Conclua a verificação de segurança antes de enviar.';setErrors(next);
   const first=Object.keys(next)[0];if(first){form.querySelector<HTMLElement>(first==='captcha'?'[data-captcha-focus]':`[name="${first}"]`)?.focus();return;}
   sending.current=true;setStatus('sending');
-  try{await submitLead({...leadFields(answers,result,contact,readUtms()),'h-captcha-response':captchaToken.current});setStatus('success');window.dispatchEvent(new CustomEvent('ravyt:lead'));}
+  try{await submitLead({...leadFields(answers,result,contact,readUtms()),'h-captcha-response':captchaToken.current});setStatus('success');onSuccess?.();window.dispatchEvent(new CustomEvent('ravyt:lead'));}
   catch{setStatus('error');}finally{captchaToken.current='';captcha.current?.reset();sending.current=false;}
  }
- if(status==='success')return <section className="dg-success" role="status" aria-live="polite"><span className="dg-success-icon" aria-hidden="true">✓</span><h2>Sua solicitação foi enviada!</h2><p>Recebemos suas informações. A equipe da Ravyt poderá entrar em contato pelo WhatsApp informado para conversar sobre seu projeto.</p></section>;
+ if(status==='success')return null;
  return <section className="dg-contact" aria-labelledby="contact-title"><p className="dg-eyebrow">Próximo passo</p><h2 id="contact-title">Solicite um contato de <em>Ytala Cabral.</em></h2><p>Agora que conhecemos um pouco mais sobre o seu trabalho, você pode solicitar uma conversa para entender quais melhorias fazem sentido para sua presença digital.</p>
  <form ref={formRef} id="contato-form" action="https://api.web3forms.com/submit" method="POST" onSubmit={submit} noValidate>
  <input type="hidden" name="access_key" value="12456711-3ce4-4bee-bdf2-30d72e95328c"/><input type="hidden" name="from_name" value="Diagnóstico Ravyt Digital"/><input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="dg-honeypot"/>
