@@ -33,3 +33,13 @@ test('obsolete navigation, sales assets and styles are removed; optional analyti
  const analytics=readFileSync('components/Analytics.tsx','utf8');assert.doesNotMatch(analytics,/leadFields|\.answers|\.phone|\.name|profile:/);
  assert.equal(existsSync('dist/client/mockups'),false);
 });
+
+test('canonical domain upgrades HTTP and www in one permanent hop while preserving campaign parameters',async()=>{
+ for(const origin of ['http://ravytdigital.com','http://www.ravytdigital.com','https://www.ravytdigital.com']){
+  const r=await worker.fetch(new Request(origin+'/?utm_source=campaign&utm_medium=cpc'),env,ctx);
+  assert.equal(r.status,308);assert.equal(r.headers.get('location'),'https://ravytdigital.com/?utm_source=campaign&utm_medium=cpc');
+ }
+ const https=await request('/');assert.equal(https.status,200);assert.equal(https.headers.get('location'),null);
+ assert.equal(https.headers.get('cache-control'),'no-cache, max-age=0, must-revalidate');
+ const robots=await request('/robots.txt');assert.notEqual(robots.headers.get('cache-control'),'no-cache, max-age=0, must-revalidate');
+});
