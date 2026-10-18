@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Diagnóstico inicial de presença digital para profissionais de Tianguá e região.",
     start_url: "/",
     display: "standalone",
-    background_color: "#E7E2DA",
-    theme_color: "#1A1C1E",
+    background_color: "#050C13",
+    theme_color: "#050C13",
     lang: "pt-BR",
     icons: [
       { src: "/favicon.webp", sizes: "512x512", type: "image/webp" },
