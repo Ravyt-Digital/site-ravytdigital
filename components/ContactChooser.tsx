@@ -1,0 +1,9 @@
+'use client';
+import {useEffect,useId,useRef,useState} from 'react';
+import {homeContent,whatsappHref} from '@/lib/home-content';
+export default function ContactChooser(){
+ const [open,setOpen]=useState(false),dialog=useRef<HTMLDialogElement>(null),trigger=useRef<HTMLElement|null>(null),title=useId();
+ useEffect(()=>{const click=(event:MouseEvent)=>{const target=event.target instanceof Element?event.target.closest<HTMLButtonElement>('button[data-open-contact]'):null;if(target){trigger.current=target;setOpen(true);}};document.addEventListener('click',click);return()=>document.removeEventListener('click',click);},[]);
+ useEffect(()=>{if(open&&!dialog.current?.open)dialog.current?.showModal();},[open]);
+ return <dialog ref={dialog} className="rv-contact-dialog" aria-labelledby={title} onClose={()=>{setOpen(false);trigger.current?.focus({preventScroll:true});}} onClick={event=>{if(event.target===event.currentTarget)dialog.current?.close();}}>{open&&<><div className="rv-contact-dialog-heading"><p className="rv-eyebrow">Vamos conversar</p><button type="button" className="rv-dialog-close" autoFocus onClick={()=>dialog.current?.close()} aria-label="Fechar opções de contato">Fechar ×</button></div><h2 id={title}>Com quem você deseja falar?</h2><p>Escolha um especialista para continuar pelo WhatsApp.</p><div className="rv-contact-grid">{homeContent.contacts.map(person=><article className="rv-contact-card" key={person.id}><img src={'/team/'+person.id+'-112.webp'} srcSet={`/team/${person.id}-112.webp 112w, /team/${person.id}-224.webp 224w`} sizes="96px" alt={person.name} width={112} height={112} decoding="async"/><div><h3>{person.name}</h3><p>{person.display}</p><a className="rv-button" href={whatsappHref(person.number)} aria-label={'Conversar com '+person.name+' pelo WhatsApp'}>Falar com {person.name.split(' ')[0]}<span aria-hidden="true">↗</span></a></div></article>)}</div></>}</dialog>;
+}

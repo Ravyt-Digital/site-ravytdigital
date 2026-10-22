@@ -1,6 +1,48 @@
-# Ravyt Digital — diagnóstico de presença digital
+# Ravyt Digital — home e diagnóstico de presença digital
 
-Página única, em português, para campanhas de profissionais liberais e prestadores de serviços de Tianguá e região. Marca, fontes e infraestrutura de publicação preservadas.
+Home comercial e diagnóstico em página própria, em português. Marca, fontes e infraestrutura de publicação preservadas.
+
+## Home comercial
+
+A copy parte de uma situação reconhecível (ser difícil de encontrar mesmo oferecendo um bom serviço), conecta cada serviço a uma tarefa do cliente e usa portfólio e relatos reais como provas de apresentação e atendimento. Nenhum depoimento foi atribuído a resultados de SEO ou vendas; sem estatísticas, escassez ou garantias de posicionamento.
+
+`app/page.tsx` apresenta hero, criação de sites, SEO, Perfil da Empresa no Google, portfólio, depoimentos, planos e perguntas frequentes. `components/PortfolioGallery.tsx` reúne nove capturas reais dos sites fornecidos pela proprietária, em 22/10/2026. Os cards não contêm links externos: a interação apenas amplia a captura em diálogo nativo. Todas as capturas são WebP, com variantes de 480, 800 e 1440 pixels. `srcSet` e `sizes` permitem escolher o tamanho; miniaturas usam carregamento tardio, decodificação assíncrona e prioridade baixa. A imagem ampliada só é montada após interação, sem pré-carregar uma captura oculta. Seis projetos são identificados como demonstrativos conforme as próprias páginas. O endereço Moreira Filho se apresenta como Vértice Norte Engenharia; usamos a identidade visível.
+
+`lib/home-content.ts` centraliza projetos e dados comerciais. Valores e condições dos planos aguardam informação da proprietária; os planos mostram provisoriamente “Sob consulta”. O botão principal “Fale com nossos especialistas” e os botões comerciais abrem um diálogo acessível onde o visitante escolhe entre Ytala Cabral — (88) 99695-6479 — e Marcio Cabral — (88) 99677-7332. Ambos os destinos incluem +55, DDD e número completo; abrir o WhatsApp apenas prepara uma mensagem, sem envio automático. As fotos anexadas pela proprietária foram otimizadas em WebP de 112 e 224 pixels, com carregamento tardio e seleção responsiva. Nenhum cargo ou especialidade foi inferido para os contatos. Os preços permanecem como “Sob consulta” até receber os valores e condições comerciais definitivos.
+
+A identidade da home segue o diagnóstico: #050C13, #EF5309, #FEF7F1, #1A1E22, Inter e Fraunces. A galeria e o menu possuem adaptações responsivas.
+
+
+## Publicar no Cloudflare Workers
+
+O repositório entrega um Worker com renderização no servidor e assets estáticos. Use Node.js 22.13 ou superior, com as dependências de desenvolvimento disponíveis durante o build.
+
+```sh
+npm ci
+npm run build
+node --test tests/*.test.mjs
+npx wrangler deploy --config dist/server/wrangler.json
+```
+
+No Cloudflare Workers Builds, configure:
+
+| Campo | Valor |
+| --- | --- |
+| Branch de produção | `main` |
+| Diretório raiz | `/` |
+| Comando de build | `npm run build` |
+| Comando de implantação | `npx wrangler deploy --config dist/server/wrangler.json` |
+| Versão do Node | `22` ou superior compatível com o `package.json` |
+
+O build produz `dist/server/index.js`, `dist/server/wrangler.json` e os assets em `dist/client/`. O arquivo gerado configura `ASSETS`, `IMAGES`, `nodejs_compat` e observabilidade; não publique `worker/index.ts` diretamente nem trate este projeto como uma exportação HTML estática. A configuração mantém o nome existente `site-ravyt-digital`. O domínio e os acessos da conta são configurados no Cloudflare, não alterados por este commit.
+
+Para validar o empacotamento sem implantação:
+
+```sh
+npx wrangler deploy --config dist/server/wrangler.json --dry-run
+```
+
+As credenciais do Cloudflare devem ficar na integração de build ou em variáveis de ambiente protegidas, nunca no código. Para publicação local autenticada, o Wrangler usa a autenticação da conta. `npm run deploy` é a alternativa que executa build e implantação em sequência. `npm run install:ci` continua disponível para os ambientes Linux que utilizam o instalador verificado do projeto.
 
 ## Experiência e dados
 
@@ -14,7 +56,7 @@ As respostas ficam em memória até o envio; não são gravadas em banco pelo qu
 
 ## Publicação e SEO
 
-`app/page.tsx` contém experiência e documentos legais inline. Um único canonical e item de sitemap. Rotas de contato e documentos legais redirecionam para seções equivalentes; páginas comerciais/editoriais retiradas retornam 410. Nunca encaminhar conteúdos sem equivalência para a home.
+`app/page.tsx` contém a home; `app/diagnostico/page.tsx` preserva a experiência anterior. Os documentos legais são compartilhados pelo rodapé. Cada página tem seu canonical e item de sitemap. `/contato` e `/diagnosticos` redirecionam para `/diagnostico`; documentos legais redirecionam para seções equivalentes; páginas comerciais/editoriais retiradas retornam 410. Nunca encaminhar conteúdos sem equivalência para a home.
 
 ```sh
 npm run build

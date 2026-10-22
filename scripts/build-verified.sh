@@ -29,6 +29,8 @@ if [[ ! -x "${vinext}" ]]; then
   exit 69
 fi
 
+# Discard previous hashed chunks before producing a self-contained artifact.
+rm -rf -- "${SITES_PROJECT_ROOT}/dist"
 echo "Running bounded vinext build..."
 bash "${script_dir}/sync-static-css.sh"
 timeout \

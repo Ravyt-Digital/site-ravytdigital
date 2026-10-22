@@ -1,14 +1,9 @@
 # Ravyt Digital
 
-> Diagnóstico preliminar de presença digital para profissionais liberais e prestadores de serviços de Tianguá, Ceará, e região.
+Criação de sites, SEO e otimização do Perfil da Empresa no Google.
 
-## Experiência
-- https://ravytdigital.com: cinco perguntas, resultado baseado nas respostas e solicitação de contato de Ytala Cabral.
-- A classificação não consulta o Google nem redes sociais e não é auditoria técnica automática.
-- O único mecanismo comercial de captação é o formulário integrado ao Web3Forms.
-- A Ravyt atua em criação de sites e presença digital no Google. Não promete posições, clientes ou faturamento.
+- Site: https://ravytdigital.com/
+- Diagnóstico gratuito: https://ravytdigital.com/diagnostico
+- Contato institucional: contatoravyt@gmail.com
 
-## Documentos legais
-- https://ravytdigital.com/#privacidade: dados do diagnóstico, consentimento, prestadores e direitos.
-- https://ravytdigital.com/#termos: natureza preliminar e limitações.
-- Canal institucional para privacidade e termos: contatoravyt@gmail.com.
+O diagnóstico tem cinco perguntas e oferece um resultado preliminar a partir das respostas do visitante. Não executa auditoria automática ou consulta às plataformas. Solicitar contato é opcional. Propostas e condições comerciais são definidas individualmente. A Ravyt não promete posições específicas no Google ou resultados comerciais.

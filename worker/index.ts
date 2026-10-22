@@ -2,11 +2,13 @@ import {handleImageOptimization,DEFAULT_DEVICE_SIZES,DEFAULT_IMAGE_SIZES} from '
 import handler from 'vinext/server/app-router-entry';
 interface Env{ASSETS:Fetcher;IMAGES:{input(stream:ReadableStream):{transform(options:Record<string,unknown>):{output(options:{format:string;quality:number}):Promise<{response():Response}>}}};}
 interface ExecutionContext{waitUntil(promise:Promise<unknown>):void;passThroughOnException():void;}
-const sectionRedirects:Record<string,string>={'/contato':'diagnostico','/diagnostico':'diagnostico','/politica-de-privacidade':'privacidade','/privacidade':'privacidade','/politica-de-cookies':'cookies','/termos-de-uso':'termos','/termos':'termos'};
+const sectionRedirects:Record<string,string>={'/contato':'diagnostico','/politica-de-privacidade':'privacidade','/privacidade':'privacidade','/politica-de-cookies':'cookies','/termos-de-uso':'termos','/termos':'termos'};
 const retired=['/sites','/seo','/google-meu-negocio','/criacao-de-sites-online','/quanto-custa-criar-um-site','/sites-para-empresas-de-engenharia','/sites-para-escritorios-de-arquitetura','/sites-para-moveis-planejados','/cases','/sobre','/autores/ytala-cabral','/servicos','/servicos/criacao-de-sites'];
 export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promise<Response>{
  const url=new URL(request.url),path=url.pathname.replace(/\/$/,'')||'/',raw=path.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';
  if(url.hostname==='www.ravytdigital.com'||(url.hostname==='ravytdigital.com'&&url.protocol==='http:')){url.hostname='ravytdigital.com';url.protocol='https:';return Response.redirect(url.href,308);}
+ if(raw==='/diagnosticos'||raw==='/contato'){url.pathname='/diagnostico';url.hash='';return Response.redirect(url.href,301);}
+ if(path!=='/diagnostico'&&raw==='/diagnostico'){url.pathname='/diagnostico';return Response.redirect(url.href,301);}
  if(raw!=='/'&&sectionRedirects[raw]){url.pathname='/';url.hash=sectionRedirects[raw];url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(path!=='/'&&raw==='/'){url.pathname='/';url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(retired.includes(raw)||/^\/blog(?:\/|$)/.test(raw)||/^\/recursos(?:\/|$)/.test(raw)||['/gestao-de-midias-sociais','/quanto-custa-gestao-de-midias-sociais','/social-media-para-psicologos-parentais'].includes(raw))return new Response('Este conteúdo foi retirado do site. Acesse a página principal em https://ravytdigital.com.',{status:410,headers:{'Content-Type':'text/plain; charset=utf-8','X-Robots-Tag':'noindex'}});
