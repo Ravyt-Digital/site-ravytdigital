@@ -1,5 +1,5 @@
 // Project names and demonstration status checked against the owner-supplied sites.
-// Commercial conditions await owner input; contacts supplied by the owner.
+// One annual plan and contact information supplied by the owner.
 // Do not infer prices, client work or contact details from other projects.
 export const homeContent = {
   contacts: [
@@ -80,7 +80,7 @@ export const homeContent = {
     "demo": true
   }
 ],
-  prices: {} as Record<string, string>,
+  plan: {name:'Plano anual Ravyt Digital',priceLabel:'R$ 597,00',period:'por ano',bonus:'Cartão NFC para avaliações no Google'},
 };
 export const whatsappHref = (number:string) => `https://wa.me/${number}?text=${encodeURIComponent('Olá! Quero conversar sobre a presença digital do meu negócio.')}`;
 export const contactLabel = 'Fale com nossos especialistas';
