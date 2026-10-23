@@ -1,0 +1,5 @@
+export const guides=[
+ {slug:'minha-empresa-nao-aparece-no-google',title:'Minha empresa não aparece no Google: o que conferir?',description:'Entenda a diferença entre não encontrar o perfil e não aparecer por um serviço. Confira cadastro, verificação, informações e próximos passos.',summary:'Saiba o que verificar antes de criar outro perfil ou fazer alterações.'},
+ {slug:'como-colocar-empresa-no-google-maps',title:'Como colocar sua empresa no Google Maps',description:'Veja como verificar a elegibilidade, localizar um cadastro existente e adicionar ou reivindicar seu Perfil da Empresa no Google, sem criar duplicatas.',summary:'Um roteiro para começar pelo cadastro certo, sem duplicar sua empresa.'},
+ {slug:'quanto-custa-google-meu-negocio',title:'Quanto custa o Google Meu Negócio e a gestão profissional?',description:'O Perfil da Empresa no Google é gratuito. Entenda a diferença entre usar a ferramenta e contratar o plano anual da Ravyt por R$ 597, com cartão NFC de bônus.',summary:'Entenda o que é gratuito e o que você contrata no plano da Ravyt.'}
+];

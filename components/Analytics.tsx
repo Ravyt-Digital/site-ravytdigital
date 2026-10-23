@@ -21,9 +21,11 @@ declare global {
 
 function consent() { return savedConsent() === "accepted"; }
 
-function send(event: AnalyticsEvent, path: string, destination?: string) {
+function send(event: AnalyticsEvent, path: string) {
   if (!consent()) return;
-  const payload = JSON.stringify({ event, path, ...(destination ? { destination } : {}) });
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event: "ravyt_"+event, page_path:path});
+  const payload = JSON.stringify({ event, path });
   if (navigator.sendBeacon?.("/api/analytics", new Blob([payload], { type: "application/json" }))) return;
   void fetch("/api/analytics", { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true }).catch(() => {});
 }
@@ -118,10 +120,13 @@ export default function Analytics() {
   }, [path]);
   useEffect(() => {
     const click = (event: MouseEvent) => {
-      const anchor = event.target instanceof Element ? event.target.closest("a") : null;
-      if (!anchor) return;
-      const href = anchor.getAttribute("href") ?? "";
-      if (href === '#diagnostico') send("primary_cta_click", path);
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest('button[data-open-contact]')) { send("primary_cta_click", path); return; }
+      if (event.target.closest('button[data-diagnostic-start]')) { send("diagnostic_start", path); return; }
+      const href = event.target.closest('a')?.getAttribute('href') ?? '';
+      if (href.startsWith('https://wa.me/')) {send("whatsapp_click", path); trackMeta("Contact");}
+      else if (href === '/diagnostico') send("diagnostic_open", path);
+      else if (href === '#planos' || href === '/#planos') send("plan_click", path);
     };
     document.addEventListener("click", click);
     return () => document.removeEventListener("click", click);
@@ -130,6 +135,6 @@ export default function Analytics() {
     const lead = () => { send("form_submit", path); trackMeta("Lead"); };
     window.addEventListener("ravyt:lead", lead);
     return () => window.removeEventListener("ravyt:lead", lead);
-  }, []);
+  }, [path]);
   return null;
 }

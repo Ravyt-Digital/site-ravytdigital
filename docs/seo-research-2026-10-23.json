@@ -1,0 +1,173 @@
+{
+  "queriedAt": "2026-10-23",
+  "country": "Brazil",
+  "locId": 2076,
+  "language": "pt",
+  "keyword": {
+    "keyword": "gerenciamento google meu negócio",
+    "search_volume": 260,
+    "cpc": 2.04,
+    "seo_difficulty": 7,
+    "paid_difficulty": 6,
+    "competition": 0.06,
+    "search_intent": null,
+    "language": "Portuguese",
+    "location": "Brazil",
+    "monthly_searches": [
+      {
+        "period": "202606",
+        "search_volume": 90
+      },
+      {
+        "period": "202607",
+        "search_volume": 140
+      },
+      {
+        "period": "202608",
+        "search_volume": 210
+      },
+      {
+        "period": "202609",
+        "search_volume": 260
+      }
+    ]
+  },
+  "serp": {
+    "keyword": "gerenciamento google meu negócio",
+    "serpEntries": [
+      {
+        "url": "http://NODOMAIN",
+        "title": null,
+        "domain": "NODOMAIN",
+        "position": 1,
+        "type": "ai_overview"
+      },
+      {
+        "url": "http://support.google.com/business/answer/3039617?hl=pt-BR",
+        "title": "Editar o Perfil da Empresa",
+        "domain": "support.google.com",
+        "position": 2,
+        "type": "organic",
+        "clicks": 117,
+        "domainAuthority": 98,
+        "facebookShares": null,
+        "pinterestShares": null,
+        "redditShares": null
+      },
+      {
+        "url": "http://business.google.com/br/business-profile/",
+        "title": "Mostre seu negócio no Google – Perfil da Empresa no ...",
+        "domain": "business.google.com",
+        "position": 3,
+        "type": "organic",
+        "clicks": 15,
+        "domainAuthority": 93,
+        "facebookShares": null,
+        "pinterestShares": null,
+        "redditShares": null
+      },
+      {
+        "url": "http://accounts.google.com/ServiceLogin?hl=pt-BR&service=lbc",
+        "title": "Perfil da Empresa no Google",
+        "domain": "accounts.google.com",
+        "position": 4,
+        "type": "organic",
+        "clicks": 11,
+        "domainAuthority": 97,
+        "facebookShares": null,
+        "pinterestShares": null,
+        "redditShares": null
+      },
+      {
+        "url": "http://business.google.com/br/",
+        "title": "Use todo o poder do Google a favor da sua empresa",
+        "domain": "business.google.com",
+        "position": 5,
+        "type": "organic",
+        "clicks": 5,
+        "domainAuthority": 93,
+        "facebookShares": null,
+        "pinterestShares": null,
+        "redditShares": null
+      },
+      {
+        "url": "http://accounts.google.com/ServiceLogin?continue=https://accounts.google.com/ManageAccount&dsh=3884564366034080080&hl=pt-PT&lp=1&service=lbc",
+        "title": "Perfil de empresa no Google",
+        "domain": "accounts.google.com",
+        "position": 6,
+        "type": "organic",
+        "clicks": 4,
+        "domainAuthority": 97,
+        "facebookShares": null,
+        "pinterestShares": null,
+        "redditShares": null
+      }
+    ],
+    "newData": false,
+    "updated_at": "2026-10-10",
+    "limits": {
+      "monthly_keyword_metrics_updates_limits": 10,
+      "monthly_keyword_metrics_updates_used": 0
+    },
+    "location": "Brazil",
+    "language": "Portuguese"
+  },
+  "pagespeed": {
+    "done": true,
+    "report": {
+      "DESKTOP": {
+        "status": "ok",
+        "lab_metrics": {
+          "Cumulative Layout Shift": "0.131",
+          "Total Blocking Time": "0 ms",
+          "Largest Contentful Paint": "631 ms",
+          "Time to Interactive": "631 ms",
+          "Speed Index": "697 ms",
+          "First Contentful Paint": "366 ms"
+        },
+        "opportunities": [
+          {
+            "opportunity": "Redirects",
+            "estimated_savings": "190 ms",
+            "size_reduction_kb": null
+          },
+          {
+            "opportunity": "Unused Javascript",
+            "estimated_savings": "50 ms",
+            "size_reduction_kb": 21
+          }
+        ]
+      },
+      "MOBILE": {
+        "status": "ok",
+        "lab_metrics": {
+          "Cumulative Layout Shift": "0",
+          "First Contentful Paint": "2.6 s",
+          "Time to Interactive": "2.7 s",
+          "Largest Contentful Paint": "2.7 s",
+          "Total Blocking Time": "0 ms",
+          "Speed Index": "2.6 s"
+        },
+        "opportunities": [
+          {
+            "opportunity": "Unused Javascript",
+            "estimated_savings": "150 ms",
+            "size_reduction_kb": 24
+          },
+          {
+            "opportunity": "Redirects",
+            "estimated_savings": "630 ms",
+            "size_reduction_kb": null
+          }
+        ]
+      }
+    }
+  },
+  "limitations": {
+    "ubersuggest": "Daily report quota exhausted after the successful keyword query.",
+    "semrush": "no_api_units",
+    "gscWizard": "payment_required",
+    "trends": "No comparable dataset obtained.",
+    "fieldData": "No CrUX or INP field measurements returned."
+  }
+}

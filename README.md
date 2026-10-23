@@ -6,6 +6,8 @@ Home comercial e diagnóstico em página própria, em português. Marca, fontes 
 
 A home apresenta exclusivamente Google Meu Negócio (Perfil da Empresa no Google): informações e contatos, categorias e serviços, orientação sobre fotos e avaliações. A oferta é um único plano de R$ 597,00 por ano, com um cartão NFC para avaliações de bônus. Não oferece criação de sites nem SEO.
 
+A home concentra as intenções comerciais de consultoria, especialista, otimização e gerenciamento. Foram adicionados três guias: `/minha-empresa-nao-aparece-no-google`, `/como-colocar-empresa-no-google-maps` e `/quanto-custa-google-meu-negocio`. O mapa e o relatório estão em `docs/seo-2026-10-23.md`.
+
 A galeria de sites foi retirada da home. Os depoimentos preservam o contexto de atendimento e parceria, sem atribuir resultados de posicionamento ou vendas. O diagnóstico continua em `/diagnostico`, com cinco perguntas e recomendações voltadas ao Google.
 
 O botão “Fale com nossos especialistas” abre a escolha entre Ytala Cabral e Marcio Cabral, com os WhatsApps fornecidos e fotos WebP otimizadas. A identidade visual foi preservada: #050C13, #EF5309, #FEF7F1 e #1A1E22, com Inter e Fraunces.
@@ -84,3 +86,11 @@ Assunto construído localmente com nome limitado a 72 caracteres, sem controles 
 Seis relatos conferidos no HTML público de https://ytalacabralgmn.rvt.bio/ em 14/10/2026, seção “O que dizem sobre trabalhar comigo”. `lib/testimonials.json` preserva nomes, identificações e todos os parágrafos, inclusive a redação original. Duas avaliações no Google têm cinco estrelas; quatro mensagens de WhatsApp não recebem estrelas. Relatos de serviços diversos com Ytala, sem atribuição automática a SEO ou resultados no Google. Sem imagens ou bibliotecas adicionais.
 
 Carrossel independente do quiz, abaixo do diagnóstico e acima do rodapé. Primeiro parágrafo de cada relato e acesso ao texto completo de Rafaela; expansão pausa a rotação. Todos os cards compartilham a mesma célula de grid para reservar a maior altura de resumo e evitar deslocamentos automáticos. Textos completos expandem por interação, sem corte ou altura fixa. Rotação de 6 a 20 segundos por tamanho; pausa por foco, hover, escolha explícita, preferência de movimento reduzido, aba oculta ou seção fora de tela. Setas e indicadores com teclado, sem eventos de scroll.
+
+## SEO e mensuração — 23/10/2026
+
+Metadados específicos por página (incluindo canonical, Open Graph e Twitter), sitemap com cinco URLs, JSON-LD de Organization, WebSite, WebPage, Service/Offer e Article/BreadcrumbList nos guias. `/google-meu-negocio` redireciona para a home; URLs com barra final redirecionam para a forma canônica.
+
+Após o consentimento opcional, os eventos `primary_cta_click`, `whatsapp_click`, `diagnostic_open`, `diagnostic_start`, `plan_click` e `form_submit` seguem para `/api/analytics` e para `dataLayer` com prefixo `ravyt_`. O endpoint registra somente evento, caminho e horário; não inclui nome, WhatsApp, respostas, mensagem ou parâmetros de URL. `form_submit` representa o aceite do Web3Forms, não uma venda. `whatsapp_click` representa um clique, não uma conversa efetivada. As tags externas existentes foram preservadas; eventos na dataLayer não comprovam uma configuração de conversão no painel do GTM/GA4.
+
+Validação: `npm run build`, `node --test tests/*.test.mjs`, `npm run types:worker` e `npx tsc --noEmit`; o arquivo de tipos é gerado localmente e ignorado pelo Git. Para empacotamento sem publicar: `npx wrangler deploy --config dist/server/wrangler.json --dry-run`.
