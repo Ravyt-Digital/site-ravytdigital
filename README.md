@@ -4,14 +4,11 @@ Home comercial e diagnóstico em página própria, em português. Marca, fontes 
 
 ## Home comercial
 
-A copy parte de uma situação reconhecível (ser difícil de encontrar mesmo oferecendo um bom serviço), conecta cada serviço a uma tarefa do cliente e usa portfólio e relatos reais como provas de apresentação e atendimento. Nenhum depoimento foi atribuído a resultados de SEO ou vendas; sem estatísticas, escassez ou garantias de posicionamento.
+A home apresenta exclusivamente Google Meu Negócio (Perfil da Empresa no Google): informações e contatos, categorias e serviços, orientação sobre fotos e avaliações. A oferta é um único plano de R$ 597,00 por ano, com um cartão NFC para avaliações de bônus. Não oferece criação de sites nem SEO.
 
-`app/page.tsx` apresenta hero, criação de sites, SEO, Perfil da Empresa no Google, portfólio, depoimentos, planos e perguntas frequentes. `components/PortfolioGallery.tsx` reúne nove capturas reais dos sites fornecidos pela proprietária, em 22/10/2026. Os cards não contêm links externos: a interação apenas amplia a captura em diálogo nativo. Todas as capturas são WebP, com variantes de 480, 800 e 1440 pixels. `srcSet` e `sizes` permitem escolher o tamanho; miniaturas usam carregamento tardio, decodificação assíncrona e prioridade baixa. A imagem ampliada só é montada após interação, sem pré-carregar uma captura oculta. Seis projetos são identificados como demonstrativos conforme as próprias páginas. O endereço Moreira Filho se apresenta como Vértice Norte Engenharia; usamos a identidade visível.
+A galeria de sites foi retirada da home. Os depoimentos preservam o contexto de atendimento e parceria, sem atribuir resultados de posicionamento ou vendas. O diagnóstico continua em `/diagnostico`, com cinco perguntas e recomendações voltadas ao Google.
 
-`lib/home-content.ts` centraliza projetos e dados comerciais. A oferta é um único plano anual de R$ 597,00 por ano, com criação de site, SEO, otimização do Perfil da Empresa no Google e um cartão NFC para avaliações no Google como bônus. Não há planos ou serviços vendidos separadamente. O botão principal “Fale com nossos especialistas” e os botões comerciais abrem um diálogo acessível onde o visitante escolhe entre Ytala Cabral — (88) 99695-6479 — e Marcio Cabral — (88) 99677-7332. Ambos os destinos incluem +55, DDD e número completo; abrir o WhatsApp apenas prepara uma mensagem, sem envio automático. As fotos anexadas pela proprietária foram otimizadas em WebP de 112 e 224 pixels, com carregamento tardio e seleção responsiva. Nenhum cargo ou especialidade foi inferido para os contatos. Não foram adicionados parcelamento, renovação automática, prazos ou condições de pagamento que não tenham sido informados pela proprietária.
-
-A identidade da home segue o diagnóstico: #050C13, #EF5309, #FEF7F1, #1A1E22, Inter e Fraunces. A galeria e o menu possuem adaptações responsivas.
-
+O botão “Fale com nossos especialistas” abre a escolha entre Ytala Cabral e Marcio Cabral, com os WhatsApps fornecidos e fotos WebP otimizadas. A identidade visual foi preservada: #050C13, #EF5309, #FEF7F1 e #1A1E22, com Inter e Fraunces.
 
 ## Publicar no Cloudflare Workers
 

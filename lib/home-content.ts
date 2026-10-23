@@ -80,7 +80,7 @@ export const homeContent = {
     "demo": true
   }
 ],
-  plan: {name:'Plano anual Ravyt Digital',priceLabel:'R$ 597,00',period:'por ano',bonus:'Cartão NFC para avaliações no Google'},
+  plan: {name:'Plano anual Google Meu Negócio',priceLabel:'R$ 597,00',period:'por ano',bonus:'Cartão NFC para avaliações no Google'},
 };
-export const whatsappHref = (number:string) => `https://wa.me/${number}?text=${encodeURIComponent('Olá! Quero conversar sobre a presença digital do meu negócio.')}`;
+export const whatsappHref = (number:string) => `https://wa.me/${number}?text=${encodeURIComponent('Olá! Quero conhecer o plano anual de Google Meu Negócio por R$ 597,00.')}`;
 export const contactLabel = 'Fale com nossos especialistas';
