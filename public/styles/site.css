@@ -117,3 +117,12 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 .rv-button:not(.rv-button-outline),.dg-button{color:#050C13}.rv-button:hover,.dg-button:hover{background:#EF5309;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:800px){.rv-seo-grid,.rv-process{grid-template-columns:1fr}.rv-team-public{grid-template-columns:1fr}.rv-seo-grid article,.rv-process li{padding:24px}.rv-expert-note{padding:24px}.rv-guide{padding-top:24px}.rv-guide-cta{padding:24px}.rv-guide-cta .rv-button{gap:16px;font-size:13px}}
 @media(max-width:480px){.rv-team-public article{padding:20px;gap:16px}.rv-team-public img{width:72px;height:72px}.rv-team-public h3{font-size:19px}.rv-team-public button{font-size:12px}.rv-guide-lead{font-size:16px}}
+
+
+/* Social links shared by the home and diagnostic footer. */
+.dg-footer-social{display:flex;align-items:center;gap:8px}
+.dg-footer-social a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;color:var(--ink);text-decoration:none;transition:color .18s ease,border-color .18s ease}
+.dg-footer-social a:hover{color:var(--copper);border-color:var(--copper)}
+.dg-footer-social a:focus-visible{outline:2px solid var(--copper);outline-offset:4px}
+.dg-footer-social svg{flex-shrink:0}
+@media(max-width:600px){.dg-footer .dg-footer-top{flex-wrap:wrap}.dg-footer-social{margin-left:auto}.dg-footer .dg-footer-top>nav{width:100%;display:flex;flex-wrap:wrap}}
