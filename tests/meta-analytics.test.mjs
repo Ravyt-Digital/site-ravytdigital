@@ -33,7 +33,7 @@ function harness({accepted=true,path='/'}={}) {
 test('each funnel step has one explicit Meta event and a unique ID; clicks are never leads',()=>{
  const h=harness();h.click('button[data-open-contact]');h.click('a','https://wa.me/5588996956479?text=private-message');
  h.click('a','/diagnostico');h.click('button[data-diagnostic-start]');h.event('ravyt:diagnostic-complete');h.click('button[data-diagnostic-contact]');
- assert.deepEqual(h.meta().map(c=>c[2]),['PageView','SpecialistClick','Contact','DiagnosticOpen','DiagnosticStart','DiagnosticComplete','DiagnosticContactRequest']);
+ assert.deepEqual(h.meta().map(c=>c[2]),['PageView','Falar com Especialistas','Contact','Diagnostico','DiagnosticStart','DiagnosticComplete','DiagnosticContactRequest']);
  assert.ok(h.meta().every(c=>c[1]==='2030474547612558'&&c[4].eventID));assert.equal(new Set(h.meta().map(c=>c[4].eventID)).size,h.meta().length);
  const contact=h.meta().find(c=>c[2]==='Contact');assert.equal(contact[3].specialist,'ytala');assert.doesNotMatch(JSON.stringify(h.meta()),/558899|private-message/);
  h.event('ravyt:lead');assert.equal(h.meta().filter(c=>c[2]==='Lead').length,1);

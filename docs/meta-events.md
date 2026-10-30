@@ -8,9 +8,9 @@ O domínio é publicado pelo repositório `Ravyt-Digital/site-ravytdigital` no C
 | --- | --- | --- |
 | Página carregada ou navegação interna | PageView | Visualização, após consentimento |
 | Diagnóstico visualizado | ViewContent | Visitou /diagnostico |
-| Abriu opções de especialistas | SpecialistClick | Interesse em conversar, com posição do botão |
+| Abriu opções de especialistas | Falar com Especialistas | Interesse em conversar, com posição do botão |
 | Escolheu WhatsApp | Contact | Clicou para abrir WhatsApp de Ytala ou Marcio; não confirma mensagem enviada |
-| Clicou para acessar diagnóstico | DiagnosticOpen | Interesse em acessar o diagnóstico |
+| Clicou para acessar diagnóstico | Diagnostico | Interesse em acessar o diagnóstico |
 | Iniciou perguntas | DiagnosticStart | Clicou em começar |
 | Resultado exibido | DiagnosticComplete | Terminou cinco perguntas; não é lead |
 | Abriu formulário no resultado | DiagnosticContactRequest | Manifestou interesse em solicitar contato |
