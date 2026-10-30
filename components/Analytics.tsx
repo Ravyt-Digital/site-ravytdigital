@@ -1,7 +1,7 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { type AnalyticsEvent } from "@/lib/analytics";
+import { metaEvents, type AnalyticsEvent } from "@/lib/analytics";
 
 import {savedConsent} from "@/lib/privacy-consent";
 
@@ -21,11 +21,17 @@ declare global {
 
 function consent() { return savedConsent() === "accepted"; }
 
-function send(event: AnalyticsEvent, path: string) {
+function send(event: AnalyticsEvent, path: string, context: Record<string, string> = {}) {
   if (!consent()) return;
+  const eventId = crypto.randomUUID();
+  const parameters = {page_path: path, ...context};
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({event: "ravyt_"+event, page_path:path});
-  const payload = JSON.stringify({ event, path });
+  window.dataLayer.push({event: "ravyt_"+event, event_id: eventId, ...parameters});
+  const meta = metaEvents[event];
+  // Scope dispatch to this Pixel, including an ID for browser/server deduplication.
+  window.fbq?.(meta.custom ? "trackSingleCustom" : "trackSingle", META_PIXEL_ID,
+    meta.eventName, parameters, {eventID: eventId});
+  const payload = JSON.stringify({ event, path, event_id: eventId, ...context });
   if (navigator.sendBeacon?.("/api/analytics", new Blob([payload], { type: "application/json" }))) return;
   void fetch("/api/analytics", { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true }).catch(() => {});
 }
@@ -74,12 +80,9 @@ function loadMetaPixel() {
   window.fbq("init", META_PIXEL_ID);
 }
 
-function trackMeta(event: "PageView" | "Contact" | "Lead") {
-  if (consent()) window.fbq?.("track", event);
-}
-
 export default function Analytics() {
   const path = usePathname();
+  const viewedPath = useRef<string | null>(null);
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function gtag(...args: unknown[]) { window.dataLayer.push(args); };
@@ -106,12 +109,12 @@ export default function Analytics() {
     return () => window.removeEventListener("ravyt:consent", onConsent);
   }, []);
   useEffect(() => {
-    let sent = false;
+    if (viewedPath.current !== path) viewedPath.current = null;
     const view = () => {
-      if (!sent && consent()) {
+      if (viewedPath.current !== path && consent()) {
         send("page_view", path);
-        trackMeta("PageView");
-        sent = true;
+        if (path === "/diagnostico") send("diagnostic_view", path);
+        viewedPath.current = path;
       }
     };
     view();
@@ -121,10 +124,19 @@ export default function Analytics() {
   useEffect(() => {
     const click = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
-      if (event.target.closest('button[data-open-contact]')) { send("primary_cta_click", path); return; }
+      if (event.target.closest('button[data-open-contact]')) {
+        const section = event.target.closest('section')?.id;
+        const placement = section && ["inicio", "planos", "equipe", "diagnostico"].includes(section) ? section : "outro";
+        send("primary_cta_click", path, {cta_location: placement}); return;
+      }
       if (event.target.closest('button[data-diagnostic-start]')) { send("diagnostic_start", path); return; }
+      if (event.target.closest('button[data-diagnostic-contact]')) { send("diagnostic_contact_request", path); return; }
       const href = event.target.closest('a')?.getAttribute('href') ?? '';
-      if (href.startsWith('https://wa.me/')) {send("whatsapp_click", path); trackMeta("Contact");}
+      if (href.startsWith('https://wa.me/')) {
+        const destination = new URL(href).pathname;
+        const specialist = destination === '/5588996956479' ? 'ytala' : destination === '/5588996777332' ? 'marcio' : 'outro';
+        send("whatsapp_click", path, {contact_channel: "whatsapp", specialist});
+      }
       else if (href === '/diagnostico') send("diagnostic_open", path);
       else if (href === '#planos' || href === '/#planos') send("plan_click", path);
     };
@@ -132,9 +144,14 @@ export default function Analytics() {
     return () => document.removeEventListener("click", click);
   }, [path]);
   useEffect(() => {
-    const lead = () => { send("form_submit", path); trackMeta("Lead"); };
+    const lead = () => send("form_submit", path);
+    const complete = () => send("diagnostic_complete", path);
     window.addEventListener("ravyt:lead", lead);
-    return () => window.removeEventListener("ravyt:lead", lead);
+    window.addEventListener("ravyt:diagnostic-complete", complete);
+    return () => {
+      window.removeEventListener("ravyt:lead", lead);
+      window.removeEventListener("ravyt:diagnostic-complete", complete);
+    };
   }, [path]);
   return null;
 }
