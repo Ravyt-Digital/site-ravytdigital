@@ -12,8 +12,8 @@ test('home presents the requested sections and the separate diagnostic is preser
  const xml=await(await request('/sitemap.xml')).text();assert.equal((xml.match(/<loc>/g)||[]).length,5);assert.match(xml,/https:\/\/ravytdigital.com\/diagnostico/);
  assert.match(h,/<title>Especialistas em Google Meu Negócio \| Ravyt Digital<\/title>/);const diagnostic=await(await request('/diagnostico')).text();assert.match(diagnostic,/<title>Diagnóstico de Presença no Google \| Ravyt Digital<\/title>/);assert.match(diagnostic,/rel="canonical"[^>]*href="https:\/\/ravytdigital.com\/diagnostico"/);
 });
-test('home focuses on Google Business without advertising retired services',async()=>{
- const h=visible(await home());assert.doesNotMatch(h,/Criação de sites?|>SEO<|id="portfolio"|href="#portfolio"/i);assert.match(h,/Perfil da Empresa no Google/);
+test('home preserves the Google Business offer and communicates broader nationwide services',async()=>{
+ const h=visible(await home());assert.match(h,/criação de sites, SEO/);assert.match(h,/diferentes regiões do Brasil/);assert.doesNotMatch(h,/id="portfolio"|href="#portfolio"/i);assert.match(h,/Perfil da Empresa no Google/);
 });
 test('contact aliases preserve the diagnostic journey; retired content keeps Gone semantics',async()=>{
  for(const path of ['/contato','/diagnosticos','/en/diagnostico']){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).pathname,'/diagnostico');}

@@ -27,6 +27,10 @@ function send(event: AnalyticsEvent, path: string, context: Record<string, strin
   const parameters = {page_path: path, ...context};
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({event: "ravyt_"+event, event_id: eventId, ...parameters});
+  // Current GTM has no custom-event forwarding; explicitly measure these funnel stages.
+  if (["diagnostic_start", "diagnostic_complete", "diagnostic_whatsapp_click"].includes(event)) {
+    window.gtag?.("event", "ravyt_"+event, {...parameters, event_id: eventId});
+  }
   const meta = metaEvents[event];
   // Scope dispatch to this Pixel, including an ID for browser/server deduplication.
   window.fbq?.(meta.custom ? "trackSingleCustom" : "trackSingle", META_PIXEL_ID,
@@ -77,6 +81,8 @@ function loadMetaPixel() {
   script.async = true;
   script.src = "https://connect.facebook.net/en_US/fbevents.js";
   document.head.appendChild(script);
+  // Disable automatic form/button discovery; explicit consented funnel events remain.
+  window.fbq("set", "autoConfig", false, META_PIXEL_ID);
   window.fbq("init", META_PIXEL_ID);
 }
 
@@ -145,10 +151,13 @@ export default function Analytics() {
   }, [path]);
   useEffect(() => {
     const lead = () => send("form_submit", path);
+    const whatsapp = () => send("diagnostic_whatsapp_click", path, {contact_channel: "whatsapp", conversion_stage: "diagnostic"});
+    window.addEventListener("ravyt:diagnostic-whatsapp-click", whatsapp);
     const complete = () => send("diagnostic_complete", path);
     window.addEventListener("ravyt:lead", lead);
     window.addEventListener("ravyt:diagnostic-complete", complete);
     return () => {
+      window.removeEventListener("ravyt:diagnostic-whatsapp-click", whatsapp);
       window.removeEventListener("ravyt:lead", lead);
       window.removeEventListener("ravyt:diagnostic-complete", complete);
     };

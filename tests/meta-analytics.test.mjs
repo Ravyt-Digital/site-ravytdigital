@@ -36,7 +36,7 @@ test('each funnel step has one explicit Meta event and a unique ID; clicks are n
  assert.deepEqual(h.meta().map(c=>c[2]),['PageView','Falar com Especialistas','Contact','Diagnostico','DiagnosticStart','DiagnosticComplete','DiagnosticContactRequest']);
  assert.ok(h.meta().every(c=>c[1]==='2030474547612558'&&c[4].eventID));assert.equal(new Set(h.meta().map(c=>c[4].eventID)).size,h.meta().length);
  const contact=h.meta().find(c=>c[2]==='Contact');assert.equal(contact[3].specialist,'ytala');assert.doesNotMatch(JSON.stringify(h.meta()),/558899|private-message/);
- h.event('ravyt:lead');assert.equal(h.meta().filter(c=>c[2]==='Lead').length,1);
+ h.event('ravyt:diagnostic-whatsapp-click');assert.equal(h.meta().at(-1)[2],'Diagnostico_WhatsApp_Click');assert.equal(h.meta().filter(c=>c[2]==='Lead').length,0);
 });
 test('rejected consent prevents all transmissions, including Lead; granting does not replay past actions',()=>{
  const h=harness({accepted:false});h.click('button[data-open-contact]');h.event('ravyt:lead');assert.equal(h.meta().length,0);assert.equal(h.beacons.length,0);
@@ -45,7 +45,7 @@ test('rejected consent prevents all transmissions, including Lead; granting does
 test('diagnostic route carries current page path and a separate ViewContent event',()=>{
  const h=harness({path:'/diagnostico'});h.event('ravyt:lead');assert.deepEqual(h.meta().map(c=>c[2]),['PageView','ViewContent','Lead']);assert.ok(h.meta().every(c=>c[3].page_path==='/diagnostico'));
 });
-test('Lead is emitted only after the form service accepts the request',()=>{
- const form=readFileSync('components/ContactForm.tsx','utf8');assert.match(form,/await submitLead\([\s\S]*?setStatus\('success'\)[\s\S]*?new CustomEvent\('ravyt:lead'\)/);
- assert.doesNotMatch(readFileSync('components/Analytics.tsx','utf8'),/addEventListener\(["']submit["']/);
+test('WhatsApp click is consent gated, minimal and independent from Lead',async()=>{
+ const h=harness({accepted:false,path:'/diagnostico'});h.event('ravyt:diagnostic-whatsapp-click');assert.equal(h.beacons.length,0);h.choice(true);h.event('ravyt:diagnostic-whatsapp-click');const event=h.meta().at(-1);assert.equal(event[2],'Diagnostico_WhatsApp_Click');assert.deepEqual(Object.keys(event[3]).sort(),['contact_channel','conversion_stage','page_path']);assert.equal(event[4].eventID,JSON.parse(await h.beacons.at(-1).text()).event_id);h.choice(false);const count=h.beacons.length;h.event('ravyt:diagnostic-whatsapp-click');assert.equal(h.beacons.length,count);
+ const form=readFileSync('components/ContactForm.tsx','utf8');assert.doesNotMatch(form,/ravyt:lead|submitLead|web3forms|hcaptcha/i);assert.doesNotMatch(readFileSync('components/Analytics.tsx','utf8'),/addEventListener\(["']submit["']/);
 });

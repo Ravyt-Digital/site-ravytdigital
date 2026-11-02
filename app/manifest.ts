@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Ravyt Digital",
     short_name: "Ravyt",
-    description: "Diagnóstico inicial de presença digital para profissionais de Tianguá e região.",
+    description: "Diagnóstico inicial de presença digital para profissionais e empresas de diferentes regiões do Brasil.",
     start_url: "/",
     display: "standalone",
     background_color: "#050C13",
