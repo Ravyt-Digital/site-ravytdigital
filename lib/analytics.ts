@@ -1,4 +1,4 @@
-export const analyticsEvents = ["page_view", "primary_cta_click", "whatsapp_click", "diagnostic_open", "diagnostic_view", "diagnostic_start", "diagnostic_complete", "diagnostic_contact_request", "plan_click", "form_submit"] as const;
+export const analyticsEvents = ["page_view", "primary_cta_click", "whatsapp_click", "diagnostic_open", "diagnostic_view", "diagnostic_start", "diagnostic_complete", "diagnostic_contact_request", "plan_click", "form_submit", "diagnostic_whatsapp_click"] as const;
 export type AnalyticsEvent = typeof analyticsEvents[number];
 
 // One business action has one event ID. Meta's existing hosted Conversions API
@@ -13,5 +13,6 @@ export const metaEvents: Record<AnalyticsEvent, {eventName: string; custom?: boo
   diagnostic_complete: {eventName: "DiagnosticComplete", custom: true},
   diagnostic_contact_request: {eventName: "DiagnosticContactRequest", custom: true},
   plan_click: {eventName: "PlanClick", custom: true},
+  diagnostic_whatsapp_click: {eventName: "Diagnostico_WhatsApp_Click", custom: true},
   form_submit: {eventName: "Lead"},
 };

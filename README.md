@@ -4,7 +4,7 @@ Home comercial e diagnóstico em página própria, em português. Marca, fontes 
 
 ## Home comercial
 
-A home apresenta exclusivamente Google Meu Negócio (Perfil da Empresa no Google): informações e contatos, categorias e serviços, orientação sobre fotos e avaliações. A oferta é um único plano de R$ 597,00 por ano, com um cartão NFC para avaliações de bônus. Não oferece criação de sites nem SEO.
+A home apresenta exclusivamente Google Meu Negócio (Perfil da Empresa no Google): informações e contatos, categorias e serviços, orientação sobre fotos e avaliações. A oferta é um único plano de R$ 597,00 por ano, com um cartão NFC para avaliações de bônus. O plano mantém esse escopo; a apresentação institucional também informa criação de sites e SEO, conforme orientação de 02/11/2026, sem incluir esses serviços no preço do plano.
 
 A home concentra as intenções comerciais de consultoria, especialista, otimização e gerenciamento. Foram adicionados três guias: `/minha-empresa-nao-aparece-no-google`, `/como-colocar-empresa-no-google-maps` e `/quanto-custa-google-meu-negocio`. O mapa e o relatório estão em `docs/seo-2026-10-23.md`.
 
@@ -43,43 +43,28 @@ npx wrangler deploy --config dist/server/wrangler.json --dry-run
 
 As credenciais do Cloudflare devem ficar na integração de build ou em variáveis de ambiente protegidas, nunca no código. Para publicação local autenticada, o Wrangler usa a autenticação da conta. `npm run deploy` é a alternativa que executa build e implantação em sequência. `npm run install:ci` continua disponível para os ambientes Linux que utilizam o instalador verificado do projeto.
 
-## Experiência e dados
+## Diagnóstico e contato — 02/11/2026
 
-`components/Diagnostic.tsx` apresenta cinco perguntas, navegação reversível e resultado preliminar. `lib/diagnostic.mjs` reúne a máquina de estados, critérios de classificação, telefone, payload e envio. Não há consultas automáticas ao Google ou às redes sociais.
+Cinco etapas, navegação reversível, progresso, resultado preliminar e contato opcional. A quinta pergunta pede somente a cidade em texto livre, obrigatória, com trim ao concluir, espaços, hífens e acentos. `lib/diagnostic.mjs` mantém a regra das primeiras quatro respostas: objetivo Google → B; começando/sem orientação → C; site e redes → D; demais → A. A cidade nunca participa da categoria ou da compatibilidade.
 
-Classificação: objetivo explícito de Google → B; começando ou sem orientação → C; site e redes existentes → D; apresentação/organização → A. O resultado também apresenta objetivo, dificuldade, percepção sobre Google e região. Compatibilidade é interesse declarado em serviços atendidos; não é aprovação contratual ou elegibilidade do Google.
+`components/ContactForm.tsx` prepara a mensagem no navegador após nome, celular, perfil opcional e autorização expressa desmarcada. `whatsappMessage` inclui dados, perguntas reais, respostas e resultado real recalculado. `whatsappUrl` usa `encodeURIComponent` e o destino oficial `https://wa.me/5588996956479`. O botão abre com `noopener,noreferrer`, bloqueia repetição por dois segundos e oferece mensagem acessível para copiar e conversa sem texto na URL. Abrir não comprova envio/recebimento. Dados ficam em memória; não há banco, persistência local ou API de leads. O visitante envia voluntariamente dentro do WhatsApp. A URL compartilha dados com o provedor ao abrir e pode ficar no histórico; a política explica essa diferença.
 
-`components/ContactForm.tsx` preserva a chave pública e o endpoint Web3Forms. Envia nome (`name`), WhatsApp (`phone`), perfil opcional (`professional_profile`), cinco campos `diagnostic_*`, `interest_category`, `preliminary_compatibility`, `compatibility_reason`, `contact_consent`, `consent_text`, `privacy_policy_version`, `lead_source`, `submitted_at` e UTMs limitadas. Assunto: `Novo diagnóstico | [nome tratado, até 72 caracteres] | [localidade]`; nome do remetente: `Diagnóstico Ravyt Digital`. Não envia URL completa ou referrer; eventos de medição não contêm dados de contato ou respostas. O destinatário continua associado à chave existente, sem substituição pelo e-mail institucional. Sucesso somente após resposta positiva do serviço; erro mantém informações para nova tentativa.
+Web3Forms, chave pública, payload de e-mail, hCaptcha e tela antiga de confirmação foram removidos após conferir que só eram usados nesse diagnóstico. Nenhum serviço externo foi desativado na conta. Razão social, CNPJ, contatos e canal de privacidade foram preservados. Política e termos revisados em 02/11/2026.
 
-As respostas ficam em memória até o envio; não são gravadas em banco pelo quiz. Ao encerrar o relacionamento, a Ravyt deve excluir dados de suas caixas de e-mail e sistemas, ressalvadas obrigações legais de conservação. O site não executa exclusão nesses prestadores: confirmar procedimento operacional, responsável e alcance dos registros/backups. Canal institucional: contatoravyt@gmail.com.
+O GTM publicado em 02/11/2026 contém um listener global de `submit` que gera `generate_lead` sem verificar envio. Por isso a captura de contato usa um grupo de campos e botão de ação com suporte a Enter, sem submeter um formulário HTML nem disparar esse falso lead. Links dinâmicos com texto pessoal não são expostos no DOM. A descoberta automática de formulários/botões do Meta foi desativada neste Pixel; os eventos explícitos foram preservados. O novo evento não dispara `Lead`.
 
 ## Publicação e SEO
 
-`app/page.tsx` contém a home; `app/diagnostico/page.tsx` preserva a experiência anterior. Os documentos legais são compartilhados pelo rodapé. Cada página tem seu canonical e item de sitemap. `/contato` e `/diagnosticos` redirecionam para `/diagnostico`; documentos legais redirecionam para seções equivalentes; páginas comerciais/editoriais retiradas retornam 410. Nunca encaminhar conteúdos sem equivalência para a home.
+A home, `/diagnostico` e os três guias continuam com canonical próprio, metadados, Open Graph, sitemap, robots e JSON-LD. `/diagnostico` responde 200, sem redirecionar para a home. Nenhum novo redirecionamento. Conteúdo institucional, manifest e descrição de Organization passam a informar atendimento a diferentes regiões do Brasil. Identificadores e caminhos de imagens históricas de clientes permanecem para preservar assets; não limitam atendimento. Os documentos legais estão nos diálogos compartilhados do rodapé.
 
 ```sh
+npm run types:worker
+node node_modules/typescript/bin/tsc --noEmit
 npm run build
 node --test tests/*.test.mjs
-bash scripts/sites-env.sh -- node node_modules/typescript/bin/tsc --noEmit
 ```
 
-O build inclui validação do artefato. CSS publicado em `public/styles/site.css` sincronizado por script. `.openai/hosting.json`, bindings e fluxo de Workers/Sites preservados. Métricas opcionais dependem de consentimento.
-
-## Limites de validação
-
-Testes automatizados de submissão usam respostas simuladas de sucesso/falha. Teste controlado autorizado `RAVYT-QA-20261014-0112`, com dados sintéticos e instrução de não contatar, recebeu HTTP 200 e `success: true` da API. O retorno confirmou todos os campos, mas o recebimento no e-mail destinatário não foi confirmado: o Gmail conectado é de outra conta e não apresentou o teste na busca. O envio AJAX mantém endpoint, chave e destinatário; o payload foi padronizado para JSON, formato confirmado no teste, evitando a resposta não JSON encontrada na tentativa multipart. A política não é garantia de conformidade jurídica. A rotina operacional de exclusão deve ser executada pela Ravyt, também nos prestadores.
-
-## hCaptcha Free
-
-`components/HCaptcha.tsx` carrega o SDK somente quando o formulário final é montado. Usa a chave pública compartilhada oficial do Web3Forms Free, em português e modo compacto; sem compatibilidade reCAPTCHA. Token obrigatório no campo `h-captcha-response`, expirado ou consumido é descartado. Falhas permitem recarregar o desafio sem apagar dados. O painel deve manter hCaptcha habilitado; nenhuma configuração ou destinatário foi alterado. Um teste completo exige que uma pessoa resolva o desafio no navegador e confira o e-mail; o teste anterior sem captcha não valida esta nova proteção.
-
-Documentos legais abrem em diálogos nativos pelo único par de links do rodapé. A tela inicial usa a altura disponível sem ocultar conteúdo; em telas pequenas ou ampliação de texto, a rolagem é preservada por acessibilidade.
-
-## Apresentação dos e-mails
-
-`emailPayload` traduz os identificadores internos para títulos em português no JSON enviado ao Web3Forms, preservando os valores. Ordem: identificação e localidade → diagnóstico → avaliação → origem, UTMs e privacidade. Os identificadores do quiz continuam estáveis; apenas a serialização para e-mail muda. Parâmetros técnicos (`access_key`, `subject`, `from_name`, `botcheck`, `h-captcha-response`) são preservados como nomes reservados. Não há template HTML personalizado, webhooks ou recursos pagos.
-
-Assunto construído localmente com nome limitado a 72 caracteres, sem controles ou delimitador vertical, e localidade mapeada a Tianguá / Tianguá e região / Outra localidade. Sem nome: `Novo diagnóstico | Ravyt Digital`. As cinco UTMs são preservadas e traduzidas quando presentes; `test_reference` torna-se `Referência do teste`. A aparência final do template do provedor depende de conferência no destinatário. Teste real desta mudança exige um token hCaptcha obtido por uma pessoa; o Gmail conectado não dá acesso à caixa contatoravyt@gmail.com.
+O build valida o artefato e sincroniza `public/styles/site.css`. A identidade Sites, bindings, imagens, fontes, depoimentos, plano anual e demais integrações são preservados. Publicação desta alteração depende da aprovação solicitada pelo usuário.
 
 ## Depoimentos
 
@@ -91,6 +76,6 @@ Carrossel independente do quiz, abaixo do diagnóstico e acima do rodapé. Prime
 
 Metadados específicos por página (incluindo canonical, Open Graph e Twitter), sitemap com cinco URLs, JSON-LD de Organization, WebSite, WebPage, Service/Offer e Article/BreadcrumbList nos guias. `/google-meu-negocio` redireciona para a home; URLs com barra final redirecionam para a forma canônica.
 
-Após o consentimento opcional, os eventos `primary_cta_click`, `whatsapp_click`, `diagnostic_open`, `diagnostic_start`, `plan_click` e `form_submit` seguem para `/api/analytics` e para `dataLayer` com prefixo `ravyt_`. O endpoint registra somente evento, caminho e horário; não inclui nome, WhatsApp, respostas, mensagem ou parâmetros de URL. `form_submit` representa o aceite do Web3Forms, não uma venda. `whatsapp_click` representa um clique, não uma conversa efetivada. As tags externas existentes foram preservadas; eventos na dataLayer não comprovam uma configuração de conversão no painel do GTM/GA4.
+Os eventos explícitos são documentados em `docs/diagnostico-whatsapp-2026-11-02.md`. GTM, GA4, Metricool, Meta Pixel e os IDs de eventos existentes são preservados. O endpoint registra somente evento, caminho e horário, sem dados pessoais ou URL de contato. A configuração externa de API de Conversões não foi alterada nem duplicada; seu funcionamento de ponta a ponta depende dos painéis do provedor. Um clique no WhatsApp não representa uma mensagem enviada, lead recebido ou venda.
 
 Validação: `npm run build`, `node --test tests/*.test.mjs`, `npm run types:worker` e `npx tsc --noEmit`; o arquivo de tipos é gerado localmente e ignorado pelo Git. Para empacotamento sem publicar: `npx wrangler deploy --config dist/server/wrangler.json --dry-run`.

@@ -65,7 +65,7 @@ export const homeContent = {
   },
   {
     "id": "cerest-tiangua",
-    "name": "CEREST Tianguá",
+    "name": "CEREST — Saúde do trabalhador",
     "category": "Saúde do trabalhador",
     "description": "Site com informações institucionais e orientações de atendimento.",
     "image": "/projects/cerest-tiangua.webp",

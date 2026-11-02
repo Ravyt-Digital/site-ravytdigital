@@ -126,3 +126,7 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 .dg-footer-social a:focus-visible{outline:2px solid var(--copper);outline-offset:4px}
 .dg-footer-social svg{flex-shrink:0}
 @media(max-width:600px){.dg-footer .dg-footer-top{flex-wrap:wrap}.dg-footer-social{margin-left:auto}.dg-footer .dg-footer-top>nav{width:100%;display:flex;flex-wrap:wrap}}
+
+/* Diagnostic city and WhatsApp fallback use the existing form tokens. */
+.dg-city-field{margin-top:24px}.dg-city-field p{font-size:14px;color:var(--muted);margin-bottom:14px}.dg-city-field input{font-size:16px;min-height:48px}
+.dg-whatsapp-fallback{margin-top:24px;border-top:1px solid var(--line);padding-top:24px}.dg-whatsapp-fallback h3{font-size:16px}.dg-whatsapp-fallback p{font-size:13px;color:var(--muted);margin-block:12px}.dg-whatsapp-fallback label{display:block;font-size:13px;margin-bottom:8px}.dg-whatsapp-fallback textarea{box-sizing:border-box;display:block;width:100%;max-width:100%;resize:vertical;padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);font:inherit;font-size:16px;line-height:1.6}.dg-whatsapp-fallback textarea:focus{outline:2px solid var(--copper);outline-offset:2px}.dg-fallback-actions{display:flex;gap:16px;flex-wrap:wrap}.dg-fallback-actions button{min-height:44px}.dg-contact .dg-fields input{font-size:16px}
