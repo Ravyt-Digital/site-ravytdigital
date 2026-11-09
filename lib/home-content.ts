@@ -1,5 +1,5 @@
 // Project names and demonstration status checked against the owner-supplied sites.
-// One annual plan and contact information supplied by the owner.
+// One monthly plan and contact information supplied by the owner.
 // Do not infer prices, client work or contact details from other projects.
 export const homeContent = {
   contacts: [
@@ -80,7 +80,7 @@ export const homeContent = {
     "demo": true
   }
 ],
-  plan: {name:'Plano anual Google Meu Negócio',priceLabel:'R$ 597,00',period:'por ano',bonus:'Cartão NFC para avaliações no Google'},
+  plan: {name:'Plano mensal Presença Digital',priceLabel:'R$ 59,90',period:'por mês',bonus:'Cartão NFC para avaliações no Google'},
 };
-export const whatsappHref = (number:string) => `https://wa.me/${number}?text=${encodeURIComponent('Olá! Quero conhecer o plano anual de Google Meu Negócio por R$ 597,00.')}`;
-export const contactLabel = 'Fale com nossos especialistas';
+export const whatsappHref = (number:string) => `https://wa.me/${number}?text=${encodeURIComponent('Olá! Quero conhecer o plano de Google Meu Negócio + site por R$ 59,90 por mês, com hospedagem e domínio grátis.')}`;
+export const contactLabel = 'Converse com um especialista da Ravyt Digital';

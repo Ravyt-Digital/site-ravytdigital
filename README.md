@@ -4,7 +4,7 @@ Home comercial e diagnóstico em página própria, em português. Marca, fontes 
 
 ## Home comercial
 
-A home apresenta exclusivamente Google Meu Negócio (Perfil da Empresa no Google): informações e contatos, categorias e serviços, orientação sobre fotos e avaliações. A oferta é um único plano de R$ 597,00 por ano, com um cartão NFC para avaliações de bônus. O plano mantém esse escopo; a apresentação institucional também informa criação de sites e SEO, conforme orientação de 02/11/2026, sem incluir esses serviços no preço do plano.
+A home apresenta Google Meu Negócio (Perfil da Empresa no Google) + site profissional em um único plano de R$ 59,90 por mês, com hospedagem e domínio grátis e cartão NFC para avaliações de bônus, conforme orientação de 09/11/2026. Condições e escopo do atendimento são confirmados antes da contratação.
 
 A home concentra as intenções comerciais de consultoria, especialista, otimização e gerenciamento. Foram adicionados três guias: `/minha-empresa-nao-aparece-no-google`, `/como-colocar-empresa-no-google-maps` e `/quanto-custa-google-meu-negocio`. O mapa e o relatório estão em `docs/seo-2026-10-23.md`.
 
@@ -64,7 +64,7 @@ npm run build
 node --test tests/*.test.mjs
 ```
 
-O build valida o artefato e sincroniza `public/styles/site.css`. A identidade Sites, bindings, imagens, fontes, depoimentos, plano anual e demais integrações são preservados. Publicação desta alteração depende da aprovação solicitada pelo usuário.
+O build valida o artefato e sincroniza `public/styles/site.css`. A identidade Sites, bindings, imagens, fontes, depoimentos, plano mensal e demais integrações são preservados.
 
 ## Depoimentos
 
