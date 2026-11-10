@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Ravyt Digital",
     short_name: "Ravyt",
-    description: "Diagnóstico inicial de presença digital para profissionais e empresas de diferentes regiões do Brasil.",
+    description: "Sites, SEO e Google Meu Negócio para empresas de diferentes regiões do Brasil. Atendimento direto pelo WhatsApp.",
     start_url: "/",
     display: "standalone",
     background_color: "#050C13",

@@ -3,8 +3,7 @@
 // Do not infer prices, client work or contact details from other projects.
 export const homeContent = {
   contacts: [
-    {id:'ytala-cabral',name:'Ytala Cabral',number:'5588996956479',display:'(88) 99695-6479'},
-    {id:'marcio-cabral',name:'Marcio Cabral',number:'5588996777332',display:'(88) 99677-7332'},
+    {id:'ravyt-atendimento',name:'Ravyt Digital',number:'5588996777332',display:'(88) 99677-7332'},
   ],
   projects: [
   {
@@ -84,3 +83,5 @@ export const homeContent = {
 };
 export const whatsappHref = (number:string) => `https://wa.me/${number}?text=${encodeURIComponent('Olá! Quero conhecer o plano de Google Meu Negócio + site por R$ 59,90 por mês, com hospedagem e domínio grátis.')}`;
 export const contactLabel = 'Converse com um especialista da Ravyt Digital';
+
+export const contactHref = whatsappHref(homeContent.contacts[0].number);

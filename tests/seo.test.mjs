@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {existsSync} from 'node:fs';import worker from '../dist/server/index.js';
 const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=>new Response('',{status:404})}};
 const origin='https://ravytdigital.com';const request=(path,options)=>worker.fetch(new Request(origin+path,options),env,ctx);
-const routes=['/','/diagnostico','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio'];
+const routes=['/','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio'];
 const rendered=new Map();const html=async path=>{if(!rendered.has(path))rendered.set(path,await(await request(path)).text());return rendered.get(path)};
 const visible=h=>h.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 test('every indexable page has unique server-rendered metadata and a self canonical',async()=>{
@@ -14,7 +14,7 @@ test('sitemap, robots, structured data and meaningful legacy redirects agree wit
  const legacy=await request('/google-meu-negocio?utm_source=old');assert.equal(legacy.status,301);assert.equal(legacy.headers.get('location'),origin+'/?utm_source=old');const trailing=await request(routes[2]+'/');assert.equal(trailing.status,308);assert.equal(trailing.headers.get('location'),origin+routes[2]);
 });
 test('all rendered internal links, fragment targets and images resolve; guides are linked from home',async()=>{
- const home=visible(await html('/'));for(const p of routes.slice(2))assert.ok(home.includes('href="'+p+'"'),p);
+ const home=visible(await html('/'));for(const p of routes.slice(1))assert.ok(home.includes('href="'+p+'"'),p);
  for(const path of routes){const h=visible(await html(path));for(const [,href]of h.matchAll(/<a\b[^>]*href="([^"]+)"/g)){if(!href.startsWith('/')&&!href.startsWith('#'))continue;const u=new URL(href,origin+path);const target=visible(await html(u.pathname));assert.equal((await request(u.pathname)).status,200,path+' -> '+href);if(u.hash)assert.ok(target.includes('id="'+u.hash.slice(1)+'"'),path+' -> '+href);}
  for(const [tag,src]of [...h.matchAll(/(<img\b[^>]*src="([^"]+)"[^>]*>)/g)].map(m=>[m[1],m[2]])){assert.ok(existsSync('public'+src),src);assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);}}
 });

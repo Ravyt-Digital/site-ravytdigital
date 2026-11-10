@@ -27,10 +27,6 @@ function send(event: AnalyticsEvent, path: string, context: Record<string, strin
   const parameters = {page_path: path, ...context};
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({event: "ravyt_"+event, event_id: eventId, ...parameters});
-  // Current GTM has no custom-event forwarding; explicitly measure these funnel stages.
-  if (["diagnostic_start", "diagnostic_complete", "diagnostic_whatsapp_click"].includes(event)) {
-    window.gtag?.("event", "ravyt_"+event, {...parameters, event_id: eventId});
-  }
   const meta = metaEvents[event];
   // Scope dispatch to this Pixel, including an ID for browser/server deduplication.
   window.fbq?.(meta.custom ? "trackSingleCustom" : "trackSingle", META_PIXEL_ID,
@@ -119,7 +115,6 @@ export default function Analytics() {
     const view = () => {
       if (viewedPath.current !== path && consent()) {
         send("page_view", path);
-        if (path === "/diagnostico") send("diagnostic_view", path);
         viewedPath.current = path;
       }
     };
@@ -130,37 +125,20 @@ export default function Analytics() {
   useEffect(() => {
     const click = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
-      if (event.target.closest('button[data-open-contact]')) {
-        const section = event.target.closest('section')?.id;
-        const placement = section && ["inicio", "planos", "equipe", "diagnostico"].includes(section) ? section : "outro";
-        send("primary_cta_click", path, {cta_location: placement}); return;
-      }
-      if (event.target.closest('button[data-diagnostic-start]')) { send("diagnostic_start", path); return; }
-      if (event.target.closest('button[data-diagnostic-contact]')) { send("diagnostic_contact_request", path); return; }
-      const href = event.target.closest('a')?.getAttribute('href') ?? '';
+      const anchor = event.target.closest('a');
+      const href = anchor?.getAttribute('href') ?? '';
       if (href.startsWith('https://wa.me/')) {
-        const destination = new URL(href).pathname;
-        const specialist = destination === '/5588996956479' ? 'ytala' : destination === '/5588996777332' ? 'marcio' : 'outro';
-        send("whatsapp_click", path, {contact_channel: "whatsapp", specialist});
+        if (anchor?.hasAttribute('data-contact-cta')) {
+          const section = event.target.closest('section')?.id;
+          const placement = section && ["inicio", "planos", "equipe", "contato"].includes(section) ? section : "outro";
+          send("primary_cta_click", path, {cta_location: placement});
+        }
+        send("whatsapp_click", path, {contact_channel: "whatsapp"});
       }
-      else if (href === '/diagnostico') send("diagnostic_open", path);
       else if (href === '#planos' || href === '/#planos') send("plan_click", path);
     };
     document.addEventListener("click", click);
     return () => document.removeEventListener("click", click);
-  }, [path]);
-  useEffect(() => {
-    const lead = () => send("form_submit", path);
-    const whatsapp = () => send("diagnostic_whatsapp_click", path, {contact_channel: "whatsapp", conversion_stage: "diagnostic"});
-    window.addEventListener("ravyt:diagnostic-whatsapp-click", whatsapp);
-    const complete = () => send("diagnostic_complete", path);
-    window.addEventListener("ravyt:lead", lead);
-    window.addEventListener("ravyt:diagnostic-complete", complete);
-    return () => {
-      window.removeEventListener("ravyt:diagnostic-whatsapp-click", whatsapp);
-      window.removeEventListener("ravyt:lead", lead);
-      window.removeEventListener("ravyt:diagnostic-complete", complete);
-    };
   }, [path]);
   return null;
 }
