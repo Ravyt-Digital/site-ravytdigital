@@ -130,3 +130,58 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 /* Diagnostic city and WhatsApp fallback use the existing form tokens. */
 .dg-city-field{margin-top:24px}.dg-city-field p{font-size:14px;color:var(--muted);margin-bottom:14px}.dg-city-field input{font-size:16px;min-height:48px}
 .dg-whatsapp-fallback{margin-top:24px;border-top:1px solid var(--line);padding-top:24px}.dg-whatsapp-fallback h3{font-size:16px}.dg-whatsapp-fallback p{font-size:13px;color:var(--muted);margin-block:12px}.dg-whatsapp-fallback label{display:block;font-size:13px;margin-bottom:8px}.dg-whatsapp-fallback textarea{box-sizing:border-box;display:block;width:100%;max-width:100%;resize:vertical;padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);font:inherit;font-size:16px;line-height:1.6}.dg-whatsapp-fallback textarea:focus{outline:2px solid var(--copper);outline-offset:2px}.dg-fallback-actions{display:flex;gap:16px;flex-wrap:wrap}.dg-fallback-actions button{min-height:44px}.dg-contact .dg-fields input{font-size:16px}
+
+/* Ravyt's website offers and proposal flow */
+.rd-hero h1{max-width:13ch}
+.rd-hero-work{align-self:center;margin:0;background:var(--surface);border:1px solid #FEF7F133;border-radius:16px;overflow:hidden;box-shadow:0 20px 65px #0007}
+.rd-window-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;color:var(--muted);font-size:.77rem}
+.rd-window-bar span:first-child{color:var(--copper);letter-spacing:.14em}
+.rd-hero-work img{display:block;width:100%;height:auto}
+.rd-hero-work figcaption{padding:13px 16px;font-size:.85rem}
+.rd-hero-work a,.rd-demo-list summary{color:var(--ink)}
+.rd-plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.rd-plan{display:flex;flex-direction:column;padding:clamp(22px,3vw,38px);background:var(--surface);border:1px solid #FEF7F133;border-radius:12px}
+.rd-plan-main{background:#1c1816;border-color:var(--copper)}
+.rd-plan h3{margin:0;font-size:1.32rem}
+.rd-plan h2{margin:0;font-size:clamp(32px,5vw,61px)}
+.rd-plan h2 small{display:block;font-size:1rem;color:var(--muted);font-family:inherit}
+.rd-plan-price{display:flex;flex-wrap:wrap;gap:.26em;align-items:baseline;margin:14px 0;font-size:clamp(28px,3.4vw,54px);color:var(--ink);line-height:1.06;font-weight:750}
+.rd-plan-price span{font-size:.78rem;color:var(--muted);font-weight:500}
+.rd-plan p:not(.rd-plan-price){color:var(--muted)}
+.rd-plan ul{list-style:none;padding:0;margin:10px 0 20px}
+.rd-plan li{position:relative;padding:9px 0 9px 19px;border-bottom:1px solid #FEF7F119;font-size:.9rem;line-height:1.5}
+.rd-plan li:before{content:'✓';color:var(--copper);position:absolute;left:0;font-weight:750}
+.rd-plan-timeline{margin-top:auto;font-size:.83rem}
+.rd-plan .rv-button,.rd-plan .rv-text-link{align-self:flex-start;margin-top:10px}
+.rd-split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,7vw,108px);align-items:start}
+.rd-split p{color:var(--muted);line-height:1.7}
+.rd-form-page{padding-block:clamp(45px,8vw,115px)}
+.rd-form-page h1{font-size:clamp(44px,7vw,82px);line-height:1.03;margin:0 0 24px}
+.rd-form-box{padding:clamp(18px,3vw,34px);border:1px solid #FEF7F133;border-radius:13px;background:var(--surface);min-width:0}
+.rd-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-bottom:20px}
+.rd-fields label{display:grid;align-content:start;gap:7px;font-size:.88rem;color:var(--ink)}
+.rd-fields :is(input,select,textarea){width:100%;min-width:0;padding:12px 10px;min-height:46px;background:var(--paper);color:var(--ink);border:1px solid #FEF7F155;border-radius:6px;font:inherit}
+.rd-fields textarea{resize:vertical}
+.rd-wide{grid-column:1/-1}
+.rd-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+.rv-final .rd-actions{justify-content:center}
+.rd-link-button{padding:7px 0;background:none;color:var(--ink);text-decoration:underline;border:0;cursor:pointer;font:inherit}
+.rd-result{border-top:1px solid #FEF7F133;margin-top:22px;padding-top:14px}
+.rd-result h3{margin:.4em 0}
+.rd-privacy-check{display:flex;align-items:flex-start;gap:9px;font-size:.84rem;line-height:1.45;margin:0 0 20px;color:var(--muted)}
+.rd-privacy-check input{accent-color:var(--copper);margin-top:.19em}
+.rd-privacy-check a{text-decoration:underline}
+.rd-error{color:#ffad92!important}
+.rd-referral-steps{padding-left:22px}
+.rd-referral-steps li{margin:9px 0;line-height:1.6}
+.rd-demo-list{margin-top:24px}
+.rd-demo-list summary{cursor:pointer;padding:9px 0;margin-bottom:13px;font-weight:650}
+.rd-hero .rv-button,.rd-plan-main .rv-button,.rd-form-box .rv-button,.rv-final .rv-button{color:var(--paper)}
+.rv-project-dialog img{width:100%;height:auto}
+@media(max-width:950px){.rd-plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rd-plan-main{grid-column:1/-1;grid-row:1}.rd-split{grid-template-columns:1fr;gap:24px}}
+@media(max-width:600px){.rd-plan-grid,.rd-fields{grid-template-columns:1fr}.rd-hero h1{max-width:15ch}.rd-plan-main{grid-column:auto}.rd-form-box .rv-button{white-space:normal;text-align:left}.rd-actions .rv-button{max-width:100%;white-space:normal}}
+
+.rd-whatsapp-avatar{display:flex;justify-content:center;align-items:center;gap:13px;margin:24px auto 0;text-align:left;color:var(--ink)}
+.rd-whatsapp-avatar img{flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #FEF7F155;object-fit:cover}
+.rd-whatsapp-avatar strong,.rd-whatsapp-avatar span{display:block}
+.rd-whatsapp-avatar span{color:var(--muted);font-size:.83rem;margin-top:4px}

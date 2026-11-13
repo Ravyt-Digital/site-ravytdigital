@@ -1,9 +1,8 @@
 // Project names and demonstration status checked against the owner-supplied sites.
-// One monthly plan and contact information supplied by the owner.
 // Do not infer prices, client work or contact details from other projects.
 export const homeContent = {
   contacts: [
-    {id:'ravyt-atendimento',name:'Ravyt Digital',number:'5588996777332',display:'(88) 99677-7332'},
+    {id:'ravyt-atendimento',name:'Marcio Cabral',number:'5588996777332',display:'(88) 99677-7332'},
   ],
   projects: [
   {
@@ -12,6 +11,14 @@ export const homeContent = {
     "category": "Consultoria de imagem",
     "description": "Site para apresentação dos serviços de imagem e coloração pessoal.",
     "image": "/projects/ananda-oliveira.webp",
+    "demo": false
+  },
+  {
+    "id": "antonia-moreira",
+    "name": "Antônia Moreira",
+    "category": "Psicologia e neuropsicologia",
+    "description": "Site para apresentar a atuação profissional, explicar os atendimentos e orientar o agendamento.",
+    "image": "/projects/antonia-moreira.webp",
     "demo": false
   },
   {
@@ -79,9 +86,9 @@ export const homeContent = {
     "demo": true
   }
 ],
-  plan: {name:'Plano mensal Presença Digital',priceLabel:'R$ 59,90',period:'por mês',bonus:'Cartão NFC para avaliações no Google'},
 };
-export const whatsappHref = (number:string) => `https://wa.me/${number}?text=${encodeURIComponent('Olá! Quero conhecer o plano de Google Meu Negócio + site por R$ 59,90 por mês, com hospedagem e domínio grátis.')}`;
-export const contactLabel = 'Converse com um especialista da Ravyt Digital';
-
+export const whatsappHref = (number: string, message = 'Olá! Quero conversar sobre a criação de um site com a Ravyt Digital.') =>
+  `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 export const contactHref = whatsappHref(homeContent.contacts[0].number);
+export const commercialWhatsApp = (message: string) => whatsappHref(homeContent.contacts[0].number, message);
+export const googleContactHref = commercialWhatsApp('Olá! Quero saber mais sobre a otimização do Perfil da Empresa no Google.');

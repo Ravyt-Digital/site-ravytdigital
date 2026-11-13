@@ -135,10 +135,18 @@ export default function Analytics() {
         }
         send("whatsapp_click", path, {contact_channel: "whatsapp"});
       }
-      else if (href === '#planos' || href === '/#planos') send("plan_click", path);
+      else if (anchor?.hasAttribute('data-plan-click') || href === '#planos' || href === '/#planos') send("plan_click", path);
+    };
+    const sales = (event: Event) => {
+      const name = (event as CustomEvent).detail;
+      if (['form_submit', 'diagnostic_complete', 'diagnostic_contact_request'].includes(name)) send(name, path);
     };
     document.addEventListener("click", click);
-    return () => document.removeEventListener("click", click);
+    window.addEventListener("ravyt:sales-event", sales);
+    return () => {
+      document.removeEventListener("click", click);
+      window.removeEventListener("ravyt:sales-event", sales);
+    };
   }, [path]);
   return null;
 }

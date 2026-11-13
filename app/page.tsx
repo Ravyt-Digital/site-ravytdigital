@@ -1,44 +1,126 @@
 import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
 import Testimonials from '@/components/Testimonials';
-import {homeContent,contactLabel, contactHref} from '@/lib/home-content';
-import {guides} from '@/lib/guides';
+import PortfolioGallery from '@/components/PortfolioGallery';
+import {PlanAdvisor} from '@/components/SalesForms';
 import StructuredData from '@/components/StructuredData';
 import {webpage} from '@/lib/seo';
+import {contactHref, googleContactHref, homeContent} from '@/lib/home-content';
+import {plans, offerTitle, offerDescription} from '@/lib/plans';
+import {guides} from '@/lib/guides';
 import {SITE_URL} from '@/lib/site';
 
-const services=[
- {id:'google',number:'01',title:'Informações do seu negócio',benefit:'Facilite a decisão de quem está procurando.',description:'Revisamos os dados do Perfil da Empresa no Google para apresentar seu negócio com clareza na Busca e no Maps.',items:['Revisão de contatos e horários','Informações de atendimento coerentes','Orientação para criação do perfil, quando elegível']},
- {id:'servicos',number:'02',title:'Categorias e serviços',benefit:'Mostre o que você faz para quem precisa de você.',description:'Organizamos as categorias e os serviços do perfil de acordo com sua atuação, para que o visitante entenda o que você oferece.',items:['Revisão das categorias do negócio','Organização dos serviços oferecidos','Descrição alinhada ao atendimento']},
- {id:'avaliacoes',number:'03',title:'Fotos e avaliações',benefit:'Ajude o cliente a conhecer melhor seu negócio.',description:'Orientamos a apresentação das fotos e o convite para avaliações de clientes reais. O cartão NFC de bônus facilita o acesso à página de avaliações.',items:['Orientação sobre fotos do negócio','Boas práticas para solicitar avaliações','Cartão NFC para facilitar o convite']}
+const faqs = [
+  ['O que está incluído nos R$ 2.900?', 'O Site Profissional inclui até 5 páginas institucionais, design responsivo personalizado, redação a partir do briefing, SEO inicial, WhatsApp, configuração do seu domínio e 2 rodadas de ajustes. O escopo fica registrado na proposta.'],
+  ['Como funciona o pagamento?', 'São 50% na contratação e 50% após a aprovação, antes da publicação definitiva ou transferência. No Site Profissional, são duas etapas de R$ 1.450.'],
+  ['Quanto tempo leva?', 'O prazo de referência é de 5 a 7 dias úteis para o Essencial e 15 a 25 para o Profissional, contados após o pagamento inicial e o recebimento dos materiais. Projetos sob medida seguem o cronograma aprovado.'],
+  ['De quem será o domínio?', 'No Profissional e no Sob Medida, você registra e renova o domínio em seu nome. A Ravyt realiza a configuração prevista na proposta. No Essencial, o endereço é um subdomínio rvt.bio administrado pela Ravyt.'],
+  ['Como funciona a hospedagem?', 'Usamos Cloudflare para sites estáticos compatíveis ou hospedagem adequada para WordPress e outros recursos. No Essencial, a publicação está incluída por 12 meses e a renovação é de R$ 180 por ano. Com domínio próprio, você contrata e paga diretamente os serviços de terceiros aplicáveis.'],
+  ['Preciso contratar manutenção?', 'A manutenção é opcional. Você pode solicitar ajustes avulsos ou contratar o Ravyt Care a R$ 99/mês ou o Care Plus a R$ 199/mês, conforme o ambiente e o escopo. O Care inclui suporte e uma pequena alteração mensal. O Care Plus inclui até 2 horas mensais de alterações simples.'],
+  ['Como ficam acessos, arquivos e correções?', 'A proposta informa quais arquivos e acessos serão entregues, as licenças aplicáveis e as condições de transferência. A Ravyt corrige defeitos de implementação atribuíveis à entrega por 30 dias. Novas páginas e mudanças de escopo recebem orçamento próprio.'],
+  ['O site vai aparecer em primeiro lugar no Google?', 'O SEO inicial prepara títulos, descrições e estrutura para as buscas. As posições variam com a concorrência, a relevância e outros fatores. A otimização do Perfil da Empresa no Google é um serviço separado, sujeito à elegibilidade.'],
 ];
-const faqs=[
- ['O que é Google Meu Negócio?','Hoje chamado Perfil da Empresa no Google, ele reúne informações do negócio na Busca e no Google Maps, como serviços, horários, contatos, fotos e avaliações. Nosso trabalho é organizar e otimizar esse perfil.'],
- ['Já tenho Instagram. Por que cuidar do meu perfil no Google?','Quem pesquisa no Google pode estar procurando um serviço na sua região naquele momento. Um perfil com informações claras ajuda essa pessoa a conhecer seu negócio e encontrar uma forma de contato.'],
- ['Vocês garantem o primeiro lugar no Google?','Não. O posicionamento depende de vários fatores, incluindo concorrência, relevância e distância. Trabalhamos nos ajustes possíveis do perfil, sem prometer uma posição específica.'],
- ['Qualquer negócio pode ter um Perfil da Empresa no Google?','A elegibilidade depende do modelo de atendimento e das diretrizes do Google. Antes de criar ou otimizar um perfil, precisamos entender como o negócio atende seus clientes.'],
- ['Quanto custa o plano e o que está incluído?','O plano custa R$ 59,90 por mês e inclui Google Meu Negócio + site profissional, com hospedagem e domínio grátis. Cuidamos das informações, categorias e serviços do Perfil da Empresa no Google e orientamos sobre fotos e avaliações. O cartão NFC para avaliações também está incluído como bônus.'],
- ['Preciso pagar ao Google para ter o perfil?','O Perfil da Empresa é uma ferramenta gratuita do Google. O valor mensal de R$ 59,90 remunera o serviço da Ravyt Digital: Google Meu Negócio e site profissional, com hospedagem e domínio grátis.'],
- ['Como funciona o cartão NFC de bônus?','Ao aproximar um celular compatível, o cartão facilita o acesso à página de avaliações do seu negócio no Google. Ele permite convidar clientes reais a compartilhar suas experiências, sem garantir avaliações ou interferir no que devem escrever.'],
- ['Como posso iniciar meu atendimento?','Clique em um dos botões de WhatsApp do site e converse diretamente com a equipe da Ravyt Digital. Conte sobre seu negócio e tire suas dúvidas sobre o plano antes de contratar.']
-];
-function Arrow(){return <span aria-hidden="true">↗</span>}
-export default function Home(){return <>
-<HomeNavigation/>
-<StructuredData data={{'@context':'https://schema.org','@graph':[webpage('/','Especialistas em Google Meu Negócio | Ravyt Digital','Google Meu Negócio + site profissional por R$ 59,90 por mês, com hospedagem e domínio grátis.'),{'@type':'Service','@id':SITE_URL+'/#service',name:'Google Meu Negócio e site profissional',serviceType:'Criação e otimização do Perfil da Empresa no Google e criação de site profissional',provider:{'@id':SITE_URL+'/#organization'},areaServed:{'@type':'Country',name:'Brazil'},url:SITE_URL+'/',offers:{'@type':'Offer',name:'Plano mensal Google Meu Negócio + site, hospedagem e domínio grátis',price:'59.90',priceCurrency:'BRL',priceSpecification:{'@type':'UnitPriceSpecification',price:'59.90',priceCurrency:'BRL',billingDuration:'P1M'},url:SITE_URL+'/#planos',description:'Google Meu Negócio + site profissional por R$ 59,90 por mês, com hospedagem e domínio grátis e cartão NFC de bônus. Escopo confirmado antes da contratação.'}}]}}/>
-<main id="conteudo" className="rv-home">
-<section className="rv-hero shell" id="inicio" aria-labelledby="hero-title">
- <div className="rv-hero-copy"><p className="rv-eyebrow"><span/> Google Meu Negócio</p><h1 id="hero-title">Especialistas em Google Meu Negócio.<br/><em>Google Meu Negócio + site profissional.</em></h1><p className="rv-hero-description">Ajudamos empresas e profissionais que atendem clientes presencialmente a criar, configurar e otimizar o Perfil da Empresa no Google, conforme a situação do negócio. Também criamos seu site profissional, com hospedagem e domínio grátis. Uma presença digital para apresentar seus serviços e facilitar o contato.</p><div className="rv-actions"><a className="rv-button" href={contactHref} data-contact-cta>{contactLabel}<Arrow/></a><a className="rv-text-link" href="#planos">Conheça o plano mensal <span aria-hidden="true">↓</span></a></div><p className="rv-hero-note">Google Meu Negócio + site por R$ 59,90 por mês. Hospedagem e domínio grátis. Cartão NFC para avaliações de bônus.</p></div>
- <div className="rv-visual" aria-label="Ilustração do caminho entre a busca, a apresentação do negócio e o contato"><div className="rv-orbit"/><div className="rv-search"><span className="rv-search-icon" aria-hidden="true"/><span>O que seu cliente procura?</span><span aria-hidden="true">↵</span></div><div className="rv-browser"><div className="rv-browser-bar"><div><i/><i/><i/></div><span>Seu negócio, bem apresentado</span><Arrow/></div><div className="rv-browser-content"><span className="rv-demo-kicker">UMA PRESENÇA QUE FAZ SENTIDO</span><div className="rv-demo-title">Seu trabalho.<br/><em>Seu lugar no Google.</em></div><div className="rv-demo-rule"/><div className="rv-demo-bottom"><div className="rv-demo-lines"><i/><i/><i/></div><span className="rv-demo-square" aria-hidden="true">↗</span></div></div></div><div className="rv-touchpoint"><span className="rv-pin" aria-hidden="true">⌖</span><div><strong>Da busca à conversa.</strong><span>Um caminho mais simples até você.</span></div><span className="rv-touchpoint-check" aria-hidden="true">✓</span></div><p className="rv-visual-caption">Ilustração de presença no Google.</p></div>
-</section>
-<div className="rv-intent"><div className="shell"><span>Ser encontrado.</span><i/><span>Transmitir confiança.</span><i/><span>Facilitar o contato.</span><span className="rv-intent-mark" aria-hidden="true">↗</span></div></div>
-<section className="rv-section shell rv-seo-section" id="situacoes" aria-labelledby="problems-title"><p className="rv-eyebrow">Você reconhece alguma destas situações?</p><h2 id="problems-title">O cliente procura.<br/><em>Suas informações ajudam a decidir?</em></h2><div className="rv-seo-grid"><article><h3>Seu negócio não aparece como você espera</h3><p>Vale conferir se existe um cadastro, se há etapas pendentes e como o perfil representa seus serviços. Uma busca isolada não conta a história toda.</p><a href="/minha-empresa-nao-aparece-no-google">Veja o que conferir na busca</a></article><article><h3>Horários ou contatos estão desatualizados</h3><p>Informações incorretas podem dificultar uma visita ou uma ligação. Revisamos os dados do perfil de acordo com o atendimento real do negócio.</p><a href="#servicos">Conheça os ajustes do perfil</a></article><article><h3>Você ainda precisa cadastrar sua empresa</h3><p>O primeiro passo é verificar a elegibilidade e procurar um perfil existente. Assim, a criação começa pela situação correta.</p><a href="/como-colocar-empresa-no-google-maps">Entenda o cadastro no Google Maps</a></article></div></section>
-<section className="rv-section shell" id="servicos" aria-labelledby="services-title"><div className="rv-section-heading"><div><p className="rv-eyebrow">Como fazemos</p><h2 id="services-title">Ser encontrado é o começo.<br/><em>O próximo passo é gerar confiança.</em></h2></div><p>O cliente precisa entender o que você oferece, encontrar informações confiáveis e saber como falar com você. É para isso que cuidamos das informações do seu Perfil da Empresa no Google.</p></div><div className="rv-services">{services.map(s=><article className="rv-service" key={s.id}><div className="rv-service-top"><span>{s.number}</span><span className={'rv-service-icon rv-icon-'+s.id} aria-hidden="true">{'⌖'}</span></div><h3>{s.title}</h3><p className="rv-service-benefit">{s.benefit}</p><p className="rv-service-description">{s.description}</p><ul>{s.items.map(item=><li key={item}>{item}</li>)}</ul><a className="rv-text-link" href="#planos">Incluído no plano mensal<Arrow/></a></article>)}</div><p className="rv-section-note">Google Meu Negócio e site profissional no mesmo plano mensal, com hospedagem e domínio grátis. A criação e a otimização do perfil dependem da elegibilidade nas diretrizes do Google.</p></section>
-<section className="rv-section shell rv-seo-section" id="como-funciona" aria-labelledby="process-title"><p className="rv-eyebrow">Como funciona a contratação</p><h2 id="process-title">Você entende o trabalho<br/><em>antes de contratar.</em></h2><ol className="rv-process"><li><h3>Conversa sobre o negócio</h3><p>Você fala com a nossa equipe pelo WhatsApp, conta como atende e o que precisa melhorar.</p></li><li><h3>Análise da situação do perfil</h3><p>Conferimos a existência do cadastro, o acesso e as informações disponíveis para identificar os ajustes possíveis.</p></li><li><h3>Escopo e execução</h3><p>Antes de contratar, confirmamos o que será realizado, prazos e condições. Atualizações e acompanhamento são combinados conforme o escopo do atendimento.</p></li></ol><div className="rv-expert-note"><h3>O Google oferece a ferramenta. Você contrata o trabalho profissional.</h3><p>O Perfil da Empresa no Google é gratuito. A consultoria e o gerenciamento profissional ajudam a organizar as informações e orientar os cuidados com o perfil. O pagamento à Ravyt é pelo serviço contratado, sem compra de posição na Busca ou no Maps.</p><a href="/quanto-custa-google-meu-negocio">Entenda o preço e o que avaliar na contratação</a></div></section>
-<section className="rv-section shell" id="planos" aria-labelledby="plans-title"><div className="rv-section-heading"><div><p className="rv-eyebrow">Plano e preço</p><h2 id="plans-title">Seu negócio no Google.<br/><em>E seu site no mesmo plano.</em></h2></div><p>Google Meu Negócio + site profissional por R$ 59,90 por mês, com hospedagem e domínio grátis. Uma oferta para apresentar seus serviços e facilitar o contato.</p></div><article className="rv-annual-plan"><div className="rv-annual-details"><p className="rv-eyebrow">{homeContent.plan.name}</p><h3>Google Meu Negócio + site profissional.</h3><ul><li><span aria-hidden="true">✓</span><div><strong>Informações e contatos</strong><p>Revisão dos dados e horários para facilitar o contato na Busca e no Maps.</p></div></li><li><span aria-hidden="true">✓</span><div><strong>Categorias e serviços</strong><p>Organização do perfil de acordo com o que seu negócio oferece.</p></div></li><li><span aria-hidden="true">✓</span><div><strong>Orientação sobre fotos e avaliações</strong><p>Uma apresentação que ajude o cliente a conhecer melhor seu negócio.</p></div></li><li><span aria-hidden="true">✓</span><div><strong>Site profissional + SEO básico</strong><p>Um site para apresentar seu negócio, seus serviços e seus canais de contato, com SEO básico incluído.</p></div></li><li><span aria-hidden="true">✓</span><div><strong>Hospedagem e domínio grátis</strong><p>Incluídos no plano de R$ 59,90 por mês.</p></div></li></ul><div className="rv-annual-bonus"><span>Bônus incluído</span><h4>{homeContent.plan.bonus}</h4><p>Facilite o acesso dos seus clientes à página de avaliações do seu negócio no Google.</p></div></div><div className="rv-annual-investment"><p className="rv-eyebrow">Investimento mensal</p><p className="rv-annual-price">{homeContent.plan.priceLabel}<span>{homeContent.plan.period}</span></p><p className="rv-annual-summary">Google Meu Negócio + site profissional.<br/><strong>Hospedagem e domínio grátis.</strong><br/>E o cartão NFC de bônus.</p><a className="rv-button" href={contactHref} data-contact-cta>{contactLabel}<Arrow/></a><p className="rv-annual-note">Converse com a nossa equipe para conhecer o plano e iniciar seu atendimento.</p></div></article></section>
-<section className="rv-section shell rv-seo-section" id="equipe" aria-labelledby="team-title"><p className="rv-eyebrow">Quem atende você</p><h2 id="team-title">Uma conversa direta<br/><em>com a equipe da Ravyt.</em></h2><p>Atendemos profissionais e empresas de diferentes regiões do Brasil, com criação de sites, SEO e soluções para fortalecer sua presença no Google e facilitar o contato com novos clientes. Conte o que seu negócio precisa.</p><div className="rv-team-public">{homeContent.contacts.map(person=><article key={person.id}><img src={'/team/'+person.id+'-224.webp'} alt={person.name} width={224} height={224} loading="lazy" decoding="async"/><div><h3>{person.name}</h3><p>{person.display}</p><a className="rv-text-link rv-contact-text" href={contactHref} data-contact-cta>Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a></div></article>)}</div><p className="rv-institutional">Ravyt Digital · CNPJ 26.114.696/0001-70 · <a href={contactHref}>Atendimento pelo WhatsApp</a></p></section>
-<section className="rv-section rv-client-section" id="clientes" aria-labelledby="reviews-title"><div className="shell rv-section-heading"><div><p className="rv-eyebrow">Depoimentos</p><h2 id="reviews-title">A experiência de quem<br/><em>já trabalhou com a Ytala.</em></h2></div><p>Além da apresentação, existe o cuidado com cada parceria. Conheça relatos sobre o atendimento e a experiência de trabalho com a Ytala.</p></div><Testimonials/></section>
-<section className="rv-section shell rv-seo-section" id="guias" aria-labelledby="guides-title"><p className="rv-eyebrow">Antes de decidir</p><h2 id="guides-title">Respostas para cuidar<br/><em>da sua empresa no Google.</em></h2><div className="rv-seo-grid">{guides.map(g=><article key={g.slug}><h3><a href={'/'+g.slug}>{g.title}</a></h3><p>{g.summary}</p><a href={'/'+g.slug}>Ler o guia <span aria-hidden="true">→</span></a></article>)}</div></section>
-<section className="rv-faq-section" id="perguntas" aria-labelledby="faq-title"><div className="shell rv-faq-grid"><div><p className="rv-eyebrow">Perguntas frequentes</p><h2 id="faq-title">Vamos deixar<br/><em>mais claro?</em></h2><p>Algumas respostas para ajudar você a decidir por onde começar.</p><a className="rv-text-link" href={contactHref} data-contact-cta>Tire suas dúvidas pelo WhatsApp<Arrow/></a></div><div className="rv-faq-list">{faqs.map(([question,answer])=><details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
-<section className="rv-final shell" id="contato"><p className="rv-eyebrow">Seu próximo passo</p><h2>Facilite o próximo encontro<br/><em>entre seu negócio e seu cliente.</em></h2><p>Conte o que você oferece e o que deseja melhorar. Vamos entender sua presença atual e indicar um próximo passo que faça sentido para o seu negócio.</p><a className="rv-button" href={contactHref} data-contact-cta>{contactLabel}<Arrow/></a></section>
-</main><SiteFooter/></>}
+
+export default function Home() {
+  return <>
+    <HomeNavigation />
+    <StructuredData data={{'@context':'https://schema.org','@graph':[
+      webpage('/', offerTitle, offerDescription),
+      {'@type':'Service','@id':SITE_URL+'/#service',name:'Criação de sites profissionais',
+        provider:{'@id':SITE_URL+'/#organization'},areaServed:{'@type':'Country',name:'Brasil'},
+        offers:{'@type':'Offer',name:'Site Profissional',price:2900,priceCurrency:'BRL',url:SITE_URL+'/site-profissional'}},
+    ]}} />
+    <main id="conteudo" className="rv-home">
+      <section className="rv-hero shell rd-hero" id="inicio">
+        <div className="rv-hero-copy">
+          <h1>Seu trabalho é profissional. <em>Seu site precisa mostrar isso.</em></h1>
+          <p className="rv-hero-description">A Ravyt cria sites para empresas e profissionais de todo o Brasil. Apresente seus serviços, mostre seus projetos e facilite o pedido de orçamento.</p>
+          <div className="rv-actions">
+            <a className="rv-button" href="/site-profissional" data-plan-click>Ver o Site Profissional <span aria-hidden="true">↗</span></a>
+            <a className="rv-text-link" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
+          </div>
+          <p className="rv-hero-note"><strong>Site Profissional por R$ 2.900</strong> · Até 5 páginas, conteúdo e SEO inicial</p>
+        </div>
+        <figure className="rd-hero-work">
+          <div className="rd-window-bar"><span aria-hidden="true">● ● ●</span><span>Consultoria de imagem</span></div>
+          <img src="/projects/ananda-oliveira-800.webp" alt="Página inicial do site desenvolvido para Ananda Oliveira" width={800} height={383} fetchPriority="high" />
+          <figcaption><a href="#projetos">Projeto Ananda Oliveira <span aria-hidden="true">↘</span></a></figcaption>
+        </figure>
+      </section>
+
+      <section className="rv-section shell rv-seo-section" aria-labelledby="situacoes-title">
+        <h2 id="situacoes-title">O que seu cliente encontra <em>depois da indicação?</em></h2>
+        <div className="rv-seo-grid">
+          <article><h3>Seus serviços, em um só lugar</h3><p>O cliente pode entender o que você faz sem procurar a informação em várias publicações.</p></article>
+          <article><h3>Trabalhos que ajudam a decidir</h3><p>Uma página de projetos mostra exemplos do que você entrega antes da primeira conversa.</p></article>
+          <article><h3>Um caminho claro para pedir orçamento</h3><p>O visitante encontra o contato e consegue dizer de que serviço precisa, inclusive fora do horário comercial.</p></article>
+        </div>
+      </section>
+
+      <section className="rv-section rv-portfolio-section" id="projetos" aria-labelledby="projects-title">
+        <div className="shell"><div className="rv-section-heading"><h2 id="projects-title">Projetos da Ravyt</h2><p>Conheça os sites e veja como cada negócio apresenta seus serviços e orienta o próximo passo.</p></div>
+          <PortfolioGallery />
+        </div>
+      </section>
+
+      <section className="rv-section shell" id="planos" aria-labelledby="plans-title">
+        <div className="rv-section-heading"><h2 id="plans-title">Planos e investimento</h2><p>Escolha pelo tamanho do projeto e pelo que sua empresa precisa apresentar.</p></div>
+        <div className="rd-plan-grid">
+          {plans.map(plan => <article className={'rd-plan' + (plan.id === 'profissional' ? ' rd-plan-main' : '')} key={plan.id}>
+            <h3>{plan.name}</h3><p className="rd-plan-price">{plan.priceNote === 'a partir de' && <span>{plan.priceNote}</span>}{plan.price}{plan.priceNote === 'por projeto' && <span>{plan.priceNote}</span>}</p>
+            <p>{plan.description}</p><ul>{plan.details.map(detail => <li key={detail}>{detail}</li>)}</ul>
+            <p className="rd-plan-timeline">{plan.timeline}</p>
+            <a className={plan.id === 'profissional' ? 'rv-button' : 'rv-text-link'} data-plan-click href={plan.id === 'profissional' ? '/site-profissional' : '/proposta?plano=' + plan.id}>{plan.id === 'profissional' ? 'Ver escopo e condições' : 'Solicitar proposta'} <span aria-hidden="true">↗</span></a>
+          </article>)}
+        </div>
+        <p className="rv-section-note">Pagamento de 50% na contratação e 50% após a aprovação. Domínio próprio registrado pelo cliente. Manutenção opcional.</p>
+      </section>
+
+      <section className="rv-section shell" id="consultor" aria-labelledby="advisor-title">
+        <div className="rd-split">
+          <div><h2 id="advisor-title">Qual site sua empresa <em>precisa?</em></h2><p>Responda a cinco perguntas e receba uma indicação de plano com base no seu projeto.</p></div>
+          <PlanAdvisor />
+        </div>
+      </section>
+
+      <section className="rv-section shell rv-seo-section" id="como-funciona" aria-labelledby="process-title">
+        <h2 id="process-title">Da primeira conversa <em>à publicação</em></h2>
+        <ol className="rv-process">
+          <li><h3>Conversa e proposta</h3><p>Entendemos o negócio e confirmamos páginas, funcionalidades, prazo e investimento.</p></li>
+          <li><h3>Desenvolvimento e revisão</h3><p>Com a entrada e os materiais recebidos, criamos o site e conduzimos as rodadas de ajustes previstas.</p></li>
+          <li><h3>Aprovação e entrega</h3><p>Com o projeto aprovado e o pagamento final, fazemos a publicação ou a transferência acordada.</p></li>
+        </ol>
+      </section>
+
+      <section className="rv-section rv-client-section" id="clientes" aria-labelledby="reviews-title">
+        <div className="shell rv-section-heading"><h2 id="reviews-title">Quem já trabalhou <em>com a Ytala</em></h2><p>Relatos sobre o atendimento e a experiência de trabalho.</p></div>
+        <Testimonials />
+      </section>
+
+      <section className="rv-section shell rv-seo-section" id="servicos" aria-labelledby="google-title">
+        <div className="rv-section-heading">
+          <div><h2 id="google-title">Perfil da Empresa <em>no Google</em></h2><p>Revisamos categorias, serviços, horários e contatos para empresas elegíveis na Busca e no Maps.</p></div>
+          <div><p><strong>Otimização inicial por R$ 790</strong><br />Acompanhamento opcional por R$ 199/mês.</p><a className="rv-text-link" href={googleContactHref} data-contact-cta>Conversar sobre o Google <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div className="rv-seo-grid" id="guias">{guides.map(guide => <article key={guide.slug}><h3><a href={'/'+guide.slug}>{guide.title}</a></h3><p>{guide.summary}</p><a href={'/'+guide.slug}>Ler o guia <span aria-hidden="true">→</span></a></article>)}</div>
+      </section>
+
+      <section className="rv-faq-section" id="perguntas" aria-labelledby="faq-title">
+        <div className="shell rv-faq-grid"><div><h2 id="faq-title">Dúvidas <em>antes de contratar</em></h2><p>Entenda os prazos, o domínio e o que acontece após a entrega.</p></div>
+          <div className="rv-faq-list">{faqs.map(([question,answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
+        </div>
+      </section>
+
+      <section className="rv-final shell" id="contato">
+        <h2>O que seu site precisa <em>resolver?</em></h2>
+        <p>Conte sobre sua empresa e o que deseja apresentar. A Ravyt avalia o pedido e retorna pelo contato informado.</p>
+        <div className="rd-actions"><a className="rv-button" href="/proposta">Solicitar proposta <span aria-hidden="true">↗</span></a><a className="rv-text-link" href={contactHref} data-contact-cta>Conversar no WhatsApp <span aria-hidden="true">↗</span></a></div>
+        <div className="rd-whatsapp-avatar">
+          <img src="/team/ravyt-atendimento-224.webp" alt={homeContent.contacts[0].name} width={72} height={72} loading="lazy" />
+          <div><strong>{homeContent.contacts[0].name}</strong><span>Atendimento comercial · {homeContent.contacts[0].display}</span></div>
+        </div>
+      </section>
+    </main>
+    <SiteFooter />
+  </>;
+}

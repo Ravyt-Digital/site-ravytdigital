@@ -4,21 +4,17 @@ const env={ASSETS:{fetch:async()=>new Response('',{status:404})}},ctx={waitUntil
 const request=(path,headers={})=>worker.fetch(new Request('https://ravytdigital.com'+path,{headers}),env,ctx);
 const visible=s=>s.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 let html;const home=async()=>html??=(await(await request('/')).text());
-test('home presents the requested sections and omits the retired diagnostic',async()=>{
- assert.equal((await request('/')).status,200);const h=await home(),v=visible(h);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
- for(const id of ['inicio','servicos','clientes','planos','perguntas'])assert.ok(v.includes('id="'+id+'"'),id);
- for(const phrase of ['Especialistas em Google Meu Negócio.','Google Meu Negócio','Perfil da Empresa no Google'])assert.ok(v.includes(phrase));
- const xml=await(await request('/sitemap.xml')).text();assert.equal((xml.match(/<loc>/g)||[]).length,4);assert.doesNotMatch(xml,/diagnostico/);
- assert.match(h,/<title>Especialistas em Google Meu Negócio \| Ravyt Digital<\/title>/);
-
+test('home presents the website plans, portfolio and consultant',async()=>{
+ const h=await home(),v=visible(h);assert.equal((await request('/')).status,200);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
+ for(const id of ['inicio','servicos','clientes','planos','perguntas','projetos','consultor','como-funciona','contato'])assert.ok(v.includes('id="'+id+'"'),id);
+ for(const text of ['R$ 990','R$ 2.900','R$ 4.500','Perfil da Empresa','todo o Brasil','Ananda Oliveira','Antônia Moreira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
+ assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis/);
+ assert.match(h,/<title>Criação de Sites Profissionais \| Ravyt Digital<\/title>/);
 });
-test('home preserves the Google Business offer and communicates broader nationwide services',async()=>{
- const h=visible(await home());assert.match(h,/criação de sites, SEO/);assert.match(h,/diferentes regiões do Brasil/);assert.doesNotMatch(h,/id="portfolio"|href="#portfolio"/i);assert.match(h,/Perfil da Empresa no Google/);
-});
-test('old diagnostic and contact URLs lead to the contact section; retired content keeps Gone semantics',async()=>{
- for(const path of ['/contato','/diagnostico','/diagnosticos','/en/diagnostico','/fr/diagnostico']){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).pathname,'/');assert.equal(new URL(r.headers.get('location')).hash,'#contato');}
+test('old diagnostic and contact URLs lead to the relevant sections; retired content keeps Gone semantics',async()=>{
+ for(const path of ['/contato','/diagnostico','/diagnosticos','/en/diagnostico','/fr/diagnostico']){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).pathname,'/');assert.equal(new URL(r.headers.get('location')).hash,path==='/contato'?'#contato':'#consultor');}
  for(const [path,id]of [['/politica-de-privacidade','privacidade'],['/politica-de-cookies','cookies'],['/termos','termos']]){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).hash,'#'+id);}
- for(const path of ['/sites','/seo','/cases','/sobre','/fr/seo','/blog','/recursos/checklist-presenca-google']){const r=await request(path);assert.equal(r.status,410,path);assert.equal(r.headers.get('x-robots-tag'),'noindex');}
+ for(const path of ['/seo','/cases','/sobre','/fr/seo','/blog','/recursos/checklist-presenca-google']){const r=await request(path);assert.equal(r.status,410,path);assert.equal(r.headers.get('x-robots-tag'),'noindex');}
  assert.equal((await request('/inexistente')).status,404);
 });
 test('local brand assets, legal dialogs and responsive safeguards remain available on both pages',async()=>{
@@ -30,10 +26,25 @@ test('domain upgrades preserve campaigns and HTML remains revalidated',async()=>
  assert.equal((await request('/')).headers.get('cache-control'),'no-cache, max-age=0, must-revalidate');
 });
 
-test('commercial calls to action open only the requested WhatsApp directly, with the new photo',async()=>{
- const h=visible(await home());assert.ok(h.includes('Converse com um especialista da Ravyt Digital'));assert.doesNotMatch(h,/data-open-contact|rv-contact-dialog|diagnóstico|diagnostico|9695.?6479/i);
- const contacts=[...h.matchAll(/href="(https:\/\/wa\.me\/[^"]+)"/g)].map(m=>m[1]);assert.ok(contacts.length>=7);for(const href of contacts){const url=new URL(href.replaceAll('&amp;','&'));assert.equal(url.pathname,'/5588996777332');assert.match(url.searchParams.get('text'),/59,90/);}
- assert.match(h,/src="\/team\/ravyt-atendimento-224.webp"/);assert.ok(existsSync('public/team/ravyt-atendimento-224.webp'));assert.equal((h.match(/class="rv-team-public"/g)||[]).length,1);
+test('commercial calls to action use the verified number or the proposal form',async()=>{
+ const h=visible(await home());
+ const contacts=[...h.matchAll(/href="(https:\/\/wa\.me\/[^"]+)"/g)].map(m=>m[1]);assert.ok(contacts.length>=3);
+ for(const href of contacts){const url=new URL(href.replaceAll('&amp;','&'));assert.equal(url.pathname,'/5588996777332');assert.doesNotMatch(url.searchParams.get('text'),/59,90/);}
+ assert.match(h,/href="\/proposta"/);
+ assert.match(h,/href="\/site-profissional"/);
+ const proposal=await(await request('/proposta?plano=profissional')).text();
+ assert.match(proposal,/Você selecionou o Site Profissional/);
+ assert.match(proposal,/Enviar pedido de proposta/);
 });
-
-test('one monthly plan includes every service and the NFC bonus at the supplied monthly price',async()=>{const h=visible(await home());assert.equal((h.match(/class="rv-annual-plan"/g)||[]).length,1);assert.match(h,/R\$ 59,90/);assert.match(h,/por mês/);assert.match(h,/Bônus incluído/);assert.match(h,/Cartão NFC/);assert.doesNotMatch(h,/Sob consulta|Conversar sobre o serviço|Posso contratar apenas/);});
+test('proposal submissions require same origin and consent, preserve attribution and tolerate retries',async()=>{
+ const origin='https://ravytdigital.com',records=new Map();
+ const database={prepare:()=>({bind:(...params)=>({run:async()=>{if(!records.has(params[0]))records.set(params[0],params);}})})};
+ const fields={requestId:'382317da-11e4-4b00-8f91-13695b3c6c18',kind:'proposta',consent:'sim',name:'Teste',business:'Empresa teste',contact:'teste@example.com',description:'Dados fictícios para teste.',plan:'profissional',referral:'parceiro-1',campaign:{utm_source:'instagram'}};
+ const send=(data,from=origin)=>worker.fetch(new Request(origin+'/api/propostas',{method:'POST',headers:{origin:from,'Content-Type':'application/json'},body:JSON.stringify(data)}),{...env,DB:database},ctx);
+ assert.equal((await send(fields,'https://example.com')).status,403);
+ assert.equal((await send({...fields,consent:''})).status,400);
+ assert.equal((await send({...fields,contact:'incompleto'})).status,400);
+ const first=await send(fields), second=await send(fields);
+ assert.equal(first.status,201); assert.deepEqual(await first.json(),await second.json());
+ assert.equal(records.size,1); assert.equal([...records.values()][0][8],'parceiro-1'); assert.equal([...records.values()][0][9],'instagram');
+});
