@@ -7,7 +7,8 @@ let html;const home=async()=>html??=(await(await request('/')).text());
 test('home presents the website plans, portfolio and consultant',async()=>{
  const h=await home(),v=visible(h);assert.equal((await request('/')).status,200);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
  for(const id of ['inicio','servicos','clientes','planos','perguntas','projetos','consultor','como-funciona','contato'])assert.ok(v.includes('id="'+id+'"'),id);
- for(const text of ['R$ 990','R$ 2.900','R$ 4.500','Perfil da Empresa','todo o Brasil','Ananda Oliveira','Antônia Moreira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
+ for(const text of ['R$ 990','R$ 2.900','R$ 4.500','Perfil da Empresa','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
+ assert.doesNotMatch(v,/projeto-antonia-moreira|francisca-antonia-neuro|\/projects\/antonia-moreira/);
  assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis/);
  assert.match(h,/<title>Criação de Sites Profissionais \| Ravyt Digital<\/title>/);
 });

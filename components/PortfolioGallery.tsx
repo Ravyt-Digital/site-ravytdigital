@@ -5,7 +5,6 @@ import { homeContent } from '@/lib/home-content';
 
 const links: Record<string, string> = {
   'ananda-oliveira': 'https://ananda-oliveira-imagem.ravytdigital.chatgpt.site/',
-  'antonia-moreira': 'https://francisca-antonia-neuro.ravytdigital.chatgpt.site/',
   'capoeira-haute-savoie': 'https://capoeira-haute-savoie.ravytdigital.chatgpt.site/',
   'cerest-tiangua': 'https://cerest-tiangua.ravytdigital.chatgpt.site/',
 };
@@ -40,7 +39,7 @@ export default function PortfolioGallery() {
       {project && <>
         <div className="rv-project-dialog-header"><h3 id="project-dialog-title">{project.name}</h3>
           <button type="button" onClick={() => dialog.current?.close()}>Fechar ×</button></div>
-        <img src={project.image} alt={'Captura ampliada de ' + project.name} width={project.id === 'antonia-moreira' ? 1200 : 1440} height={project.id === 'antonia-moreira' ? 750 : 689} />
+        <img src={project.image} alt={'Captura ampliada de ' + project.name} width={1440} height={689} />
       </>}
     </dialog>
   </>;

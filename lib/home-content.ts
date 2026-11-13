@@ -14,14 +14,6 @@ export const homeContent = {
     "demo": false
   },
   {
-    "id": "antonia-moreira",
-    "name": "Antônia Moreira",
-    "category": "Psicologia e neuropsicologia",
-    "description": "Site para apresentar a atuação profissional, explicar os atendimentos e orientar o agendamento.",
-    "image": "/projects/antonia-moreira.webp",
-    "demo": false
-  },
-  {
     "id": "mirauna",
     "name": "Miraúna Mobiliário",
     "category": "Mobiliário sob medida",
