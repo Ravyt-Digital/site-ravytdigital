@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {existsSync} from 'node:fs';import worker from '../dist/server/index.js';
 const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=>new Response('',{status:404})}};
 const origin='https://ravytdigital.com';const request=(path,options)=>worker.fetch(new Request(origin+path,options),env,ctx);
-const routes=['/','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio','/site-profissional','/indique'];
+const routes=['/','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio','/site-profissional','/indique','/google-meu-negocio','/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais'];
 const rendered=new Map();const html=async path=>{if(!rendered.has(path))rendered.set(path,await(await request(path)).text());return rendered.get(path)};
 const visible=h=>h.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 test('every indexable page has unique server-rendered metadata and a self canonical',async()=>{
@@ -9,9 +9,25 @@ test('every indexable page has unique server-rendered metadata and a self canoni
  assert.equal(titles.size,routes.length);assert.equal(descriptions.size,routes.length);
 });
 test('sitemap, robots, structured data and meaningful legacy redirects agree with current routes',async()=>{
- const sitemap=await(await request('/sitemap.xml')).text(),robots=await(await request('/robots.txt')).text();assert.equal((sitemap.match(/<loc>/g)||[]).length,routes.length);for(const p of routes)assert.ok(sitemap.includes('<loc>'+origin+p+'</loc>'));assert.match(robots,/Allow: \//);assert.match(robots,/Sitemap: https:\/\/ravytdigital.com\/sitemap.xml/);
- for(const p of routes){const h=await html(p);const data=[...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1]));const nodes=data.flatMap(d=>d['@graph']||[d]);assert.ok(nodes.some(n=>n['@type']==='Organization'));assert.ok(nodes.some(n=>n['@type']==='WebSite'));assert.ok(!nodes.some(n=>n['@type']==='LocalBusiness'||n.aggregateRating));if(p==='/'){const service=nodes.find(n=>n['@type']==='Service');assert.equal(service.offers.price,2900);assert.equal(service.offers.priceCurrency,'BRL');assert.equal(service.offers.url,origin+'/site-profissional');}else if(!['/site-profissional','/indique'].includes(p)){assert.ok(nodes.some(n=>n['@type']==='Article'));const b=nodes.find(n=>n['@type']==='BreadcrumbList');assert.equal(b.itemListElement.at(-1).item,origin+p);}}
- const legacy=await request('/google-meu-negocio?utm_source=old');assert.equal(legacy.status,301);assert.equal(legacy.headers.get('location'),origin+'/?utm_source=old#servicos');const trailing=await request(routes[2]+'/');assert.equal(trailing.status,308);assert.equal(trailing.headers.get('location'),origin+routes[2]);
+ const sitemap=await(await request('/sitemap.xml')).text(),robots=await(await request('/robots.txt')).text();assert.equal((sitemap.match(/<loc>/g)||[]).length,routes.length);for(const p of routes)assert.ok(sitemap.includes('<loc>'+origin+p+'</loc>'));assert.match(robots,/Disallow: \/api\//);assert.match(robots,/Allow: \//);assert.match(robots,/Sitemap: https:\/\/ravytdigital.com\/sitemap.xml/);
+ for(const p of routes){const h=await html(p);const data=[...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1]));const nodes=data.flatMap(d=>d['@graph']||[d]);assert.ok(nodes.some(n=>n['@type']==='Organization'));assert.ok(nodes.some(n=>n['@type']==='WebSite'));assert.ok(!nodes.some(n=>n['@type']==='LocalBusiness'||n.aggregateRating));if(p==='/'){const service=nodes.find(n=>n['@type']==='Service');assert.equal(service.offers.price,2900);assert.equal(service.offers.priceCurrency,'BRL');assert.equal(service.offers.url,origin+'/site-profissional');}else if(!['/site-profissional','/indique','/google-meu-negocio'].includes(p)){assert.ok(nodes.some(n=>n['@type']==='Article'));const b=nodes.find(n=>n['@type']==='BreadcrumbList');assert.equal(b.itemListElement.at(-1).item,origin+p);}}
+ for(const [oldPath,target] of [
+  ['/sites','/site-profissional'],
+  ['/blog/criacao-de-site-profissional-para-empresas','/quanto-custa-criar-um-site'],
+  ['/blog/site-institucional-paginas-essenciais','/site-institucional-paginas-essenciais'],
+  ['/fr/google-meu-negocio','/google-meu-negocio'],
+ ]) {
+  const legacy=await request(oldPath+'?utm_source=old');assert.equal(legacy.status,301);
+  assert.equal(legacy.headers.get('location'),origin+target+'?utm_source=old');
+ }
+ const trailing=await request(routes[2]+'/');assert.equal(trailing.status,308);
+ assert.equal(trailing.headers.get('location'),origin+routes[2]);
+ assert.equal((await request('/proposta?plano=google')).headers.get('x-robots-tag'),'noindex, follow');
+ const google=await html('/google-meu-negocio');
+ assert.match(google,/href="\/proposta\?plano=google"/);
+ assert.match(google,/"price":790/);
+ assert.match(google,/"priceCurrency":"BRL"/);
+
 });
 test('all rendered internal links, fragment targets and images resolve; guides are linked from home',async()=>{
  const home=visible(await html('/'));for(const p of routes.slice(1,4))assert.ok(home.includes('href="'+p+'"'),p);

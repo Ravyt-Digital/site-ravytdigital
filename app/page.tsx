@@ -9,6 +9,7 @@ import {webpage} from '@/lib/seo';
 import {contactHref, googleContactHref, homeContent} from '@/lib/home-content';
 import {plans, professional, offerTitle, offerDescription} from '@/lib/plans';
 import {guides} from '@/lib/guides';
+import {googleBusinessMonthlyPrice, googleBusinessPath, googleBusinessPrice} from '@/lib/google-business';
 import {SITE_URL} from '@/lib/site';
 
 const faqs = [
@@ -78,7 +79,7 @@ export default function Home() {
             <a className={plan.id === 'profissional' ? 'rv-button' : 'rv-text-link'} data-plan-click href={plan.id === 'profissional' ? '/site-profissional' : '/proposta?plano=' + plan.id}>{plan.id === 'profissional' ? 'Ver escopo e condições' : 'Solicitar proposta'} <span aria-hidden="true">↗</span></a>
           </article>)}
         </div>
-        <p className="rv-section-note">Pagamento de 50% na contratação e 50% após a aprovação. Domínio próprio registrado pelo cliente. Manutenção opcional.</p>
+        <p className="rv-section-note">Pagamento de 50% na contratação e 50% após a aprovação. Domínio próprio registrado pelo cliente. Manutenção opcional. <a href="/quanto-custa-criar-um-site">Veja quanto custa criar e manter um site</a>.</p>
       </section>
 
       <section className="rv-section shell" id="consultor" aria-labelledby="advisor-title">
@@ -105,7 +106,7 @@ export default function Home() {
       <section className="rv-section shell rv-seo-section" id="servicos" aria-labelledby="google-title">
         <div className="rv-section-heading">
           <div><h2 id="google-title">Perfil da Empresa <em>no Google</em></h2><p>Revisamos categorias, serviços, horários e contatos para empresas elegíveis na Busca e no Maps.</p></div>
-          <div><p><strong>Otimização inicial por R$ 790</strong><br />Acompanhamento opcional por R$ 199/mês.</p><a className="rv-text-link" href={googleContactHref} data-contact-cta>Conversar sobre o Google <span aria-hidden="true">↗</span></a></div>
+          <div><p><strong>Otimização inicial por {googleBusinessPrice}</strong><br />Acompanhamento opcional por {googleBusinessMonthlyPrice}.</p><div className="rd-actions"><a className="rv-text-link" href={googleBusinessPath}>Conhecer a otimização do Google Meu Negócio</a><a className="rv-text-link" href={googleContactHref} data-contact-cta>Conversar sobre o Google <span aria-hidden="true">↗</span></a></div></div>
         </div>
         <div className="rv-seo-grid" id="guias">{guides.map(guide => <article key={guide.slug}><h3><a href={'/'+guide.slug}>{guide.title}</a></h3><p>{guide.summary}</p><a href={'/'+guide.slug}>Ler o guia <span aria-hidden="true">→</span></a></article>)}</div>
       </section>

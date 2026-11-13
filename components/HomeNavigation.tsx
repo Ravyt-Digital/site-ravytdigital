@@ -7,7 +7,7 @@ const links = [
   ['Sites', '/site-profissional'],
   ['Planos', '/#planos'],
   ['Projetos', '/#projetos'],
-  ['Como funciona', '/#como-funciona'],
+  ['Google Meu Negócio', '/google-meu-negocio'],
   ['Contato', '/#contato'],
 ];
 

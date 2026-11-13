@@ -12,10 +12,11 @@ export const metadata: Metadata = {title, description:'Envie as informações do
 export default async function ProposalPage({searchParams}: {searchParams: Promise<{plano?: string}>}) {
   const {plano} = await searchParams;
   const plan = plans.find(item => item.id === plano);
+  const selectedService = plano === 'google' ? 'Perfil da Empresa no Google' : plan?.name;
   return <><HomeNavigation /><main className="rv-home" id="conteudo">
     <section className="rv-section shell rd-split rd-form-page">
       <div><h1>Solicite uma <em>proposta</em></h1>
-        <p>{plan ? 'Você selecionou o ' + plan.name + '.' : 'Conte o que seu negócio precisa.'} A Ravyt analisa seu pedido e retorna pelo contato informado.</p>
+        <p>{selectedService ? 'Você selecionou o ' + selectedService + '.' : 'Conte o que seu negócio precisa.'} A Ravyt analisa seu pedido e retorna pelo contato informado.</p>
         <a className="rv-text-link" href={contactHref} data-contact-cta>Prefiro conversar no WhatsApp ↗</a>
       </div>
       <ProposalForm initialPlan={plano === 'google' ? 'google' : plan?.id} />

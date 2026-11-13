@@ -36,6 +36,6 @@ export function recommendPlan(answers: number[]) {
   return plans[0];
 }
 
-export const offerTitle = 'Criação de Sites Profissionais | Ravyt Digital';
-export const offerDescription = 'Sites profissionais para empresas de todo o Brasil. Conheça nossos projetos e o Site Profissional de R$ 2.900 com design personalizado, conteúdo e SEO inicial.';
+export const offerTitle = 'Criação de Sites e Presença no Google | Ravyt Digital';
+export const offerDescription = 'A Ravyt Digital cria sites para empresas de todo o Brasil e otimiza o Perfil da Empresa no Google. Conheça os serviços, os projetos e os preços.';
 export const siteManagedOrigin = 'https://clique-aqui.ravytdigital.chatgpt.site';

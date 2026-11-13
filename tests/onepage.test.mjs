@@ -10,7 +10,7 @@ test('home presents the website plans, portfolio and consultant',async()=>{
  for(const text of ['R$ 990','R$ 2.900','R$ 4.500','Perfil da Empresa','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
  assert.doesNotMatch(v,/projeto-antonia-moreira|francisca-antonia-neuro|\/projects\/antonia-moreira/);
  assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis/);
- assert.match(h,/<title>Criação de Sites Profissionais \| Ravyt Digital<\/title>/);
+ assert.match(h,/<title>Criação de Sites e Presença no Google \| Ravyt Digital<\/title>/);
 });
 test('old diagnostic and contact URLs lead to the relevant sections; retired content keeps Gone semantics',async()=>{
  for(const path of ['/contato','/diagnostico','/diagnosticos','/en/diagnostico','/fr/diagnostico']){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).pathname,'/');assert.equal(new URL(r.headers.get('location')).hash,path==='/contato'?'#contato':'#consultor');}

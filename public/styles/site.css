@@ -138,7 +138,7 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 .rd-plan-main{background:#1c1816;border-color:var(--copper)}
 .rd-plan h3{margin:0;font-size:1.32rem}
 .rd-plan h2{margin:0;font-size:clamp(32px,5vw,61px)}
-.rd-plan h2 small{display:block;font-size:1rem;color:var(--muted);font-family:inherit}
+.rd-plan h2 small{display:block;font-size:1rem;letter-spacing:normal;color:var(--muted);font-family:inherit}
 .rd-plan-price{display:flex;flex-wrap:wrap;gap:.26em;align-items:baseline;margin:14px 0;font-size:clamp(28px,3.4vw,54px);color:var(--ink);line-height:1.06;font-weight:750}
 .rd-plan-price span{font-size:.78rem;color:var(--muted);font-weight:500}
 .rd-plan p:not(.rd-plan-price){color:var(--muted)}
@@ -592,3 +592,5 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 @media (min-width: 801px) {
   body:has(.rd-hero) .rv-nav { width: min(1280px, calc(100% - 80px)); }
 }
+
+.rv-home > .shell:has(.rv-breadcrumb) { padding-top: 18px; }
