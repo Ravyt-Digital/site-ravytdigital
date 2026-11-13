@@ -2,11 +2,12 @@ import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
 import Testimonials from '@/components/Testimonials';
 import PortfolioGallery from '@/components/PortfolioGallery';
+import HeroProjects from '@/components/HeroProjects';
 import {PlanAdvisor} from '@/components/SalesForms';
 import StructuredData from '@/components/StructuredData';
 import {webpage} from '@/lib/seo';
 import {contactHref, googleContactHref, homeContent} from '@/lib/home-content';
-import {plans, offerTitle, offerDescription} from '@/lib/plans';
+import {plans, professional, offerTitle, offerDescription} from '@/lib/plans';
 import {guides} from '@/lib/guides';
 import {SITE_URL} from '@/lib/site';
 
@@ -31,21 +32,25 @@ export default function Home() {
         offers:{'@type':'Offer',name:'Site Profissional',price:2900,priceCurrency:'BRL',url:SITE_URL+'/site-profissional'}},
     ]}} />
     <main id="conteudo" className="rv-home">
-      <section className="rv-hero shell rd-hero" id="inicio">
-        <div className="rv-hero-copy">
-          <h1>Seu trabalho é profissional. <em>Seu site precisa mostrar isso.</em></h1>
-          <p className="rv-hero-description">A Ravyt cria sites para empresas e profissionais de todo o Brasil. Apresente seus serviços, mostre seus projetos e facilite o pedido de orçamento.</p>
-          <div className="rv-actions">
-            <a className="rv-button" href="/site-profissional" data-plan-click>Ver o Site Profissional <span aria-hidden="true">↗</span></a>
-            <a className="rv-text-link" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
+      <section className="rd-hero" id="inicio" aria-labelledby="hero-title">
+        <div className="rv-hero shell">
+          <div className="rv-hero-copy">
+            <p className="rd-hero-kicker">Criação de sites profissionais</p>
+            <h1 id="hero-title">Mostre seus serviços. <em>Facilite o contato.</em></h1>
+            <p className="rv-hero-description">A Ravyt cria sites personalizados para empresas e profissionais de todo o Brasil, com redação para suas páginas e integração ao WhatsApp.</p>
+            <div className="rd-hero-offer">
+              <p><strong>{professional.price}</strong> <span>por projeto</span></p>
+              <ul aria-label="O que o Site Profissional inclui">
+                <li>Até 5 páginas</li><li>Domínio próprio</li><li>SEO inicial</li>
+              </ul>
+            </div>
+            <div className="rv-actions">
+              <a className="rv-button" href="/site-profissional" data-plan-click>Ver o Site Profissional <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a>
+              <a className="rv-text-link" href="#projetos">Ver projetos <span className="rd-arrow rd-arrow-down" aria-hidden="true" /></a>
+            </div>
           </div>
-          <p className="rv-hero-note"><strong>Site Profissional por R$ 2.900</strong> · Até 5 páginas, conteúdo e SEO inicial</p>
+          <HeroProjects />
         </div>
-        <figure className="rd-hero-work">
-          <div className="rd-window-bar"><span aria-hidden="true">● ● ●</span><span>Consultoria de imagem</span></div>
-          <img src="/projects/ananda-oliveira-800.webp" alt="Página inicial do site desenvolvido para Ananda Oliveira" width={800} height={383} fetchPriority="high" />
-          <figcaption><a href="#projetos">Projeto Ananda Oliveira <span aria-hidden="true">↘</span></a></figcaption>
-        </figure>
       </section>
 
       <section className="rv-section shell rv-seo-section" aria-labelledby="situacoes-title">

@@ -15,7 +15,7 @@ export default function PortfolioGallery() {
   const [project, select] = useState<(typeof homeContent.projects)[number]>();
   function cards(demo: boolean) {
     return <div className="rv-projects">{homeContent.projects.filter(item => item.demo === demo).map(item =>
-      <article className="rv-project" key={item.id}>
+      <article className="rv-project" id={'projeto-' + item.id} key={item.id}>
         <button type="button" className="rv-project-image" aria-label={'Ampliar captura de ' + item.name}
           onClick={() => { select(item); dialog.current?.showModal(); }}>
           <img src={item.image.replace('.webp', '-800.webp')}
