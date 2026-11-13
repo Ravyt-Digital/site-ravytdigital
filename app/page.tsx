@@ -2,7 +2,7 @@ import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
 import Testimonials from '@/components/Testimonials';
 import PortfolioGallery from '@/components/PortfolioGallery';
-import HeroProjects from '@/components/HeroProjects';
+import HeroWebsitePreview from '@/components/HeroWebsitePreview';
 import {PlanAdvisor} from '@/components/SalesForms';
 import StructuredData from '@/components/StructuredData';
 import {webpage} from '@/lib/seo';
@@ -49,7 +49,7 @@ export default function Home() {
               <a className="rv-text-link" href="#projetos">Ver projetos <span className="rd-arrow rd-arrow-down" aria-hidden="true" /></a>
             </div>
           </div>
-          <HeroProjects />
+          <HeroWebsitePreview />
         </div>
       </section>
 
