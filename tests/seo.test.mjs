@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {existsSync} from 'node:fs';import worker from '../dist/server/index.js';
 const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=>new Response('',{status:404})}};
 const origin='https://ravytdigital.com';const request=(path,options)=>worker.fetch(new Request(origin+path,options),env,ctx);
-const routes=['/','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio','/site-profissional','/indique','/google-meu-negocio','/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais'];
+const routes=['/','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio','/site-profissional','/indique','/google-meu-negocio','/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta'];
 const rendered=new Map();const html=async path=>{if(!rendered.has(path))rendered.set(path,await(await request(path)).text());return rendered.get(path)};
 const visible=h=>h.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 test('every indexable page has unique server-rendered metadata and a self canonical',async()=>{

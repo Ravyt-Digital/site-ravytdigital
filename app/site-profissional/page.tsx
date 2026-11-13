@@ -51,6 +51,7 @@ export default function ProfessionalPage() {
           <article><h3><a href="/site-institucional-paginas-essenciais">Quais páginas um site institucional precisa?</a></h3><p>Defina o que o visitante precisa saber para escolher seu serviço e entrar em contato.</p></article>
           <article><h3><a href="/google-meu-negocio">Otimização do Google Meu Negócio</a></h3><p>Conheça o serviço para organizar as informações do seu negócio na Busca e no Maps, quando elegível.</p></article>
         </div>
+        <p className="rv-section-note">Veja também <a href="/blog/instagram-nao-substitui-site-proprio">como integrar Instagram e site próprio</a> e <a href="/blog/site-bonito-nao-basta">sete sinais de que seu site precisa transmitir mais confiança</a>.</p>
       </section>
       <section className="rv-final shell"><h2>Vamos definir as páginas <em>do seu site?</em></h2>
         <p>Conte o que você precisa apresentar. A Ravyt confirma o escopo e o prazo na proposta.</p>

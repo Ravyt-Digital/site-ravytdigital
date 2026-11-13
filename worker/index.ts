@@ -1,5 +1,6 @@
 import {handleImageOptimization,DEFAULT_DEVICE_SIZES,DEFAULT_IMAGE_SIZES} from 'vinext/server/image-optimization';
 import handler from 'vinext/server/app-router-entry';
+import {restoredArticles} from '@/lib/site-articles';
 import {googleBusinessPath} from '@/lib/google-business';
 import {submitProposal, type ProposalDatabase} from './proposals';
 interface Env{DB?:ProposalDatabase;ASSETS:Fetcher;IMAGES:{input(stream:ReadableStream):{transform(options:Record<string,unknown>):{output(options:{format:string;quality:number}):Promise<{response():Response}>}}};}
@@ -23,7 +24,7 @@ export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promis
  if(['/diagnostico','/diagnosticos','/contato'].includes(raw)){url.pathname='/';url.hash=raw==='/contato'?'contato':'consultor';return Response.redirect(url.href,301);}
  if(raw!=='/'&&sectionRedirects[raw]){url.pathname='/';url.hash=sectionRedirects[raw];url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(path!=='/'&&raw==='/'){url.pathname='/';url.searchParams.delete('lang');return Response.redirect(url.href,301);}
- if(retired.includes(raw)||/^\/blog(?:\/|$)/.test(raw)||/^\/recursos(?:\/|$)/.test(raw)||['/gestao-de-midias-sociais','/quanto-custa-gestao-de-midias-sociais','/social-media-para-psicologos-parentais'].includes(raw))return new Response('Este conteúdo foi retirado do site. Acesse a página principal em https://ravytdigital.com.',{status:410,headers:{'Content-Type':'text/plain; charset=utf-8','X-Robots-Tag':'noindex'}});
+ if(retired.includes(raw)||(/^\/blog(?:\/|$)/.test(raw)&&!restoredArticles.has(path))||/^\/recursos(?:\/|$)/.test(raw)||['/gestao-de-midias-sociais','/quanto-custa-gestao-de-midias-sociais','/social-media-para-psicologos-parentais'].includes(raw))return new Response('Este conteúdo foi retirado do site. Acesse a página principal em https://ravytdigital.com.',{status:410,headers:{'Content-Type':'text/plain; charset=utf-8','X-Robots-Tag':'noindex'}});
  if(/^\/campanhas\/2026-11\/(?:criativos\.html|ravyt-59-90-(?:feed|stories)\.png)$/.test(path)){url.pathname='/site-profissional';return Response.redirect(url.href,302);}
  if(path==='/api/propostas'&&request.method==='POST')return submitProposal(request,env.DB);
  if(path==='/_vinext/image')return handleImageOptimization(request,{fetchAsset:p=>env.ASSETS.fetch(new Request(new URL(p,request.url))),transformImage:async(body,{width,format,quality})=>(await env.IMAGES.input(body).transform(width>0?{width}:{}).output({format,quality})).response()},[...DEFAULT_DEVICE_SIZES,...DEFAULT_IMAGE_SIZES]);
