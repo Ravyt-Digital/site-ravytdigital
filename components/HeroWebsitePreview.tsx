@@ -19,7 +19,7 @@ export default function HeroWebsitePreview() {
   return <figure className="rd-showcase">
     <div className="rd-showcase-light" aria-hidden="true" />
     <figcaption className="rd-showcase-caption">
-      <span>Exemplo de site</span><span>Desktop e celular</span>
+      <span>Exemplos de interface</span><span>Site e aplicativo</span>
     </figcaption>
     <div className="rd-preview-devices" aria-hidden="true">
       <div className="rd-preview-desktop">
@@ -28,7 +28,13 @@ export default function HeroWebsitePreview() {
       </div>
       <div className="rd-preview-phone">
         <div className="rd-preview-camera" />
-        <PreviewPage />
+        <div className="rd-preview-app">
+          <div className="rd-preview-app-heading"><span>Meu aplicativo</span><span className="rd-preview-app-icon">•</span></div>
+          <strong>Meus pedidos</strong>
+          <span className="rd-preview-app-status"><i /> Em andamento</span>
+          <span className="rd-preview-app-row"><i /> Novo pedido <span>›</span></span>
+          <span className="rd-preview-app-row"><i /> Histórico <span>›</span></span>
+        </div>
       </div>
     </div>
   </figure>;

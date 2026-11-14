@@ -1,13 +1,10 @@
 import type {MetadataRoute} from 'next';
 import {SITE_URL} from '@/lib/site';
-import {restoredArticles} from '@/lib/site-articles';
+import {articles, blogPath} from '@/lib/site-articles';
 import {siteSegmentPaths} from '@/lib/site-segments';
-import {guides} from '@/lib/guides';
-import {googleBusinessPath} from '@/lib/google-business';
+import {appPath, websitePath} from '@/lib/services';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    '/', '/site-profissional', googleBusinessPath, '/quanto-custa-criar-um-site',
-    '/site-institucional-paginas-essenciais', '/indique', ...guides.map(guide => '/' + guide.slug), ...siteSegmentPaths, ...restoredArticles,
-  ].map(path => ({url: SITE_URL + path}));
+  return ['/', websitePath, appPath, blogPath, '/indique', ...siteSegmentPaths, ...articles.map(article => article.path)]
+    .map(path => ({url: SITE_URL + path}));
 }

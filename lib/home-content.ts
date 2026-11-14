@@ -1,9 +1,6 @@
 // Project names and demonstration status checked against the owner-supplied sites.
 // Do not infer prices, client work or contact details from other projects.
 export const homeContent = {
-  contacts: [
-    {id:'ravyt-atendimento',name:'Marcio Cabral',number:'5588996777332',display:'(88) 99677-7332'},
-  ],
   projects: [
   {
     "id": "ananda-oliveira",
@@ -79,8 +76,3 @@ export const homeContent = {
   }
 ],
 };
-export const whatsappHref = (number: string, message = 'Olá! Quero conversar sobre a criação de um site com a Ravyt Digital.') =>
-  `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-export const contactHref = whatsappHref(homeContent.contacts[0].number);
-export const commercialWhatsApp = (message: string) => whatsappHref(homeContent.contacts[0].number, message);
-export const googleContactHref = commercialWhatsApp('Olá! Quero saber mais sobre a otimização do Perfil da Empresa no Google.');

@@ -2,7 +2,7 @@ export const siteSegments = {
   arquitetura: {
     path: '/sites-para-escritorios-de-arquitetura',
     title: 'Criação de Site para Arquitetos e Escritórios | Ravyt Digital',
-    description: 'Site para arquitetos e escritórios de interiores com portfólio, páginas de serviços e contato. Conheça o escopo do projeto de R$ 2.900.',
+    description: 'Site para arquitetos e escritórios de interiores com portfólio, páginas de serviços e contato. Solicite um orçamento para seu projeto.',
     label: 'Arquitetura e interiores',
     name: 'Site para arquitetos',
     emphasis: 'e escritórios de interiores',
@@ -66,8 +66,4 @@ export const siteSegmentPaths = Object.values(siteSegments).map(segment => segme
 
 export function findSiteSegment(value: unknown) {
   return value === 'arquitetura' || value === 'engenharia' ? siteSegments[value] : undefined;
-}
-
-export function segmentProposalHref(id: SiteSegmentId) {
-  return '/proposta?plano=profissional&segmento=' + id;
 }

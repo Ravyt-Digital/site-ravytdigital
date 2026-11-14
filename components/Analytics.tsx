@@ -135,7 +135,7 @@ export default function Analytics() {
         }
         send("whatsapp_click", path, {contact_channel: "whatsapp"});
       }
-      else if (anchor?.hasAttribute('data-plan-click') || href === '#planos' || href === '/#planos') send("plan_click", path);
+      else if (anchor?.hasAttribute('data-quote-cta')) send('quote_click', path);
     };
     const sales = (event: Event) => {
       const name = (event as CustomEvent).detail;

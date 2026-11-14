@@ -1,7 +1,7 @@
-import {plans} from '@/lib/plans';
+import {isProjectType} from '@/lib/services';
 import {findSiteSegment} from '@/lib/site-segments';
 
-const proposalPlans = new Set<string>([...plans.map(plan => plan.id), 'google', 'nao-sei']);
+const legacyTypes = new Set(['essencial', 'profissional', 'sob-medida']);
 const referralPattern = /^[a-zA-Z0-9_-]{3,40}$/;
 const uuidPattern = /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i;
 const campaignPattern = /^[a-zA-Z0-9_. -]{1,100}$/;
@@ -35,7 +35,11 @@ export async function submitProposal(request: Request, database?: ProposalDataba
   const name = string('name');
   const business = string('business');
   const contact = string('contact');
-  const plan = string('plan');
+  const requestedType = string('projectType');
+  const legacyPlan = string('plan');
+  const projectType = isProjectType(requestedType) ? requestedType :
+    !requestedType && legacyTypes.has(legacyPlan) ? 'site' :
+    !requestedType && ['google', 'nao-sei'].includes(legacyPlan) ? 'nao-sei' : '';
   const description = string('description');
   const code = string('referral');
   const telephone = contact.replace(/[^\d]/g, '');
@@ -43,7 +47,7 @@ export async function submitProposal(request: Request, database?: ProposalDataba
   if ((kind !== 'proposta' && kind !== 'parceria') || !uuidPattern.test(id) || string('consent') !== 'sim' || string('website')) {
     return json({error: 'Revise a solicitação e tente novamente.'}, 400);
   }
-  if (!name || name.length > 100 || business.length > 140 || (kind === 'proposta' && (!business || !proposalPlans.has(plan))) ||
+  if (!name || name.length > 100 || business.length > 140 || (kind === 'proposta' && (!business || !projectType)) ||
       !validContact || contact.length > 160 || description.length < 10 || description.length > 1200) {
     return json({error: 'Revise os campos e informe um WhatsApp com DDD ou um e-mail válido.'}, 400);
   }
@@ -59,7 +63,7 @@ export async function submitProposal(request: Request, database?: ProposalDataba
       (id, reference, kind, name, business, contact, description, plan, referral, utm_source, utm_medium, utm_campaign, created_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO NOTHING`).bind(
       id, reference, kind, name, business, contact, attributedDescription,
-      kind === 'proposta' ? plan : null,
+      kind === 'proposta' ? projectType : null,
       kind === 'proposta' && referralPattern.test(code) ? code : null,
       campaignValue('utm_source'), campaignValue('utm_medium'), campaignValue('utm_campaign'), new Date().toISOString()
     ).run();
@@ -67,6 +71,6 @@ export async function submitProposal(request: Request, database?: ProposalDataba
     return json({reference}, 201);
   } catch {
     console.error('Falha ao gravar pedido comercial');
-    return json({error: 'O formulário está indisponível. Tente novamente ou fale com a Ravyt pelo WhatsApp.'}, 503);
+    return json({error: 'O formulário está indisponível. Tente novamente mais tarde.'}, 503);
   }
 }

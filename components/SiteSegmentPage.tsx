@@ -1,11 +1,12 @@
 import HomeNavigation from './HomeNavigation';
 import SiteFooter from './SiteFooter';
 import StructuredData from './StructuredData';
-import {commercialWhatsApp, homeContent} from '@/lib/home-content';
-import {professional} from '@/lib/plans';
+import {homeContent} from '@/lib/home-content';
+import QuoteLink from './QuoteLink';
+import {websitePath} from '@/lib/services';
 import {breadcrumb, webpage} from '@/lib/seo';
 import {portfolioPlanningArticle} from '@/lib/site-articles';
-import {segmentProposalHref, siteSegments, type SiteSegmentId} from '@/lib/site-segments';
+import {siteSegments, type SiteSegmentId} from '@/lib/site-segments';
 import {SITE_URL} from '@/lib/site';
 
 export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
@@ -15,8 +16,6 @@ export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
   const smallImage = project.image.replace('.webp', '-480.webp');
   const heading = segment.name + ' ' + segment.emphasis;
   const url = SITE_URL + segment.path;
-  const proposalHref = segmentProposalHref(id);
-  const whatsapp = commercialWhatsApp('Olá! Vi a página de ' + segment.name.toLowerCase() + ' e quero conversar sobre o site da minha empresa.');
 
   return <>
     <HomeNavigation />
@@ -30,10 +29,8 @@ export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
             <div className="rv-hero-copy">
               <h1 id="segment-title">{segment.name}{' '}<em>{segment.emphasis}</em></h1>
               <p className="rv-hero-description">{segment.intro}</p>
-              <p className="rd-segment-price"><strong>{professional.price} por projeto</strong> · Até 5 páginas</p>
               <div className="rv-actions">
-                <a href={proposalHref} className="rv-button" data-plan-click>Solicitar proposta <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a>
-                <a href="#escopo" className="rv-text-link">Ver o que está incluído <span className="rd-arrow rd-arrow-down" aria-hidden="true" /></a>
+                <QuoteLink type="site" segment={id} />
               </div>
             </div>
             <figure className="rd-segment-preview">
@@ -59,17 +56,17 @@ export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
 
       <section className="rv-section shell rd-split rd-segment-scope" id="escopo" aria-labelledby="segment-scope">
         <div>
-          <h2 id="segment-scope">O que está incluído no Site Profissional</h2>
-          <p>Planejamos até cinco páginas para apresentar a empresa, os serviços, os projetos e o contato. A Ravyt prepara os textos com base no briefing e você valida as informações antes da publicação.</p>
-          <p>Se você precisa de muitas páginas de projetos, atualização por painel ou recursos específicos, o <a href="/#planos">Site Sob Medida</a> parte de R$ 4.500.</p>
-          <a href="/site-profissional" className="rv-text-link">Conferir condições, hospedagem e revisões <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a>
+          <h2 id="segment-scope">Como definimos as páginas do seu site</h2>
+          <p>Organizamos as informações sobre a empresa, os serviços e os projetos que você pode publicar. O orçamento descreve o que será criado e como o visitante pode entrar em contato.</p>
+          <a href={websitePath} className="rv-text-link">Conhecer o serviço de criação de sites <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a>
         </div>
-        <div className="rd-plan rd-plan-main">
-          <h3>{professional.name}</h3>
-          <p className="rd-plan-price">{professional.price} <span>por projeto</span></p>
-          <ul>{professional.details.map(item => <li key={item}>{item}</li>)}</ul>
-          <p>50% na contratação e 50% após aprovação, antes da publicação definitiva ou transferência.</p>
-          <p>{professional.timeline} O prazo começa após a entrada e o recebimento dos materiais.</p>
+        <div className="rd-service-panel">
+          <h3>O que detalhamos no orçamento</h3>
+          <ul>
+            <li><strong>Estrutura</strong><span>Páginas, categorias do portfólio e ações de contato.</span></li>
+            <li><strong>Materiais</strong><span>Responsáveis pelos textos, pelas imagens e pelas revisões.</span></li>
+            <li><strong>Entrega</strong><span>Prazo, investimento, domínio, hospedagem e acessos.</span></li>
+          </ul>
         </div>
       </section>
 
@@ -92,8 +89,7 @@ export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
         <h2>Vamos definir o que seu site <em>precisa mostrar?</em></h2>
         <p>{segment.briefing}</p>
         <div className="rd-actions">
-          <a href={proposalHref} className="rv-button" data-plan-click>Solicitar proposta <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a>
-          <a href={whatsapp} className="rv-text-link" data-contact-cta>Conversar no WhatsApp <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a>
+          <QuoteLink type="site" segment={id} />
         </div>
       </section>
     </main>
@@ -102,8 +98,7 @@ export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
       {...webpage(segment.path, heading, segment.description),mainEntity:{'@id':url+'#service'}},
       breadcrumb(segment.path, segment.label),
       {'@type':'Service','@id':url+'#service',name:heading,url,description:segment.description,
-        provider:{'@id':SITE_URL+'/#organization'},areaServed:{'@type':'Country',name:'Brasil'},
-        offers:{'@type':'Offer',name:professional.name,price:2900,priceCurrency:'BRL',url}},
+        provider:{'@id':SITE_URL+'/#organization'},areaServed:{'@type':'Country',name:'Brasil'}},
     ]}} />
   </>;
 }

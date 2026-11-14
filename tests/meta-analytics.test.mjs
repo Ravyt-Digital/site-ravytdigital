@@ -41,3 +41,9 @@ test('rejected consent prevents all transmissions; granting does not replay past
  const h=harness({accepted:false});h.click('a','https://wa.me/5588996777332');assert.equal(h.meta().length,0);assert.equal(h.beacons.length,0);
  h.choice(true);assert.deepEqual(h.meta().map(c=>c[2]),['PageView']);h.choice(false);const count=h.beacons.length;h.click('a','https://wa.me/5588996777332');assert.equal(h.beacons.length,count);
 });
+
+test('quote CTA measures intent without passing the destination or firing Lead',()=>{
+ const h=harness();h.click('a','/proposta?projeto=aplicativo');
+ assert.deepEqual(h.meta().map(c=>c[2]),['PageView','QuoteClick']);
+ assert.doesNotMatch(JSON.stringify(h.meta()),/projeto=aplicativo/);
+});

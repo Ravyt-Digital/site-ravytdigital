@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import {agencyDescription} from "@/lib/services";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Ravyt Digital",
     short_name: "Ravyt",
-    description: "Sites, SEO e Google Meu Negócio para empresas de diferentes regiões do Brasil. Atendimento direto pelo WhatsApp.",
+    description: agencyDescription,
     start_url: "/",
     display: "standalone",
     background_color: "#050C13",

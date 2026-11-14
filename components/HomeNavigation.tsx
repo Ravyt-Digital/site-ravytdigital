@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from 'react';
-import { contactHref } from '@/lib/home-content';
+import {useState} from 'react';
+import QuoteLink from './QuoteLink';
+import {appPath, websitePath} from '@/lib/services';
+import {blogPath} from '@/lib/site-articles';
 
 const links = [
-  ['Sites', '/site-profissional'],
-  ['Planos', '/#planos'],
+  ['Sites', websitePath],
+  ['Aplicativos', appPath],
   ['Projetos', '/#projetos'],
-  ['Google Meu Negócio', '/google-meu-negocio'],
-  ['Contato', '/#contato'],
+  ['Blog', blogPath],
 ];
 
 export default function HomeNavigation() {
@@ -23,7 +24,7 @@ export default function HomeNavigation() {
       </button>
       <nav id="home-menu" className={open ? 'is-open' : ''} aria-label="Menu principal">
         {links.map(([text, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{text}</a>)}
-        <a className="rv-nav-cta" href={contactHref} data-contact-cta onClick={() => setOpen(false)}>WhatsApp <span aria-hidden="true">↗</span></a>
+        <QuoteLink navigation />
       </nav>
     </div>
   </header>;

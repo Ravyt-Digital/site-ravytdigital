@@ -1,29 +1,27 @@
-import type {Metadata} from 'next';
 import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
 import {ProposalForm} from '@/components/SalesForms';
-import {commercialWhatsApp, contactHref} from '@/lib/home-content';
 import {findSiteSegment} from '@/lib/site-segments';
-import {plans} from '@/lib/plans';
-import {SITE_URL} from '@/lib/site';
+import {isProjectType, quotePath} from '@/lib/services';
+import {pageMetadata} from '@/lib/seo';
 
-const title = 'Solicitar proposta | Ravyt Digital';
-export const metadata: Metadata = {title, description:'Envie as informações do seu projeto para a Ravyt Digital.', alternates:{canonical:SITE_URL+'/proposta'},robots:{index:false,follow:true}};
+export const metadata = {
+  ...pageMetadata(quotePath, 'Solicitar Orçamento | Ravyt Digital', 'Conte sobre o site ou aplicativo que você precisa para receber um orçamento da Ravyt Digital.'),
+  robots: {index: false, follow: true},
+};
 
-export default async function ProposalPage({searchParams}: {searchParams: Promise<{plano?: string; segmento?: string}>}) {
-  const {plano, segmento} = await searchParams;
+export default async function ProposalPage({searchParams}: {searchParams: Promise<{projeto?: string; segmento?: string}>}) {
+  const {projeto, segmento} = await searchParams;
   const segment = findSiteSegment(segmento);
-  const whatsapp = segment ? commercialWhatsApp('Olá! Quero uma proposta de site para ' + segment.label.toLowerCase() + '.') : contactHref;
-  const plan = plans.find(item => item.id === plano);
-  const selectedService = plano === 'google' ? 'Perfil da Empresa no Google' : plan?.name;
+  const type = isProjectType(projeto) ? projeto : segment ? 'site' : undefined;
   return <><HomeNavigation /><main className="rv-home" id="conteudo">
     <section className="rv-section shell rd-split rd-form-page">
-      <div><h1>Solicite uma <em>proposta</em></h1>
-        <p>{selectedService ? 'Você selecionou o ' + selectedService + '.' : 'Conte o que seu negócio precisa.'} A Ravyt analisa seu pedido e retorna pelo contato informado.</p>
+      <div>
+        <h1>Solicite um <em>orçamento</em></h1>
+        <p>Conte o que você quer criar, quem vai usar e o que precisa funcionar. A Ravyt avalia o pedido e responde pelo contato informado.</p>
         {segment && <p>{segment.briefing}</p>}
-        <a className="rv-text-link" href={whatsapp} data-contact-cta>Prefiro conversar no WhatsApp ↗</a>
       </div>
-      <ProposalForm initialPlan={plano === 'google' ? 'google' : plan?.id} segment={segment ? segmento : undefined} />
+      <ProposalForm initialType={type} segment={segment ? segmento : undefined} />
     </section>
   </main><SiteFooter /></>;
 }

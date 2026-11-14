@@ -1,60 +1,14 @@
 'use client';
 
 import {useState, type FormEvent} from 'react';
-import {commercialWhatsApp} from '@/lib/home-content';
 import {readUtms} from '@/lib/utm';
-import {plans, questions, recommendPlan, type PlanId} from '@/lib/plans';
+import {projectTypes, type ProjectType} from '@/lib/services';
 
 function signal(event: string) {
   window.dispatchEvent(new CustomEvent('ravyt:sales-event', {detail: event}));
 }
 
-export function PlanAdvisor() {
-  const [result, setResult] = useState<{plan: typeof plans[number]; summary: string}>();
-  const [copied, setCopied] = useState(false);
-
-  function recommend(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const answers = questions.map((_, i) => Number(data.get('question-' + i)));
-    const plan = recommendPlan(answers);
-    const summary = questions.map((question, i) => question.options[answers[i]]).join('\n');
-    setCopied(false);
-    setResult({plan, summary});
-    signal('diagnostic_complete');
-  }
-
-  return <div className="rd-form-box">
-    <form onSubmit={recommend}>
-      <div className="rd-fields">
-        {questions.map((question, index) => <label key={question.label}>{question.label}
-          <select name={'question-' + index} required defaultValue="" onChange={() => setResult(undefined)}>
-            <option value="" disabled>Selecione</option>
-            {question.options.map((option, i) => <option value={i} key={option}>{option}</option>)}
-          </select>
-        </label>)}
-      </div>
-      <button className="rv-button" type="submit">Ver recomendação <span aria-hidden="true">↗</span></button>
-    </form>
-    {result && <div className="rd-result">
-      <div role="status"><p>Recomendação inicial</p><h3>{result.plan.name} · {result.plan.priceNote === 'a partir de' && 'a partir de '}{result.plan.price}</h3>
-        <p>{result.plan.description}</p></div>
-      <div className="rd-actions">
-        <a className="rv-button" href={'/proposta?plano=' + result.plan.id} onClick={() => signal('diagnostic_contact_request')}>Solicitar proposta</a>
-        <a className="rv-text-link" href={commercialWhatsApp('Olá! O consultor indicou o ' + result.plan.name + '.\n' + result.summary)}>Conversar no WhatsApp ↗</a>
-        <button type="button" className="rd-link-button" onClick={async () => {
-          try {
-            await navigator.clipboard.writeText(result.plan.name + '\n' + result.summary);
-            setCopied(true);
-          } catch {
-            setCopied(false);
-          }
-        }}>{copied ? 'Resumo copiado' : 'Copiar resumo'}</button>
-      </div>
-    </div>}
-  </div>;
-}
-
+const submitError = 'O envio falhou. Tente novamente.';
 const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
 const referralKey = 'ravyt-referral';
 const idPattern = /^[a-zA-Z0-9_-]{3,40}$/;
@@ -66,7 +20,7 @@ export function rememberReferral() {
   }
 }
 
-export function ProposalForm({kind = 'proposta', initialPlan, segment}: {kind?: 'proposta' | 'parceria'; initialPlan?: PlanId | 'google'; segment?: string}) {
+export function ProposalForm({kind = 'proposta', initialType, segment}: {kind?: 'proposta' | 'parceria'; initialType?: ProjectType; segment?: string}) {
   const partner = kind === 'parceria';
   const [pending, setPending] = useState(false);
   const [receipt, setReceipt] = useState('');
@@ -98,14 +52,12 @@ export function ProposalForm({kind = 'proposta', initialPlan, segment}: {kind?: 
         signal: AbortSignal.timeout(15000),
       });
       const reply = await response.json() as {reference?: string; error?: string};
-      if (!response.ok || !reply.reference) throw new Error(reply.error || 'O envio falhou. Tente novamente ou use o WhatsApp.');
+      if (!response.ok || !reply.reference) throw new Error(reply.error || submitError);
       setReceipt(reply.reference);
       if (!partner) signal('form_submit');
     } catch (failure) {
-      setError(failure instanceof Error && failure.message.includes('fetch')
-        ? 'O envio falhou. Tente novamente ou use o WhatsApp.'
-        : failure instanceof Error && !['TimeoutError', 'SyntaxError'].includes(failure.name)
-          ? failure.message : 'O envio falhou. Tente novamente ou use o WhatsApp.');
+      setError(failure instanceof Error && !['TypeError', 'TimeoutError', 'SyntaxError'].includes(failure.name)
+        ? failure.message : submitError);
     } finally {
       setPending(false);
     }
@@ -121,14 +73,14 @@ export function ProposalForm({kind = 'proposta', initialPlan, segment}: {kind?: 
       <label>Seu nome<input name="name" autoComplete="name" required maxLength={100} /></label>
       <label>{partner ? 'Empresa ou atividade (opcional)' : 'Nome da empresa'}<input name="business" autoComplete="organization" required={!partner} maxLength={140} /></label>
       <label>WhatsApp com DDD ou e-mail<input name="contact" autoComplete="on" required maxLength={160} /></label>
-      {!partner && <label>Em que podemos ajudar?
-        <select name="plan" defaultValue={initialPlan ?? 'nao-sei'} required>
-          {plans.map(plan => <option key={plan.id} value={plan.id}>{plan.name}</option>)}
-          <option value="google">Perfil da Empresa no Google</option><option value="nao-sei">Preciso de orientação</option>
+      {!partner && <label>Tipo de projeto
+        <select name="projectType" defaultValue={initialType ?? ''} required>
+          <option value="" disabled>Selecione</option>
+          {projectTypes.map(type => <option key={type.id} value={type.id}>{type.label}</option>)}
         </select>
       </label>}
       <label className="rd-wide">{partner ? 'Como você pretende indicar a Ravyt?' : 'O que você precisa no seu projeto?'}
-        <textarea name="description" required minLength={10} maxLength={1200} rows={4} placeholder={partner ? 'Conte um pouco sobre sua atividade e as empresas com que você trabalha.' : 'Conte o que sua empresa oferece e o que o site precisa resolver.'} />
+        <textarea name="description" required minLength={10} maxLength={1200} rows={4} placeholder={partner ? 'Conte um pouco sobre sua atividade e as empresas com que você trabalha.' : 'Conte quem vai usar e o que precisa funcionar. Se já tem um site ou aplicativo, inclua o endereço.'} />
       </label>
     </div>
     <div hidden aria-hidden="true"><label>Preencha apenas se for um robô<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
@@ -136,6 +88,6 @@ export function ProposalForm({kind = 'proposta', initialPlan, segment}: {kind?: 
       <span>Autorizo a Ravyt a usar esses dados para responder à minha solicitação. Leia a <a href="#privacidade">Política de Privacidade</a>.</span>
     </label>
     {error && <p className="rd-error" role="alert">{error}</p>}
-    <button className="rv-button" disabled={pending} type="submit">{pending ? 'Enviando…' : partner ? 'Enviar interesse em parceria' : 'Enviar pedido de proposta'} <span aria-hidden="true">↗</span></button>
+    <button className="rv-button" disabled={pending} type="submit">{pending ? 'Enviando…' : partner ? 'Enviar interesse em parceria' : 'Enviar pedido de orçamento'} <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></button>
   </form>;
 }
