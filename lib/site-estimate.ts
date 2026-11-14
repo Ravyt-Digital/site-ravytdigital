@@ -3,7 +3,10 @@ export const contentPageLimit = 20;
 export const legalItems = 'Página de Política de Privacidade e banner de aviso de cookies';
 export const publicationFee = 'A Ravyt não cobra taxa de publicação.';
 export const partialNotice = 'O subtotal inclui apenas os itens com preço definido. O valor final poderá mudar após o orçamento dos itens pendentes.';
-export const fixedNotice = 'Este é o valor do serviço para o escopo selecionado. Custos de terceiros, quando aplicáveis, ficam por conta do cliente.';
+export const pendingNotice = 'A Ravyt informará o valor após analisar os itens a orçar.';
+export const fixedNotice = 'Este é o valor final do serviço. A Ravyt não cobrará nenhum custo adicional pelo escopo selecionado.';
+export const thirdPartyNotice = 'Quando aplicáveis, domínio, hospedagem externa e assinaturas de ferramentas são pagos aos fornecedores pelo cliente.';
+export const revisionPolicy = 'Você pode pedir até 6 ajustes pontuais sem custo antes da aprovação final, como trocar um texto, uma imagem ou um link. Novas páginas, funcionalidades e outras mudanças de escopo são orçadas à parte.';
 export const money = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'});
 
 export type Option = { id: string; label: string; detail?: string; price?: number };
@@ -124,11 +127,12 @@ export function estimateWhatsApp(estimate: Estimate) {
     'Contato: '+contact+(estimate.contactDetail ? ' ('+estimate.contactDetail.trim()+')' : ''),
     ...rows.map(({label,amount}) => '• '+label+' — '+money.format(amount)),
     rows.length ? (pending.length ? 'Subtotal dos itens com preço definido: ' : 'Valor do serviço: ')+money.format(total) : 'Valor da criação: a orçar.',
-    ...(pending.length ? ['Itens a orçar: '+pending.join('; ')+'.', partialNotice] : [fixedNotice]),
+    ...(pending.length ? ['Itens a orçar: '+pending.join('; ')+'.', rows.length ? partialNotice : pendingNotice] : [fixedNotice]),
     'Textos e imagens: '+materials,
     'Incluído na criação: '+legalItems+'.',
+    revisionPolicy,
     'Publicação: '+hosting+' '+publicationFee,
-    ...((estimate.contact === 'crm' || estimate.contact === 'other') ? ['Mensalidades de ferramentas ficam por conta do cliente, quando houver.'] : []),
+    thirdPartyNotice,
   ].join('\n');
   return 'https://wa.me/5588996777332?text='+encodeURIComponent(message);
 }

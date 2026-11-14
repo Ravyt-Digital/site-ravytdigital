@@ -4,7 +4,8 @@ import {useRef, useState} from 'react';
 import {quoteHref} from '@/lib/services';
 import {
   calculateEstimate, commercialPages, contactOptions, contentPageLimit, estimateWhatsApp, initialEstimate,
-  fixedNotice, legalItems, materialOptions, money, pageOptions, pagesLabel, partialNotice, publicationFee, publicationFor, specialProjects,
+  fixedNotice, legalItems, materialOptions, money, pageOptions, pagesLabel, partialNotice, pendingNotice,
+  publicationFee, publicationFor, revisionPolicy, specialProjects, thirdPartyNotice,
   type Estimate, type Option,
 } from '@/lib/site-estimate';
 
@@ -121,11 +122,13 @@ export default function SiteEstimate() {
         <div key={label}><dt>{label}</dt><dd>{money.format(amount)}</dd></div>)}</dl>}
       {hasPendingItems ? <>
         <p className="rd-estimate-note"><strong>Itens a orçar.</strong> {result.pending.join(', ')}.</p>
-        <p className="rd-estimate-note"><strong>{allItemsPending ? 'O valor será informado pela Ravyt após a análise desses itens.' : partialNotice}</strong></p>
+        <p className="rd-estimate-note"><strong>{allItemsPending ? pendingNotice : partialNotice}</strong></p>
       </> : <p className="rd-estimate-note"><strong>{fixedNotice}</strong></p>}
       <p className="rd-estimate-note"><strong>Textos e imagens.</strong> {result.materials}</p>
-      <p className="rd-estimate-note"><strong>Publicação.</strong> {result.hosting} {publicationFee}</p>
       <p className="rd-estimate-note"><strong>Incluído na criação.</strong> {legalItems}.</p>
+      <p className="rd-estimate-note"><strong>Ajustes antes da aprovação.</strong> {revisionPolicy}</p>
+      <p className="rd-estimate-note"><strong>Publicação.</strong> {result.hosting} {publicationFee}</p>
+      <p className="rd-estimate-note">{thirdPartyNotice}</p>
       <div className="rd-estimate-controls">
         <button type="button" className="rd-estimate-back" onClick={()=>goTo(steps.length-1)}>Editar</button>
         <a className="rv-button" href={estimateWhatsApp(estimate)} target="_blank" rel="noopener noreferrer"
