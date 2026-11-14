@@ -186,6 +186,35 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
   border-bottom: 1px solid #FEF7F119;
   background: radial-gradient(ellipse at 84% 36%, #1A1E22 0%, #050C13 66%);
 }
+.rd-hero-plan {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  max-height: 700px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, #FEF7F10D 1px, transparent 1px),
+    linear-gradient(to bottom, #FEF7F10D 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+}
+.rd-hero-plan canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  mask-image: radial-gradient(ellipse 41% 45% at 24% 55%, #0008, #000 91%);
+}
+@media (max-width: 950px) {
+  .rd-hero-plan {
+    max-height: 475px;
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+  .rd-hero-plan canvas {
+    opacity: .75;
+    mask-image: linear-gradient(to right, #0003, #000 85%);
+  }
+}
 .rd-hero > .rv-hero {
   width: min(1280px, calc(100% - 80px));
   grid-template-columns: minmax(0,.91fr) minmax(0,1.09fr);
@@ -617,4 +646,19 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 }
 @media (max-width: 550px) {
   .rv-home .rv-portfolio-section .rv-projects { grid-template-columns: 1fr; }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .rv-home [data-reveal-state="waiting"]:not(:focus-within) { opacity: 0; }
+  .rv-home [data-reveal-state="shown"]:not(:focus-within) {
+    animation: rv-home-reveal 540ms cubic-bezier(.2,.65,.3,1) backwards;
+  }
+  @media (min-width: 951px) {
+    .rv-home [data-reveal-state="shown"]:nth-child(2):not(:focus-within) { animation-delay: 85ms; }
+    .rv-home [data-reveal-state="shown"]:nth-child(3):not(:focus-within) { animation-delay: 150ms; }
+  }
+}
+@keyframes rv-home-reveal {
+  from { opacity: 0; translate: 0 16px; }
+  to { opacity: 1; translate: 0 0; }
 }
