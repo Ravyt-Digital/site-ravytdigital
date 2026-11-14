@@ -47,6 +47,12 @@ const planLayers = [
 ];
 
 const drawingDuration = 2040;
+const holdDuration = 4000;
+const fadeDuration = 900;
+const restartDelay = 350;
+const fadeStart = drawingDuration + holdDuration;
+const cycleDuration = fadeStart + fadeDuration;
+const lineOpacity = 0.76;
 
 export default function HeroPlan() {
   const plan = useRef<HTMLCanvasElement>(null);
@@ -61,9 +67,11 @@ export default function HeroPlan() {
     }));
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const mobile = window.matchMedia('(max-width: 950px)');
-    const started = performance.now();
+    let started: number | undefined;
     let elapsed = motion.matches ? drawingDuration : 0;
     let frame = 0;
+    let timer = 0;
+    let onScreen = true;
     let width = 0;
     let height = 0;
     let pixelRatio = 1;
@@ -77,6 +85,8 @@ export default function HeroPlan() {
         mobile.matches ? 0 : Math.max(16, (height - 400 * scale) / 2),
       );
       context.scale(scale, scale);
+      const fade = Math.max(0, elapsed - fadeStart) / fadeDuration;
+      context.globalAlpha = lineOpacity * (1 - fade);
       for (const layer of layers) {
         const progress = Math.min(1, (elapsed - layer.start) / layer.duration);
         if (progress <= 0) continue;
@@ -98,30 +108,58 @@ export default function HeroPlan() {
     };
 
     const draw = (now: number) => {
-      elapsed = Math.min(drawingDuration, now - started);
+      started ??= now - elapsed;
+      elapsed = Math.min(cycleDuration, now - started);
       paint();
-      if (elapsed < drawingDuration) frame = requestAnimationFrame(draw);
+      if (elapsed >= cycleDuration) {
+        started = undefined;
+        elapsed = 0;
+        timer = window.setTimeout(scheduleFrame, restartDelay);
+      } else if (elapsed >= drawingDuration && elapsed < fadeStart) {
+        // Let the finished plan hold without repainting it every frame.
+        timer = window.setTimeout(scheduleFrame, fadeStart - elapsed);
+      } else {
+        scheduleFrame();
+      }
     };
+    const scheduleFrame = () => { frame = requestAnimationFrame(draw); };
 
-    const finishOnReducedMotion = () => {
-      if (!motion.matches) return;
+    const stop = () => {
       cancelAnimationFrame(frame);
-      elapsed = drawingDuration;
-      paint();
+      window.clearTimeout(timer);
+      started = undefined;
+    };
+    const syncMotion = () => {
+      stop();
+      if (motion.matches) {
+        elapsed = drawingDuration;
+        paint();
+      } else if (onScreen && !document.hidden) {
+        scheduleFrame();
+      }
     };
 
     const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(resize);
+    const visibility = typeof IntersectionObserver === 'undefined' ? null : new IntersectionObserver(([entry]) => {
+      if (!entry || onScreen === entry.isIntersecting) return;
+      onScreen = entry.isIntersecting;
+      syncMotion();
+    });
     resize();
     if (observer) observer.observe(canvas);
     else window.addEventListener('resize', resize);
-    if (!motion.matches) frame = requestAnimationFrame(draw);
-    motion.addEventListener('change', finishOnReducedMotion);
+    visibility?.observe(canvas);
+    syncMotion();
+    motion.addEventListener('change', syncMotion);
+    document.addEventListener('visibilitychange', syncMotion);
 
     return () => {
-      cancelAnimationFrame(frame);
+      stop();
       observer?.disconnect();
+      visibility?.disconnect();
       window.removeEventListener('resize', resize);
-      motion.removeEventListener('change', finishOnReducedMotion);
+      motion.removeEventListener('change', syncMotion);
+      document.removeEventListener('visibilitychange', syncMotion);
     };
   }, []);
 
