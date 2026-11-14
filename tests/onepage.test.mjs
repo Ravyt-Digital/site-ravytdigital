@@ -4,12 +4,12 @@ const env={ASSETS:{fetch:async()=>new Response('',{status:404})}},ctx={waitUntil
 const request=(path,headers={})=>worker.fetch(new Request('https://ravytdigital.com'+path,{headers}),env,ctx);
 const visible=s=>s.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 let html;const home=async()=>html??=(await(await request('/')).text());
-test('home presents sites, apps, portfolio and a single commercial action',async()=>{
+test('home presents sites, apps, portfolio and a website estimator',async()=>{
  const h=await home(),v=visible(h);assert.equal((await request('/')).status,200);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
- for(const id of ['inicio','servicos','clientes','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
- for(const text of ['Criação de sites','Criação de aplicativos','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
+ for(const id of ['inicio','servicos','clientes','simular-site','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
+ for(const text of ['Criação de sites','Criação de aplicativos','Simulador de sites','Qual é a estrutura do seu site?','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
  assert.doesNotMatch(v,/projeto-antonia-moreira|francisca-antonia-neuro|\/projects\/antonia-moreira/);
- assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis|R\$|Google Meu Negócio|data-plan-click|href="\/#planos"/);
+ assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis|Google Meu Negócio|data-plan-click|href="\/#planos"/);
  assert.match(h,/<title>Criação de Sites e Aplicativos \| Ravyt Digital<\/title>/);
 });
 test('old diagnostic and contact URLs lead to the quote form; retired content keeps Gone semantics',async()=>{
@@ -30,7 +30,7 @@ test('domain upgrades preserve campaigns and HTML remains revalidated',async()=>
 test('commercial links lead to the quote form and preselect the service where relevant',async()=>{
  const h=visible(await home());
  assert.doesNotMatch(h,/href="https:\/\/wa\.me\//);
- for(const [,href] of h.matchAll(/href="([^"]+)" data-quote-cta/g)) assert.equal(href,'/proposta');
+ for(const [,href] of h.matchAll(/href="([^"]+)" data-quote-cta/g)) assert.ok(['/proposta','/proposta?projeto=aplicativo'].includes(href));
  assert.match(h,/data-quote-cta/);
  for(const [path,type] of [['/site-profissional','site'],['/aplicativos','aplicativo']]){
   const service=visible(await(await request(path)).text());

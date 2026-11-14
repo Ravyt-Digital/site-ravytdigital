@@ -2,17 +2,17 @@ import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
 import Testimonials from '@/components/Testimonials';
 import PortfolioGallery from '@/components/PortfolioGallery';
-import HeroWebsitePreview from '@/components/HeroWebsitePreview';
+import SiteEstimate from '@/components/SiteEstimate';
 import StructuredData from '@/components/StructuredData';
 import QuoteLink from '@/components/QuoteLink';
 import ArticleCard from '@/components/ArticleCard';
 import {webpage} from '@/lib/seo';
-import {agencyTitle, agencyDescription, appPath, websitePath} from '@/lib/services';
+import {agencyTitle, agencyDescription, appPath, websitePath, quoteHref} from '@/lib/services';
 import {articles, blogPath} from '@/lib/site-articles';
 import {SITE_URL} from '@/lib/site';
 
 const faqs = [
-  ['Como a Ravyt calcula o orçamento?', 'A proposta considera o que precisa ser criado, os materiais disponíveis, as funcionalidades e as integrações. Depois da conversa inicial, você recebe o escopo, o prazo e o investimento para avaliar.'],
+  ['Como a Ravyt calcula o orçamento?', 'O simulador soma os valores das páginas, do conteúdo e das integrações que você escolher. Quando todos os itens têm preço, o total exibido é o valor do serviço para esse escopo. Se houver itens sob orçamento, o subtotal poderá mudar após a análise. Aplicativos são orçados pelo formulário.'],
   ['Preciso ter todas as telas ou páginas definidas?', 'Você pode começar com o objetivo do projeto, quem vai usar e o que essa pessoa precisa fazer. Se já tiver referências, um site atual ou um protótipo, inclua essas informações no pedido.'],
   ['Como ficam domínio, hospedagem e publicação?', 'A proposta define o ambiente indicado, quem controla os acessos e quais custos de fornecedores precisam ser considerados para publicar e manter o projeto.'],
   ['A Ravyt atende empresas de outras cidades?', 'Sim. As conversas e as revisões podem acontecer online. A Ravyt atende projetos em todo o Brasil.'],
@@ -33,9 +33,11 @@ export default function Home() {
           <div className="rv-hero-copy">
             <h1 id="hero-title">Criamos sites <em>e aplicativos.</em></h1>
             <p className="rv-hero-description">Sites para apresentar seu negócio e facilitar o contato. Aplicativos web e para celular para simplificar a rotina de clientes e equipes. Atendemos empresas em todo o Brasil.</p>
-            <div className="rv-actions"><QuoteLink /></div>
+            <div className="rv-actions"><a className="rv-text-link" href={quoteHref('aplicativo')} data-quote-cta>
+              Solicitar orçamento de aplicativo <span className="rd-arrow rd-arrow-up" aria-hidden="true" />
+            </a></div>
           </div>
-          <HeroWebsitePreview />
+          <SiteEstimate />
         </div>
       </section>
 
