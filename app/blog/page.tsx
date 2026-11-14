@@ -6,8 +6,8 @@ import {articles, blogPath, topics, topicId} from '@/lib/site-articles';
 import {breadcrumb, pageMetadata, webpage} from '@/lib/seo';
 import {SITE_URL} from '@/lib/site';
 
-const title = 'Blog sobre Sites, Aplicativos e Tecnologia | Ravyt Digital';
-const description = 'Guias da Ravyt Digital sobre criação de sites e aplicativos, domínio, hospedagem e escolha de tecnologia para projetos digitais.';
+const title = 'Sites e Tecnologia para Arquitetura e Engenharia | Blog Ravyt';
+const description = 'Guias para arquitetos e engenheiros sobre portfólios, sites institucionais, aplicativos, domínios e hospedagem.';
 export const metadata = pageMetadata(blogPath, title, description);
 
 export default function Blog() {
@@ -18,8 +18,8 @@ export default function Blog() {
         <li><a href="/">Início</a></li><li aria-current="page">Blog</li>
       </ol></nav></div>
       <header className="rv-section shell rd-blog-header">
-        <h1>Blog da <em>Ravyt</em></h1>
-        <p>Guias sobre sites, aplicativos, hospedagem, domínios e as tecnologias por trás de cada projeto.</p>
+        <h1>Guias para <em>arquitetura e engenharia</em></h1>
+        <p>Planeje seu portfólio, organize os serviços do escritório e avalie quando um aplicativo faz sentido para a rotina de projeto ou obra.</p>
         <nav className="rd-blog-topics" aria-label="Assuntos do blog">
           {topics.map((topic, index) => <a key={topic} href={'#' + topicId(index)}>{topic}</a>)}
         </nav>

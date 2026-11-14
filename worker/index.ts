@@ -2,11 +2,14 @@ import {handleImageOptimization,DEFAULT_DEVICE_SIZES,DEFAULT_IMAGE_SIZES} from '
 import handler from 'vinext/server/app-router-entry';
 import {articlePaths, blogPath} from '@/lib/site-articles';
 import {appPath, quotePath, websitePath} from '@/lib/services';
-import {siteSegmentPaths} from '@/lib/site-segments';
+import {siteSegments} from '@/lib/site-segments';
 import {submitProposal, type ProposalDatabase} from './proposals';
 interface Env{DB?:ProposalDatabase;ASSETS:Fetcher;IMAGES:{input(stream:ReadableStream):{transform(options:Record<string,unknown>):{output(options:{format:string;quality:number}):Promise<{response():Response}>}}};}
 interface ExecutionContext{waitUntil(promise:Promise<unknown>):void;passThroughOnException():void;}
-const sectionRedirects:Record<string,string>={'/politica-de-privacidade':'privacidade','/privacidade':'privacidade','/politica-de-cookies':'cookies','/termos-de-uso':'termos','/termos':'termos'};
+const sectionRedirects:Record<string,string>={'/politica-de-privacidade':'privacidade','/privacidade':'privacidade','/politica-de-cookies':'cookies','/termos-de-uso':'termos','/termos':'termos',
+ [siteSegments.arquitetura.path]:siteSegments.arquitetura.sectionId,
+ [siteSegments.engenharia.path]:siteSegments.engenharia.sectionId,
+};
 const retired=['/seo','/google-meu-negocio','/quanto-custa-google-meu-negocio','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/sites-para-moveis-planejados','/cases','/sobre','/autores/ytala-cabral','/servicos'];
 const contentRedirects: Record<string,string> = {
  '/sites':websitePath,
@@ -18,12 +21,13 @@ const contentRedirects: Record<string,string> = {
  '/blog/criacao-de-site-profissional-para-empresas':'/quanto-custa-criar-um-site',
  '/blog/site-institucional-paginas-essenciais':'/site-institucional-paginas-essenciais',
 };
-const translatedRoutes = new Set([websitePath, appPath, blogPath, quotePath, ...siteSegmentPaths, ...articlePaths]);
+const translatedRoutes = new Set([websitePath, appPath, blogPath, quotePath, ...articlePaths]);
 export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promise<Response>{
  const url=new URL(request.url),path=url.pathname.replace(/\/$/,'')||'/',raw=path.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';
  if(url.hostname==='www.ravytdigital.com'||(url.hostname==='ravytdigital.com'&&url.protocol==='http:')){url.hostname='ravytdigital.com';url.protocol='https:';return Response.redirect(url.href,308);}
  const target=(Object.hasOwn(contentRedirects,raw)?contentRedirects[raw]:undefined)??(path!==raw&&translatedRoutes.has(raw)?raw:undefined);
  if(target){url.pathname=target;url.searchParams.delete('lang');return Response.redirect(url.href,301);}
+ if(raw!=='/'&&Object.hasOwn(sectionRedirects,raw)){url.pathname='/';url.hash=sectionRedirects[raw];url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(path!=='/'&&url.pathname.endsWith('/')){url.pathname=path;return Response.redirect(url.href,308);}
  if(['/diagnostico','/diagnosticos','/contato'].includes(raw)){url.pathname=quotePath;url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(path===quotePath&&url.searchParams.has('plano')){
@@ -32,7 +36,6 @@ export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promis
   if(!url.searchParams.has('projeto')&&['essencial','profissional','sob-medida'].includes(plan??''))url.searchParams.set('projeto','site');
   return Response.redirect(url.href,301);
  }
- if(raw!=='/'&&sectionRedirects[raw]){url.pathname='/';url.hash=sectionRedirects[raw];url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(path!=='/'&&raw==='/'){url.pathname='/';url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(retired.includes(raw)||(/^\/blog(?:\/|$)/.test(raw)&&path!==blogPath&&!articlePaths.has(path))||/^\/recursos(?:\/|$)/.test(raw)||['/gestao-de-midias-sociais','/quanto-custa-gestao-de-midias-sociais','/social-media-para-psicologos-parentais'].includes(raw))return new Response('Este conteúdo foi retirado do site. Acesse a página principal em https://ravytdigital.com.',{status:410,headers:{'Content-Type':'text/plain; charset=utf-8','X-Robots-Tag':'noindex'}});
  if(/^\/campanhas\/2026-11\/(?:criativos\.html|ravyt-59-90-(?:feed|stories)\.png)$/.test(path)){url.pathname='/site-profissional';return Response.redirect(url.href,302);}

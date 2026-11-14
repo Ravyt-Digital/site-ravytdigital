@@ -2,8 +2,8 @@ import SiteGuide from '@/components/SiteGuide';
 import {pageMetadata} from '@/lib/seo';
 import {hostingArticle as path, websitePricingArticle} from '@/lib/site-articles';
 
-const title = 'Domínio e hospedagem: o que você precisa contratar?';
-const description = 'Entenda a diferença entre o endereço do site e o serviço que o mantém no ar. Saiba quais acessos e custos conferir.';
+const title = 'Domínio e hospedagem para o site do escritório';
+const description = 'Saiba quais acessos e custos conferir ao publicar o site de arquitetura ou engenharia, do domínio ao e-mail profissional.';
 export const metadata = pageMetadata(path, title + ' | Ravyt Digital', description, 'article');
 
 export default function HostingGuide() {
@@ -11,7 +11,7 @@ export default function HostingGuide() {
     <section>
       <h2>Domínio, hospedagem e e-mail têm funções diferentes</h2>
       <ul>
-        <li><strong>Domínio.</strong> É o endereço do seu negócio na internet. O DNS indica a que serviços esse endereço deve apontar.</li>
+        <li><strong>Domínio.</strong> É o endereço do seu escritório na internet. O DNS indica a que serviços esse endereço deve apontar.</li>
         <li><strong>Hospedagem.</strong> É a infraestrutura que entrega as páginas e, dependendo do projeto, executa funcionalidades ou se conecta a um banco de dados.</li>
         <li><strong>E-mail profissional.</strong> É o serviço que recebe e envia mensagens pelo seu domínio. Ele pode ser contratado separadamente.</li>
       </ul>
@@ -28,7 +28,7 @@ export default function HostingGuide() {
     </section>
     <section>
       <h2>Qual hospedagem faz sentido para seu projeto?</h2>
-      <p>Um portfólio com páginas públicas tem necessidades diferentes de uma área de clientes com login, banco de dados e envio de arquivos. Compare o que precisa funcionar, como o projeto será atualizado e quais limites de uso afetam o custo.</p>
+      <p>Um portfólio público de obras tem necessidades diferentes de um portal com login e envio de plantas, fotos ou relatórios de vistoria. Compare o que precisa funcionar, como o projeto será atualizado e quais limites de uso afetam o custo.</p>
       <p>Se estiver comparando propostas, use também o guia sobre <a href={websitePricingArticle}>custos de criação e manutenção de um site</a>.</p>
     </section>
   </SiteGuide>;

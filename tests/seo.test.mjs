@@ -3,7 +3,7 @@ const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=
 const origin='https://ravytdigital.com';const request=(path,options)=>worker.fetch(new Request(origin+path,options),env,ctx);
 const verticals=['/sites-para-escritorios-de-arquitetura','/sites-para-empresas-de-engenharia'];
 const articleRoutes=['/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta','/blog/site-ou-aplicativo','/blog/dominio-e-hospedagem','/blog/como-escolher-tecnologia-site-ou-app','/blog/como-montar-portfolio-de-arquitetura-e-engenharia'];
-const serviceRoutes=['/site-profissional','/aplicativos',...verticals];
+const serviceRoutes=['/site-profissional','/aplicativos'];
 const routes=['/','/blog','/indique',...serviceRoutes,...articleRoutes];
 const rendered=new Map();const html=async path=>{if(!rendered.has(path))rendered.set(path,await(await request(path)).text());return rendered.get(path)};
 const visible=h=>h.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
@@ -22,8 +22,6 @@ test('sitemap, robots, structured data and meaningful legacy redirects agree wit
   ['/en/blog','/blog'],
   ['/orcamento','/proposta'],
   ['/planos','/proposta'],
-  ['/fr'+verticals[0],verticals[0]],
-  ['/en'+verticals[1],verticals[1]],
  ]) {
   const legacy=await request(oldPath+'?utm_source=old');assert.equal(legacy.status,301);
   assert.equal(legacy.headers.get('location'),origin+target+'?utm_source=old');
@@ -47,17 +45,21 @@ test('analytics accepts only documented events and never stores injected fields 
  assert.equal((await request('/api/analytics',{method:'POST',headers:{origin:'https://foreign.example'},body:'{}'})).status,403);
 });
 
-test('vertical pages link to the estimator and a shared portfolio guide',async()=>{
+test('old segment addresses consolidate on the home sections without losing campaign attribution',async()=>{
  const guide=routes.at(-1);
+ const sitemap=await(await request('/sitemap.xml')).text();
  for(const [index,id] of ['arquitetura','engenharia'].entries()){
-  const path=verticals[index], proposal='/proposta?projeto=site&segmento='+id;
-  const landing=visible(await html(path));
-  assert.ok(landing.includes('href="/#simular-site" data-quote-cta'));
-  assert.ok(landing.includes('href="'+guide+'"'));
-  assert.match(landing,/Projeto conceitual/);
-  assert.ok((await html(guide)).includes('href="'+path+'"'));
-  assert.ok(!(await html('/')).includes('href="'+path+'"'));
-  assert.ok((await html('/site-profissional')).includes('href="'+path+'"'));
+  const path=verticals[index], anchor='/#'+id, proposal='/proposta?projeto=site&segmento='+id;
+  for (const variant of [path,'/fr'+path+'/']){
+   const response=await request(variant+'?utm_source=old&ref=partner&lang=pt');
+   assert.equal(response.status,301);
+   assert.equal(response.headers.get('location'),origin+'/?utm_source=old&ref=partner#'+id);
+  }
+  assert.ok((await html(guide)).includes('href="'+anchor+'"'));
+  assert.ok((await html('/')).includes('id="'+id+'"'));
+  assert.ok((await html('/')).includes('href="'+guide+'"'));
+  assert.ok(!(await html('/site-profissional')).includes('href="'+path+'"'));
+  assert.ok(!sitemap.includes(path));
   assert.match(visible(await html(proposal)),index===0?/tipos de projeto o escritório oferece/:/serviços técnicos sua empresa oferece/);
  }
 });

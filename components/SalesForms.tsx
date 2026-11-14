@@ -28,7 +28,7 @@ export function ProposalForm({kind = 'proposta', initialType, segment, appBrief 
     const referral = readReferral();
     const {timing, ...answers} = fields;
     const description = appBrief && typeof timing === 'string' && timing ?
-      answers.description + '\\n\\nPrazo desejado: ' + timing : answers.description;
+      answers.description + '\n\nPrazo desejado: ' + timing : answers.description;
     const utms = readUtms();
     const campaign = Object.fromEntries(campaignKeys.map(key => [key, utms[key]]));
     const id = requestId || crypto.randomUUID();
@@ -63,10 +63,10 @@ export function ProposalForm({kind = 'proposta', initialType, segment, appBrief 
     <div className="rd-fields">
       {appBrief && <label className="rd-wide">Quem vai usar o aplicativo e para quê?
         <textarea name="description" required minLength={10} maxLength={1100} rows={3}
-          placeholder="Ex.: meus clientes precisam agendar e acompanhar o atendimento pelo celular." />
+          placeholder="Ex.: a equipe precisa registrar fotos de vistorias e gerar um histórico por obra." />
       </label>}
       <label>Seu nome<input name="name" autoComplete="name" required maxLength={100} /></label>
-      <label>{partner ? 'Empresa ou atividade (opcional)' : appBrief ? 'Empresa ou atividade' : 'Nome da empresa'}<input name="business" autoComplete="organization" required={!partner} maxLength={140} /></label>
+      <label>{partner ? 'Empresa ou atividade (opcional)' : 'Escritório, empresa ou atividade'}<input name="business" autoComplete="organization" required={!partner} maxLength={140} /></label>
       <label>WhatsApp com DDD ou e-mail<input name="contact" autoComplete="on" required maxLength={160} /></label>
       {appBrief && <>
         <input type="hidden" name="projectType" value="aplicativo" />
@@ -84,8 +84,8 @@ export function ProposalForm({kind = 'proposta', initialType, segment, appBrief 
       </label>}
       {!appBrief && <label className="rd-wide">{partner ? 'Como você pretende indicar a Ravyt?' : 'O que você precisa no seu projeto?'}
         <textarea name="description" required minLength={10} maxLength={1200} rows={4}
-          placeholder={partner ? 'Conte um pouco sobre sua atividade e as empresas com que você trabalha.' :
-            'Conte quem vai usar e o que precisa funcionar. Se já tem um site ou aplicativo, inclua o endereço.'} />
+          placeholder={partner ? 'Conte sobre sua atividade e seu contato com arquitetos e engenheiros.' :
+            'Conte quais serviços, projetos ou obras quer mostrar, ou que tarefa seu aplicativo precisa atender.'} />
       </label>}
     </div>
     <div hidden aria-hidden="true"><label>Preencha apenas se for um robô<input name="website" tabIndex={-1} autoComplete="off" /></label></div>

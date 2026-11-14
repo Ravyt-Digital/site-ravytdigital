@@ -609,3 +609,13 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 @media (prefers-reduced-motion: reduce) {
   .rd-estimate .rv-button { transition:none; }
 }
+
+.rd-hero h1 { font-size: clamp(37px, 4.6vw, 69px); }
+.rd-niche-section [id] { scroll-margin-top: 30px; }
+.rv-home .rv-portfolio-section .rv-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 950px) {
+  .rd-hero h1 { font-size: clamp(34px, 7vw, 59px); }
+}
+@media (max-width: 550px) {
+  .rv-home .rv-portfolio-section .rv-projects { grid-template-columns: 1fr; }
+}

@@ -1,8 +1,9 @@
 # Ravyt Digital
-> Agência de criação de sites e aplicativos sob medida para empresas em todo o Brasil. O orçamento é definido pelo escopo do projeto.
 
-- [Criação de sites](https://ravytdigital.com/site-profissional): sites institucionais, portfólios, páginas de divulgação e reformulação de sites.
-- [Criação de aplicativos](https://ravytdigital.com/aplicativos): desenvolvimento sob medida a partir das tarefas de clientes ou equipes.
-- [Projetos](https://ravytdigital.com/#projetos): trabalhos publicados e demonstrações conceituais identificadas.
-- [Blog](https://ravytdigital.com/blog): guias sobre sites, aplicativos, hospedagem, domínios e tecnologia.
-- [Solicitar orçamento](https://ravytdigital.com/#simular-site): simulador de sites e entrada para pedidos de aplicativos.
+> Criação de sites, portfólios e aplicativos para arquitetos, engenheiros e suas equipes em todo o Brasil. A Ravyt atende de forma remota e orça cada projeto pelo escopo.
+
+- [Sites para arquitetura e engenharia](https://ravytdigital.com/site-profissional): sites institucionais, portfólios de projetos e obras e páginas para serviços técnicos.
+- [Aplicativos para arquitetura e engenharia](https://ravytdigital.com/aplicativos): portais de clientes, aprovações, vistorias e acompanhamento de etapas.
+- [Exemplos de sites](https://ravytdigital.com/#projetos): demonstrações conceituais de arquitetura e engenharia identificadas como tal.
+- [Guias](https://ravytdigital.com/blog): portfólio, criação de sites, aplicativos, domínios e hospedagem para o setor.
+- [Solicitar orçamento](https://ravytdigital.com/#simular-site): simule seu site ou descreva seu aplicativo.

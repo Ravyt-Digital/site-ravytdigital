@@ -23,8 +23,7 @@ pageOptions.push({id:'custom',label:'Outra quantidade ou ainda não sei',detail:
 export const specialProjects: Option[] = [
   {id:'blog',label:blog,detail:'Listagem de posts, modelo de artigo e painel para publicar. Desenvolvimento com Oxygen Builder.',price:rates.blog},
   {id:'blog-site',label:'Site institucional com blog',detail:'Blog com valor definido. Páginas institucionais sob orçamento.'},
-  {id:'wordpress',label:'Portal de notícias ou outro site em WordPress',detail:'Sob orçamento'},
-  {id:'store',label:'Loja virtual',detail:'Sob orçamento'},
+  {id:'wordpress',label:'Portal de conteúdo em WordPress',detail:'Sob orçamento'},
 ];
 export const contactOptions: Option[] = [
   {id:'whatsapp',label:'Só o botão de WhatsApp',detail:'Sem custo adicional'},
@@ -59,12 +58,12 @@ export function pagesLabel(count: number) {
 }
 
 export function requiresBrief(structure: string) {
-  return ['custom', 'blog-site', 'wordpress', 'store'].includes(structure);
+  return ['custom', 'blog-site', 'wordpress'].includes(structure);
 }
 
 export function publicationFor(estimate: Estimate) {
   if (specialProjects.some(({id}) => id === estimate.structure)) return {
-    help:'WordPress e lojas virtuais precisam de domínio próprio e hospedagem externa compatível, pagos pelo cliente.',
+    help:'Sites em WordPress precisam de domínio próprio e hospedagem externa compatível, pagos pelo cliente.',
     options:[
       {...externalHosting,label:'Já tenho domínio e hospedagem externa'},
       {id:'undecided',label:'Ainda preciso escolher domínio ou hospedagem',detail:'A Ravyt orienta sobre os requisitos.'},
@@ -129,8 +128,7 @@ export function calculateEstimate(estimate: Estimate) {
     ready:'O cliente fornece os textos e as imagens que já tem.',
     preparing:'O cliente vai preparar e fornecer os textos e as imagens.',
     ravyt:'A Ravyt produz textos e imagens para '+pagesLabel(contentCount)+
-      (hasBlog || estimate.structure === 'wordpress' ? '. A produção de artigos é orçada à parte.' :
-        estimate.structure === 'store' ? '. O cadastro de produtos é orçado à parte.' : '.'),
+      (hasBlog || estimate.structure === 'wordpress' ? '. A produção de artigos é orçada à parte.' : '.'),
   }[estimate.materials];
   const structure = special?.label || (pageCount ? pagesLabel(pageCount) + (pageCount === 1 ? ' comercial' : ' comerciais') : customStructure);
   return {rows,pending,hosting,providerCosts,materials,structure,contact:contact?.label,contentCount,

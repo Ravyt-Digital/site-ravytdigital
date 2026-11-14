@@ -20,7 +20,7 @@ const steps = [
 
 const categories = [
   {id:'site', label:'Site'},
-  {id:'special', label:'Blog ou loja virtual'},
+  {id:'special', label:'Blog ou portal'},
   {id:'app', label:'Aplicativo'},
 ] as const;
 type Category = typeof categories[number]['id'];
@@ -36,10 +36,9 @@ function Choices({field, value, options, onChange}: {
 }
 
 function BriefPrompt({structure}: {structure: string}) {
-  if (structure === 'store') return <>O que você vende e quantos produtos quer lançar? Se já souber, informe a plataforma e como pretende receber pagamentos e enviar os pedidos.</>;
-  if (structure === 'blog-site') return <>Quais páginas da sua empresa devem acompanhar o blog? Ex.: Serviços, Portfólio e Contato.</>;
-  if (structure === 'wordpress') return <>Conte o que você quer publicar e quem vai atualizar o conteúdo.</>;
-  return <>Conte o que o site precisa mostrar. Se já tiver um endereço ou referência, indique aqui.</>;
+  if (structure === 'blog-site') return <>Quais páginas devem acompanhar o blog? Ex.: Serviços de engenharia, Obras e Contato.</>;
+  if (structure === 'wordpress') return <>Conte o que seu escritório quer publicar e quem vai atualizar informações sobre projetos, obras ou artigos.</>;
+  return <>Conte quais serviços, projetos ou obras o site precisa mostrar. Se já tiver um endereço ou referência, indique aqui.</>;
 }
 
 export default function SiteEstimate({initialApp}: {initialApp: boolean}) {
@@ -164,15 +163,15 @@ export default function SiteEstimate({initialApp}: {initialApp: boolean}) {
       step ? titles[index] : 'Seu orçamento de site'}</h2>
 
     {app ? <>
-      <p className="rd-estimate-note">Conte quem vai usar e qual tarefa precisa funcionar primeiro. A Ravyt avalia o escopo para preparar a proposta.</p>
+      <p className="rd-estimate-note">Conte quem vai usar o aplicativo e qual tarefa precisa funcionar primeiro, como aprovar um projeto ou registrar uma vistoria.</p>
       <ProposalForm appBrief />
     </> : <>
       {step?.key === 'structure' && <>
         {category === 'site' && <>
-          <p className="rd-estimate-note">Uma página pode reunir até cinco seções no mesmo endereço, como Sobre, Serviços e Contato.</p>
+          <p className="rd-estimate-note">Uma página pode reunir até cinco seções no mesmo endereço, como Escritório, Serviços, Projetos e Contato.</p>
           <details className="rd-estimate-details rd-estimate-page-guide">
             <summary>Como contar páginas e projetos do portfólio</summary>
-            <p className="rd-estimate-note">Uma galeria com vários projetos pode ocupar uma única página. Se cada projeto tiver seu próprio endereço, fotos e descrição, conte cada página de projeto à parte. A Política de Privacidade e o aviso de cookies já estão incluídos.</p>
+            <p className="rd-estimate-note">Uma galeria com vários projetos ou obras pode ocupar uma única página. Se cada projeto tiver seu próprio endereço, fotos e descrição, conte cada página de projeto à parte. A Política de Privacidade e o aviso de cookies já estão incluídos.</p>
           </details>
         </>}
         <div className={'rd-estimate-options'+(category === 'site' ? ' rd-estimate-pages' : '')} role="radiogroup" aria-labelledby="site-estimate-heading">

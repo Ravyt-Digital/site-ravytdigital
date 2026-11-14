@@ -4,15 +4,15 @@ const env={ASSETS:{fetch:async()=>new Response('',{status:404})}},ctx={waitUntil
 const request=(path,headers={})=>worker.fetch(new Request('https://ravytdigital.com'+path,{headers}),env,ctx);
 const visible=s=>s.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 let html;const home=async()=>html??=(await(await request('/')).text());
-test('home presents sites, apps, portfolio and a website estimator',async()=>{
+test('home positions the agency for architecture and engineering and presents the estimator',async()=>{
  const h=await home(),v=visible(h);assert.equal((await request('/')).status,200);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
- for(const id of ['inicio','servicos','simular-site','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
- for(const text of ['Criação de sites','Criação de aplicativos','Simulador de orçamento','Qual é a estrutura do seu site?','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
- assert.doesNotMatch(v,/R\$\s*0,00/);
+ for(const id of ['inicio','servicos','arquitetura','engenharia','simular-site','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
+ for(const text of ['Criação de sites','Criação de aplicativos','Simulador de orçamento','Qual é a estrutura do seu site?','todo o Brasil','Nina Valença Arquitetura','Vértice Norte Engenharia','Projeto conceitual','Blog ou portal'])assert.ok(v.includes(text),text);
+ assert.doesNotMatch(v,/R\$\s*0,00|Ananda Oliveira|Capoeira Haute-Savoie|CEREST|lojas? virtu(?:al|ais)/i);
  assert.doesNotMatch(v,/projeto-antonia-moreira|francisca-antonia-neuro|\/projects\/antonia-moreira/);
  assert.doesNotMatch(h,/id="clientes"|Quem já trabalhou|depoimentos|\/testimonials\//i);
  assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis|Google Meu Negócio|data-plan-click|href="\/#planos"/);
- assert.match(h,/<title>Criação de Sites e Aplicativos \| Ravyt Digital<\/title>/);
+ assert.match(h,/<title>Sites e Aplicativos para Arquitetos e Engenheiros \| Ravyt Digital<\/title>/);
 });
 test('old diagnostic and contact URLs lead to the quote form; retired content keeps Gone semantics',async()=>{
  for(const path of ['/contato','/diagnostico','/diagnosticos','/en/diagnostico','/fr/diagnostico']){const r=await request(path);assert.equal(r.status,301);assert.equal(r.headers.get('location'),'https://ravytdigital.com/proposta');}
@@ -36,7 +36,7 @@ test('quote buttons lead to the home estimator, which links to the app form',asy
  const appHome=visible(await(await request('/?projeto=aplicativo')).text());
  assert.match(appHome,/O que o aplicativo precisa fazer\?/);
  assert.match(appHome,/input[^>]+name="projectType"[^>]+value="aplicativo"/);
- for(const path of ['/','/site-profissional','/aplicativos','/blog','/quanto-custa-criar-um-site','/sites-para-escritorios-de-arquitetura','/sites-para-empresas-de-engenharia']){
+ for(const path of ['/','/site-profissional','/aplicativos','/blog','/quanto-custa-criar-um-site']){
   const page=visible(await(await request(path)).text());
   const links=[...page.matchAll(/href="([^"]+)" data-quote-cta/g)];
   assert.ok(links.length>0,path);

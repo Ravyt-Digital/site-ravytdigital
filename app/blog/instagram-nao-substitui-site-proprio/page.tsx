@@ -2,23 +2,23 @@ import SiteGuide from '@/components/SiteGuide';
 import {pageMetadata} from '@/lib/seo';
 import {instagramSiteArticle as path, trustSiteArticle} from '@/lib/site-articles';
 
-const title = 'Por que o Instagram não substitui um site próprio?';
-const description = 'Use o Instagram para mostrar seu trabalho e um site próprio para organizar serviços, responder dúvidas e facilitar o pedido de orçamento.';
+const title = 'Instagram e site para arquitetos e engenheiros';
+const description = 'Use as redes sociais para mostrar projetos e obras e o site para apresentar serviços, dar contexto ao portfólio e receber pedidos de proposta.';
 export const metadata = pageMetadata(path, 'Instagram substitui um site próprio? | Ravyt Digital', description, 'article');
 
 export default function InstagramWebsiteArticle() {
   return <SiteGuide path={path} title={title} description={description} published="2026-08-04" revised="2026-11-13">
     <section>
       <h2>O que muda quando alguém quer contratar</h2>
-      <p>Imagine que uma pessoa veja um Reel seu, goste do trabalho e envie o perfil a um sócio. Para decidir se vale pedir orçamento, os dois precisam descobrir o que você oferece, quais tipos de projeto atende e como funciona a contratação. No Instagram, essas respostas podem estar espalhadas entre posts, destaques e conversas.</p>
+      <p>Imagine que uma pessoa veja um Reel de uma obra ou de um projeto de interiores e envie o perfil a um sócio. Para decidir se vale pedir uma proposta, os dois precisam descobrir quais serviços você oferece, onde atende e como funciona a contratação. No Instagram, essas respostas podem estar espalhadas entre posts, destaques e conversas.</p>
       <p>Um site reúne as informações que pesam nessa decisão. Sua empresa define o endereço, a navegação, a ordem das informações e o caminho até o contato. Isso também dá ao visitante uma página específica para abrir quando ele procura sua marca ou seus serviços no Google.</p>
     </section>
     <section>
       <h2>Como fazer Instagram e site trabalharem juntos</h2>
       <ol>
-        <li><strong>Mostre o trabalho no Instagram.</strong> Use Reels e posts para responder uma pergunta comum, apresentar um projeto ou mostrar uma etapa do processo.</li>
+        <li><strong>Mostre o trabalho no Instagram.</strong> Use Reels e posts para responder uma dúvida sobre contratação, apresentar um projeto ou mostrar uma etapa de obra.</li>
         <li><strong>Leve a pessoa à página certa.</strong> Se o post fala de um serviço, aponte para a página daquele serviço. Se responde sobre valores, indique onde o cliente pode comparar escopo e preço.</li>
-        <li><strong>Dê um próximo passo claro no site.</strong> Ofereça WhatsApp ou um formulário curto. Diga o que ajuda na primeira mensagem, como o serviço desejado e o prazo estimado.</li>
+        <li><strong>Dê um próximo passo claro no site.</strong> Ofereça WhatsApp ou um formulário curto. Diga o que ajuda na primeira mensagem, como o serviço desejado, a cidade e a fase do projeto.</li>
       </ol>
     </section>
     <section>

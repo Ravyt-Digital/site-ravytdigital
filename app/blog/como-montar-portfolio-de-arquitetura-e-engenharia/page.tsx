@@ -23,7 +23,7 @@ export default function PortfolioPlanningGuide() {
         <li><strong>Revise as imagens.</strong> Escolha uma abertura que funcione no celular, confira créditos e diferencie fotografias, renderizações e estudos.</li>
       </ol>
       <p><strong>Exemplo ilustrativo.</strong> Um casal precisava receber visitas e manter espaço de circulação em uma sala compacta. A proposta integrou a mesa de jantar à bancada e concentrou o armazenamento em uma parede. O projeto está em desenvolvimento e as imagens são renderizações.</p>
-      <p>Veja como essa estrutura entra em um <a href={siteSegments.arquitetura.path}>site para arquitetos e escritórios de interiores</a>.</p>
+      <p>Veja como essa estrutura entra em um <a href={'/#' + siteSegments.arquitetura.sectionId}>site para arquitetos e escritórios de interiores</a>.</p>
     </section>
     <section>
       <h2>Roteiro para engenharia e construção</h2>
@@ -34,7 +34,7 @@ export default function PortfolioPlanningGuide() {
         <li><strong>Selecione a evidência.</strong> Use fotos, desenhos ou esquemas autorizados e explique o que mostram. Confira se as imagens expõem endereços, assinaturas ou informações técnicas sensíveis.</li>
       </ol>
       <p><strong>Exemplo ilustrativo.</strong> A equipe foi contratada para inspecionar infiltrações em uma edificação comercial. O escopo incluiu vistoria, registro fotográfico e relatório com recomendações de intervenção. A execução das intervenções ficou a cargo de outro fornecedor.</p>
-      <p>Veja como organizar essas informações em um <a href={siteSegments.engenharia.path}>site para empresas de engenharia e construtoras</a>.</p>
+      <p>Veja como organizar essas informações em um <a href={'/#' + siteSegments.engenharia.sectionId}>site para empresas de engenharia e construtoras</a>.</p>
     </section>
     <section>
       <h2>Revise cada página antes de publicar</h2>

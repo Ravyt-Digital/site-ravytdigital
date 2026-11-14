@@ -8,13 +8,15 @@ import ArticleCard from '@/components/ArticleCard';
 import {webpage} from '@/lib/seo';
 import {agencyTitle, agencyDescription, appPath, websitePath} from '@/lib/services';
 import {articles, blogPath} from '@/lib/site-articles';
+import {siteSegments} from '@/lib/site-segments';
 import {SITE_URL} from '@/lib/site';
 
 const faqs = [
-  ['Como a Ravyt calcula o orçamento?', 'O simulador soma os itens com preço definido e mostra o que ainda depende de análise. Para aplicativos, selecione Aplicativo na mesma seção e descreva o que precisa funcionar.'],
-  ['Preciso ter todas as telas ou páginas definidas?', 'Você pode começar com o objetivo do projeto, quem vai usar e o que essa pessoa precisa fazer. Se já tiver referências, um site atual ou um protótipo, inclua essas informações no pedido.'],
-  ['Como ficam domínio, hospedagem e publicação?', 'A proposta define o ambiente indicado, quem controla os acessos e quais custos de fornecedores precisam ser considerados para publicar e manter o projeto.'],
-  ['A Ravyt atende empresas de outras cidades?', 'Sim. As conversas e as revisões podem acontecer online. A Ravyt atende projetos em todo o Brasil.'],
+  ['Dá para começar com poucos projetos no portfólio?', 'Sim. Selecione trabalhos que representem os serviços que você quer vender. Estudos e renderizações podem entrar com o estágio identificado e com autorização de uso.'],
+  ['Como mostrar uma obra com informações confidenciais?', 'Use apenas imagens e dados autorizados. Quando possível, descreva a tipologia, o escopo e a etapa da obra sem revelar a identidade do cliente, a localização exata ou documentos protegidos.'],
+  ['Como a Ravyt calcula o orçamento?', 'O simulador soma os itens com preço definido e mostra o que ainda depende de análise. Para aplicativos, escolha Aplicativo e descreva a rotina que sua equipe ou seus clientes precisam realizar.'],
+  ['Como ficam domínio, hospedagem e acessos?', 'A proposta define onde o projeto será publicado, quem controla os acessos e quais custos são pagos aos fornecedores.'],
+  ['Vocês atendem fora da minha cidade?', 'Sim. Atendemos arquitetos, engenheiros e suas equipes em todo o Brasil. O briefing, as revisões e a entrega podem ser feitos online.'],
 ];
 
 export default async function Home({searchParams}: {searchParams: Promise<{projeto?: string}>}) {
@@ -23,16 +25,16 @@ export default async function Home({searchParams}: {searchParams: Promise<{proje
     <HomeNavigation />
     <StructuredData data={{'@context':'https://schema.org','@graph':[
       webpage('/', agencyTitle, agencyDescription),
-      ...[[websitePath, 'Criação de sites profissionais'], [appPath, 'Criação de aplicativos']].map(([path, name]) =>
-        ({'@type':'Service','@id':SITE_URL+path+'#service',name,url:SITE_URL+path,
+      ...[[websitePath, 'Sites e portfólios para arquitetura e engenharia'], [appPath, 'Aplicativos para arquitetura e engenharia']].map(([path, name]) =>
+        ({'@type':'Service','@id':SITE_URL+path+'#service',name,url:SITE_URL+path, audience:{'@type':'Audience',audienceType:'Arquitetos e engenheiros'},
           provider:{'@id':SITE_URL+'/#organization'},areaServed:{'@type':'Country',name:'Brasil'}})),
     ]}} />
     <main id="conteudo" className="rv-home">
       <section className="rd-hero" id="inicio" aria-labelledby="hero-title">
         <div className="rv-hero shell">
           <div className="rv-hero-copy">
-            <h1 id="hero-title">Criamos sites <em>e aplicativos.</em></h1>
-            <p className="rv-hero-description">Sites para apresentar seu negócio e facilitar o contato. Aplicativos web e para celular para simplificar a rotina de clientes e equipes. Atendemos empresas em todo o Brasil.</p>
+            <h1 id="hero-title">Sites e aplicativos para <em>arquitetos e engenheiros.</em></h1>
+            <p className="rv-hero-description">Mostre projetos e obras com o contexto que seus clientes precisam para pedir uma proposta. Crie portais e aplicativos para acompanhar etapas, organizar vistorias e compartilhar informações com sua equipe.</p>
             <div className="rv-actions"><QuoteLink className="rv-text-link" /></div>
           </div>
           <SiteEstimate initialApp={projeto === 'aplicativo'} />
@@ -40,15 +42,24 @@ export default async function Home({searchParams}: {searchParams: Promise<{proje
       </section>
 
       <section className="rv-section shell rv-seo-section" id="servicos" aria-labelledby="services-title">
-        <h2 id="services-title">O que podemos <em>criar para você</em></h2>
+        <h2 id="services-title">Do portfólio à <em>rotina de obra</em></h2>
         <div className="rv-seo-grid rd-segment-links rd-service-links">
-          <article><h3><a href={websitePath}>Criação de sites</a></h3><p>Sites institucionais, portfólios e páginas para apresentar seus serviços, mostrar projetos e facilitar o contato.</p></article>
-          <article><h3><a href={appPath}>Criação de aplicativos</a></h3><p>Aplicativos sob medida para facilitar um atendimento, organizar uma rotina da equipe ou reunir informações em um só lugar.</p></article>
+          <article><h3><a href={websitePath}>Criação de sites</a></h3><p>Sites institucionais e portfólios para apresentar especialidades, explicar o escopo dos projetos e receber pedidos de proposta.</p></article>
+          <article><h3><a href={appPath}>Criação de aplicativos</a></h3><p>Portais de clientes e aplicativos web ou para celular para aprovações, vistorias e acompanhamento de projetos e obras.</p></article>
+        </div>
+      </section>
+
+      <section className="rv-section shell rv-seo-section rd-niche-section" aria-labelledby="niche-title">
+        <h2 id="niche-title">O que seus clientes precisam ver</h2>
+        <div className="rv-seo-grid rd-segment-links">
+          {Object.values(siteSegments).map(segment => <article key={segment.sectionId} id={segment.sectionId}>
+            <h3>{segment.label}</h3><p>{segment.summary}</p>
+          </article>)}
         </div>
       </section>
 
       <section className="rv-section rv-portfolio-section" id="projetos" aria-labelledby="projects-title">
-        <div className="shell"><div className="rv-section-heading"><h2 id="projects-title">Projetos da Ravyt</h2><p>Veja exemplos de sites, do portfólio de serviços às páginas com informações de atendimento.</p></div>
+        <div className="shell"><div className="rv-section-heading"><h2 id="projects-title">Exemplos para o seu setor</h2><p>Dois projetos conceituais desenvolvidos pela Ravyt para demonstrar como organizar portfólios, obras e serviços técnicos.</p></div>
           <PortfolioGallery />
         </div>
       </section>
@@ -56,14 +67,14 @@ export default async function Home({searchParams}: {searchParams: Promise<{proje
       <section className="rv-section shell rv-seo-section" id="como-funciona" aria-labelledby="process-title">
         <h2 id="process-title">Da primeira conversa <em>à entrega</em></h2>
         <ol className="rv-process">
-          <li><h3>Briefing e orçamento</h3><p>Entendemos quem vai usar o projeto, o que precisa funcionar e quais materiais já estão disponíveis. A proposta detalha escopo, prazo e investimento.</p></li>
-          <li><h3>Desenvolvimento e revisão</h3><p>Criamos as páginas ou telas e validamos os fluxos principais com você antes da entrega.</p></li>
+          <li><h3>Briefing e orçamento</h3><p>Mapeamos os serviços, os projetos que você pode mostrar e as tarefas que precisam de um aplicativo. A proposta detalha escopo, prazo e investimento.</p></li>
+          <li><h3>Desenvolvimento e revisão</h3><p>Criamos as páginas ou telas e revisamos com você a navegação, a apresentação do portfólio e as tarefas previstas no escopo.</p></li>
           <li><h3>Publicação e acessos</h3><p>Testamos o que foi contratado e organizamos a publicação, os acessos e as orientações previstos na proposta.</p></li>
         </ol>
       </section>
 
       <section className="rv-section shell rv-seo-section" id="guias" aria-labelledby="home-blog-title">
-        <div className="rv-section-heading"><div><h2 id="home-blog-title">Blog da Ravyt</h2><p>Guias para planejar, publicar e manter um projeto digital.</p></div><a className="rv-text-link" href={blogPath}>Ver todos os artigos <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a></div>
+        <div className="rv-section-heading"><div><h2 id="home-blog-title">Blog da Ravyt</h2><p>Guias para arquitetos e engenheiros planejarem seu portfólio, site ou aplicativo.</p></div><a className="rv-text-link" href={blogPath}>Ver todos os artigos <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a></div>
         <div className="rv-seo-grid">{articles.slice(0, 3).map(article => <ArticleCard key={article.path} article={article} />)}</div>
       </section>
 
@@ -75,8 +86,8 @@ export default async function Home({searchParams}: {searchParams: Promise<{proje
       </section>
 
       <section className="rv-final shell" id="contato">
-        <h2>O que seu projeto <em>precisa resolver?</em></h2>
-        <p>Monte o orçamento do seu site ou descreva o aplicativo que precisa desenvolver.</p>
+        <h2>Vamos planejar o projeto digital <em>do seu escritório?</em></h2>
+        <p>Simule o orçamento do site ou conte qual rotina de projeto ou de obra seu aplicativo precisa atender.</p>
         <div className="rd-actions"><QuoteLink /></div>
       </section>
     </main>

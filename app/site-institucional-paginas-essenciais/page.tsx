@@ -2,15 +2,15 @@ import SiteGuide from '@/components/SiteGuide';
 import {pageMetadata} from '@/lib/seo';
 
 const path = '/site-institucional-paginas-essenciais';
-const title = 'Quais páginas um site institucional precisa?';
-const description = 'Defina as páginas do seu site institucional a partir do que seu cliente precisa saber: serviços, experiência, área de atendimento e formas de pedir orçamento.';
+const title = 'Quais páginas o site de arquitetura ou engenharia precisa?';
+const description = 'Organize serviços, portfólio, equipe e contato para que clientes de arquitetura e engenharia saibam quando pedir uma proposta.';
 export const metadata = pageMetadata(path, 'Páginas de um site institucional | Ravyt Digital', description, 'article');
 
 export default function InstitutionalPagesGuide() {
   return <SiteGuide path={path} title={title} description={description}>
     <section><h2>Comece pelas perguntas do cliente</h2>
-      <p>Imagine alguém que recebeu uma indicação e abriu seu site no celular. Essa pessoa precisa descobrir o que sua empresa faz, se atende o caso dela, por que pode confiar no trabalho e como pedir orçamento.</p>
-      <p>Uma empresa com uma oferta simples pode responder a essas perguntas em uma página. Serviços com públicos, critérios ou etapas diferentes podem ganhar páginas próprias para explicar a contratação com clareza.</p>
+      <p>Quem recebe uma indicação e abre o site do escritório precisa entender que tipo de projeto ou serviço técnico você entrega, ver trabalhos relevantes e saber como pedir uma proposta.</p>
+      <p>Um profissional com uma especialidade pode responder a essas perguntas em uma página. Serviços com públicos, critérios ou etapas diferentes podem ganhar páginas próprias para explicar a contratação com clareza.</p>
     </section>
     <section><h2>O que colocar em cada página</h2>
       <ul>
@@ -22,7 +22,7 @@ export default function InstitutionalPagesGuide() {
       </ul>
     </section>
     <section><h2>Um exemplo para uma empresa de serviços</h2>
-      <p>Uma empresa de manutenção com dois serviços pode começar com início, uma página para cada serviço, sobre e contato. Se os dois serviços forem contratados da mesma forma e tiverem o mesmo público, uma página de serviços com seções claras pode atender melhor.</p>
+      <p>Um escritório de engenharia pode separar projetos estruturais e vistorias quando os clientes precisam de informações diferentes para contratar. Se os serviços tiverem o mesmo público e processo, uma página de serviços pode reunir os dois.</p>
       <p>Para preparar o briefing, liste os serviços, as dúvidas que recebe antes do orçamento, as localidades atendidas e os materiais disponíveis. Depois, veja <a href="/quanto-custa-criar-um-site">como o número de páginas afeta o custo de criação</a>.</p>
     </section>
   </SiteGuide>;

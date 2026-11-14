@@ -2,17 +2,17 @@ import SiteGuide from '@/components/SiteGuide';
 import {pageMetadata} from '@/lib/seo';
 import {hostingArticle, institutionalPagesArticle, websitePricingArticle as path} from '@/lib/site-articles';
 
-const title = 'Quanto custa criar um site profissional?';
-const description = 'Entenda como páginas, conteúdo, funcionalidades, hospedagem e manutenção influenciam o orçamento de um site profissional.';
+const title = 'Quanto custa um site para arquitetos ou engenheiros?';
+const description = 'Veja como o número de páginas, o portfólio, a produção de materiais, as integrações e a hospedagem entram no orçamento de um site para o setor.';
 export const metadata = pageMetadata(path, 'Quanto custa criar um site? | Ravyt Digital', description, 'article');
 
 export default function WebsitePricingPage() {
   return <SiteGuide path={path} title={title} description={description} revised="2026-11-14">
     <section><h2>O que muda o custo da criação?</h2>
-      <p>Um site para divulgar um serviço pode precisar de uma página com exemplos e contato. Um site com vários serviços, portfólio organizado e publicação de artigos envolve mais decisões de conteúdo, navegação e manutenção. A Ravyt monta o orçamento conforme o escopo do projeto.</p>
+      <p>Um portfólio inicial pode reunir serviços, três projetos e contato numa página. Um escritório que precisa separar arquitetura, interiores e acompanhamento de obras pode precisar de páginas próprias. A Ravyt orça o site pelo escopo.</p>
       <ul>
         <li><strong>Páginas e materiais.</strong> Liste o que já existe e quem vai produzir textos, fotos ou vídeos.</li>
-        <li><strong>Funcionalidades.</strong> Blog, área restrita, formulários especiais e integrações precisam entrar na proposta com critérios de teste.</li>
+        <li><strong>Funcionalidades.</strong> Filtros de portfólio, blog técnico, área de clientes e formulários com integração precisam entrar na proposta com critérios de teste.</li>
         <li><strong>Revisão e entrega.</strong> Confirme quem aprova as etapas, quantas revisões estão previstas e o que a equipe receberá no final.</li>
       </ul>
     </section>
