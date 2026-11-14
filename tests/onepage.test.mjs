@@ -6,9 +6,10 @@ const visible=s=>s.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[
 let html;const home=async()=>html??=(await(await request('/')).text());
 test('home presents sites, apps, portfolio and a website estimator',async()=>{
  const h=await home(),v=visible(h);assert.equal((await request('/')).status,200);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
- for(const id of ['inicio','servicos','clientes','simular-site','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
+ for(const id of ['inicio','servicos','simular-site','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
  for(const text of ['Criação de sites','Criação de aplicativos','Simulador de sites','Qual é a estrutura do seu site?','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
  assert.doesNotMatch(v,/projeto-antonia-moreira|francisca-antonia-neuro|\/projects\/antonia-moreira/);
+ assert.doesNotMatch(h,/id="clientes"|Quem já trabalhou|depoimentos|\/testimonials\//i);
  assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis|Google Meu Negócio|data-plan-click|href="\/#planos"/);
  assert.match(h,/<title>Criação de Sites e Aplicativos \| Ravyt Digital<\/title>/);
 });
@@ -27,14 +28,17 @@ test('domain upgrades preserve campaigns and HTML remains revalidated',async()=>
  assert.equal((await request('/')).headers.get('cache-control'),'no-cache, max-age=0, must-revalidate');
 });
 
-test('commercial links lead to the quote form and preselect the service where relevant',async()=>{
+test('quote buttons lead to the home estimator, which links to the app form',async()=>{
  const h=visible(await home());
  assert.doesNotMatch(h,/href="https:\/\/wa\.me\//);
- for(const [,href] of h.matchAll(/href="([^"]+)" data-quote-cta/g)) assert.ok(['/proposta','/proposta?projeto=aplicativo'].includes(href));
- assert.match(h,/data-quote-cta/);
- for(const [path,type] of [['/site-profissional','site'],['/aplicativos','aplicativo']]){
-  const service=visible(await(await request(path)).text());
-  assert.ok(service.includes('href="/proposta?projeto='+type+'"'));
+ assert.match(h,/href="\/proposta\?projeto=aplicativo">Descreva seu projeto/);
+ for(const path of ['/','/site-profissional','/aplicativos','/blog','/quanto-custa-criar-um-site','/sites-para-escritorios-de-arquitetura','/sites-para-empresas-de-engenharia']){
+  const page=visible(await(await request(path)).text());
+  const links=[...page.matchAll(/href="([^"]+)" data-quote-cta/g)];
+  assert.ok(links.length>0,path);
+  for(const [,href] of links) assert.equal(href,'/#simular-site',path);
+ }
+ for(const type of ['site','aplicativo']){
   const form=visible(await(await request('/proposta?projeto='+type)).text());
   assert.ok(form.includes('value="'+type+'" selected'));
   assert.match(form,/Enviar pedido de orçamento/);

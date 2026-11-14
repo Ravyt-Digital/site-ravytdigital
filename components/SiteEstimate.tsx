@@ -1,7 +1,7 @@
 "use client";
 
 import {useRef, useState} from 'react';
-import {quoteHref} from '@/lib/services';
+import {estimateId, quoteHref} from '@/lib/services';
 import {
   calculateEstimate, commercialPages, contactOptions, contentPageLimit, estimateWhatsApp, initialEstimate,
   fixedNotice, legalItems, materialOptions, money, pageOptions, pagesLabel, partialNotice, pendingNotice,
@@ -58,7 +58,7 @@ export default function SiteEstimate() {
   }
 
   const change = (value: string) => { if (step) select(step.key, value); };
-  return <section id="simular-site" className="rd-estimate" aria-labelledby="site-estimate-heading">
+  return <section id={estimateId} className="rd-estimate" aria-labelledby="site-estimate-heading" tabIndex={-1}>
     <div className="rd-estimate-top">
       <div>
         <p className="rd-estimate-name">Simulador de sites</p>
@@ -143,6 +143,7 @@ export default function SiteEstimate() {
         {index === steps.length-1 ? 'Ver orçamento' : 'Continuar'} <span className="rd-arrow rd-arrow-up" aria-hidden="true" />
       </button>
     </div>}
-    <noscript><p className="rd-estimate-note">Você também pode <a href={quoteHref('site')}>solicitar orçamento pelo formulário</a>.</p></noscript>
+    {step?.key === 'structure' && <p className="rd-estimate-note">Quer criar um aplicativo? <a href={quoteHref('aplicativo')}>Descreva seu projeto</a>.</p>}
+    <noscript><p className="rd-estimate-note">Para sites, <a href={quoteHref('site')}>descreva seu projeto pelo formulário</a>.</p></noscript>
   </section>;
 }

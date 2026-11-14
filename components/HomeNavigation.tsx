@@ -24,7 +24,7 @@ export default function HomeNavigation() {
       </button>
       <nav id="home-menu" className={open ? 'is-open' : ''} aria-label="Menu principal">
         {links.map(([text, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{text}</a>)}
-        <QuoteLink navigation />
+        <QuoteLink className="rv-nav-cta" onClick={() => setOpen(false)} />
       </nav>
     </div>
   </header>;

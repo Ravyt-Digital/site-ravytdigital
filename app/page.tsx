@@ -1,13 +1,12 @@
 import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
-import Testimonials from '@/components/Testimonials';
 import PortfolioGallery from '@/components/PortfolioGallery';
 import SiteEstimate from '@/components/SiteEstimate';
 import StructuredData from '@/components/StructuredData';
 import QuoteLink from '@/components/QuoteLink';
 import ArticleCard from '@/components/ArticleCard';
 import {webpage} from '@/lib/seo';
-import {agencyTitle, agencyDescription, appPath, websitePath, quoteHref} from '@/lib/services';
+import {agencyTitle, agencyDescription, appPath, websitePath} from '@/lib/services';
 import {articles, blogPath} from '@/lib/site-articles';
 import {SITE_URL} from '@/lib/site';
 
@@ -33,9 +32,7 @@ export default function Home() {
           <div className="rv-hero-copy">
             <h1 id="hero-title">Criamos sites <em>e aplicativos.</em></h1>
             <p className="rv-hero-description">Sites para apresentar seu negócio e facilitar o contato. Aplicativos web e para celular para simplificar a rotina de clientes e equipes. Atendemos empresas em todo o Brasil.</p>
-            <div className="rv-actions"><a className="rv-text-link" href={quoteHref('aplicativo')} data-quote-cta>
-              Solicitar orçamento de aplicativo <span className="rd-arrow rd-arrow-up" aria-hidden="true" />
-            </a></div>
+            <div className="rv-actions"><QuoteLink className="rv-text-link" /></div>
           </div>
           <SiteEstimate />
         </div>
@@ -64,11 +61,6 @@ export default function Home() {
         </ol>
       </section>
 
-      <section className="rv-section rv-client-section" id="clientes" aria-labelledby="reviews-title">
-        <div className="shell rv-section-heading"><h2 id="reviews-title">Quem já trabalhou <em>com a Ytala</em></h2><p>Relatos sobre o atendimento e a experiência de trabalho.</p></div>
-        <Testimonials />
-      </section>
-
       <section className="rv-section shell rv-seo-section" id="guias" aria-labelledby="home-blog-title">
         <div className="rv-section-heading"><div><h2 id="home-blog-title">Blog da Ravyt</h2><p>Guias para planejar, publicar e manter um projeto digital.</p></div><a className="rv-text-link" href={blogPath}>Ver todos os artigos <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a></div>
         <div className="rv-seo-grid">{articles.slice(0, 3).map(article => <ArticleCard key={article.path} article={article} />)}</div>
@@ -83,7 +75,7 @@ export default function Home() {
 
       <section className="rv-final shell" id="contato">
         <h2>O que seu projeto <em>precisa resolver?</em></h2>
-        <p>Conte qual é a ideia e quem vai usar. A Ravyt avalia o pedido e retorna pelo contato informado.</p>
+        <p>Monte o orçamento do seu site ou descreva o aplicativo que precisa desenvolver.</p>
         <div className="rd-actions"><QuoteLink /></div>
       </section>
     </main>

@@ -30,7 +30,7 @@ export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
               <h1 id="segment-title">{segment.name}{' '}<em>{segment.emphasis}</em></h1>
               <p className="rv-hero-description">{segment.intro}</p>
               <div className="rv-actions">
-                <QuoteLink type="site" segment={id} />
+                <QuoteLink />
               </div>
             </div>
             <figure className="rd-segment-preview">
@@ -89,7 +89,7 @@ export default function SiteSegmentPage({id}: {id: SiteSegmentId}) {
         <h2>Vamos definir o que seu site <em>precisa mostrar?</em></h2>
         <p>{segment.briefing}</p>
         <div className="rd-actions">
-          <QuoteLink type="site" segment={id} />
+          <QuoteLink />
         </div>
       </section>
     </main>

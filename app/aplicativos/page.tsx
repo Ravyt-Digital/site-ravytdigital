@@ -21,7 +21,7 @@ export default function ApplicationsPage() {
       <section className="rv-section shell rd-split rd-service-hero">
         <div><h1>Criação de aplicativos <em>sob medida</em></h1>
           <p>Seus clientes ou sua equipe precisam agendar, enviar informações ou acompanhar uma solicitação? Criamos aplicativos web, acessados pelo navegador, e aplicativos para celular. O formato depende de onde e como as pessoas vão usar.</p>
-          <div className="rv-actions"><QuoteLink type="aplicativo" /></div>
+          <div className="rv-actions"><QuoteLink /></div>
         </div>
         <aside className="rd-service-panel" aria-labelledby="app-briefing">
           <h2 id="app-briefing">O que ajuda a orçar seu aplicativo</h2>
@@ -55,7 +55,7 @@ export default function ApplicationsPage() {
       </section>
       <section className="rv-final shell"><h2>Que tarefa o aplicativo <em>precisa facilitar?</em></h2>
         <p>Conte como ela funciona hoje. Esse exemplo ajuda a definir as primeiras funcionalidades.</p>
-        <div className="rd-actions"><QuoteLink type="aplicativo" /></div>
+        <div className="rd-actions"><QuoteLink /></div>
       </section>
     </main>
     <SiteFooter />

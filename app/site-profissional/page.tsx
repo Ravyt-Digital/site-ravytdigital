@@ -22,7 +22,7 @@ export default function ProfessionalPage() {
       <section className="rv-section shell rd-split rd-service-hero">
         <div><h1>Criação de sites <em>profissionais</em></h1>
           <p>Seu cliente precisa entender o que você faz, ver exemplos do seu trabalho e encontrar o caminho para falar com você. Criamos ou reformulamos o site a partir dessas tarefas.</p>
-          <div className="rv-actions"><QuoteLink type="site" /></div>
+          <div className="rv-actions"><QuoteLink /></div>
         </div>
         <aside className="rd-service-panel" aria-labelledby="site-examples">
           <h2 id="site-examples">Que tipo de site você precisa?</h2>
@@ -51,7 +51,7 @@ export default function ProfessionalPage() {
       </section>
       <section className="rv-final shell"><h2>Vamos definir <em>o seu site?</em></h2>
         <p>Conte o que sua empresa oferece, o que o visitante precisa fazer e se você já tem um site.</p>
-        <div className="rd-actions"><QuoteLink type="site" /></div>
+        <div className="rd-actions"><QuoteLink /></div>
       </section>
     </main>
     <SiteFooter />

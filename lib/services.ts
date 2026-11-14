@@ -1,6 +1,8 @@
 export const websitePath = '/site-profissional';
 export const appPath = '/aplicativos';
 export const quotePath = '/proposta';
+export const estimateId = 'simular-site';
+export const estimateHref = '/#' + estimateId;
 
 export const agencyTitle = 'Criação de Sites e Aplicativos | Ravyt Digital';
 export const agencyDescription = 'A Ravyt Digital desenvolve sites e aplicativos sob medida para empresas em todo o Brasil. Conte sobre seu projeto e solicite um orçamento.';

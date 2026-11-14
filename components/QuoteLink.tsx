@@ -1,13 +1,10 @@
-import {quoteHref, type ProjectType} from '@/lib/services';
-import type {SiteSegmentId} from '@/lib/site-segments';
+import {estimateHref} from '@/lib/services';
 
-export default function QuoteLink({type, segment, navigation = false}: {
-  type?: ProjectType;
-  segment?: SiteSegmentId;
-  navigation?: boolean;
+export default function QuoteLink({className = 'rv-button', onClick}: {
+  className?: string;
+  onClick?: () => void;
 }) {
-  const href = quoteHref(type ?? (segment ? 'site' : undefined)) + (segment ? '&segmento=' + segment : '');
-  return <a className={navigation ? 'rv-nav-cta' : 'rv-button'} href={href} data-quote-cta>
-    Solicitar orçamento <span className="rd-arrow rd-arrow-up" aria-hidden="true" />
+  return <a className={className} href={estimateHref} onClick={onClick} data-quote-cta>
+    Solicitar orçamento <span className="rd-arrow rd-arrow-down" aria-hidden="true" />
   </a>;
 }

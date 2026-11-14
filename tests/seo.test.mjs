@@ -47,12 +47,12 @@ test('analytics accepts only documented events and never stores injected fields 
  assert.equal((await request('/api/analytics',{method:'POST',headers:{origin:'https://foreign.example'},body:'{}'})).status,403);
 });
 
-test('vertical pages link to segment-specific proposals and a shared portfolio guide',async()=>{
+test('vertical pages link to the estimator and a shared portfolio guide',async()=>{
  const guide=routes.at(-1);
  for(const [index,id] of ['arquitetura','engenharia'].entries()){
   const path=verticals[index], proposal='/proposta?projeto=site&segmento='+id;
   const landing=visible(await html(path));
-  assert.ok(landing.includes('href="'+proposal.replace('&','&amp;')+'"'));
+  assert.ok(landing.includes('href="/#simular-site" data-quote-cta'));
   assert.ok(landing.includes('href="'+guide+'"'));
   assert.match(landing,/Projeto conceitual/);
   assert.ok((await html(guide)).includes('href="'+path+'"'));

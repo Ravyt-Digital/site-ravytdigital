@@ -5,4 +5,4 @@
 - [Criação de aplicativos](https://ravytdigital.com/aplicativos): desenvolvimento sob medida a partir das tarefas de clientes ou equipes.
 - [Projetos](https://ravytdigital.com/#projetos): trabalhos publicados e demonstrações conceituais identificadas.
 - [Blog](https://ravytdigital.com/blog): guias sobre sites, aplicativos, hospedagem, domínios e tecnologia.
-- [Solicitar orçamento](https://ravytdigital.com/proposta): formulário para apresentar a necessidade do projeto.
+- [Solicitar orçamento](https://ravytdigital.com/#simular-site): simulador de sites e entrada para pedidos de aplicativos.
