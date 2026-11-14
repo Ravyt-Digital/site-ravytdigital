@@ -7,7 +7,7 @@ import {breadcrumb, pageMetadata, webpage} from '@/lib/seo';
 import {SITE_URL} from '@/lib/site';
 
 const title = 'Sites e Tecnologia para Arquitetura e Engenharia | Blog Ravyt';
-const description = 'Guias para arquitetos e engenheiros sobre portfólios, sites institucionais, aplicativos, domínios e hospedagem.';
+const description = 'Guias para arquitetos e engenheiros sobre portfólios online, sites institucionais, domínios e hospedagem.';
 export const metadata = pageMetadata(blogPath, title, description);
 
 export default function Blog() {
@@ -19,7 +19,7 @@ export default function Blog() {
       </ol></nav></div>
       <header className="rv-section shell rd-blog-header">
         <h1>Guias para <em>arquitetura e engenharia</em></h1>
-        <p>Planeje seu portfólio, organize os serviços do escritório e avalie quando um aplicativo faz sentido para a rotina de projeto ou obra.</p>
+        <p>Planeje o site do seu escritório, organize o portfólio e entenda o que você precisa para publicar.</p>
         <nav className="rd-blog-topics" aria-label="Assuntos do blog">
           {topics.map((topic, index) => <a key={topic} href={'#' + topicId(index)}>{topic}</a>)}
         </nav>

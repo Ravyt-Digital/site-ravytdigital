@@ -2,12 +2,11 @@
 
 import {useState} from 'react';
 import QuoteLink from './QuoteLink';
-import {appPath, websitePath} from '@/lib/services';
+import {websitePath} from '@/lib/services';
 import {blogPath} from '@/lib/site-articles';
 
 const links = [
   ['Sites', websitePath],
-  ['Aplicativos', appPath],
   ['Projetos', '/#projetos'],
   ['Blog', blogPath],
 ];

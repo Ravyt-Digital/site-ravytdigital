@@ -2,8 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';import {exi
 const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=>new Response('',{status:404})}};
 const origin='https://ravytdigital.com';const request=(path,options)=>worker.fetch(new Request(origin+path,options),env,ctx);
 const verticals=['/sites-para-escritorios-de-arquitetura','/sites-para-empresas-de-engenharia'];
-const articleRoutes=['/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta','/blog/site-ou-aplicativo','/blog/dominio-e-hospedagem','/blog/como-escolher-tecnologia-site-ou-app','/blog/como-montar-portfolio-de-arquitetura-e-engenharia'];
-const serviceRoutes=['/site-profissional','/aplicativos'];
+const articleRoutes=['/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta','/blog/dominio-e-hospedagem','/blog/como-escolher-tecnologia-do-site','/blog/como-montar-portfolio-de-arquitetura-e-engenharia'];
+const serviceRoutes=['/site-profissional'];
 const routes=['/','/blog','/indique',...serviceRoutes,...articleRoutes];
 const rendered=new Map();const html=async path=>{if(!rendered.has(path))rendered.set(path,await(await request(path)).text());return rendered.get(path)};
 const visible=h=>h.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
@@ -13,13 +13,14 @@ test('every indexable page has unique server-rendered metadata and a self canoni
 });
 test('sitemap, robots, structured data and meaningful legacy redirects agree with current routes',async()=>{
  const sitemap=await(await request('/sitemap.xml')).text(),robots=await(await request('/robots.txt')).text();assert.equal((sitemap.match(/<loc>/g)||[]).length,routes.length);for(const p of routes)assert.ok(sitemap.includes('<loc>'+origin+p+'</loc>'));assert.match(robots,/Disallow: \/api\//);assert.match(robots,/Allow: \//);assert.match(robots,/Sitemap: https:\/\/ravytdigital.com\/sitemap.xml/);
- for(const p of routes){const h=await html(p);const data=[...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1]));const nodes=data.flatMap(d=>d['@graph']||[d]);assert.ok(nodes.some(n=>n['@type']==='Organization'));assert.ok(nodes.some(n=>n['@type']==='WebSite'));assert.ok(!nodes.some(n=>n['@type']==='LocalBusiness'||n.aggregateRating));assert.ok(!nodes.some(n=>n.offers||n.price));if(p==='/'){assert.equal(nodes.filter(n=>n['@type']==='Service').length,2);}else if(serviceRoutes.includes(p)){const service=nodes.find(n=>n['@type']==='Service');assert.equal(service.url,origin+p);}else if(articleRoutes.includes(p)){assert.ok(nodes.some(n=>n['@type']==='Article'));const b=nodes.find(n=>n['@type']==='BreadcrumbList');assert.equal(b.itemListElement[1].item,origin+'/blog');assert.equal(b.itemListElement.at(-1).item,origin+p);}else if(p==='/blog'){assert.ok(nodes.some(n=>n['@type']==='CollectionPage'));}}
+ for(const p of routes){const h=await html(p);const data=[...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1]));const nodes=data.flatMap(d=>d['@graph']||[d]);assert.ok(nodes.some(n=>n['@type']==='Organization'));assert.ok(nodes.some(n=>n['@type']==='WebSite'));assert.ok(!nodes.some(n=>n['@type']==='LocalBusiness'||n.aggregateRating));assert.ok(!nodes.some(n=>n.offers||n.price));if(p==='/'){assert.equal(nodes.filter(n=>n['@type']==='Service').length,1);}else if(serviceRoutes.includes(p)){const service=nodes.find(n=>n['@type']==='Service');assert.equal(service.url,origin+p);}else if(articleRoutes.includes(p)){assert.ok(nodes.some(n=>n['@type']==='Article'));const b=nodes.find(n=>n['@type']==='BreadcrumbList');assert.equal(b.itemListElement[1].item,origin+'/blog');assert.equal(b.itemListElement.at(-1).item,origin+p);}else if(p==='/blog'){assert.ok(nodes.some(n=>n['@type']==='CollectionPage'));}}
 
  for(const [oldPath,target] of [
   ['/sites','/site-profissional'],
   ['/blog/criacao-de-site-profissional-para-empresas','/quanto-custa-criar-um-site'],
   ['/blog/site-institucional-paginas-essenciais','/site-institucional-paginas-essenciais'],
   ['/en/blog','/blog'],
+  ['/blog/como-escolher-tecnologia-site-ou-app','/blog/como-escolher-tecnologia-do-site'],
   ['/orcamento','/proposta'],
   ['/planos','/proposta'],
  ]) {
@@ -28,7 +29,7 @@ test('sitemap, robots, structured data and meaningful legacy redirects agree wit
  }
  const trailing=await request(routes[2]+'/');assert.equal(trailing.status,308);
  assert.equal(trailing.headers.get('location'),origin+routes[2]);
- assert.equal((await request('/proposta?projeto=aplicativo')).headers.get('x-robots-tag'),'noindex, follow');
+ assert.equal((await request('/proposta?projeto=site')).headers.get('x-robots-tag'),'noindex, follow');
  for(const path of ['/google-meu-negocio','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio']){
   const retired=await request(path);assert.equal(retired.status,410);assert.equal(retired.headers.get('x-robots-tag'),'noindex');
  }

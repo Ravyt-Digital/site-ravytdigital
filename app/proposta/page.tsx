@@ -6,7 +6,7 @@ import {isProjectType, quotePath} from '@/lib/services';
 import {pageMetadata} from '@/lib/seo';
 
 export const metadata = {
-  ...pageMetadata(quotePath, 'Solicitar Orçamento | Ravyt Digital', 'Solicite orçamento para o site, portfólio ou aplicativo do seu escritório de arquitetura ou empresa de engenharia.'),
+  ...pageMetadata(quotePath, 'Solicitar Orçamento | Ravyt Digital', 'Solicite orçamento para o site ou portfólio online do seu escritório de arquitetura ou empresa de engenharia.'),
   robots: {index: false, follow: true},
 };
 
@@ -18,7 +18,7 @@ export default async function ProposalPage({searchParams}: {searchParams: Promis
     <section className="rv-section shell rd-split rd-form-page">
       <div>
         <h1>Solicite um <em>orçamento</em></h1>
-        <p>Conte o que seu escritório ou equipe de engenharia precisa mostrar ou organizar. A Ravyt avalia o escopo e responde pelo contato informado.</p>
+        <p>Conte quais serviços, projetos ou obras você precisa apresentar no site. A Ravyt avalia o escopo e responde pelo contato informado.</p>
         {segment && <p>{segment.briefing}</p>}
       </div>
       <ProposalForm initialType={type} segment={segment ? segmento : undefined} />

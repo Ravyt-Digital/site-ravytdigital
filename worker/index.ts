@@ -1,7 +1,7 @@
 import {handleImageOptimization,DEFAULT_DEVICE_SIZES,DEFAULT_IMAGE_SIZES} from 'vinext/server/image-optimization';
 import handler from 'vinext/server/app-router-entry';
-import {articlePaths, blogPath} from '@/lib/site-articles';
-import {appPath, quotePath, websitePath} from '@/lib/services';
+import {articlePaths, blogPath, technologyArticle} from '@/lib/site-articles';
+import {quotePath, websitePath} from '@/lib/services';
 import {siteSegments} from '@/lib/site-segments';
 import {submitProposal, type ProposalDatabase} from './proposals';
 interface Env{DB?:ProposalDatabase;ASSETS:Fetcher;IMAGES:{input(stream:ReadableStream):{transform(options:Record<string,unknown>):{output(options:{format:string;quality:number}):Promise<{response():Response}>}}};}
@@ -10,10 +10,10 @@ const sectionRedirects:Record<string,string>={'/politica-de-privacidade':'privac
  [siteSegments.arquitetura.path]:siteSegments.arquitetura.sectionId,
  [siteSegments.engenharia.path]:siteSegments.engenharia.sectionId,
 };
-const retired=['/seo','/google-meu-negocio','/quanto-custa-google-meu-negocio','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/sites-para-moveis-planejados','/cases','/sobre','/autores/ytala-cabral','/servicos'];
+const retired=['/seo','/google-meu-negocio','/quanto-custa-google-meu-negocio','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/sites-para-moveis-planejados','/cases','/sobre','/autores/ytala-cabral','/servicos','/aplicativos','/criacao-de-aplicativos'];
 const contentRedirects: Record<string,string> = {
  '/sites':websitePath,
- '/criacao-de-aplicativos':appPath,
+ '/blog/como-escolher-tecnologia-site-ou-app':technologyArticle,
  '/orcamento':quotePath,
  '/planos':quotePath,
  '/criacao-de-sites-online':'/site-profissional',
@@ -21,7 +21,7 @@ const contentRedirects: Record<string,string> = {
  '/blog/criacao-de-site-profissional-para-empresas':'/quanto-custa-criar-um-site',
  '/blog/site-institucional-paginas-essenciais':'/site-institucional-paginas-essenciais',
 };
-const translatedRoutes = new Set([websitePath, appPath, blogPath, quotePath, ...articlePaths]);
+const translatedRoutes = new Set([websitePath, blogPath, quotePath, ...articlePaths]);
 export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promise<Response>{
  const url=new URL(request.url),path=url.pathname.replace(/\/$/,'')||'/',raw=path.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';
  if(url.hostname==='www.ravytdigital.com'||(url.hostname==='ravytdigital.com'&&url.protocol==='http:')){url.hostname='ravytdigital.com';url.protocol='https:';return Response.redirect(url.href,308);}
@@ -30,6 +30,10 @@ export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promis
  if(raw!=='/'&&Object.hasOwn(sectionRedirects,raw)){url.pathname='/';url.hash=sectionRedirects[raw];url.searchParams.delete('lang');return Response.redirect(url.href,301);}
  if(path!=='/'&&url.pathname.endsWith('/')){url.pathname=path;return Response.redirect(url.href,308);}
  if(['/diagnostico','/diagnosticos','/contato'].includes(raw)){url.pathname=quotePath;url.searchParams.delete('lang');return Response.redirect(url.href,301);}
+ if((path==='/'||path===quotePath)&&['aplicativo','site-e-aplicativo'].includes(url.searchParams.get('projeto')??'')){
+  url.searchParams.delete('projeto');
+  return Response.redirect(url.href,301);
+ }
  if(path===quotePath&&url.searchParams.has('plano')){
   const plan=url.searchParams.get('plano');
   url.searchParams.delete('plano');

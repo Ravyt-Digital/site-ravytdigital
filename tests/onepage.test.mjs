@@ -7,21 +7,21 @@ let html;const home=async()=>html??=(await(await request('/')).text());
 test('home positions the agency for architecture and engineering and presents the estimator',async()=>{
  const h=await home(),v=visible(h);assert.equal((await request('/')).status,200);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
  for(const id of ['inicio','servicos','arquitetura','engenharia','simular-site','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
- for(const text of ['Criação de sites','Criação de aplicativos','Simulador de orçamento','Qual é a estrutura do seu site?','todo o Brasil','Nina Valença Arquitetura','Vértice Norte Engenharia','Projeto conceitual','Blog ou portal'])assert.ok(v.includes(text),text);
- assert.doesNotMatch(v,/R\$\s*0,00|Ananda Oliveira|Capoeira Haute-Savoie|CEREST|lojas? virtu(?:al|ais)/i);
+ for(const text of ['Criação de sites','Blogs e portais em WordPress','Simulador de orçamento','Qual é a estrutura do seu site?','todo o Brasil','Nina Valença Arquitetura','Vértice Norte Engenharia','Projeto conceitual','Blog ou portal'])assert.ok(v.includes(text),text);
+ assert.doesNotMatch(v,/R\$\s*0,00|Ananda Oliveira|Capoeira Haute-Savoie|CEREST|aplicativos?|lojas? virtu(?:al|ais)/i);
  assert.doesNotMatch(v,/projeto-antonia-moreira|francisca-antonia-neuro|\/projects\/antonia-moreira/);
  assert.doesNotMatch(h,/id="clientes"|Quem já trabalhou|depoimentos|\/testimonials\//i);
  assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis|Google Meu Negócio|data-plan-click|href="\/#planos"/);
- assert.match(h,/<title>Sites e Aplicativos para Arquitetos e Engenheiros \| Ravyt Digital<\/title>/);
+ assert.match(h,/<title>Sites para Arquitetos e Engenheiros \| Ravyt Digital<\/title>/);
 });
 test('old diagnostic and contact URLs lead to the quote form; retired content keeps Gone semantics',async()=>{
  for(const path of ['/contato','/diagnostico','/diagnosticos','/en/diagnostico','/fr/diagnostico']){const r=await request(path);assert.equal(r.status,301);assert.equal(r.headers.get('location'),'https://ravytdigital.com/proposta');}
  for(const [path,id]of [['/politica-de-privacidade','privacidade'],['/politica-de-cookies','cookies'],['/termos','termos']]){const r=await request(path);assert.equal(r.status,301);assert.equal(new URL(r.headers.get('location')).hash,'#'+id);}
- for(const path of ['/seo','/cases','/sobre','/fr/seo','/google-meu-negocio','/blog/antigo','/recursos/checklist-presenca-google']){const r=await request(path);assert.equal(r.status,410,path);assert.equal(r.headers.get('x-robots-tag'),'noindex');}
+ for(const path of ['/seo','/cases','/sobre','/fr/seo','/google-meu-negocio','/blog/antigo','/aplicativos','/criacao-de-aplicativos','/blog/site-ou-aplicativo','/recursos/checklist-presenca-google']){const r=await request(path);assert.equal(r.status,410,path);assert.equal(r.headers.get('x-robots-tag'),'noindex');}
  assert.equal((await request('/inexistente')).status,404);
 });
 test('local brand assets, legal dialogs and responsive safeguards remain available on both pages',async()=>{
- for(const path of ['/','/blog','/aplicativos']){const h=visible(await(await request(path)).text());for(const [tag]of h.matchAll(/<img\b[^>]*>/g)){assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);const src=tag.match(/src="([^"]+)"/)[1];assert.ok(existsSync('public'+src));}for(const id of ['privacidade','termos'])assert.ok(h.includes('id="'+id+'"'));}
+ for(const path of ['/','/blog','/site-profissional']){const h=visible(await(await request(path)).text());for(const [tag]of h.matchAll(/<img\b[^>]*>/g)){assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);const src=tag.match(/src="([^"]+)"/)[1];assert.ok(existsSync('public'+src));}for(const id of ['privacidade','termos'])assert.ok(h.includes('id="'+id+'"'));}
  const css=readFileSync('app/globals.css','utf8');assert.match(css,/prefers-reduced-motion/);assert.match(css,/max-width:600px/);assert.match(css,/--paper:#050C13/);assert.match(css,/--copper:#EF5309/);const analytics=readFileSync('components/Analytics.tsx','utf8');assert.doesNotMatch(analytics,/leadFields|\.answers|\.phone|\.name|profile:/);
 });
 test('domain upgrades preserve campaigns and HTML remains revalidated',async()=>{
@@ -29,14 +29,17 @@ test('domain upgrades preserve campaigns and HTML remains revalidated',async()=>
  assert.equal((await request('/')).headers.get('cache-control'),'no-cache, max-age=0, must-revalidate');
 });
 
-test('quote buttons lead to the home estimator, which links to the app form',async()=>{
+test('quote buttons lead to the home estimator for websites only',async()=>{
  const h=visible(await home());
  assert.doesNotMatch(h,/href="https:\/\/wa\.me\//);
- assert.match(h,/input[^>]+name="site-estimate-category"[^>]+value="app"/);
- const appHome=visible(await(await request('/?projeto=aplicativo')).text());
- assert.match(appHome,/O que o aplicativo precisa fazer\?/);
- assert.match(appHome,/input[^>]+name="projectType"[^>]+value="aplicativo"/);
- for(const path of ['/','/site-profissional','/aplicativos','/blog','/quanto-custa-criar-um-site']){
+ const categories=[...h.matchAll(/name="site-estimate-category"[^>]* value="([^"]+)"/g)].map(([,value])=>value);
+ assert.deepEqual(categories,['site','special']);
+ for(const [legacyPath,destination] of [['/?projeto=aplicativo&utm_source=old','/?utm_source=old'],['/proposta?projeto=site-e-aplicativo','/proposta']]){
+  const response=await request(legacyPath);
+  assert.equal(response.status,301);
+  assert.equal(response.headers.get('location'),'https://ravytdigital.com'+destination);
+ }
+ for(const path of ['/','/site-profissional','/blog','/quanto-custa-criar-um-site']){
   const page=visible(await(await request(path)).text());
   const links=[...page.matchAll(/href="([^"]+)" data-quote-cta/g)];
   assert.ok(links.length>0,path);
@@ -44,16 +47,13 @@ test('quote buttons lead to the home estimator, which links to the app form',asy
     const target=new URL(href,'https://ravytdigital.com');
     assert.equal(target.pathname,'/',path);
     assert.equal(target.hash,'#simular-site',path);
-    if(target.search) assert.equal(target.searchParams.get('projeto'),'aplicativo',path);
+    assert.equal(target.search,'',path);
   }
-  if(path==='/aplicativos') assert.ok(links.some(([,href])=>href==='/?projeto=aplicativo#simular-site'));
  }
- for(const type of ['site','aplicativo']){
-  const form=visible(await(await request('/proposta?projeto='+type)).text());
-  assert.ok(form.includes('value="'+type+'" selected'));
-  assert.match(form,/Enviar pedido de orçamento/);
-  assert.doesNotMatch(form,/R\$|name="plan"|Site Essencial|Google Meu Negócio/);
- }
+ const form=visible(await(await request('/proposta?projeto=site')).text());
+ assert.ok(form.includes('value="site" selected'));
+ assert.match(form,/Enviar pedido de orçamento/);
+ assert.doesNotMatch(form,/R\$|name="plan"|Site Essencial|Google Meu Negócio|aplicativo/i);
  const legacy=await request('/proposta?plano=profissional&segmento=arquitetura&utm_source=old');
  assert.equal(legacy.status,301);
  const target=new URL(legacy.headers.get('location'));
@@ -65,15 +65,17 @@ test('quote buttons lead to the home estimator, which links to the app form',asy
 test('proposal submissions require same origin and consent, preserve attribution and tolerate retries',async()=>{
  const origin='https://ravytdigital.com',records=new Map();
  const database={prepare:()=>({bind:(...params)=>({run:async()=>{if(!records.has(params[0]))records.set(params[0],params);}})})};
- const fields={requestId:'382317da-11e4-4b00-8f91-13695b3c6c18',kind:'proposta',consent:'sim',name:'Teste',business:'Empresa teste',contact:'teste@example.com',description:'Dados fictícios para teste.',projectType:'aplicativo',referral:'parceiro-1',campaign:{utm_source:'instagram'}};
+ const fields={requestId:'382317da-11e4-4b00-8f91-13695b3c6c18',kind:'proposta',consent:'sim',name:'Teste',business:'Empresa teste',contact:'teste@example.com',description:'Dados fictícios para teste.',projectType:'site',referral:'parceiro-1',campaign:{utm_source:'instagram'}};
  const send=(data,from=origin)=>worker.fetch(new Request(origin+'/api/propostas',{method:'POST',headers:{origin:from,'Content-Type':'application/json'},body:JSON.stringify(data)}),{...env,DB:database},ctx);
  assert.equal((await send(fields,'https://example.com')).status,403);
  assert.equal((await send({...fields,consent:''})).status,400);
  assert.equal((await send({...fields,contact:'incompleto'})).status,400);
- assert.equal((await send({...fields,projectType:'invalido',plan:'profissional'})).status,400);
+ for(const projectType of ['invalido','aplicativo','site-e-aplicativo']){
+  assert.equal((await send({...fields,projectType,plan:'profissional'})).status,400);
+ }
  const first=await send(fields), second=await send(fields);
  assert.equal(first.status,201); assert.deepEqual(await first.json(),await second.json());
- assert.equal(records.size,1); assert.equal([...records.values()][0][7],'aplicativo'); assert.equal([...records.values()][0][8],'parceiro-1'); assert.equal([...records.values()][0][9],'instagram');
+ assert.equal(records.size,1); assert.equal([...records.values()][0][7],'site'); assert.equal([...records.values()][0][8],'parceiro-1'); assert.equal([...records.values()][0][9],'instagram');
  const nicheId='382317da-11e4-4b00-8f91-13695b3c6c19';
  const niche=await send({...fields,requestId:nicheId,projectType:undefined,plan:'profissional',segment:'arquitetura'});
  assert.equal(niche.status,201); assert.equal(records.get(nicheId)[7],'site');

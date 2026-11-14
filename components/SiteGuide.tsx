@@ -24,8 +24,8 @@ export default function SiteGuide({path, title, description, published, revised,
         <header><h1>{title}</h1><p className="rv-guide-lead">{description}</p><p className="rv-guide-byline">Por Ravyt Digital{date && <> · {revised ? 'Revisado em ' : ''}<time dateTime={date}>{dateLabel}</time></>}</p></header>
         {children}
         <section className="rv-guide-cta">
-          <h2>Quer criar o site ou aplicativo do seu escritório?</h2>
-          <p>Simule seu site de arquitetura ou engenharia ou descreva o que sua equipe precisa fazer no aplicativo.</p>
+          <h2>Quer criar o site do seu escritório?</h2>
+          <p>Simule o orçamento do seu site de arquitetura ou engenharia.</p>
           <div className="rd-actions"><QuoteLink /></div>
         </section>
       </article>

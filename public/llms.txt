@@ -1,9 +1,8 @@
 # Ravyt Digital
 
-> Criação de sites, portfólios e aplicativos para arquitetos, engenheiros e suas equipes em todo o Brasil. A Ravyt atende de forma remota e orça cada projeto pelo escopo.
+> Criação de sites para arquitetos, engenheiros e suas equipes em todo o Brasil. A Ravyt atende de forma remota e orça cada projeto pelo escopo.
 
 - [Sites para arquitetura e engenharia](https://ravytdigital.com/site-profissional): sites institucionais, portfólios de projetos e obras e páginas para serviços técnicos.
-- [Aplicativos para arquitetura e engenharia](https://ravytdigital.com/aplicativos): portais de clientes, aprovações, vistorias e acompanhamento de etapas.
 - [Exemplos de sites](https://ravytdigital.com/#projetos): demonstrações conceituais de arquitetura e engenharia identificadas como tal.
-- [Guias](https://ravytdigital.com/blog): portfólio, criação de sites, aplicativos, domínios e hospedagem para o setor.
-- [Solicitar orçamento](https://ravytdigital.com/#simular-site): simule seu site ou descreva seu aplicativo.
+- [Guias](https://ravytdigital.com/blog): portfólio, criação de sites, domínios e hospedagem para o setor.
+- [Solicitar orçamento](https://ravytdigital.com/#simular-site): simule o orçamento do seu site.

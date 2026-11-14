@@ -1,11 +1,10 @@
-import {appEstimateHref, estimateHref} from '@/lib/services';
+import {estimateHref} from '@/lib/services';
 
-export default function QuoteLink({className = 'rv-button', onClick, appProject = false}: {
+export default function QuoteLink({className = 'rv-button', onClick}: {
   className?: string;
   onClick?: () => void;
-  appProject?: boolean;
 }) {
-  return <a className={className} href={appProject ? appEstimateHref : estimateHref} onClick={onClick} data-quote-cta>
+  return <a className={className} href={estimateHref} onClick={onClick} data-quote-cta>
     Solicitar orçamento <span className="rd-arrow rd-arrow-down" aria-hidden="true" />
   </a>;
 }

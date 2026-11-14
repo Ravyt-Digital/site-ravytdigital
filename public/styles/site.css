@@ -583,7 +583,6 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 .rd-estimate-page-guide { margin: -6px 0 8px; }
 .rd-estimate-edits { display: flex; flex-wrap: wrap; gap: 5px; padding: 0; margin: 0 0 10px; list-style: none; }
 .rd-estimate-edits .rd-estimate-back { font-size: .73rem; }
-.rd-estimate .rd-app-brief { margin-top: 12px; }
 .rd-estimate-types + h2 { margin-top: 16px !important; }
 .rd-estimate-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .rd-hero .rd-estimate-controls .rv-button { margin-left:auto; min-height:44px; padding: 10px 13px; box-shadow: none; cursor:pointer; gap: 12px; font-size: .8rem; }
