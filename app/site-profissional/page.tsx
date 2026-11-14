@@ -1,5 +1,6 @@
 import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
+import SiteSegmentLinks from '@/components/SiteSegmentLinks';
 import StructuredData from '@/components/StructuredData';
 import {breadcrumb, pageMetadata, webpage} from '@/lib/seo';
 import {commercialWhatsApp} from '@/lib/home-content';
@@ -44,6 +45,7 @@ export default function ProfessionalPage() {
           <article><h3>Depois da entrega</h3><p>A proposta define os arquivos, acessos e licenças do projeto. Corrigimos defeitos da implementação por 30 dias. A manutenção é opcional.</p></article>
         </div>
       </section>
+      <SiteSegmentLinks />
       <section className="rv-section shell rv-seo-section" aria-labelledby="site-planning">
         <h2 id="site-planning">Planeje seu site antes do orçamento</h2>
         <div className="rv-seo-grid">

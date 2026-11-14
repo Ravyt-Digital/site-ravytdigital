@@ -1,4 +1,5 @@
 import {plans} from '@/lib/plans';
+import {findSiteSegment} from '@/lib/site-segments';
 
 const proposalPlans = new Set<string>([...plans.map(plan => plan.id), 'google', 'nao-sei']);
 const referralPattern = /^[a-zA-Z0-9_-]{3,40}$/;
@@ -47,6 +48,8 @@ export async function submitProposal(request: Request, database?: ProposalDataba
     return json({error: 'Revise os campos e informe um WhatsApp com DDD ou um e-mail válido.'}, 400);
   }
 
+  const segment = kind === 'proposta' ? findSiteSegment(body.segment) : undefined;
+  const attributedDescription = segment ? 'Página de origem: ' + segment.label + '\n\n' + description : description;
   const campaign = body.campaign && typeof body.campaign === 'object' ? body.campaign as Record<string, unknown> : {};
   const campaignValue = (key: string) => typeof campaign[key] === 'string' && campaignPattern.test(campaign[key]) ? campaign[key] : null;
   const reference = 'RVT-' + id.slice(0, 13).replace('-', '').toUpperCase();
@@ -55,7 +58,7 @@ export async function submitProposal(request: Request, database?: ProposalDataba
     await database.prepare(`INSERT INTO ravyt_commercial_requests
       (id, reference, kind, name, business, contact, description, plan, referral, utm_source, utm_medium, utm_campaign, created_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO NOTHING`).bind(
-      id, reference, kind, name, business, contact, description,
+      id, reference, kind, name, business, contact, attributedDescription,
       kind === 'proposta' ? plan : null,
       kind === 'proposta' && referralPattern.test(code) ? code : null,
       campaignValue('utm_source'), campaignValue('utm_medium'), campaignValue('utm_campaign'), new Date().toISOString()

@@ -1,7 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {existsSync} from 'node:fs';import worker from '../dist/server/index.js';
 const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=>new Response('',{status:404})}};
 const origin='https://ravytdigital.com';const request=(path,options)=>worker.fetch(new Request(origin+path,options),env,ctx);
-const routes=['/','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio','/site-profissional','/indique','/google-meu-negocio','/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta'];
+const verticals=['/sites-para-escritorios-de-arquitetura','/sites-para-empresas-de-engenharia'];
+const routes=['/','/minha-empresa-nao-aparece-no-google','/como-colocar-empresa-no-google-maps','/quanto-custa-google-meu-negocio','/site-profissional','/indique','/google-meu-negocio','/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta',...verticals,'/blog/como-montar-portfolio-de-arquitetura-e-engenharia'];
 const rendered=new Map();const html=async path=>{if(!rendered.has(path))rendered.set(path,await(await request(path)).text());return rendered.get(path)};
 const visible=h=>h.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 test('every indexable page has unique server-rendered metadata and a self canonical',async()=>{
@@ -10,12 +11,14 @@ test('every indexable page has unique server-rendered metadata and a self canoni
 });
 test('sitemap, robots, structured data and meaningful legacy redirects agree with current routes',async()=>{
  const sitemap=await(await request('/sitemap.xml')).text(),robots=await(await request('/robots.txt')).text();assert.equal((sitemap.match(/<loc>/g)||[]).length,routes.length);for(const p of routes)assert.ok(sitemap.includes('<loc>'+origin+p+'</loc>'));assert.match(robots,/Disallow: \/api\//);assert.match(robots,/Allow: \//);assert.match(robots,/Sitemap: https:\/\/ravytdigital.com\/sitemap.xml/);
- for(const p of routes){const h=await html(p);const data=[...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1]));const nodes=data.flatMap(d=>d['@graph']||[d]);assert.ok(nodes.some(n=>n['@type']==='Organization'));assert.ok(nodes.some(n=>n['@type']==='WebSite'));assert.ok(!nodes.some(n=>n['@type']==='LocalBusiness'||n.aggregateRating));if(p==='/'){const service=nodes.find(n=>n['@type']==='Service');assert.equal(service.offers.price,2900);assert.equal(service.offers.priceCurrency,'BRL');assert.equal(service.offers.url,origin+'/site-profissional');}else if(!['/site-profissional','/indique','/google-meu-negocio'].includes(p)){assert.ok(nodes.some(n=>n['@type']==='Article'));const b=nodes.find(n=>n['@type']==='BreadcrumbList');assert.equal(b.itemListElement.at(-1).item,origin+p);}}
+ for(const p of routes){const h=await html(p);const data=[...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1]));const nodes=data.flatMap(d=>d['@graph']||[d]);assert.ok(nodes.some(n=>n['@type']==='Organization'));assert.ok(nodes.some(n=>n['@type']==='WebSite'));assert.ok(!nodes.some(n=>n['@type']==='LocalBusiness'||n.aggregateRating));if(p==='/'){const service=nodes.find(n=>n['@type']==='Service');assert.equal(service.offers.price,2900);assert.equal(service.offers.priceCurrency,'BRL');assert.equal(service.offers.url,origin+'/site-profissional');}else if(verticals.includes(p)){const service=nodes.find(n=>n['@type']==='Service');assert.equal(service.offers.price,2900);assert.equal(service.url,origin+p);}else if(!['/site-profissional','/indique','/google-meu-negocio'].includes(p)){assert.ok(nodes.some(n=>n['@type']==='Article'));const b=nodes.find(n=>n['@type']==='BreadcrumbList');assert.equal(b.itemListElement.at(-1).item,origin+p);}}
  for(const [oldPath,target] of [
   ['/sites','/site-profissional'],
   ['/blog/criacao-de-site-profissional-para-empresas','/quanto-custa-criar-um-site'],
   ['/blog/site-institucional-paginas-essenciais','/site-institucional-paginas-essenciais'],
   ['/fr/google-meu-negocio','/google-meu-negocio'],
+  ['/fr'+verticals[0],verticals[0]],
+  ['/en'+verticals[1],verticals[1]],
  ]) {
   const legacy=await request(oldPath+'?utm_source=old');assert.equal(legacy.status,301);
   assert.equal(legacy.headers.get('location'),origin+target+'?utm_source=old');
@@ -38,4 +41,19 @@ test('analytics accepts only documented events and never stores injected fields 
  for(const event of ['primary_cta_click','whatsapp_click','diagnostic_open','diagnostic_start','plan_click','form_submit']){const r=await request('/api/analytics',{method:'POST',headers:{'content-type':'application/json',origin},body:JSON.stringify({event,path:'/diagnostico'})});assert.equal(r.status,204,event);}
  for(const body of [{event:'purchase',path:'/'},{event:'whatsapp_click',path:'/?phone=123'},{event:'page_view',path:'https://wa.me/123'}])assert.equal((await request('/api/analytics',{method:'POST',body:JSON.stringify(body)})).status,400);
  assert.equal((await request('/api/analytics',{method:'POST',headers:{origin:'https://foreign.example'},body:'{}'})).status,403);
+});
+
+test('vertical pages link to segment-specific proposals and a shared portfolio guide',async()=>{
+ const guide=routes.at(-1);
+ for(const [index,id] of ['arquitetura','engenharia'].entries()){
+  const path=verticals[index], proposal='/proposta?plano=profissional&segmento='+id;
+  const landing=visible(await html(path));
+  assert.ok(landing.includes('href="'+proposal.replace('&','&amp;')+'"'));
+  assert.ok(landing.includes('href="'+guide+'"'));
+  assert.match(landing,/Projeto conceitual/);
+  assert.ok((await html(guide)).includes('href="'+path+'"'));
+  assert.ok((await html('/')).includes('href="'+path+'"'));
+  assert.ok((await html('/site-profissional')).includes('href="'+path+'"'));
+  assert.match(visible(await html(proposal)),index===0?/tipos de projeto o escritório oferece/:/serviços técnicos sua empresa oferece/);
+ }
 });

@@ -2,6 +2,7 @@ import HomeNavigation from '@/components/HomeNavigation';
 import SiteFooter from '@/components/SiteFooter';
 import Testimonials from '@/components/Testimonials';
 import PortfolioGallery from '@/components/PortfolioGallery';
+import SiteSegmentLinks from '@/components/SiteSegmentLinks';
 import HeroWebsitePreview from '@/components/HeroWebsitePreview';
 import {PlanAdvisor} from '@/components/SalesForms';
 import StructuredData from '@/components/StructuredData';
@@ -68,6 +69,8 @@ export default function Home() {
           <PortfolioGallery />
         </div>
       </section>
+
+      <SiteSegmentLinks />
 
       <section className="rv-section shell" id="planos" aria-labelledby="plans-title">
         <div className="rv-section-heading"><h2 id="plans-title">Planos e investimento</h2><p>Escolha pelo tamanho do projeto e pelo que sua empresa precisa apresentar.</p></div>

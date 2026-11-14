@@ -66,7 +66,7 @@ export function rememberReferral() {
   }
 }
 
-export function ProposalForm({kind = 'proposta', initialPlan}: {kind?: 'proposta' | 'parceria'; initialPlan?: PlanId | 'google'}) {
+export function ProposalForm({kind = 'proposta', initialPlan, segment}: {kind?: 'proposta' | 'parceria'; initialPlan?: PlanId | 'google'; segment?: string}) {
   const partner = kind === 'parceria';
   const [pending, setPending] = useState(false);
   const [receipt, setReceipt] = useState('');
@@ -94,10 +94,10 @@ export function ProposalForm({kind = 'proposta', initialPlan}: {kind?: 'proposta
       const response = await fetch('/api/propostas', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({...fields, kind, referral, campaign, requestId: id}),
+        body: JSON.stringify({...fields, kind, segment, referral, campaign, requestId: id}),
         signal: AbortSignal.timeout(15000),
       });
-      const reply = await response.json();
+      const reply = await response.json() as {reference?: string; error?: string};
       if (!response.ok || !reply.reference) throw new Error(reply.error || 'O envio falhou. Tente novamente ou use o WhatsApp.');
       setReceipt(reply.reference);
       if (!partner) signal('form_submit');

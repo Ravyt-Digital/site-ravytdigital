@@ -594,3 +594,93 @@ body{min-height:100svh;display:flex;flex-direction:column}body>main{flex:1;displ
 }
 
 .rv-home > .shell:has(.rv-breadcrumb) { padding-top: 18px; }
+
+.rd-segment-top {
+  background: radial-gradient(ellipse at 86% 44%, #2a211c 0%, #050c13 65%);
+  border-bottom: 1px solid #fef7f119;
+}
+.rd-segment-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
+  align-items: center;
+  gap: clamp(28px, 6vw, 88px);
+  padding-block: clamp(36px, 7vw, 102px);
+}
+.rd-segment-hero h1 {
+  font-size: clamp(42px, 5.1vw, 72px);
+  line-height: 1.05;
+}
+.rd-segment-hero h1 em {
+  color: var(--copper);
+}
+.rd-segment-price {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+.rd-segment-price strong {
+  color: var(--ink);
+}
+.rd-segment-preview {
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid #fef7f140;
+  border-radius: 14px;
+  box-shadow: 0 20px 65px #0006;
+}
+.rd-segment-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 383;
+  object-fit: cover;
+}
+.rd-segment-preview figcaption {
+  display: grid;
+  gap: 8px;
+  padding: 20px 24px;
+}
+.rd-segment-preview .rv-demo-label {
+  width: fit-content;
+  margin: 0;
+}
+.rd-segment-preview p {
+  font-size: .85rem;
+  color: var(--muted);
+}
+.rd-segment-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.rd-segment-scope h2,
+.rd-segment-checklist h2 {
+  margin-bottom: 20px;
+}
+.rd-segment-scope p + p {
+  margin-top: 12px;
+}
+.rd-segment-scope .rv-text-link,
+.rd-segment-checklist .rv-text-link {
+  margin-top: 14px;
+}
+.rd-segment-checklist ul {
+  padding-left: 23px;
+  max-width: 710px;
+}
+.rd-segment-checklist li {
+  margin-bottom: 12px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.rd-segment-checklist li::marker {
+  color: var(--copper);
+}
+@media (max-width: 800px) {
+  .rd-segment-hero,
+  .rd-segment-links {
+    grid-template-columns: 1fr;
+  }
+  .rd-segment-hero h1 {
+    font-size: clamp(37px, 8.5vw, 59px);
+  }
+}

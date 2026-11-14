@@ -1,12 +1,13 @@
 import {handleImageOptimization,DEFAULT_DEVICE_SIZES,DEFAULT_IMAGE_SIZES} from 'vinext/server/image-optimization';
 import handler from 'vinext/server/app-router-entry';
 import {restoredArticles} from '@/lib/site-articles';
+import {siteSegmentPaths} from '@/lib/site-segments';
 import {googleBusinessPath} from '@/lib/google-business';
 import {submitProposal, type ProposalDatabase} from './proposals';
 interface Env{DB?:ProposalDatabase;ASSETS:Fetcher;IMAGES:{input(stream:ReadableStream):{transform(options:Record<string,unknown>):{output(options:{format:string;quality:number}):Promise<{response():Response}>}}};}
 interface ExecutionContext{waitUntil(promise:Promise<unknown>):void;passThroughOnException():void;}
 const sectionRedirects:Record<string,string>={'/politica-de-privacidade':'privacidade','/privacidade':'privacidade','/politica-de-cookies':'cookies','/termos-de-uso':'termos','/termos':'termos'};
-const retired=['/seo','/sites-para-empresas-de-engenharia','/sites-para-escritorios-de-arquitetura','/sites-para-moveis-planejados','/cases','/sobre','/autores/ytala-cabral','/servicos'];
+const retired=['/seo','/sites-para-moveis-planejados','/cases','/sobre','/autores/ytala-cabral','/servicos'];
 const contentRedirects: Record<string,string> = {
  '/sites':'/site-profissional',
  '/criacao-de-sites-online':'/site-profissional',
@@ -14,7 +15,7 @@ const contentRedirects: Record<string,string> = {
  '/blog/criacao-de-site-profissional-para-empresas':'/quanto-custa-criar-um-site',
  '/blog/site-institucional-paginas-essenciais':'/site-institucional-paginas-essenciais',
 };
-const restoredRoutes = new Set([googleBusinessPath,'/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais']);
+const restoredRoutes = new Set([googleBusinessPath,'/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais', ...siteSegmentPaths]);
 export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promise<Response>{
  const url=new URL(request.url),path=url.pathname.replace(/\/$/,'')||'/',raw=path.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';
  if(url.hostname==='www.ravytdigital.com'||(url.hostname==='ravytdigital.com'&&url.protocol==='http:')){url.hostname='ravytdigital.com';url.protocol='https:';return Response.redirect(url.href,308);}

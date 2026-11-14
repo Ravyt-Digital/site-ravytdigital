@@ -48,4 +48,10 @@ test('proposal submissions require same origin and consent, preserve attribution
  const first=await send(fields), second=await send(fields);
  assert.equal(first.status,201); assert.deepEqual(await first.json(),await second.json());
  assert.equal(records.size,1); assert.equal([...records.values()][0][8],'parceiro-1'); assert.equal([...records.values()][0][9],'instagram');
+ const nicheId='382317da-11e4-4b00-8f91-13695b3c6c19';
+ const niche=await send({...fields,requestId:nicheId,segment:'arquitetura'});
+ assert.equal(niche.status,201);
+ assert.equal(records.get(nicheId)[6],'Página de origem: Arquitetura e interiores\n\n'+fields.description);
+ assert.equal([...records.values()][0][6],fields.description);
+
 });

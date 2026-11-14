@@ -1,6 +1,6 @@
 import SiteGuide from '@/components/SiteGuide';
 import {pageMetadata} from '@/lib/seo';
-import {instagramSiteArticle, trustSiteArticle as path} from '@/lib/site-articles';
+import {instagramSiteArticle, portfolioPlanningArticle, trustSiteArticle as path} from '@/lib/site-articles';
 
 const title = 'Um site bonito não basta: 7 sinais de que ele não gera confiança';
 const description = 'Revise sete pontos que podem travar a decisão do cliente no seu site, da primeira tela ao pedido de orçamento.';
@@ -23,7 +23,7 @@ export default function WebsiteTrustArticle() {
     <section>
       <h2>O teste de uma indicação</h2>
       <p>Peça a alguém que não conhece seu negócio para abrir o site no celular. Pergunte o que a empresa faz, onde a pessoa encontra um exemplo e como pediria orçamento. Observe em qual página ela hesita. Comece pelo ajuste que resolve essa dúvida.</p>
-      <p>Se faltar informação para decidir, consulte o guia de <a href="/site-institucional-paginas-essenciais">páginas essenciais de um site institucional</a>. Se as visitas vêm de redes sociais, veja <a href={instagramSiteArticle}>como integrar o Instagram ao site próprio</a>.</p>
+      <p>Se faltar informação para decidir, consulte o guia de <a href="/site-institucional-paginas-essenciais">páginas essenciais de um site institucional</a>. Se as visitas vêm de redes sociais, veja <a href={instagramSiteArticle}>como integrar o Instagram ao site próprio</a>. Se você trabalha com projetos ou obras, use os roteiros para <a href={portfolioPlanningArticle}>montar um portfólio de arquitetura ou engenharia</a>.</p>
     </section>
   </SiteGuide>;
 }
