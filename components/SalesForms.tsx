@@ -2,7 +2,9 @@
 
 import {useState, type FormEvent} from 'react';
 import {readUtms} from '@/lib/utm';
+import {readReferral} from '@/lib/referral';
 import {projectTypes, type ProjectType} from '@/lib/services';
+import {timingOptions} from '@/lib/site-estimate';
 
 function signal(event: string) {
   window.dispatchEvent(new CustomEvent('ravyt:sales-event', {detail: event}));
@@ -10,17 +12,9 @@ function signal(event: string) {
 
 const submitError = 'O envio falhou. Tente novamente.';
 const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
-const referralKey = 'ravyt-referral';
-const idPattern = /^[a-zA-Z0-9_-]{3,40}$/;
-
-export function rememberReferral() {
-  const code = new URLSearchParams(location.search).get('ref');
-  if (code && idPattern.test(code)) {
-    try { sessionStorage.setItem(referralKey, code); } catch {}
-  }
-}
-
-export function ProposalForm({kind = 'proposta', initialType, segment}: {kind?: 'proposta' | 'parceria'; initialType?: ProjectType; segment?: string}) {
+export function ProposalForm({kind = 'proposta', initialType, segment, appBrief = false}: {
+  kind?: 'proposta' | 'parceria'; initialType?: ProjectType; segment?: string; appBrief?: boolean;
+}) {
   const partner = kind === 'parceria';
   const [pending, setPending] = useState(false);
   const [receipt, setReceipt] = useState('');
@@ -31,13 +25,10 @@ export function ProposalForm({kind = 'proposta', initialType, segment}: {kind?: 
     event.preventDefault();
     if (pending) return;
     const fields = Object.fromEntries(new FormData(event.currentTarget));
-    const query = new URLSearchParams(location.search);
-    const directRef = query.get('ref');
-    let storedRef = '';
-    try {
-      storedRef = sessionStorage.getItem(referralKey) ?? '';
-    } catch {}
-    const referral = directRef && idPattern.test(directRef) ? directRef : storedRef;
+    const referral = readReferral();
+    const {timing, ...answers} = fields;
+    const description = appBrief && typeof timing === 'string' && timing ?
+      answers.description + '\\n\\nPrazo desejado: ' + timing : answers.description;
     const utms = readUtms();
     const campaign = Object.fromEntries(campaignKeys.map(key => [key, utms[key]]));
     const id = requestId || crypto.randomUUID();
@@ -48,7 +39,7 @@ export function ProposalForm({kind = 'proposta', initialType, segment}: {kind?: 
       const response = await fetch('/api/propostas', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({...fields, kind, segment, referral, campaign, requestId: id}),
+        body: JSON.stringify({...answers, description, kind, segment, referral, campaign, requestId: id}),
         signal: AbortSignal.timeout(15000),
       });
       const reply = await response.json() as {reference?: string; error?: string};
@@ -68,20 +59,34 @@ export function ProposalForm({kind = 'proposta', initialType, segment}: {kind?: 
     <p>Protocolo <strong>{receipt}</strong>. A equipe vai analisar as informações e retornar pelo contato informado.</p>
   </div>;
 
-  return <form className="rd-form-box rd-proposal-form" onSubmit={submit}>
+  return <form className={appBrief ? 'rd-proposal-form rd-app-brief' : 'rd-form-box rd-proposal-form'} onSubmit={submit}>
     <div className="rd-fields">
+      {appBrief && <label className="rd-wide">Quem vai usar o aplicativo e para quê?
+        <textarea name="description" required minLength={10} maxLength={1100} rows={3}
+          placeholder="Ex.: meus clientes precisam agendar e acompanhar o atendimento pelo celular." />
+      </label>}
       <label>Seu nome<input name="name" autoComplete="name" required maxLength={100} /></label>
-      <label>{partner ? 'Empresa ou atividade (opcional)' : 'Nome da empresa'}<input name="business" autoComplete="organization" required={!partner} maxLength={140} /></label>
+      <label>{partner ? 'Empresa ou atividade (opcional)' : appBrief ? 'Empresa ou atividade' : 'Nome da empresa'}<input name="business" autoComplete="organization" required={!partner} maxLength={140} /></label>
       <label>WhatsApp com DDD ou e-mail<input name="contact" autoComplete="on" required maxLength={160} /></label>
-      {!partner && <label>Tipo de projeto
+      {appBrief && <>
+        <input type="hidden" name="projectType" value="aplicativo" />
+        <label>Quando você precisa? (opcional)
+          <select name="timing"><option value="">Selecione, se já souber</option>
+            {timingOptions.map(option => <option key={option}>{option}</option>)}
+          </select>
+        </label>
+      </>}
+      {!partner && !appBrief && <label>Tipo de projeto
         <select name="projectType" defaultValue={initialType ?? ''} required>
           <option value="" disabled>Selecione</option>
           {projectTypes.map(type => <option key={type.id} value={type.id}>{type.label}</option>)}
         </select>
       </label>}
-      <label className="rd-wide">{partner ? 'Como você pretende indicar a Ravyt?' : 'O que você precisa no seu projeto?'}
-        <textarea name="description" required minLength={10} maxLength={1200} rows={4} placeholder={partner ? 'Conte um pouco sobre sua atividade e as empresas com que você trabalha.' : 'Conte quem vai usar e o que precisa funcionar. Se já tem um site ou aplicativo, inclua o endereço.'} />
-      </label>
+      {!appBrief && <label className="rd-wide">{partner ? 'Como você pretende indicar a Ravyt?' : 'O que você precisa no seu projeto?'}
+        <textarea name="description" required minLength={10} maxLength={1200} rows={4}
+          placeholder={partner ? 'Conte um pouco sobre sua atividade e as empresas com que você trabalha.' :
+            'Conte quem vai usar e o que precisa funcionar. Se já tem um site ou aplicativo, inclua o endereço.'} />
+      </label>}
     </div>
     <div hidden aria-hidden="true"><label>Preencha apenas se for um robô<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
     <label className="rd-privacy-check"><input type="checkbox" name="consent" value="sim" required />

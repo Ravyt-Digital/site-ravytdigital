@@ -11,13 +11,14 @@ import {articles, blogPath} from '@/lib/site-articles';
 import {SITE_URL} from '@/lib/site';
 
 const faqs = [
-  ['Como a Ravyt calcula o orçamento?', 'O simulador soma os valores das páginas, do conteúdo e das integrações que você escolher. Quando todos os itens têm preço, o total exibido é o valor do serviço para esse escopo. Se houver itens sob orçamento, o subtotal poderá mudar após a análise. Aplicativos são orçados pelo formulário.'],
+  ['Como a Ravyt calcula o orçamento?', 'O simulador soma os itens com preço definido e mostra o que ainda depende de análise. Para aplicativos, selecione Aplicativo na mesma seção e descreva o que precisa funcionar.'],
   ['Preciso ter todas as telas ou páginas definidas?', 'Você pode começar com o objetivo do projeto, quem vai usar e o que essa pessoa precisa fazer. Se já tiver referências, um site atual ou um protótipo, inclua essas informações no pedido.'],
   ['Como ficam domínio, hospedagem e publicação?', 'A proposta define o ambiente indicado, quem controla os acessos e quais custos de fornecedores precisam ser considerados para publicar e manter o projeto.'],
   ['A Ravyt atende empresas de outras cidades?', 'Sim. As conversas e as revisões podem acontecer online. A Ravyt atende projetos em todo o Brasil.'],
 ];
 
-export default function Home() {
+export default async function Home({searchParams}: {searchParams: Promise<{projeto?: string}>}) {
+  const {projeto} = await searchParams;
   return <>
     <HomeNavigation />
     <StructuredData data={{'@context':'https://schema.org','@graph':[
@@ -34,7 +35,7 @@ export default function Home() {
             <p className="rv-hero-description">Sites para apresentar seu negócio e facilitar o contato. Aplicativos web e para celular para simplificar a rotina de clientes e equipes. Atendemos empresas em todo o Brasil.</p>
             <div className="rv-actions"><QuoteLink className="rv-text-link" /></div>
           </div>
-          <SiteEstimate />
+          <SiteEstimate initialApp={projeto === 'aplicativo'} />
         </div>
       </section>
 

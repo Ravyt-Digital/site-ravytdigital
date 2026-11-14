@@ -139,7 +139,7 @@ export default function Analytics() {
     };
     const sales = (event: Event) => {
       const name = (event as CustomEvent).detail;
-      if (['form_submit', 'diagnostic_complete', 'diagnostic_contact_request'].includes(name)) send(name, path);
+      if (['form_submit', 'diagnostic_complete', 'diagnostic_contact_request', 'estimate_start', 'estimate_complete', 'estimate_copy'].includes(name)) send(name, path);
     };
     document.addEventListener("click", click);
     window.addEventListener("ravyt:sales-event", sales);

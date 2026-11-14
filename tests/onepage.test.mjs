@@ -7,7 +7,8 @@ let html;const home=async()=>html??=(await(await request('/')).text());
 test('home presents sites, apps, portfolio and a website estimator',async()=>{
  const h=await home(),v=visible(h);assert.equal((await request('/')).status,200);assert.equal((v.match(/<h1[ >]/g)||[]).length,1);
  for(const id of ['inicio','servicos','simular-site','perguntas','projetos','como-funciona','contato','guias'])assert.ok(v.includes('id="'+id+'"'),id);
- for(const text of ['Criação de sites','Criação de aplicativos','Simulador de sites','Qual é a estrutura do seu site?','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
+ for(const text of ['Criação de sites','Criação de aplicativos','Simulador de orçamento','Qual é a estrutura do seu site?','todo o Brasil','Ananda Oliveira','Capoeira Haute-Savoie','CEREST'])assert.ok(v.includes(text),text);
+ assert.doesNotMatch(v,/R\$\s*0,00/);
  assert.doesNotMatch(v,/projeto-antonia-moreira|francisca-antonia-neuro|\/projects\/antonia-moreira/);
  assert.doesNotMatch(h,/id="clientes"|Quem já trabalhou|depoimentos|\/testimonials\//i);
  assert.doesNotMatch(v,/59,90|Cartão NFC|domínio grátis|Google Meu Negócio|data-plan-click|href="\/#planos"/);
@@ -31,12 +32,21 @@ test('domain upgrades preserve campaigns and HTML remains revalidated',async()=>
 test('quote buttons lead to the home estimator, which links to the app form',async()=>{
  const h=visible(await home());
  assert.doesNotMatch(h,/href="https:\/\/wa\.me\//);
- assert.match(h,/href="\/proposta\?projeto=aplicativo">Descreva seu projeto/);
+ assert.match(h,/input[^>]+name="site-estimate-category"[^>]+value="app"/);
+ const appHome=visible(await(await request('/?projeto=aplicativo')).text());
+ assert.match(appHome,/O que o aplicativo precisa fazer\?/);
+ assert.match(appHome,/input[^>]+name="projectType"[^>]+value="aplicativo"/);
  for(const path of ['/','/site-profissional','/aplicativos','/blog','/quanto-custa-criar-um-site','/sites-para-escritorios-de-arquitetura','/sites-para-empresas-de-engenharia']){
   const page=visible(await(await request(path)).text());
   const links=[...page.matchAll(/href="([^"]+)" data-quote-cta/g)];
   assert.ok(links.length>0,path);
-  for(const [,href] of links) assert.equal(href,'/#simular-site',path);
+  for(const [,href] of links) {
+    const target=new URL(href,'https://ravytdigital.com');
+    assert.equal(target.pathname,'/',path);
+    assert.equal(target.hash,'#simular-site',path);
+    if(target.search) assert.equal(target.searchParams.get('projeto'),'aplicativo',path);
+  }
+  if(path==='/aplicativos') assert.ok(links.some(([,href])=>href==='/?projeto=aplicativo#simular-site'));
  }
  for(const type of ['site','aplicativo']){
   const form=visible(await(await request('/proposta?projeto='+type)).text());
