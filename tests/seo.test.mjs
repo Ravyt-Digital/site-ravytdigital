@@ -2,9 +2,10 @@ import test from 'node:test';import assert from 'node:assert/strict';import {exi
 const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=>new Response('',{status:404})}};
 const origin='https://ravytdigital.com';const request=(path,options)=>worker.fetch(new Request(origin+path,options),env,ctx);
 const verticals=['/sites-para-escritorios-de-arquitetura','/sites-para-empresas-de-engenharia'];
-const articleRoutes=['/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta','/blog/dominio-e-hospedagem','/blog/como-escolher-tecnologia-do-site','/blog/como-montar-portfolio-de-arquitetura-e-engenharia'];
+const articleRoutes=[];
+const removedArticleRoutes=['/quanto-custa-criar-um-site','/site-institucional-paginas-essenciais','/blog/instagram-nao-substitui-site-proprio','/blog/site-bonito-nao-basta','/blog/dominio-e-hospedagem','/blog/como-escolher-tecnologia-do-site','/blog/como-montar-portfolio-de-arquitetura-e-engenharia'];
 const serviceRoutes=['/site-profissional'];
-const routes=['/','/blog','/indique',...serviceRoutes,...articleRoutes];
+const routes=['/','/indique',...serviceRoutes];
 const rendered=new Map();const html=async path=>{if(!rendered.has(path))rendered.set(path,await(await request(path)).text());return rendered.get(path)};
 const visible=h=>h.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<style\b[\s\S]*?<\/style>/g,'');
 test('every indexable page has unique server-rendered metadata and a self canonical',async()=>{
@@ -17,10 +18,6 @@ test('sitemap, robots, structured data and meaningful legacy redirects agree wit
 
  for(const [oldPath,target] of [
   ['/sites','/site-profissional'],
-  ['/blog/criacao-de-site-profissional-para-empresas','/quanto-custa-criar-um-site'],
-  ['/blog/site-institucional-paginas-essenciais','/site-institucional-paginas-essenciais'],
-  ['/en/blog','/blog'],
-  ['/blog/como-escolher-tecnologia-site-ou-app','/blog/como-escolher-tecnologia-do-site'],
   ['/orcamento','/proposta'],
   ['/planos','/proposta'],
  ]) {
@@ -35,11 +32,25 @@ test('sitemap, robots, structured data and meaningful legacy redirects agree wit
  }
 
 });
-test('all rendered internal links, fragment targets and images resolve; guides are linked from home',async()=>{
- const home=visible(await html('/'));for(const p of routes.slice(1,4))assert.ok(home.includes('href="'+p+'"'),p);
+test('all rendered internal links, fragment targets and images resolve; the blog is external',async()=>{
+ const home=visible(await html('/'));for(const p of routes.slice(1))assert.ok(home.includes('href="'+p+'"'),p);
+ assert.ok(home.includes('href="https://blog.ravytdigital.com/"'));
  for(const path of routes){const h=visible(await html(path));for(const [,href]of h.matchAll(/<a\b[^>]*href="([^"]+)"/g)){if(!href.startsWith('/')&&!href.startsWith('#'))continue;const u=new URL(href,origin+path);const target=visible(await html(u.pathname));assert.equal((await request(u.pathname)).status,200,path+' -> '+href);if(u.hash)assert.ok(target.includes('id="'+u.hash.slice(1)+'"'),path+' -> '+href);}
  for(const [tag,src]of [...h.matchAll(/(<img\b[^>]*src="([^"]+)"[^>]*>)/g)].map(m=>[m[1],m[2]])){assert.ok(existsSync('public'+src),src);assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);}}
 });
+test('the old blog redirects to Blogger and removed articles return 410 without indexation',async()=>{
+ for(const path of ['/blog','/blog/','/en/blog','/fr/blog']){
+  const response=await request(path+'?utm_source=old&lang=pt');
+  assert.equal(response.status,301,path);
+  assert.equal(response.headers.get('location'),'https://blog.ravytdigital.com/?utm_source=old');
+ }
+ for(const path of [...removedArticleRoutes,'/blog/antigo','/blog/como-escolher-tecnologia-site-ou-app','/blog/site-institucional-paginas-essenciais','/blog/criacao-de-site-profissional-para-empresas']){
+  const response=await request(path);assert.equal(response.status,410,path);assert.equal(response.headers.get('x-robots-tag'),'noindex');
+ }
+ const sitemap=await(await request('/sitemap.xml')).text();
+ assert.ok(!sitemap.includes('/blog'));for(const path of removedArticleRoutes)assert.ok(!sitemap.includes(path));
+});
+
 test('analytics accepts only documented events and never stores injected fields or contact URLs',async()=>{
  for(const event of ['primary_cta_click','whatsapp_click','diagnostic_open','diagnostic_start','plan_click','quote_click','form_submit']){const r=await request('/api/analytics',{method:'POST',headers:{'content-type':'application/json',origin},body:JSON.stringify({event,path:'/diagnostico'})});assert.equal(r.status,204,event);}
  for(const body of [{event:'purchase',path:'/'},{event:'whatsapp_click',path:'/?phone=123'},{event:'page_view',path:'https://wa.me/123'}])assert.equal((await request('/api/analytics',{method:'POST',body:JSON.stringify(body)})).status,400);
@@ -56,7 +67,6 @@ test('old segment addresses consolidate on the home sections without losing camp
    assert.equal(response.status,301);
    assert.equal(response.headers.get('location'),origin+'/?utm_source=old&ref=partner#'+id);
   }
-  assert.ok((await html(guide)).includes('href="'+anchor+'"'));
   assert.ok((await html('/')).includes('id="'+id+'"'));
   assert.ok((await html('/')).includes('href="'+guide+'"'));
   assert.ok(!(await html('/site-profissional')).includes('href="'+path+'"'));

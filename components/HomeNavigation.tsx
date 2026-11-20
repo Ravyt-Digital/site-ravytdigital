@@ -3,12 +3,11 @@
 import {useState} from 'react';
 import QuoteLink from './QuoteLink';
 import {websitePath} from '@/lib/services';
-import {blogPath} from '@/lib/site-articles';
 
 const links = [
   ['Sites', websitePath],
   ['Projetos', '/#projetos'],
-  ['Blog', blogPath],
+  ['Blog', 'https://blog.ravytdigital.com/'],
 ];
 
 export default function HomeNavigation() {
