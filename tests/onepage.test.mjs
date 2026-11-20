@@ -21,7 +21,7 @@ test('old diagnostic and contact URLs lead to the quote form; retired content ke
  assert.equal((await request('/inexistente')).status,404);
 });
 test('local brand assets, legal dialogs and responsive safeguards remain available on both pages',async()=>{
- for(const path of ['/','/blog','/site-profissional']){const h=visible(await(await request(path)).text());for(const [tag]of h.matchAll(/<img\b[^>]*>/g)){assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);const src=tag.match(/src="([^"]+)"/)[1];assert.ok(existsSync('public'+src));}for(const id of ['privacidade','termos'])assert.ok(h.includes('id="'+id+'"'));}
+ for(const path of ['/','/indique','/site-profissional']){const h=visible(await(await request(path)).text());for(const [tag]of h.matchAll(/<img\b[^>]*>/g)){assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);const src=tag.match(/src="([^"]+)"/)[1];assert.ok(existsSync('public'+src));}for(const id of ['privacidade','termos'])assert.ok(h.includes('id="'+id+'"'));}
  const css=readFileSync('app/globals.css','utf8');assert.match(css,/prefers-reduced-motion/);assert.match(css,/max-width:600px/);assert.match(css,/--paper:#050C13/);assert.match(css,/--copper:#EF5309/);const analytics=readFileSync('components/Analytics.tsx','utf8');assert.doesNotMatch(analytics,/leadFields|\.answers|\.phone|\.name|profile:/);
 });
 test('domain upgrades preserve campaigns and HTML remains revalidated',async()=>{
@@ -39,7 +39,7 @@ test('quote buttons lead to the home estimator for websites only',async()=>{
   assert.equal(response.status,301);
   assert.equal(response.headers.get('location'),'https://ravytdigital.com'+destination);
  }
- for(const path of ['/','/site-profissional','/blog','/quanto-custa-criar-um-site']){
+ for(const path of ['/','/site-profissional']){
   const page=visible(await(await request(path)).text());
   const links=[...page.matchAll(/href="([^"]+)" data-quote-cta/g)];
   assert.ok(links.length>0,path);
