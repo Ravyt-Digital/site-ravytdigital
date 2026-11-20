@@ -4,5 +4,5 @@
 
 - [Sites para arquitetura e engenharia](https://ravytdigital.com/site-profissional): sites institucionais, portfólios de projetos e obras e páginas para serviços técnicos.
 - [Exemplos de sites](https://ravytdigital.com/#projetos): demonstrações conceituais de arquitetura e engenharia identificadas como tal.
-- [Guias](https://ravytdigital.com/blog): portfólio, criação de sites, domínios e hospedagem para o setor.
+- [Blog oficial](https://blog.ravytdigital.com/): artigos sobre marketing, criação de sites e presença digital para arquitetos e engenheiros.
 - [Solicitar orçamento](https://ravytdigital.com/#simular-site): simule o orçamento do seu site.
