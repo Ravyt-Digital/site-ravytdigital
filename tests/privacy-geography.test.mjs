@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync,readdirSync} from 'node:fs';import worker from '../dist/server/index.js';
 const ctx={waitUntil(){},passThroughOnException(){}},env={ASSETS:{fetch:async()=>new Response('',{status:404})}},origin='https://ravytdigital.com';
 test('indexable HTML, manifest and metadata have no restrictive geographic mentions',async()=>{
- for(const path of ['/','/site-profissional','/blog','/manifest.webmanifest']){const response=await worker.fetch(new Request(origin+path),env,ctx);assert.equal(response.status,200);assert.doesNotMatch((await response.text()).replace(/(?:cerest-tiangua|cerest-tiangua-800|cerest-tiangua-480)/g,'cerest'),/Tiangu[áa]|Serra da Ibiapaba|Ibiapaba/i,path);}
+ for(const path of ['/','/site-profissional','/indique','/manifest.webmanifest']){const response=await worker.fetch(new Request(origin+path),env,ctx);assert.equal(response.status,200);assert.doesNotMatch((await response.text()).replace(/(?:cerest-tiangua|cerest-tiangua-800|cerest-tiangua-480)/g,'cerest'),/Tiangu[áa]|Serra da Ibiapaba|Ibiapaba/i,path);}
  const crawl=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?crawl(dir+'/'+entry.name):[dir+'/'+entry.name]);
  for(const file of [...crawl('app'),...crawl('components'),...crawl('lib')].filter(f=>/\.(tsx?|mjs|json)$/.test(f))){const source=readFileSync(file,'utf8').replaceAll('cerest-tiangua','cerest').replace(/"(?:id|image)": "(?:\/projects\/)?cerest-tiangua(?:\.webp)?"/g,'');assert.doesNotMatch(source,/Tianguá|Tiangua|Serra da Ibiapaba|Ibiapaba/i,file);}
 });
