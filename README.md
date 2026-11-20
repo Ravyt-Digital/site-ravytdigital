@@ -1,6 +1,6 @@
 # Ravyt Digital
 
-Site da Ravyt Digital para criação de sites para arquitetos e engenheiros. A página inicial reúne o posicionamento, os exemplos conceituais e o simulador de orçamento. As páginas de serviços e o blog aprofundam as decisões de quem planeja um projeto.
+Site da Ravyt Digital para criação de sites para arquitetos e engenheiros. A página inicial reúne o posicionamento, os exemplos conceituais e o simulador de orçamento. As páginas de serviços aprofundam as decisões de quem planeja um projeto. O blog oficial é mantido separadamente no Blogger, em https://blog.ravytdigital.com/; o site comercial não hospeda artigos.
 
 As antigas URLs dedicadas a cada segmento redirecionam permanentemente para as seções correspondentes na home. O simulador calcula valores no navegador e monta o resumo para o cliente abrir no WhatsApp. Pedidos de orçamento e parcerias também podem ser enviados pelo formulário.
 
