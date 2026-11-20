@@ -6,10 +6,8 @@ import PortfolioGallery from '@/components/PortfolioGallery';
 import SiteEstimate from '@/components/SiteEstimate';
 import StructuredData from '@/components/StructuredData';
 import QuoteLink from '@/components/QuoteLink';
-import ArticleCard from '@/components/ArticleCard';
 import {webpage} from '@/lib/seo';
 import {agencyTitle, agencyDescription, websitePath} from '@/lib/services';
-import {articles, blogPath} from '@/lib/site-articles';
 import {siteSegments} from '@/lib/site-segments';
 import {SITE_URL} from '@/lib/site';
 
@@ -76,8 +74,10 @@ export default function Home() {
       </section>
 
       <section className="rv-section shell rv-seo-section" id="guias" aria-labelledby="home-blog-title">
-        <div className="rv-section-heading" data-home-reveal><div><h2 id="home-blog-title">Blog da Ravyt</h2><p>Guias para arquitetos e engenheiros planejarem seu site e portfólio online.</p></div><a className="rv-text-link" href={blogPath}>Ver todos os artigos <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a></div>
-        <div className="rv-seo-grid">{articles.slice(0, 3).map(article => <ArticleCard key={article.path} article={article} />)}</div>
+        <div className="rv-section-heading" data-home-reveal>
+          <div><h2 id="home-blog-title">Blog da Ravyt</h2><p>Artigos sobre marketing para arquitetos e engenheiros, presença no Google e sites profissionais — agora em nosso blog exclusivo.</p></div>
+          <a className="rv-text-link" href="https://blog.ravytdigital.com/">Ler artigos no blog <span className="rd-arrow rd-arrow-up" aria-hidden="true" /></a>
+        </div>
       </section>
 
       <section className="rv-faq-section" id="perguntas" aria-labelledby="faq-title">
