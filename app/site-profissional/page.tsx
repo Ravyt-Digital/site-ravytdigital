@@ -3,7 +3,6 @@ import SiteFooter from '@/components/SiteFooter';
 import StructuredData from '@/components/StructuredData';
 import QuoteLink from '@/components/QuoteLink';
 import {breadcrumb, pageMetadata, webpage} from '@/lib/seo';
-import {hostingArticle, institutionalPagesArticle, websitePricingArticle} from '@/lib/site-articles';
 import {websitePath as path} from '@/lib/services';
 import {SITE_URL} from '@/lib/site';
 
@@ -42,9 +41,9 @@ export default function ProfessionalPage() {
       <section className="rv-section shell rv-seo-section" aria-labelledby="site-planning">
         <h2 id="site-planning">Antes de pedir um orçamento</h2>
         <div className="rv-seo-grid">
-          <article><h3><a href={websitePricingArticle}>O que muda o custo de um site?</a></h3><p>Compare páginas, funcionalidades e custos recorrentes.</p></article>
-          <article><h3><a href={institutionalPagesArticle}>Quais páginas um site institucional precisa?</a></h3><p>Organize o que seu cliente precisa saber para escolher.</p></article>
-          <article><h3><a href={hostingArticle}>Como funcionam domínio e hospedagem?</a></h3><p>Saiba quem precisa ter acesso e o que será renovado.</p></article>
+          <article><h3>Custos e escopo</h3><p>Prepare a quantidade de páginas, as funcionalidades desejadas e os materiais já disponíveis. A proposta informa o que está incluído.</p></article>
+          <article><h3>Páginas essenciais</h3><p>Reúna serviços, portfólio, equipe e formas de contato. Cada página deve responder a uma dúvida real do futuro cliente.</p></article>
+          <article><h3>Domínio e hospedagem</h3><p>Confira quem controla os acessos, os custos de renovação e as responsabilidades após a publicação.</p></article>
         </div>
       </section>
       <section className="rv-final shell"><h2>Vamos definir <em>o seu site?</em></h2>
