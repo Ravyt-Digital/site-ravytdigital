@@ -3,7 +3,8 @@ import handler from 'vinext/server/app-router-entry';
 import {quotePath, websitePath} from '@/lib/services';
 import {siteSegments} from '@/lib/site-segments';
 import {submitProposal, type ProposalDatabase} from './proposals';
-interface Env{DB?:ProposalDatabase;ASSETS:Fetcher;IMAGES:{input(stream:ReadableStream):{transform(options:Record<string,unknown>):{output(options:{format:string;quality:number}):Promise<{response():Response}>}}};}
+import {syncCrm, type SyncDatabase} from './crm-sync';
+interface Env{DB?:ProposalDatabase & SyncDatabase;CRM_GOOGLE_SERVICE_ACCOUNT?:string;CRM_SPREADSHEET_ID?:string;ASSETS:Fetcher;IMAGES:{input(stream:ReadableStream):{transform(options:Record<string,unknown>):{output(options:{format:string;quality:number}):Promise<{response():Response}>}}};}
 interface ExecutionContext{waitUntil(promise:Promise<unknown>):void;passThroughOnException():void;}
 const sectionRedirects:Record<string,string>={'/politica-de-privacidade':'privacidade','/privacidade':'privacidade','/politica-de-cookies':'cookies','/termos-de-uso':'termos','/termos':'termos',
  [siteSegments.arquitetura.path]:siteSegments.arquitetura.sectionId,
@@ -18,7 +19,11 @@ const contentRedirects: Record<string,string> = {
  '/servicos/criacao-de-sites':'/site-profissional',
 };
 const translatedRoutes = new Set([websitePath, quotePath]);
-export default {async fetch(request:Request,env:Env,ctx:ExecutionContext):Promise<Response>{
+export default {async scheduled(_event:unknown,env:Env){
+ if(!env.DB||!env.CRM_GOOGLE_SERVICE_ACCOUNT||!env.CRM_SPREADSHEET_ID)return;
+ try{const count=await syncCrm(env.DB,env.CRM_GOOGLE_SERVICE_ACCOUNT,env.CRM_SPREADSHEET_ID);if(count)console.info('CRM sincronizado',{count});}
+ catch{console.error('Falha na sincronização CRM; pedidos permanecem no D1.');throw new Error('CRM sync failed');}
+},async fetch(request:Request,env:Env,ctx:ExecutionContext):Promise<Response>{
  const url=new URL(request.url),path=url.pathname.replace(/\/$/,'')||'/',raw=path.replace(/^\/(en|fr|es)(?=\/|$)/,'')||'/';
  if(url.hostname==='www.ravytdigital.com'||(url.hostname==='ravytdigital.com'&&url.protocol==='http:')){url.hostname='ravytdigital.com';url.protocol='https:';return Response.redirect(url.href,308);}
  // Preserve only the Blogger blog. Redirect the retired on-site index permanently.

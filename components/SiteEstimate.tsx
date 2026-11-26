@@ -3,6 +3,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {estimateId, quoteHref} from '@/lib/services';
 import {readReferral} from '@/lib/referral';
+import {ProposalForm} from './SalesForms';
 import {
   calculateEstimate, commercialPages, contactOptions, contentPageLimit, estimateSummary, estimateWhatsApp,
   fixedNotice, initialEstimate, legalItems, materialOptions, money, pageOptions, pagesLabel, partialNotice, pendingNotice,
@@ -249,6 +250,11 @@ export default function SiteEstimate() {
       {copyStatus && <p className="rd-estimate-note" role="status">{copyStatus}</p>}
       {showCopyText && <label className="rd-estimate-field">Resumo para copiar<textarea ref={summaryField} value={summary} rows={5} readOnly /></label>}
       <p className="rd-estimate-note">O WhatsApp abre com suas escolhas preenchidas. Você revisa a mensagem antes de enviar.</p>
+      <details className="rd-estimate-details">
+        <summary>Solicitar retorno da Ravyt pelo formulário</summary>
+        <p className="rd-estimate-note">Envie o orçamento simulado e seus dados de contato para que possamos responder à sua solicitação. Simular ou copiar o orçamento não envia seus dados.</p>
+        <ProposalForm initialType="site" estimate={estimate} />
+      </details>
     </>}
 
     {step && <div className="rd-estimate-controls">

@@ -21,4 +21,9 @@ export const commercialRequests = sqliteTable('ravyt_commercial_requests', {
   utmCampaign: text('utm_campaign'),
   createdAt: text('created_at').notNull(),
   status: text('status').notNull().default('recebido'),
+  source: text('source').notNull().default('formulario'),
+  estimateTotal: integer('estimate_total'),
+  estimatePending: integer('estimate_pending'),
+  segment: text('segment'),
+  crmSyncedAt: text('crm_synced_at'),
 });

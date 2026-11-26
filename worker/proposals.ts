@@ -1,5 +1,7 @@
 import {isProjectType} from '@/lib/services';
 import {findSiteSegment} from '@/lib/site-segments';
+import {calculateEstimate, estimateSummary} from '@/lib/site-estimate';
+import {validateEstimate} from '@/lib/validate-estimate';
 
 const legacyTypes = new Set(['essencial', 'profissional', 'sob-medida']);
 const referralPattern = /^[a-zA-Z0-9_-]{3,40}$/;
@@ -9,7 +11,7 @@ const headers = {'Cache-Control': 'no-store'};
 const json = (body: object, status = 200) => Response.json(body, {status, headers});
 
 export interface ProposalDatabase {
-  prepare(sql: string): {bind(...params: Array<string | null>): {run(): Promise<unknown>}};
+  prepare(sql: string): {bind(...params: Array<string | number | null>): {run(): Promise<unknown>}};
 }
 
 export async function submitProposal(request: Request, database?: ProposalDatabase) {
@@ -41,6 +43,9 @@ export async function submitProposal(request: Request, database?: ProposalDataba
     !requestedType && legacyTypes.has(legacyPlan) ? 'site' :
     !requestedType && ['google', 'nao-sei'].includes(legacyPlan) ? 'nao-sei' : '';
   const description = string('description');
+  const estimate = body.estimate === undefined ? null : validateEstimate(body.estimate);
+  if (body.estimate !== undefined && (!estimate || kind !== 'proposta' || projectType !== 'site')) return json({error: 'Revise a simulação e tente novamente.'}, 400);
+  const calculated = estimate ? calculateEstimate(estimate) : null;
   const code = string('referral');
   const telephone = contact.replace(/[^\d]/g, '');
   const validContact = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) || (/^[+\d().\s-]+$/.test(contact) && telephone.length >= 10 && telephone.length <= 15);
@@ -48,24 +53,27 @@ export async function submitProposal(request: Request, database?: ProposalDataba
     return json({error: 'Revise a solicitação e tente novamente.'}, 400);
   }
   if (!name || name.length > 100 || business.length > 140 || (kind === 'proposta' && (!business || !projectType)) ||
-      !validContact || contact.length > 160 || description.length < 10 || description.length > 1200) {
+      !validContact || contact.length > 160 || (!estimate && description.length < 10) || description.length > 1200) {
     return json({error: 'Revise os campos e informe um WhatsApp com DDD ou um e-mail válido.'}, 400);
   }
 
   const segment = kind === 'proposta' ? findSiteSegment(body.segment) : undefined;
-  const attributedDescription = segment ? 'Página de origem: ' + segment.label + '\n\n' + description : description;
+  const details = estimate ? estimateSummary(estimate) + (description ? '\n\nInformações adicionais: ' + description : '') : description;
+  const attributedDescription = segment ? 'Página de origem: ' + segment.label + '\n\n' + details : details;
   const campaign = body.campaign && typeof body.campaign === 'object' ? body.campaign as Record<string, unknown> : {};
   const campaignValue = (key: string) => typeof campaign[key] === 'string' && campaignPattern.test(campaign[key]) ? campaign[key] : null;
   const reference = 'RVT-' + id.slice(0, 13).replace('-', '').toUpperCase();
   try {
     if (!database) throw new Error('Database binding unavailable');
     await database.prepare(`INSERT INTO ravyt_commercial_requests
-      (id, reference, kind, name, business, contact, description, plan, referral, utm_source, utm_medium, utm_campaign, created_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO NOTHING`).bind(
+      (id, reference, kind, name, business, contact, description, plan, referral, utm_source, utm_medium, utm_campaign, created_at, source, estimate_total, estimate_pending, segment)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO NOTHING`).bind(
       id, reference, kind, name, business, contact, attributedDescription,
       kind === 'proposta' ? projectType : null,
       kind === 'proposta' && referralPattern.test(code) ? code : null,
-      campaignValue('utm_source'), campaignValue('utm_medium'), campaignValue('utm_campaign'), new Date().toISOString()
+      campaignValue('utm_source'), campaignValue('utm_medium'), campaignValue('utm_campaign'), new Date().toISOString(),
+      estimate ? 'simulador' : 'formulario', calculated && calculated.rows.length ? calculated.total : null,
+      calculated ? (calculated.pending.length ? 1 : 0) : null, segment ? string('segment') : null
     ).run();
     console.info('Pedido comercial recebido', {reference, kind});
     return json({reference}, 201);

@@ -4,6 +4,7 @@ import {useState, type FormEvent} from 'react';
 import {readUtms} from '@/lib/utm';
 import {readReferral} from '@/lib/referral';
 import {projectTypes, type ProjectType} from '@/lib/services';
+import type {Estimate} from '@/lib/site-estimate';
 
 function signal(event: string) {
   window.dispatchEvent(new CustomEvent('ravyt:sales-event', {detail: event}));
@@ -11,8 +12,8 @@ function signal(event: string) {
 
 const submitError = 'O envio falhou. Tente novamente.';
 const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
-export function ProposalForm({kind = 'proposta', initialType, segment}: {
-  kind?: 'proposta' | 'parceria'; initialType?: ProjectType; segment?: string;
+export function ProposalForm({kind = 'proposta', initialType, segment, estimate}: {
+  kind?: 'proposta' | 'parceria'; initialType?: ProjectType; segment?: string; estimate?: Estimate;
 }) {
   const partner = kind === 'parceria';
   const [pending, setPending] = useState(false);
@@ -35,7 +36,7 @@ export function ProposalForm({kind = 'proposta', initialType, segment}: {
       const response = await fetch('/api/propostas', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({...fields, kind, segment, referral, campaign, requestId: id}),
+        body: JSON.stringify({...fields, kind, segment: segment ?? fields.segment, referral, campaign, requestId: id, ...(estimate ? {estimate} : {})}),
         signal: AbortSignal.timeout(15000),
       });
       const reply = await response.json() as {reference?: string; error?: string};
@@ -60,6 +61,7 @@ export function ProposalForm({kind = 'proposta', initialType, segment}: {
       <label>Seu nome<input name="name" autoComplete="name" required maxLength={100} /></label>
       <label>{partner ? 'Empresa ou atividade (opcional)' : 'Escritório, empresa ou atividade'}<input name="business" autoComplete="organization" required={!partner} maxLength={140} /></label>
       <label>WhatsApp com DDD ou e-mail<input name="contact" autoComplete="on" required maxLength={160} /></label>
+      {estimate && <label>Segmento (opcional)<select name="segment" defaultValue=""><option value="">Selecione</option><option value="arquitetura">Arquitetura</option><option value="engenharia">Engenharia</option></select></label>}
       {!partner && <label>Tipo de projeto
         <select name="projectType" defaultValue={initialType ?? ''} required>
           <option value="" disabled>Selecione</option>
@@ -67,7 +69,7 @@ export function ProposalForm({kind = 'proposta', initialType, segment}: {
         </select>
       </label>}
       <label className="rd-wide">{partner ? 'Como você pretende indicar a Ravyt?' : 'O que você precisa no seu projeto?'}
-        <textarea name="description" required minLength={10} maxLength={1200} rows={4}
+        <textarea name="description" required={!estimate} minLength={estimate ? undefined : 10} maxLength={1200} rows={4}
           placeholder={partner ? 'Conte sobre sua atividade e seu contato com arquitetos e engenheiros.' :
             'Conte quais serviços, projetos ou obras quer mostrar no site.'} />
       </label>

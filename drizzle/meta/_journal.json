@@ -15,6 +15,13 @@
       "when": 1794605797478,
       "tag": "0001_blushing_zuras",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1795680000000,
+      "tag": "0002_crm_simulador",
+      "breakpoints": true
     }
   ]
 }

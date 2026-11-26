@@ -1,0 +1,11 @@
+# Integração CRM — simulador
+
+- O simulador mantém a cópia e o WhatsApp sem mudanças. Somente o formulário voluntário no resumo, com aceite de uso dos dados para responder à solicitação, cria o lead. Abrir o WhatsApp não confirma envio.
+- `/api/propostas` valida opções, recalcula preço e salva no D1. Não depende da disponibilidade do Google.
+- O Worker sincroniza a cada cinco minutos os pedidos com origem simulador, preservando ID, preço calculado e protocolo; grava via Sheets API com RAW (sem executar fórmulas dos visitantes). Não sobrescreve os campos comerciais da equipe. Pedidos pendentes permanecem no D1 e são tentados novamente. O ID evita duplicação em tentativas sequenciais; não execute sincronizações concorrentes.
+- Os formulários existentes e parcerias permanecem fora desta aba específica. Campos de cidade/estado não solicitados ficam vazios.
+- Antes de publicar: executar `npm test`, conferir privacidade/retenção e aplicar `drizzle/0002_crm_simulador.sql` no D1 comercial de produção; confirmar as colunas com PRAGMA table_info. A migração deve preceder a versão nova do Worker. Não aplicar novamente sem verificar o histórico.
+- Criar uma conta de serviço dedicada no Google Cloud, habilitar Google Sheets API, compartilhar exclusivamente a planilha do CRM com seu e-mail como Editor. Não conceder funções IAM desnecessárias nem acesso ao Drive inteiro.
+- Definir no Worker de produção, por configuração segura: segredo `CRM_GOOGLE_SERVICE_ACCOUNT` com o JSON da conta de serviço, e variável `CRM_SPREADSHEET_ID` com ID da planilha. Nunca publicar a chave, incluir no GitHub ou enviá-la por chat. Sem configuração, o cron não sincroniza.
+- Verificar que o build mantém o binding DB de produção. Não ativar cron em staging com dados de produção; conferir cron na implantação. Testar em planilha de teste antes do CRM real: entrada explícita, consentimento ausente, recálculo, retry, ausência de credencial, duplicação, falha do Google, confirmação da linha e atualização do painel. Não cadastrar dados reais para testar.
+- Acompanhar logs de contagem/erro sem PII. A equipe controla acesso ao CRM e solicitações de exclusão nas duas bases. A aba atualmente tem validações e filtro até 1000 linhas; monitorar capacidade e ampliar quando necessário.

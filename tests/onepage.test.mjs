@@ -83,3 +83,16 @@ test('proposal submissions require same origin and consent, preserve attribution
  assert.equal([...records.values()][0][6],fields.description);
 
 });
+
+test('simulator proposal requires consent and validated choices; price is computed on server',async()=>{
+ const origin='https://ravytdigital.com',records=new Map();
+ const database={prepare:()=>({bind:(...params)=>({run:async()=>{if(!records.has(params[0]))records.set(params[0],params);}})})};
+ const fields={requestId:'382317da-11e4-4b00-8f91-13695b3c6c20',kind:'proposta',consent:'sim',name:'Teste',business:'Empresa teste',contact:'teste@example.com',description:'',projectType:'site',segment:'engenharia',estimate:{structure:'1',brief:'',contact:'whatsapp',contactDetail:'',materials:'ready',contentPages:1,hosting:'ravyt',timing:''}};
+ const send=data=>worker.fetch(new Request(origin+'/api/propostas',{method:'POST',headers:{origin,'Content-Type':'application/json'},body:JSON.stringify(data)}),{...env,DB:database},ctx);
+ assert.equal((await send({...fields,consent:''})).status,400);
+ assert.equal((await send({...fields,estimate:{...fields.estimate,contentPages:-1}})).status,400);
+ assert.equal((await send({...fields,estimate:{...fields.estimate,structure:'invalid'}})).status,400);
+ assert.equal((await send({...fields,estimate_total:1})).status,201);
+ assert.equal((await send(fields)).status,201);
+ assert.equal(records.size,1);const record=records.get(fields.requestId);assert.equal(record[13],'simulador');assert.equal(record[14],700);assert.equal(record[15],0);assert.equal(record[16],'engenharia');assert.match(record[6],/Orçamento do meu projeto/);
+});
