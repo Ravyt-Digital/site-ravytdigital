@@ -62,13 +62,14 @@ export function ProposalForm({kind = 'proposta', initialType, segment, estimate}
       <label>{partner ? 'Empresa ou atividade (opcional)' : 'Escritório, empresa ou atividade'}<input name="business" autoComplete="organization" required={!partner} maxLength={140} /></label>
       <label>WhatsApp com DDD ou e-mail<input name="contact" autoComplete="on" required maxLength={160} /></label>
       {estimate && <label>Segmento (opcional)<select name="segment" defaultValue=""><option value="">Selecione</option><option value="arquitetura">Arquitetura</option><option value="engenharia">Engenharia</option></select></label>}
-      {!partner && <label>Tipo de projeto
+      {estimate && <input type="hidden" name="projectType" value="site" />}
+      {!partner && !estimate && <label>Tipo de projeto
         <select name="projectType" defaultValue={initialType ?? ''} required>
           <option value="" disabled>Selecione</option>
           {projectTypes.map(type => <option key={type.id} value={type.id}>{type.label}</option>)}
         </select>
       </label>}
-      <label className="rd-wide">{partner ? 'Como você pretende indicar a Ravyt?' : 'O que você precisa no seu projeto?'}
+      <label className="rd-wide">{partner ? 'Como você pretende indicar a Ravyt?' : estimate ? 'Informações adicionais (opcional)' : 'O que você precisa no seu projeto?'}
         <textarea name="description" required={!estimate} minLength={estimate ? undefined : 10} maxLength={1200} rows={4}
           placeholder={partner ? 'Conte sobre sua atividade e seu contato com arquitetos e engenheiros.' :
             'Conte quais serviços, projetos ou obras quer mostrar no site.'} />
